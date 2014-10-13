@@ -6,4 +6,5 @@
 .gitattributes              export-ignore
 .gitignore                  export-ignore
 .gitmodules                 export-ignore
+test/                       export-ignore
 test_indentation.py         export-ignore
