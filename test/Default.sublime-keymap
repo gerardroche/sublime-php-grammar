@@ -1,0 +1,3 @@
+[
+    { "keys": ["ctrl+k", "ctrl+t"], "command": "php_grammar_indentation_tests" }
+]
