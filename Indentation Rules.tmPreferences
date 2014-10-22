@@ -9,11 +9,20 @@
 	<key>settings</key>
 	<dict>
 
+		<key>indentParens</key>
+		<true/>
+
+		<key>increaseIndentPattern</key>
+		<string>^.*(\{[^}"']*)$</string>
+
 		<key>decreaseIndentPattern</key>
 		<string>(?x)
 			^ (.*\*/)? \s* \} .* $
 			| &lt;\?(php)?\s+ (else(if)? | end(if|for(each)?|while))
 		</string>
+
+		<key>disableIndentNextLinePattern</key>
+		<string>^\s*\{[\]})]*\s*$</string>
 
 		<key>indentNextLinePattern</key>
 		<string>(?x)
