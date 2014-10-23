@@ -1,7 +1,5 @@
 <?php
 
-// @todo BUG `if (expr) :` should increase indentation not just the next line
-
 function start_with_at_least_one_indent() {
 
                 $a = -10;
