@@ -1,7 +1,6 @@
 <?php
 
 // @todo BUG `if (expr) :` should increase indentation not just the next line
-// @todo BUG `start-tag if (expression) : end-tag (HTML block) should increase indentation
 
 function start_with_at_least_one_indent() {
 
@@ -147,17 +146,17 @@ function start_with_at_least_one_indent() {
 
     <?php $a = -10; ?>
     <?php if ($a < 0) : ?>
-    <?php echo "Statement 1\n"; ?>
-    <?= "Statement 2\n"; ?>
+        <?php echo "Statement 1\n"; ?>
+        <?= "Statement 2\n"; ?>
     <?php elseif ($a == 0) : ?>
-    <?php echo "Statement 3\n"; ?>
-    <?= "Statement 4\n"; ?>
+        <?php echo "Statement 3\n"; ?>
+        <?= "Statement 4\n"; ?>
     <?php elseif ($a < 10) : ?>
-    <?php echo "Statement 1\n"; ?>
-    <?= "Statement 2\n"; ?>
+        <?php echo "Statement 1\n"; ?>
+        <?= "Statement 2\n"; ?>
     <?php else : ?>
-    <?php echo "Statement 7\n"; ?>
-    <?= "Statement 8\n"; ?>
+        <?php echo "Statement 7\n"; ?>
+        <?= "Statement 8\n"; ?>
     <?php endif; ?>
     <?php var_dump($a); ?>
     <?php

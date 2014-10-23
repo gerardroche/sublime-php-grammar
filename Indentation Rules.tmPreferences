@@ -13,12 +13,15 @@
 		<true/>
 
 		<key>increaseIndentPattern</key>
-		<string>^.*(\{[^}"']*)$</string>
+		<string>(?x)
+			^.*(\{[^}"']*)$
+			| ^\s*&lt;\?php\s*(if|else(if)?|for(each)?|while|declare).*:(?!.*end\1)
+		</string>
 
 		<key>decreaseIndentPattern</key>
 		<string>(?x)
 			^ (.*\*/)? \s* \} .* $
-			| &lt;\?(php)?\s+ (else(if)? | end(if|for(each)?|while))
+			| \s*&lt;\?(php)?\s+ (else(if)?|end(if|for(each)?|while|declare))
 		</string>
 
 		<key>disableIndentNextLinePattern</key>

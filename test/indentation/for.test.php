@@ -1,7 +1,6 @@
 <?php
 
 // @todo BUG `for (expr) :` should increase indentation not just the next line
-// @todo BUG `start-tag for (expression) : end-tag (HTML block) should increase indentation
 // @todo BUG single line for statement should not increase or decrease indent: for ($i = 1, $j = 0; $i <= 4; $j += $i, print $i, $i++);
 
 function start_with_at_least_one_indent() {

@@ -1,7 +1,6 @@
 <?php
 
 // @todo BUG `foreach (expr) :` should increase indentation not just the next line
-// @todo BUG `start-tag foreach (expression) : end-tag (HTML block) should increase indentation
 
 function start_with_at_least_one_indent() {
 
