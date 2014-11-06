@@ -22,6 +22,7 @@
 		<string>(?x)
 			^ (.*\*/)? \s* \} .* $
 			| \s* (?:&lt;\?(?:php)?\s+)? (else(if)?.*:|end(if|for(each)?|while|declare)\s*;)
+			| ^\s*\)+[,;]?\s*$ # hack for matching last paren in arrays
 		</string>
 
 		<key>disableIndentNextLinePattern</key>
