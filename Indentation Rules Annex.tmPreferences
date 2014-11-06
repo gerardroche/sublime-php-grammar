@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>name</key>
-    <string>Indentation Rules Annex</string>
+    <string>Indentation Rules: Annex</string>
     <key>scope</key>
     <string>source.php</string>
     <key>settings</key>
