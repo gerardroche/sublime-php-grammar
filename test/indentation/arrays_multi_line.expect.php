@@ -25,8 +25,12 @@ function start_with_at_least_one_indent() {
     $a = array(
     )
 
+    ;
+
     $a = array(array(array(
     )))
+
+    ;
 
     $a = array(
         array()
