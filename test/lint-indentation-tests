@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+unset CDPATH
+unset IFS
+
+readonly SOURCE=$(readlink -nf "$0")
+readonly SOURCE_PATH=$(dirname "$SOURCE")
+readonly SOURCE_NAME=$(basename "$SOURCE")
+
+php --version
+
+for f in "$SOURCE_PATH/indentation/"*.test.php; do
+    php -l "$f"
+done
