@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>comment</key>
@@ -3734,7 +3733,5 @@
 	</dict>
 	<key>scopeName</key>
 	<string>source.php</string>
-	<key>uuid</key>
-	<string>22986475-8CA5-11D9-AEDD-000D93C8BE28</string>
 </dict>
 </plist>
