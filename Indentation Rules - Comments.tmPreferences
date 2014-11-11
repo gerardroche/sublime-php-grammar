@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0">
 <dict>
+    <key>name</key>
+    <string>Indentation Rules: Comments</string>
     <key>scope</key>
-    <string>source.php</string>
+    <string>comment</string>
     <key>settings</key>
     <dict>
-        <key>cancelCompletion</key>
-        <string>^\s*(\}?\s*(else|do|try)|(class|function)\s*[a-zA-Z_0-9]+)$</string>
+        <key>preserveIndent</key>
+        <true />
     </dict>
 </dict>
 </plist>
