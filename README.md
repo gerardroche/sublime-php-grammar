@@ -6,10 +6,9 @@ Installation
 
 1. Disable the PHP package bundled with Sublime Text
 
-   - Open the User Settings:
-   - Add `PHP` to the list of ignored packages in the User Settings:
+   - Add `PHP` to the list of ignored packages in the User Settings.
 
-     `Preferences > Settings - User`
+     Go to `Preferences > Settings - User` and add the following:
 
      ```json
      "ignored_packages":
@@ -28,10 +27,16 @@ Installation
    ```
 
 3. Completions and snippets are not included in the Sublime PHP Grammar package.
+   See the list of PHP packages below.
 
-   - [PHP Completions](https://github.com/gerardroche/sublime-phpck.git) - PHP ~5.6
-   - [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets.git) - PHP ~5.6
-   - [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunitck.git) - ~4.2 (includes DbUnit ~1.3)
+Other PHP packages
+------------------
+
+* [PHP Grammar](https://github.com/gerardroche/sublime-php-grammar)
+* [PHP Completions](https://github.com/gerardroche/sublime-phpck)
+* [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets)
+* [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunitck)
+* [PHPUnit Snippets](https://github.com/gerardroche/sublime-phpunit-snippets)
 
 Contribute
 ----------
