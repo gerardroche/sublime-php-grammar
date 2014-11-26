@@ -211,7 +211,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i)(\\)?\b(st(dClass|reamWrapper)|R(RD(Graph|Creator|Updater)|untimeException|e(sourceBundle|cursive(RegexIterator|CachingIterator|TreeIterator|Iterator(Iterator)?|DirectoryIterator|FilterIterator|ArrayIterator)|flect(ion(Method|Class|Object|P(arameter|roperty)|Extension|Function(Abstract)?)?|or)|gexIterator)|angeException)|G(lobIterator|magick(Draw|Pixel)?)|X(ML(Reader|Writer)|SLTProcessor)|M(ongo(Regex|Grid(fsFile|FS(Cursor|File)?)|BinData|C(o(de|llection)|ursor)|Timestamp|I(nt(32|64)|d)|D(B(Ref)?|ate))?|ultipleIterator|e(ssageFormatter|mcache(d)?))|Bad(MethodCallException|FunctionCallException)|tidy(Node)?|S(impleXML(Iterator|Element)|oap(Server|Header|Client|Param|Var|Fault)|NMP|CA(_(SoapProxy|LocalProxy))?|p(hinxClient|l(M(inHeap|axHeap)|Bool|S(t(ack|ring)|ubject)|Heap|TempFileObject|Int|Ob(server|jectStorage)|DoublyLinkedList|PriorityQueue|Enum|Queue|F(i(le(Info|Object)|xedArray)|loat)))|e(ekableIterator|rializable)|DO_(Model_(ReflectionDataObject|Type|Property)|Sequence|D(ata(Object|Factory)|AS_(Relational|XML(_Document)?|Setting|ChangeSummary|Data(Object|Factory)))|Exception|List)|wish(Result(s)?|Search)?|VM(Model)?|QLite(Result|3(Result|Stmt)?|Database|Unbuffered)|AM(Message|Connection))|H(ttp(Re(sponse|quest(Pool)?)|Message|InflateStream|DeflateStream|QueryString)|aru(Image|Outline|D(oc|estination)|Page|Encoder|Font|Annotation))|N(o(RewindIterator|rmalizer)|umberFormatter)|C(o(untable|llator)|achingIterator)|T(okyoTyrant(Table|Query)?|ra(nsliterator|versable))|I(n(tlDateFormatter|validArgumentException|finiteIterator)|terator(Iterator|Aggregate)?|magick(Draw|Pixel(Iterator)?)?)|ZipArchive|O(CI-(Collection|Lob)|ut(erIterator|Of(RangeException|BoundsException))|verflowException)|D(irectoryIterator|om(XsltStylesheet|Node|Document(Type)?|ProcessingInstruction|Element|ainException|Attribute)|OM(XPath|N(ode(list)?|amedNodeMap)|C(haracterData|omment)|Text|Implementation|Document(Fragment)?|ProcessingInstruction|E(ntityReference|lement)|Attr)|ate(Time(Zone)?|Interval|Period))|Un(derflowException|expectedValueException)|finfo|P(har(Data|FileInfo)?|DO(Statement)?|arentIterator)|E(rrorException|xception|mptyIterator)|V8Js(Exception)?|KTaglib_(MPEG_(File|AudioProperties)|Tag|ID3v2_(Tag|Frame|AttachedPictureFrame))|Fil(terIterator|esystemIterator)|mysqli(_(stmt|driver|warning|result))?|L(imitIterator|o(cale|gicException)|engthException)|A(MQP(Connection|Exchange|Queue)|ppendIterator|PCIterator|rray(Iterator|Object|Access)))\b</string>
+					<string>(?i)(\\)?\b(A(ppendIterator|rray(Access|Iterator|Object))|Bad(FunctionCallException|MethodCallException)|C(a(chingIterator|llbackFilterIterator)|losure|ountable)|D(OM(Attr|C(dataSection|haracterData|o(mment|nfiguration))|Do(cument(Fragment|Type)?|mError)|E(lement|ntity(Reference)?|rrorHandler|xception)|Implementation(List|Source)?|Locator|N(ame(List|SpaceNode|dNodeMap)|o(de(List)?|tation))|ProcessingInstruction|String(Extend|List)|T(ext|ypeinfo)|UserDataHandler|XPath)|ate(Interval|Period|Time(I(mmutable|nterface)|Zone)?)|irectory(Iterator)?|omainException)|E(mptyIterator|rrorException|xception)|Fil(esystemIterator|terIterator)|G(enerator|lobIterator)|I(n(finiteIterator|validArgumentException)|terator(Aggregate|Iterator)?)|Json(IncrementalParser|Serializable)|L(engthException|i(bXMLError|mitIterator)|ogicException)|MultipleIterator|NoRewindIterator|O(ut(Of(BoundsException|RangeException)|erIterator)|verflowException)|P(DO(Exception|Row|Statement)?|arentIterator|har(Data|Exception|FileInfo)?)|R(angeException|e(cursive(ArrayIterator|Ca(chingIterator|llbackFilterIterator)|DirectoryIterator|FilterIterator|Iterator(Iterator)?|RegexIterator|TreeIterator)|flect(ion(Class|Ex(ception|tension)|Function(Abstract)?|Method|Object|P(arameter|roperty)|ZendExtension)?|or)|gexIterator)|untimeException)|S(QLite3(Result|Stmt)?|e(ekableIterator|rializable|ssion(Handler(Interface)?|IdInterface))|impleXML(Element|Iterator)|oap(Client|Fault|Header|Param|Server|Var)|pl(DoublyLinkedList|Fi(le(Info|Object)|xedArray)|Heap|M(axHeap|inHeap)|Ob(jectStorage|server)|PriorityQueue|Queue|S(tack|ubject)|TempFileObject))|Traversable|Un(derflowException|expectedValueException)|XML(Reader|Writer)|ZipArchive|__PHP_Incomplete_Class|finfo|mysqli(_(driver|result|s(ql_exception|tmt)|warning))?|php_user_filter|stdClass|tidy(Node)?)\b</string>
 					<key>name</key>
 					<string>support.class.builtin.php</string>
 				</dict>
@@ -399,7 +399,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\\)?\b(STD(IN|OUT|ERR)|ZEND_(THREAD_SAFE|DEBUG_BUILD)|DEFAULT_INCLUDE_PATH|P(HP_(R(OUND_HALF_(ODD|DOWN|UP|EVEN)|ELEASE_VERSION)|M(INOR_VERSION|A(XPATHLEN|JOR_VERSION))|BINDIR|S(HLIB_SUFFIX|YSCONFDIR|API)|CONFIG_FILE_(SCAN_DIR|PATH)|INT_(MAX|SIZE)|ZTS|O(S|UTPUT_HANDLER_(START|CONT|END))|D(EBUG|ATADIR)|URL_(SCHEME|HOST|USER|P(ORT|A(SS|TH))|QUERY|FRAGMENT)|PREFIX|E(XT(RA_VERSION|ENSION_DIR)|OL)|VERSION(_ID)?|WINDOWS_(NT_(SERVER|DOMAIN_CONTROLLER|WORKSTATION)|VERSION_(M(INOR|AJOR)|BUILD|S(UITEMASK|P_M(INOR|AJOR))|P(RODUCTTYPE|LATFORM)))|L(IBDIR|OCALSTATEDIR))|EAR_(INSTALL_DIR|EXTENSION_DIR))|E_(RECOVERABLE_ERROR|STRICT|NOTICE|CO(RE_(ERROR|WARNING)|MPILE_(ERROR|WARNING))|DEPRECATED|USER_(NOTICE|DEPRECATED|ERROR|WARNING)|PARSE|ERROR|WARNING|ALL))\b</string>
+							<string>(\\)?\b(DE(BUG_BACKTRACE_(IGNORE_ARGS|PROVIDE_OBJECT)|FAULT_INCLUDE_PATH)|E_(ALL|CO(MPILE_(ERROR|WARNING)|RE_(ERROR|WARNING))|DEPRECATED|ERROR|NOTICE|PARSE|RECOVERABLE_ERROR|STRICT|USER_(DEPRECATED|ERROR|NOTICE|WARNING)|WARNING)|FALSE|NULL|P(EAR_(EXTENSION_DIR|INSTALL_DIR)|HP_(BIN(ARY|DIR)|CONFIG_FILE_(PATH|SCAN_DIR)|D(ATADIR|EBUG)|E(OL|XT(ENSION_DIR|RA_VERSION))|INT_(MAX|SIZE)|L(IBDIR|OCALSTATEDIR)|M(A(JOR_VERSION|NDIR|XPATHLEN)|INOR_VERSION)|O(S|UTPUT_HANDLER_(C(LEAN(ABLE)?|ONT)|DISABLED|END|F(INAL|LUSH(ABLE)?)|REMOVABLE|ST(ART(ED)?|DFLAGS)|WRITE))|PREFIX|RELEASE_VERSION|S(API|HLIB_SUFFIX|YSCONFDIR)|VERSION(_ID)?|ZTS))|STD(ERR|IN|OUT)|TRUE|UPLOAD_ERR_(CANT_WRITE|EXTENSION|FORM_SIZE|INI_SIZE|NO_(FILE|TMP_DIR)|OK|PARTIAL)|ZEND_(DEBUG_BUILD|THREAD_SAFE))\b</string>
 							<key>name</key>
 							<string>support.constant.core.php</string>
 						</dict>
@@ -413,7 +413,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\\)?\b(RADIXCHAR|GROUPING|M(_(1_PI|SQRT(1_2|2|3|PI)|2_(SQRTPI|PI)|PI(_(2|4))?|E(ULER)?|L(N(10|2|PI)|OG(10E|2E)))|ON_(GROUPING|1(1|2|0)?|7|2|8|THOUSANDS_SEP|3|DECIMAL_POINT|9|4|5|6))|S(TR_PAD_(RIGHT|BOTH|LEFT)|ORT_(REGULAR|STRING|NUMERIC|DESC|LOCALE_STRING|ASC)|EEK_(SET|CUR|END))|H(TML_(SPECIALCHARS|ENTITIES)|ASH_HMAC)|YES(STR|EXPR)|N(_(S(IGN_POSN|EP_BY_SPACE)|CS_PRECEDES)|O(STR|EXPR)|EGATIVE_SIGN|AN)|C(R(YPT_(MD5|BLOWFISH|S(HA(256|512)|TD_DES|ALT_LENGTH)|EXT_DES)|NCYSTR|EDITS_(G(ROUP|ENERAL)|MODULES|SAPI|DOCS|QA|FULLPAGE|ALL))|HAR_MAX|O(NNECTION_(NORMAL|TIMEOUT|ABORTED)|DESET|UNT_(RECURSIVE|NORMAL))|URRENCY_SYMBOL|ASE_(UPPER|LOWER))|__COMPILER_HALT_OFFSET__|T(HOUS(EP|ANDS_SEP)|_FMT(_AMPM)?)|IN(T_(CURR_SYMBOL|FRAC_DIGITS)|I_(S(YSTEM|CANNER_(RAW|NORMAL))|USER|PERDIR|ALL)|F(O_(GENERAL|MODULES|C(REDITS|ONFIGURATION)|ENVIRONMENT|VARIABLES|LICENSE|ALL))?)|D(_(T_FMT|FMT)|IRECTORY_SEPARATOR|ECIMAL_POINT|A(Y_(1|7|2|3|4|5|6)|TE_(R(SS|FC(1(123|036)|2822|8(22|50)|3339))|COOKIE|ISO8601|W3C|ATOM)))|UPLOAD_ERR_(NO_(TMP_DIR|FILE)|CANT_WRITE|INI_SIZE|OK|PARTIAL|EXTENSION|FORM_SIZE)|P(M_STR|_(S(IGN_POSN|EP_BY_SPACE)|CS_PRECEDES)|OSITIVE_SIGN|ATH(_SEPARATOR|INFO_(BASENAME|DIRNAME|EXTENSION|FILENAME)))|E(RA(_(YEAR|T_FMT|D_(T_FMT|FMT)))?|XTR_(REFS|SKIP|IF_EXISTS|OVERWRITE|PREFIX_(SAME|I(NVALID|F_EXISTS)|ALL))|NT_(NOQUOTES|COMPAT|IGNORE|QUOTES))|FRAC_DIGITS|L(C_(M(ONETARY|ESSAGES)|NUMERIC|C(TYPE|OLLATE)|TIME|ALL)|O(G_(MAIL|SYSLOG|N(O(TICE|WAIT)|DELAY|EWS)|C(R(IT|ON)|ONS)|INFO|ODELAY|D(EBUG|AEMON)|U(SER|UCP)|P(ID|ERROR)|E(RR|MERG)|KERN|WARNING|L(OCAL(1|7|2|3|4|5|0|6)|PR)|A(UTH(PRIV)?|LERT))|CK_(SH|NB|UN|EX)))|A(M_STR|B(MON_(1(1|2|0)?|7|2|8|3|9|4|5|6)|DAY_(1|7|2|3|4|5|6))|SSERT_(BAIL|CALLBACK|QUIET_EVAL|WARNING|ACTIVE)|LT_DIGITS))\b</string>
+							<string>(\\)?\b(A(B(DAY_(1|2|3|4|5|6|7)|MON_(1(0|1|2)?|2|3|4|5|6|7|8|9))|LT_DIGITS|M_STR|SSERT_(ACTIVE|BAIL|CALLBACK|QUIET_EVAL|WARNING))|C(ASE_(LOWER|UPPER)|HAR_MAX|O(DESET|NNECTION_(ABORTED|NORMAL|TIMEOUT)|UNT_(NORMAL|RECURSIVE))|R(EDITS_(ALL|DOCS|FULLPAGE|G(ENERAL|ROUP)|MODULES|QA|SAPI)|NCYSTR|YPT_(BLOWFISH|EXT_DES|MD5|S(ALT_LENGTH|HA(256|512)|TD_DES))))|D(AY_(1|2|3|4|5|6|7)|IRECTORY_SEPARATOR|NS_(A(6|AAA|LL|NY)?|CNAME|HINFO|MX|N(APTR|S)|PTR|S(OA|RV)|TXT)|_(FMT|T_FMT))|E(NT_(COMPAT|DISALLOWED|HTML(401|5)|IGNORE|NOQUOTES|QUOTES|SUBSTITUTE|X(HTML|ML1))|RA(_(D_(FMT|T_FMT)|T_FMT))?|XTR_(IF_EXISTS|OVERWRITE|PREFIX_(ALL|I(F_EXISTS|NVALID)|SAME)|REFS|SKIP))|F(ILE_(APPEND|BINARY|IGNORE_NEW_LINES|NO_DEFAULT_CONTEXT|SKIP_EMPTY_LINES|TEXT|USE_INCLUDE_PATH)|NM_(CASEFOLD|NOESCAPE|P(ATHNAME|ERIOD)))|GLOB_(AVAILABLE_FLAGS|BRACE|ERR|MARK|NO(CHECK|ESCAPE|SORT)|ONLYDIR)|HTML_(ENTITIES|SPECIALCHARS)|I(MAGETYPE_(BMP|COUNT|GIF|I(CO|FF)|J(B2|P(2|C|EG(2000)?|X))|P(NG|SD)|SW(C|F)|TIFF_(II|MM)|UNKNOWN|WBMP|XBM)|N(F(O_(ALL|C(ONFIGURATION|REDITS)|ENVIRONMENT|GENERAL|LICENSE|MODULES|VARIABLES))?|I_(ALL|PERDIR|S(CANNER_(NORMAL|RAW)|YSTEM)|USER)))|L(C_(ALL|C(OLLATE|TYPE)|M(ESSAGES|ONETARY)|NUMERIC|TIME)|O(CK_(EX|NB|SH|UN)|G_(A(LERT|UTH(PRIV)?)|C(ONS|R(IT|ON))|D(AEMON|EBUG)|E(MERG|RR)|INFO|KERN|L(OCAL(0|1|2|3|4|5|6|7)|PR)|MAIL|N(DELAY|EWS|O(TICE|WAIT))|ODELAY|P(ERROR|ID)|SYSLOG|U(SER|UCP)|WARNING)))|M(ON_(1(0|1|2)?|2|3|4|5|6|7|8|9)|_(1_PI|2_(PI|SQRTPI)|E(ULER)?|L(N(10|2|PI)|OG(10E|2E))|PI(_(2|4))?|SQRT(1_2|2|3|PI)))|N(AN|OEXPR)|P(A(SSWORD_(BCRYPT(_DEFAULT_COST)?|DEFAULT)|TH(INFO_(BASENAME|DIRNAME|EXTENSION|FILENAME)|_SEPARATOR))|HP_(QUERY_RFC(1738|3986)|ROUND_HALF_(DOWN|EVEN|ODD|UP)|URL_(FRAGMENT|HOST|P(A(SS|TH)|ORT)|QUERY|SCHEME|USER))|M_STR|SFS_(ERR_FATAL|F(EED_ME|LAG_(FLUSH_(CLOSE|INC)|NORMAL))|PASS_ON))|RADIXCHAR|S(CANDIR_SORT_(ASCENDING|DESCENDING|NONE)|EEK_(CUR|END|SET)|ORT_(ASC|DESC|FLAG_CASE|LOCALE_STRING|N(ATURAL|UMERIC)|REGULAR|STRING)|TR(EAM_(BUFFER_(FULL|LINE|NONE)|C(AST_(AS_STREAM|FOR_SELECT)|LIENT_(ASYNC_CONNECT|CONNECT|PERSISTENT)|RYPTO_METHOD_(SSLv(2(3_(CLIENT|SERVER)|_(CLIENT|SERVER))|3_(CLIENT|SERVER))|TLS_(CLIENT|SERVER)))|FILTER_(ALL|READ|WRITE)|I(GNORE_URL|PPROTO_(I(CMP|P)|RAW|TCP|UDP)|S_URL)|M(ETA_(ACCESS|GROUP(_NAME)?|OWNER(_NAME)?|TOUCH)|KDIR_RECURSIVE|UST_SEEK)|NOTIFY_(AUTH_RE(QUIRED|SULT)|CO(MPLETED|NNECT)|F(AILURE|ILE_SIZE_IS)|MIME_TYPE_IS|PROGRESS|RE(DIRECTED|SOLVE)|SEVERITY_(ERR|INFO|WARN))|O(OB|PTION_(BLOCKING|READ_(BUFFER|TIMEOUT)|WRITE_BUFFER))|P(EEK|F_(INET(6)?|UNIX))|REPORT_ERRORS|S(ERVER_(BIND|LISTEN)|HUT_(RD(WR)?|WR)|OCK_(DGRAM|R(AW|DM)|S(EQPACKET|TREAM)))|U(RL_STAT_(LINK|QUIET)|SE_PATH))|_PAD_(BOTH|LEFT|RIGHT)))|T(HOUSEP|_FMT(_AMPM)?)|YESEXPR)\b</string>
 							<key>name</key>
 							<string>support.constant.std.php</string>
 						</dict>
@@ -427,7 +427,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\\)?\b(GLOB_(MARK|BRACE|NO(SORT|CHECK|ESCAPE)|ONLYDIR|ERR|AVAILABLE_FLAGS)|XML_(SAX_IMPL|HTML_DOCUMENT_NODE|N(OTATION_NODE|AMESPACE_DECL_NODE)|C(OMMENT_NODE|DATA_SECTION_NODE)|TEXT_NODE|OPTION_(SKIP_(TAGSTART|WHITE)|CASE_FOLDING|TARGET_ENCODING)|D(TD_NODE|OCUMENT_(NODE|TYPE_NODE|FRAG_NODE))|PI_NODE|E(RROR_(RECURSIVE_ENTITY_REF|MISPLACED_XML_PI|B(INARY_ENTITY_REF|AD_CHAR_REF)|SYNTAX|NO(NE|_(MEMORY|ELEMENTS))|TAG_MISMATCH|IN(CORRECT_ENCODING|VALID_TOKEN)|DUPLICATE_ATTRIBUTE|UN(CLOSED_(CDATA_SECTION|TOKEN)|DEFINED_ENTITY|KNOWN_ENCODING)|JUNK_AFTER_DOC_ELEMENT|PAR(TIAL_CHAR|AM_ENTITY_REF)|EXTERNAL_ENTITY_HANDLING|A(SYNC_ENTITY|TTRIBUTE_EXTERNAL_ENTITY_REF))|NTITY_(REF_NODE|NODE|DECL_NODE)|LEMENT_(NODE|DECL_NODE))|LOCAL_NAMESPACE|ATTRIBUTE_(N(MTOKEN(S)?|O(TATION|DE))|CDATA|ID(REF(S)?)?|DECL_NODE|EN(TITY|UMERATION)))|M(HASH_(RIPEMD(1(28|60)|256|320)|GOST|MD(2|4|5)|S(HA(1|2(24|56)|384|512)|NEFRU256)|HAVAL(1(28|92|60)|2(24|56))|CRC32(B)?|TIGER(1(28|60))?|WHIRLPOOL|ADLER32)|YSQL(_(BOTH|NUM|CLIENT_(SSL|COMPRESS|I(GNORE_SPACE|NTERACTIVE))|ASSOC)|I_(RE(PORT_(STRICT|INDEX|OFF|ERROR|ALL)|FRESH_(GRANT|MASTER|BACKUP_LOG|S(TATUS|LAVE)|HOSTS|T(HREADS|ABLES)|LOG)|AD_DEFAULT_(GROUP|FILE))|GROUP_FLAG|MULTIPLE_KEY_FLAG|B(INARY_FLAG|OTH|LOB_FLAG)|S(T(MT_ATTR_(CURSOR_TYPE|UPDATE_MAX_LENGTH|PREFETCH_ROWS)|ORE_RESULT)|E(RVER_QUERY_(NO_(GOOD_INDEX_USED|INDEX_USED)|WAS_SLOW)|T_(CHARSET_NAME|FLAG)))|N(O(_D(EFAULT_VALUE_FLAG|ATA)|T_NULL_FLAG)|UM(_FLAG)?)|C(URSOR_TYPE_(READ_ONLY|SCROLLABLE|NO_CURSOR|FOR_UPDATE)|LIENT_(SSL|NO_SCHEMA|COMPRESS|I(GNORE_SPACE|NTERACTIVE)|FOUND_ROWS))|T(YPE_(GEOMETRY|MEDIUM_BLOB|B(IT|LOB)|S(HORT|TRING|ET)|YEAR|N(ULL|EWD(ECIMAL|ATE))|CHAR|TI(ME(STAMP)?|NY(_BLOB)?)|INT(24|ERVAL)|D(OUBLE|ECIMAL|ATE(TIME)?)|ENUM|VAR_STRING|FLOAT|LONG(_BLOB|LONG)?)|IMESTAMP_FLAG)|INIT_COMMAND|ZEROFILL_FLAG|O(N_UPDATE_NOW_FLAG|PT_(NET_(READ_BUFFER_SIZE|CMD_BUFFER_SIZE)|CONNECT_TIMEOUT|INT_AND_FLOAT_NATIVE|LOCAL_INFILE))|D(EBUG_TRACE_ENABLED|ATA_TRUNCATED)|U(SE_RESULT|N(SIGNED_FLAG|IQUE_KEY_FLAG))|P(RI_KEY_FLAG|ART_KEY_FLAG)|ENUM_FLAG|A(S(SOC|YNC)|UTO_INCREMENT_FLAG)))|CRYPT_(R(C(2|6)|IJNDAEL_(1(28|92)|256)|AND)|GOST|XTEA|M(ODE_(STREAM|NOFB|C(BC|FB)|OFB|ECB)|ARS)|BLOWFISH(_COMPAT)?|S(ERPENT|KIPJACK|AFER(128|PLUS|64))|C(RYPT|AST_(128|256))|T(RIPLEDES|HREEWAY|WOFISH)|IDEA|3DES|DE(S|CRYPT|V_(RANDOM|URANDOM))|PANAMA|EN(CRYPT|IGNA)|WAKE|LOKI97|ARCFOUR(_IV)?))|S(TREAM_(REPORT_ERRORS|M(UST_SEEK|KDIR_RECURSIVE)|BUFFER_(NONE|FULL|LINE)|S(HUT_(RD(WR)?|WR)|OCK_(R(DM|AW)|S(TREAM|EQPACKET)|DGRAM)|ERVER_(BIND|LISTEN))|NOTIFY_(RE(SOLVE|DIRECTED)|MIME_TYPE_IS|SEVERITY_(INFO|ERR|WARN)|CO(MPLETED|NNECT)|PROGRESS|F(ILE_SIZE_IS|AILURE)|AUTH_RE(SULT|QUIRED))|C(RYPTO_METHOD_(SSLv(2(_(SERVER|CLIENT)|3_(SERVER|CLIENT))|3_(SERVER|CLIENT))|TLS_(SERVER|CLIENT))|LIENT_(CONNECT|PERSISTENT|ASYNC_CONNECT)|AST_(FOR_SELECT|AS_STREAM))|I(GNORE_URL|S_URL|PPROTO_(RAW|TCP|I(CMP|P)|UDP))|O(OB|PTION_(READ_(BUFFER|TIMEOUT)|BLOCKING|WRITE_BUFFER))|U(RL_STAT_(QUIET|LINK)|SE_PATH)|P(EEK|F_(INET(6)?|UNIX))|ENFORCE_SAFE_MODE|FILTER_(READ|WRITE|ALL))|UNFUNCS_RET_(STRING|TIMESTAMP|DOUBLE)|QLITE(_(R(OW|EADONLY)|MIS(MATCH|USE)|B(OTH|USY)|SCHEMA|N(O(MEM|T(FOUND|ADB)|LFS)|UM)|C(O(RRUPT|NSTRAINT)|ANTOPEN)|TOOBIG|I(NTER(RUPT|NAL)|OERR)|OK|DONE|P(ROTOCOL|ERM)|E(RROR|MPTY)|F(ORMAT|ULL)|LOCKED|A(BORT|SSOC|UTH))|3_(B(OTH|LOB)|NU(M|LL)|TEXT|INTEGER|OPEN_(READ(ONLY|WRITE)|CREATE)|FLOAT|ASSOC)))|CURL(M(SG_DONE|_(BAD_(HANDLE|EASY_HANDLE)|CALL_MULTI_PERFORM|INTERNAL_ERROR|O(UT_OF_MEMORY|K)))|SSH_AUTH_(HOST|NONE|DEFAULT|P(UBLICKEY|ASSWORD)|KEYBOARD)|CLOSEPOLICY_(SLOWEST|CALLBACK|OLDEST|LEAST_(RECENTLY_USED|TRAFFIC))|_(HTTP_VERSION_(1_(1|0)|NONE)|NETRC_(REQUIRED|IGNORED|OPTIONAL)|TIMECOND_(IF(MODSINCE|UNMODSINCE)|LASTMOD)|IPRESOLVE_(V(4|6)|WHATEVER)|VERSION_(SSL|IPV6|KERBEROS4|LIBZ))|INFO_(RE(DIRECT_(COUNT|TIME)|QUEST_SIZE)|S(SL_VERIFYRESULT|TARTTRANSFER_TIME|IZE_(DOWNLOAD|UPLOAD)|PEED_(DOWNLOAD|UPLOAD))|H(TTP_CODE|EADER_(SIZE|OUT))|NAMELOOKUP_TIME|C(ON(NECT_TIME|TENT_(TYPE|LENGTH_(DOWNLOAD|UPLOAD)))|ERTINFO)|TOTAL_TIME|PR(IVATE|ETRANSFER_TIME)|EFFECTIVE_URL|FILETIME)|OPT_(R(E(SUME_FROM|TURNTRANSFER|DIR_PROTOCOLS|FERER|AD(DATA|FUNCTION))|AN(GE|DOM_FILE))|MAX(REDIRS|CONNECTS)|B(INARYTRANSFER|UFFERSIZE)|S(S(H_(HOST_PUBLIC_KEY_MD5|P(RIVATE_KEYFILE|UBLIC_KEYFILE)|AUTH_TYPES)|L(CERT(TYPE|PASSWD)?|_(CIPHER_LIST|VERIFY(HOST|PEER))|ENGINE(_DEFAULT)?|VERSION|KEY(TYPE|PASSWD)?))|TDERR)|H(TTP(GET|HEADER|200ALIASES|_VERSION|PROXYTUNNEL|AUTH)|EADER(FUNCTION)?)|N(O(BODY|SIGNAL|PROGRESS)|ETRC)|C(RLF|O(NNECTTIMEOUT(_MS)?|OKIE(SESSION|JAR|FILE)?)|USTOMREQUEST|ERTINFO|LOSEPOLICY|A(INFO|PATH))|T(RANSFERTEXT|CP_NODELAY|IME(CONDITION|OUT(_MS)?|VALUE))|I(N(TERFACE|FILE(SIZE)?)|PRESOLVE)|DNS_(CACHE_TIMEOUT|USE_GLOBAL_CACHE)|U(RL|SER(PWD|AGENT)|NRESTRICTED_AUTH|PLOAD)|P(R(IVATE|O(GRESSFUNCTION|XY(TYPE|USERPWD|PORT|AUTH)?|TOCOLS))|O(RT|ST(REDIR|QUOTE|FIELDS)?)|UT)|E(GDSOCKET|NCODING)|VERBOSE|K(RB4LEVEL|EYPASSWD)|QUOTE|F(RESH_CONNECT|TP(SSLAUTH|_(S(SL|KIP_PASV_IP)|CREATE_MISSING_DIRS|USE_EP(RT|SV)|FILEMETHOD)|PORT|LISTONLY|APPEND)|ILE(TIME)?|O(RBID_REUSE|LLOWLOCATION)|AILONERROR)|WRITE(HEADER|FUNCTION)|LOW_SPEED_(TIME|LIMIT)|AUTOREFERER)|PRO(XY_(SOCKS(4|5)|HTTP)|TO_(S(CP|FTP)|HTTP(S)?|T(ELNET|FTP)|DICT|F(TP(S)?|ILE)|LDAP(S)?|ALL))|E_(RE(CV_ERROR|AD_ERROR)|GOT_NOTHING|MALFORMAT_USER|BAD_(C(ONTENT_ENCODING|ALLING_ORDER)|PASSWORD_ENTERED|FUNCTION_ARGUMENT)|S(S(H|L_(C(IPHER|ONNECT_ERROR|ERTPROBLEM|ACERT)|PEER_CERTIFICATE|ENGINE_(SETFAILED|NOTFOUND)))|HARE_IN_USE|END_ERROR)|HTTP_(RANGE_ERROR|NOT_FOUND|PO(RT_FAILED|ST_ERROR))|COULDNT_(RESOLVE_(HOST|PROXY)|CONNECT)|T(OO_MANY_REDIRECTS|ELNET_OPTION_SYNTAX)|O(BSOLETE|UT_OF_MEMORY|PERATION_TIMEOUTED|K)|U(RL_MALFORMAT(_USER)?|N(SUPPORTED_PROTOCOL|KNOWN_TELNET_OPTION))|PARTIAL_FILE|F(TP_(BAD_DOWNLOAD_RESUME|SSL_FAILED|C(OULDNT_(RETR_FILE|GET_SIZE|S(TOR_FILE|ET_(BINARY|ASCII))|USE_REST)|ANT_(RECONNECT|GET_HOST))|USER_PASSWORD_INCORRECT|PORT_FAILED|QUOTE_ERROR|W(RITE_ERROR|EIRD_(SERVER_REPLY|227_FORMAT|USER_REPLY|PAS(S_REPLY|V_REPLY)))|ACCESS_DENIED)|ILE(SIZE_EXCEEDED|_COULDNT_READ_FILE)|UNCTION_NOT_FOUND|AILED_INIT)|WRITE_ERROR|L(IBRARY_NOT_FOUND|DAP_(SEARCH_FAILED|CANNOT_BIND|INVALID_URL))|ABORTED_BY_CALLBACK)|VERSION_NOW|FTP(METHOD_(MULTICWD|SINGLECWD|NOCWD)|SSL_(NONE|CONTROL|TRY|ALL)|AUTH_(SSL|TLS|DEFAULT))|AUTH_(GSSNEGOTIATE|BASIC|NTLM|DIGEST|ANY(SAFE)?))|I(MAGETYPE_(GIF|XBM|BMP|SWF|COUNT|TIFF_(MM|II)|I(CO|FF)|UNKNOWN|J(B2|P(X|2|C|EG(2000)?))|P(SD|NG)|WBMP)|NPUT_(REQUEST|GET|SE(RVER|SSION)|COOKIE|POST|ENV)|CONV_(MIME_DECODE_(STRICT|CONTINUE_ON_ERROR)|IMPL|VERSION))|D(NS_(MX|S(RV|OA)|HINFO|N(S|APTR)|CNAME|TXT|PTR|A(NY|LL|AAA|6)?)|OM(STRING_SIZE_ERR|_(SYNTAX_ERR|HIERARCHY_REQUEST_ERR|N(O(_(MODIFICATION_ALLOWED_ERR|DATA_ALLOWED_ERR)|T_(SUPPORTED_ERR|FOUND_ERR))|AMESPACE_ERR)|IN(DEX_SIZE_ERR|USE_ATTRIBUTE_ERR|VALID_(MODIFICATION_ERR|STATE_ERR|CHARACTER_ERR|ACCESS_ERR))|PHP_ERR|VALIDATION_ERR|WRONG_DOCUMENT_ERR)))|JSON_(HEX_(TAG|QUOT|A(MP|POS))|NUMERIC_CHECK|ERROR_(S(YNTAX|TATE_MISMATCH)|NONE|CTRL_CHAR|DEPTH|UTF8)|FORCE_OBJECT)|P(REG_(RECURSION_LIMIT_ERROR|GREP_INVERT|BA(CKTRACK_LIMIT_ERROR|D_UTF8_(OFFSET_ERROR|ERROR))|S(PLIT_(NO_EMPTY|OFFSET_CAPTURE|DELIM_CAPTURE)|ET_ORDER)|NO_ERROR|INTERNAL_ERROR|OFFSET_CAPTURE|PATTERN_ORDER)|SFS_(PASS_ON|ERR_FATAL|F(EED_ME|LAG_(NORMAL|FLUSH_(CLOSE|INC))))|CRE_VERSION|OSIX_(R_OK|X_OK|S_IF(REG|BLK|SOCK|CHR|IFO)|F_OK|W_OK))|F(NM_(NOESCAPE|CASEFOLD|P(ERIOD|ATHNAME))|IL(TER_(REQUIRE_(SCALAR|ARRAY)|SANITIZE_(MAGIC_QUOTES|S(TRI(NG|PPED)|PECIAL_CHARS)|NUMBER_(INT|FLOAT)|URL|E(MAIL|NCODED)|FULL_SPECIAL_CHARS)|NULL_ON_FAILURE|CALLBACK|DEFAULT|UNSAFE_RAW|VALIDATE_(REGEXP|BOOLEAN|I(NT|P)|URL|EMAIL|FLOAT)|F(ORCE_ARRAY|LAG_(S(CHEME_REQUIRED|TRIP_(BACKTICK|HIGH|LOW))|HOST_REQUIRED|NO(NE|_(RES_RANGE|PRIV_RANGE|ENCODE_QUOTES))|IPV(4|6)|PATH_REQUIRED|E(MPTY_STRING_NULL|NCODE_(HIGH|LOW|AMP))|QUERY_REQUIRED|ALLOW_(SCIENTIFIC|HEX|THOUSAND|OCTAL|FRACTION))))|E(_(BINARY|SKIP_EMPTY_LINES|NO_DEFAULT_CONTEXT|TEXT|IGNORE_NEW_LINES|USE_INCLUDE_PATH|APPEND)|INFO_(RAW|MIME(_(TYPE|ENCODING))?|SYMLINK|NONE|CONTINUE|DEVICES|PRESERVE_ATIME)))|ORCE_(GZIP|DEFLATE))|LIBXML_(XINCLUDE|N(SCLEAN|O(XMLDECL|BLANKS|NET|CDATA|E(RROR|MPTYTAG|NT)|WARNING))|COMPACT|D(TD(VALID|LOAD|ATTR)|OTTED_VERSION)|PARSEHUGE|ERR_(NONE|ERROR|FATAL|WARNING)|VERSION|LOADED_VERSION))\b</string>
+							<string>(\\)?\b(A(F_(INET(6)?|UNIX)|PACHE_MAP)|BUS_(ADR(ALN|ERR)|OBJERR)|C(AL_(DOW_(DAYNO|LONG|SHORT)|EASTER_(ALWAYS_(GREGORIAN|JULIAN)|DEFAULT|ROMAN)|FRENCH|GREGORIAN|J(EWISH(_ADD_(ALAFIM(_GERESH)?|GERESHAYIM))?|ULIAN)|MONTH_(FRENCH|GREGORIAN_(LONG|SHORT)|J(EWISH|ULIAN_(LONG|SHORT)))|NUM_CALS)|LD_(CONTINUED|DUMPED|EXITED|KILLED|STOPPED|TRAPPED))|D(ATE_(ATOM|COOKIE|ISO8601|R(FC(1(036|123)|2822|3339|8(22|50))|SS)|W3C)|OM(STRING_SIZE_ERR|_(HIERARCHY_REQUEST_ERR|IN(DEX_SIZE_ERR|USE_ATTRIBUTE_ERR|VALID_(ACCESS_ERR|CHARACTER_ERR|MODIFICATION_ERR|STATE_ERR))|N(AMESPACE_ERR|O(T_(FOUND_ERR|SUPPORTED_ERR)|_(DATA_ALLOWED_ERR|MODIFICATION_ALLOWED_ERR)))|PHP_ERR|SYNTAX_ERR|VALIDATION_ERR|WRONG_DOCUMENT_ERR)))|EXIF_USE_MBSTRING|F(IL(EINFO_(CONTINUE|DEVICES|MIME(_(ENCODING|TYPE))?|NONE|PRESERVE_ATIME|RAW|SYMLINK)|TER_(CALLBACK|DEFAULT|F(LAG_(ALLOW_(FRACTION|HEX|OCTAL|SCIENTIFIC|THOUSAND)|E(MPTY_STRING_NULL|NCODE_(AMP|HIGH|LOW))|HOST_REQUIRED|IPV(4|6)|NO(NE|_(ENCODE_QUOTES|PRIV_RANGE|RES_RANGE))|PATH_REQUIRED|QUERY_REQUIRED|S(CHEME_REQUIRED|TRIP_(BACKTICK|HIGH|LOW)))|ORCE_ARRAY)|NULL_ON_FAILURE|REQUIRE_(ARRAY|SCALAR)|SANITIZE_(E(MAIL|NCODED)|FULL_SPECIAL_CHARS|MAGIC_QUOTES|NUMBER_(FLOAT|INT)|S(PECIAL_CHARS|TRI(NG|PPED))|URL)|UNSAFE_RAW|VALIDATE_(BOOLEAN|EMAIL|FLOAT|I(NT|P)|MAC|REGEXP|URL)))|ORCE_(DEFLATE|GZIP)|PE_(FLT(DIV|INV|OVF|RES|SUB|UND)|INT(DIV|OVF))|TP_(A(SCII|UTO(RESUME|SEEK))|BINARY|F(AILED|INISHED)|IMAGE|MOREDATA|T(EXT|IMEOUT_SEC)))|GD_(BUNDLED|EXTRA_VERSION|M(AJOR_VERSION|INOR_VERSION)|RELEASE_VERSION|VERSION)|HASH_HMAC|I(CONV_(IMPL|MIME_DECODE_(CONTINUE_ON_ERROR|STRICT)|VERSION)|LL_(BADSTK|COPROC|ILL(ADR|OP(C|N)|TRP)|PRV(OPC|REG))|MG_(A(FFINE_(ROTATE|S(CALE|HEAR_(HORIZONTAL|VERTICAL))|TRANSLATE)|RC_(CHORD|EDGED|NOFILL|PIE|ROUNDED))|B(E(LL|SSEL)|I(CUBIC(_FIXED)?|LINEAR_FIXED)|LACKMAN|OX|SPLINE)|C(ATMULLROM|OLOR_(BRUSHED|STYLED(BRUSHED)?|T(ILED|RANSPARENT))|ROP_(BLACK|DEFAULT|SIDES|T(HRESHOLD|RANSPARENT)|WHITE))|EFFECT_(ALPHABLEND|NORMAL|OVERLAY|REPLACE)|F(ILTER_(BRIGHTNESS|CO(LORIZE|NTRAST)|E(DGEDETECT|MBOSS)|G(AUSSIAN_BLUR|RAYSCALE)|MEAN_REMOVAL|NEGATE|PIXELATE|S(ELECTIVE_BLUR|MOOTH))|LIP_(BOTH|HORIZONTAL|VERTICAL))|G(AUSSIAN|D2_(COMPRESSED|RAW)|ENERALIZED_CUBIC|IF)|H(A(MMING|NNING)|ERMITE)|JP(EG|G)|MITCHELL|NEAREST_NEIGHBOUR|P(NG|OWER)|QUADRATIC|SINC|TRIANGLE|W(BMP|EIGHTED4)|XPM)|NPUT_(COOKIE|ENV|GET|POST|REQUEST|SE(RVER|SSION))|P(PROTO_IP(V6)?|V6_(HOPLIMIT|MULTICAST_(HOPS|IF|LOOP)|PKTINFO|RECV(HOPLIMIT|PKTINFO|TCLASS)|TCLASS|UNICAST_HOPS)|_MULTICAST_(IF|LOOP|TTL)))|JSON_(BIGINT_AS_STRING|C_(BUNDLED|VERSION)|ERROR_(CTRL_CHAR|DEPTH|INF_OR_NAN|NONE|RECURSION|S(TATE_MISMATCH|YNTAX)|U(NSUPPORTED_TYPE|TF8))|FORCE_OBJECT|HEX_(A(MP|POS)|QUOT|TAG)|NUMERIC_CHECK|OBJECT_AS_ARRAY|P(AR(SER_NOTSTRICT|TIAL_OUTPUT_ON_ERROR)|RETTY_PRINT)|UNESCAPED_(SLASHES|UNICODE))|LIBXML_(COMPACT|D(OTTED_VERSION|TD(ATTR|LOAD|VALID))|ERR_(ERROR|FATAL|NONE|WARNING)|HTML_NO(DEFDTD|IMPLIED)|LOADED_VERSION|N(O(BLANKS|CDATA|E(MPTYTAG|NT|RROR)|NET|WARNING|XMLDECL)|SCLEAN)|P(ARSEHUGE|EDANTIC)|SCHEMA_CREATE|VERSION|XINCLUDE)|M(B_(CASE_(LOWER|TITLE|UPPER)|OVERLOAD_(MAIL|REGEX|STRING))|C(AST_(BLOCK_SOURCE|JOIN_(GROUP|SOURCE_GROUP)|LEAVE_(GROUP|SOURCE_GROUP)|UNBLOCK_SOURCE)|RYPT_(3DES|ARCFOUR(_IV)?|BLOWFISH(_COMPAT)?|C(AST_(128|256)|RYPT)|DE(CRYPT|S|V_(RANDOM|URANDOM))|EN(CRYPT|IGNA)|GOST|IDEA|LOKI97|M(ARS|ODE_(C(BC|FB)|ECB|NOFB|OFB|STREAM))|PANAMA|R(AND|C(2|6)|IJNDAEL_(1(28|92)|256))|S(AFER(128|64|PLUS)|ERPENT|KIPJACK)|T(HREEWAY|RIPLEDES|WOFISH)|WAKE|XTEA))|HASH_(ADLER32|CRC32(B)?|FNV1(32|64|A(32|64))|GOST|HAVAL(1(28|60|92)|2(24|56))|JOAAT|MD(2|4|5)|RIPEMD(1(28|60)|256|320)|S(HA(1|2(24|56)|384|512)|NEFRU256)|TIGER(1(28|60))?|WHIRLPOOL)|SG_(C(MSG_CLOEXEC|ONFIRM|TRUNC)|DONT(ROUTE|WAIT)|E(AGAIN|NOMSG|O(F|R)|RRQUEUE|XCEPT)|IPC_NOWAIT|MORE|NO(ERROR|SIGNAL)|OOB|PEEK|TRUNC|WAIT(ALL|FORONE))|YSQLI_(A(S(SOC|YNC)|UTO_INCREMENT_FLAG)|B(INARY_FLAG|LOB_FLAG|OTH)|C(LIENT_(COMPRESS|FOUND_ROWS|I(GNORE_SPACE|NTERACTIVE)|NO_SCHEMA|SSL)|URSOR_TYPE_(FOR_UPDATE|NO_CURSOR|READ_ONLY|SCROLLABLE))|D(ATA_TRUNCATED|EBUG_TRACE_ENABLED)|ENUM_FLAG|GROUP_FLAG|INIT_COMMAND|MULTIPLE_KEY_FLAG|N(O(T_NULL_FLAG|_D(ATA|EFAULT_VALUE_FLAG))|UM(_FLAG)?)|O(N_UPDATE_NOW_FLAG|PT_(C(AN_HANDLE_EXPIRED_PASSWORDS|ONNECT_TIMEOUT)|INT_AND_FLOAT_NATIVE|LOCAL_INFILE|NET_(CMD_BUFFER_SIZE|READ_BUFFER_SIZE)|SSL_VERIFY_SERVER_CERT))|P(ART_KEY_FLAG|RI_KEY_FLAG)|RE(AD_DEFAULT_(FILE|GROUP)|FRESH_(BACKUP_LOG|GRANT|HOSTS|LOG|MASTER|S(LAVE|TATUS)|T(ABLES|HREADS))|PORT_(ALL|ERROR|INDEX|OFF|STRICT))|S(E(RVER_(P(S_OUT_PARAMS|UBLIC_KEY)|QUERY_(NO_(GOOD_INDEX_USED|INDEX_USED)|WAS_SLOW))|T_(CHARSET_(DIR|NAME)|FLAG))|T(MT_ATTR_(CURSOR_TYPE|PREFETCH_ROWS|UPDATE_MAX_LENGTH)|ORE_RESULT))|T(IMESTAMP_FLAG|RANS_(COR_(AND_(CHAIN|NO_CHAIN)|NO_RELEASE|RELEASE)|START_(READ_(ONLY|WRITE)|WITH_CONSISTENT_SNAPSHOT))|YPE_(B(IT|LOB)|CHAR|D(ATE(TIME)?|ECIMAL|OUBLE)|ENUM|FLOAT|GEOMETRY|INT(24|ERVAL)|LONG(LONG|_BLOB)?|MEDIUM_BLOB|N(EWD(ATE|ECIMAL)|ULL)|S(ET|HORT|TRING)|TI(ME(STAMP)?|NY(_BLOB)?)|VAR_STRING|YEAR))|U(N(IQUE_KEY_FLAG|SIGNED_FLAG)|SE_RESULT)|ZEROFILL_FLAG))|OPENSSL_(ALGO_(DSS1|MD(4|5)|RMD160|SHA(1|2(24|56)|384|512))|CIPHER_(3DES|AES_(1(28_CBC|92_CBC)|256_CBC)|DES|RC2_(128|40|64))|KEYTYPE_(D(H|SA)|EC|RSA)|NO_PADDING|PKCS1_(OAEP_PADDING|PADDING)|RAW_DATA|SSLV23_PADDING|TLSEXT_SERVER_NAME|VERSION_(NUMBER|TEXT)|ZERO_PADDING)|P(C(NTL_E(2BIG|A(CCES|GAIN)|CHILD|FAULT|I(N(TR|VAL)|O|SDIR)|L(IBBAD|OOP)|MFILE|N(AMETOOLONG|FILE|O(E(NT|XEC)|MEM|TDIR))|PERM|SRCH|TXTBSY)|RE_VERSION)|HP_(BINARY_READ|NORMAL_READ|SESSION_(ACTIVE|DISABLED|NONE))|KCS7_(BINARY|DETACHED|NO(ATTR|C(ERTS|HAIN)|INTERN|SIGS|VERIFY)|TEXT)|NG_(ALL_FILTERS|FILTER_(AVG|NONE|PAETH|SUB|UP)|NO_FILTER)|O(LL_(ERR|HUP|IN|MSG|OUT|PRI)|SIX_(F_OK|R_OK|S_IF(BLK|CHR|IFO|REG|SOCK)|W_OK|X_OK))|R(EG_(BA(CKTRACK_LIMIT_ERROR|D_UTF8_(ERROR|OFFSET_ERROR))|GREP_INVERT|INTERNAL_ERROR|NO_ERROR|OFFSET_CAPTURE|PATTERN_ORDER|RECURSION_LIMIT_ERROR|S(ET_ORDER|PLIT_(DELIM_CAPTURE|NO_EMPTY|OFFSET_CAPTURE)))|IO_(P(GRP|ROCESS)|USER)))|READLINE_LIB|S(CM_(CREDENTIALS|RIGHTS)|EGV_(ACCERR|MAPERR)|I(G(A(BRT|LRM)|B(ABY|US)|C(HLD|LD|ONT)|FPE|HUP|I(LL|NT|O(T)?)|KILL|P(IPE|OLL|ROF|WR)|QUIT|S(EGV|T(KFLT|OP)|YS)|T(ERM|RAP|STP|T(IN|OU))|U(RG|SR(1|2))|VTALRM|WINCH|X(CPU|FSZ)|_(BLOCK|DFL|ERR|IGN|SETMASK|UNBLOCK))|_(ASYNCIO|KERNEL|MESGQ|QUEUE|SIGIO|T(IMER|KILL)|USER))|O(AP_(1_(1|2)|A(CTOR_(N(EXT|ONE)|UNLIMATERECEIVER)|UTHENTICATION_(BASIC|DIGEST))|COMPRESSION_(ACCEPT|DEFLATE|GZIP)|DOCUMENT|ENC(ODED|_(ARRAY|OBJECT))|FUNCTIONS_ALL|LITERAL|PERSISTENCE_(REQUEST|SESSION)|RPC|S(INGLE_ELEMENT_ARRAYS|SL_METHOD_(SSLv(2(3)?|3)|TLS))|USE_XSI_ARRAY_TYPE|WAIT_ONE_WAY_CALLS)|CK(ET_E(2BIG|A(CCES|D(DR(INUSE|NOTAVAIL)|V)|FNOSUPPORT|GAIN|LREADY)|B(AD(E|F(D)?|MSG|R(QC)?|SLT)|USY)|C(HRNG|O(MM|NN(ABORTED|RE(FUSED|SET))))|D(ESTADDRREQ|QUOT)|EXIST|FAULT|HOST(DOWN|UNREACH)|I(DRM|N(PROGRESS|TR|VAL)|O|S(CONN|DIR|NAM))|L(2(HLT|NSYNC)|3(HLT|RST)|NRNG|OOP)|M(EDIUMTYPE|FILE|LINK|SGSIZE|ULTIHOP)|N(AMETOOLONG|ET(DOWN|RESET|UNREACH)|FILE|O(ANO|BUFS|CSI|D(ATA|EV)|ENT|L(CK|INK)|M(E(DIUM|M)|SG)|NET|PROTOOPT|S(PC|R|TR|YS)|T(BLK|CONN|DIR|EMPTY|SOCK|TY|UNIQ))|XIO)|OPNOTSUPP|P(ERM|FNOSUPPORT|IPE|ROTO(NOSUPPORT|TYPE)?)|R(E(M(CHG|OTE(IO)?)|START)|OFS)|S(HUTDOWN|OCKTNOSUPPORT|PIPE|RMNT|TRPIPE)|T(IME(DOUT)?|OOMANYREFS)|U(NATCH|SERS)|WOULDBLOCK|X(DEV|FULL))|_(DGRAM|R(AW|DM)|S(EQPACKET|TREAM)))|L_(SOCKET|TCP|UDP)|MAXCONN|_(B(INDTODEVICE|ROADCAST)|D(EBUG|ONTROUTE)|ERROR|KEEPALIVE|LINGER|OOBINLINE|PASSCRED|R(CV(BUF|LOWAT|TIMEO)|EUSE(ADDR|PORT))|SND(BUF|LOWAT|TIMEO)|TYPE))|QLITE3_(ASSOC|B(LOB|OTH)|FLOAT|INTEGER|NU(LL|M)|OPEN_(CREATE|READ(ONLY|WRITE))|TEXT)|UNFUNCS_RET_(DOUBLE|STRING|TIMESTAMP))|T(CP_NODELAY|IDY_(NODETYPE_(ASP|C(DATA|OMMENT)|DOCTYPE|END|JSTE|P(HP|ROCINS)|ROOT|S(ECTION|TART(END)?)|TEXT|XMLDECL)|TAG_(A(BBR|CRONYM|DDRESS|LIGN|PPLET|REA)?|B(ASE(FONT)?|DO|GSOUND|IG|L(INK|OCKQUOTE)|ODY|R|UTTON)?|C(APTION|ENTER|ITE|O(DE|L(GROUP)?|MMENT))|D(D|EL|FN|I(R|V)|L|T)|EM(BED)?|F(IELDSET|O(NT|RM)|RAME(SET)?)|H(1|2|3|4|5|6|EAD|R|TML)|I(FRAME|LAYER|MG|N(PUT|S)|SINDEX)?|K(BD|EYGEN)|L(A(BEL|YER)|EGEND|I(NK|STING)?)|M(A(P|RQUEE)|E(NU|TA)|ULTICOL)|NO(BR|EMBED|FRAMES|LAYER|S(AVE|CRIPT))|O(BJECT|L|PT(GROUP|ION))|P(ARAM|LAINTEXT|RE)?|Q|R(B(C)?|P|T(C)?|UBY)|S(AMP|CRIPT|E(LECT|RV(ER|LET))|MALL|PA(CER|N)|T(R(IKE|ONG)|YLE)|U(B|P))?|T(ABLE|BODY|D|EXTAREA|FOOT|H(EAD)?|ITLE|R|T)|U(L|NKNOWN)?|VAR|WBR|XMP))|RAP_(BRKPT|TRACE))|UNKNOWN_TYPE|W(NOHANG|SDL_CACHE_(BOTH|DISK|MEMORY|NONE)|UNTRACED)|X(509_PURPOSE_(ANY|CRL_SIGN|NS_SSL_SERVER|S(MIME_(ENCRYPT|SIGN)|SL_(CLIENT|SERVER)))|DEBUG_(CC_(DEAD_CODE|UNUSED)|TRACE_(APPEND|COMPUTERIZED|HTML))|ML_(ATTRIBUTE_(CDATA|DECL_NODE|EN(TITY|UMERATION)|ID(REF(S)?)?|N(MTOKEN(S)?|O(DE|TATION)))|C(DATA_SECTION_NODE|OMMENT_NODE)|D(OCUMENT_(FRAG_NODE|NODE|TYPE_NODE)|TD_NODE)|E(LEMENT_(DECL_NODE|NODE)|NTITY_(DECL_NODE|NODE|REF_NODE)|RROR_(A(SYNC_ENTITY|TTRIBUTE_EXTERNAL_ENTITY_REF)|B(AD_CHAR_REF|INARY_ENTITY_REF)|DUPLICATE_ATTRIBUTE|EXTERNAL_ENTITY_HANDLING|IN(CORRECT_ENCODING|VALID_TOKEN)|JUNK_AFTER_DOC_ELEMENT|MISPLACED_XML_PI|NO(NE|_(ELEMENTS|MEMORY))|PAR(AM_ENTITY_REF|TIAL_CHAR)|RECURSIVE_ENTITY_REF|SYNTAX|TAG_MISMATCH|UN(CLOSED_(CDATA_SECTION|TOKEN)|DEFINED_ENTITY|KNOWN_ENCODING)))|HTML_DOCUMENT_NODE|LOCAL_NAMESPACE|N(AMESPACE_DECL_NODE|OTATION_NODE)|OPTION_(CASE_FOLDING|SKIP_(TAGSTART|WHITE)|TARGET_ENCODING)|PI_NODE|SAX_IMPL|TEXT_NODE)|SD_(1999_(NAMESPACE|TIMEINSTANT)|ANY(TYPE|URI|XML)|B(ASE64BINARY|OOLEAN|YTE)|D(ATE(TIME)?|ECIMAL|OUBLE|URATION)|ENTIT(IES|Y)|FLOAT|G(DAY|MONTH(DAY)?|YEAR(MONTH)?)|HEXBINARY|I(D(REF(S)?)?|NT(EGER)?)|L(ANGUAGE|ONG)|N(AME(SPACE)?|CNAME|EGATIVEINTEGER|MTOKEN(S)?|O(N(NEGATIVEINTEGER|POSITIVEINTEGER)|RMALIZEDSTRING|TATION))|POSITIVEINTEGER|QNAME|S(HORT|TRING)|T(IME|OKEN)|UNSIGNED(BYTE|INT|LONG|SHORT)))|ZLIB_ENCODING_(DEFLATE|GZIP|RAW))\b</string>
 							<key>name</key>
 							<string>support.constant.ext.php</string>
 						</dict>
@@ -441,7 +441,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\\)?\bT_(RE(TURN|QUIRE(_ONCE)?)|G(OTO|LOBAL)|XOR_EQUAL|M(INUS_EQUAL|OD_EQUAL|UL_EQUAL|ETHOD_C|L_COMMENT)|B(REAK|OOL(_CAST|EAN_(OR|AND))|AD_CHARACTER)|S(R(_EQUAL)?|T(RING(_(CAST|VARNAME))?|A(RT_HEREDOC|TIC))|WITCH|L(_EQUAL)?)|HALT_COMPILER|N(S_(SEPARATOR|C)|UM_STRING|EW|AMESPACE)|C(HARACTER|O(MMENT|N(ST(ANT_ENCAPSED_STRING)?|CAT_EQUAL|TINUE))|URLY_OPEN|L(O(SE_TAG|NE)|ASS(_C)?)|A(SE|TCH))|T(RY|HROW)|I(MPLEMENTS|S(SET|_(GREATER_OR_EQUAL|SMALLER_OR_EQUAL|NOT_(IDENTICAL|EQUAL)|IDENTICAL|EQUAL))|N(STANCEOF|C(LUDE(_ONCE)?)?|T(_CAST|ERFACE)|LINE_HTML)|F)|O(R_EQUAL|BJECT_(CAST|OPERATOR)|PEN_TAG(_WITH_ECHO)?|LD_FUNCTION)|D(NUMBER|I(R|V_EQUAL)|O(C_COMMENT|UBLE_(C(OLON|AST)|ARROW)|LLAR_OPEN_CURLY_BRACES)?|E(C(LARE)?|FAULT))|U(SE|NSET(_CAST)?)|P(R(I(NT|VATE)|OTECTED)|UBLIC|LUS_EQUAL|AAMAYIM_NEKUDOTAYIM)|E(X(TENDS|IT)|MPTY|N(CAPSED_AND_WHITESPACE|D(SWITCH|_HEREDOC|IF|DECLARE|FOR(EACH)?|WHILE))|CHO|VAL|LSE(IF)?)|VAR(IABLE)?|F(I(NAL|LE)|OR(EACH)?|UNC(_C|TION))|WHI(TESPACE|LE)|L(NUMBER|I(ST|NE)|OGICAL_(XOR|OR|AND))|A(RRAY(_CAST)?|BSTRACT|S|ND_EQUAL))\b</string>
+							<string>(\\)?\bT_(A(BSTRACT|ND_EQUAL|RRAY(_CAST)?|S)|B(AD_CHARACTER|OOL(EAN_(AND|OR)|_CAST)|REAK)|C(A(LLABLE|SE|TCH)|HARACTER|L(ASS(_C)?|O(NE|SE_TAG))|O(MMENT|N(CAT_EQUAL|ST(ANT_ENCAPSED_STRING)?|TINUE))|URLY_OPEN)|D(E(C(LARE)?|FAULT)|I(R|V_EQUAL)|NUMBER|O(C_COMMENT|LLAR_OPEN_CURLY_BRACES|UBLE_(ARROW|C(AST|OLON)))?)|E(CHO|LSE(IF)?|MPTY|N(CAPSED_AND_WHITESPACE|D(DECLARE|FOR(EACH)?|IF|SWITCH|WHILE|_HEREDOC))|VAL|X(IT|TENDS))|F(I(LE|NAL(LY)?)|OR(EACH)?|UNC(TION|_C))|G(LOBAL|OTO)|HALT_COMPILER|I(F|MPLEMENTS|N(C(LUDE(_ONCE)?)?|LINE_HTML|ST(ANCEOF|EADOF)|T(ERFACE|_CAST))|S(SET|_(EQUAL|GREATER_OR_EQUAL|IDENTICAL|NOT_(EQUAL|IDENTICAL)|SMALLER_OR_EQUAL)))|L(I(NE|ST)|NUMBER|OGICAL_(AND|OR|XOR))|M(ETHOD_C|INUS_EQUAL|OD_EQUAL|UL_EQUAL)|N(AMESPACE|EW|S_(C|SEPARATOR)|UM_STRING)|O(BJECT_(CAST|OPERATOR)|PEN_TAG(_WITH_ECHO)?|R_EQUAL)|P(AAMAYIM_NEKUDOTAYIM|LUS_EQUAL|R(I(NT|VATE)|OTECTED)|UBLIC)|RE(QUIRE(_ONCE)?|TURN)|S(L(_EQUAL)?|R(_EQUAL)?|T(A(RT_HEREDOC|TIC)|RING(_(CAST|VARNAME))?)|WITCH)|T(HROW|R(AIT(_C)?|Y))|U(NSET(_CAST)?|SE)|VAR(IABLE)?|WHI(LE|TESPACE)|XOR_EQUAL|YIELD)\b</string>
 							<key>name</key>
 							<string>support.constant.parser-token.php</string>
 						</dict>
@@ -2943,19 +2943,19 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bbc(s(cale|ub|qrt)|comp|div|pow(mod)?|add|m(od|ul))\b</string>
+					<string>(?i)\bbc(add|comp|div|m(od|ul)|pow(mod)?|s(cale|qrt|ub))\b</string>
 					<key>name</key>
 					<string>support.function.bcmath.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bbz(c(ompress|lose)|open|decompress|err(str|no|or)|flush|write|read)\b</string>
+					<string>(?i)\bbz(c(lose|ompress)|decompress|err(no|or|str)|flush|open|read|write)\b</string>
 					<key>name</key>
 					<string>support.function.bz2.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(GregorianToJD|cal_(to_jd|info|days_in_month|from_jd)|unixtojd|jdto(unix|jewish)|easter_da(ys|te)|J(ulianToJD|ewishToJD|D(MonthName|To(Gregorian|Julian|French)|DayOfWeek))|FrenchToJD)\b</string>
+					<string>(?i)\b(cal_(days_in_month|from_jd|info|to_jd)|easter_da(te|ys)|frenchtojd|gregoriantojd|j(d(dayofweek|monthname|to(french|gregorian|j(ewish|ulian)|unix))|ewishtojd|uliantojd)|unixtojd)\b</string>
 					<key>name</key>
 					<string>support.function.calendar.php</string>
 				</dict>
@@ -2973,7 +2973,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bctype_(space|cntrl|digit|upper|p(unct|rint)|lower|al(num|pha)|graph|xdigit)\b</string>
+					<string>(?i)\bctype_(al(num|pha)|cntrl|digit|graph|lower|p(rint|unct)|space|upper|xdigit)\b</string>
 					<key>name</key>
 					<string>support.function.ctype.php</string>
 				</dict>
@@ -2985,13 +2985,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(str(totime|ptime|ftime)|checkdate|time(zone_(name_(from_abbr|get)|transitions_get|identifiers_list|o(pen|ffset_get)|version_get|location_get|abbreviations_list))?|idate|date(_(su(n(set|_info|rise)|b)|create(_from_format)?|time(stamp_(set|get)|zone_(set|get)|_set)|i(sodate_set|nterval_(create_from_date_string|format))|offset_get|d(iff|efault_timezone_(set|get)|ate_set)|parse(_from_format)?|format|add|get_last_errors|modify))?|localtime|g(et(timeofday|date)|m(strftime|date|mktime))|m(icrotime|ktime))\b</string>
+					<string>(?i)\b(checkdate|date(_(add|create(_(from_format|immutable(_from_format)?))?|d(ate_set|efault_timezone_(get|set)|iff)|format|get_last_errors|i(nterval_(create_from_date_string|format)|sodate_set)|modify|offset_get|parse(_from_format)?|su(b|n(_info|rise|set))|time(_set|stamp_(get|set)|zone_(get|set))))?|g(etdate|m(date|mktime|strftime))|idate|localtime|mktime|str(ftime|totime)|time(zone_(abbreviations_list|identifiers_list|location_get|name_(from_abbr|get)|o(ffset_get|pen)|transitions_get|version_get))?)\b</string>
 					<key>name</key>
 					<string>support.function.datetime.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bdba_(sync|handlers|nextkey|close|insert|op(timize|en)|delete|popen|exists|key_split|f(irstkey|etch)|list|replace)\b</string>
+					<string>(?i)\bdba_(close|delete|exists|f(etch|irstkey)|handlers|insert|key_split|list|nextkey|op(en|timize)|popen|replace|sync)\b</string>
 					<key>name</key>
 					<string>support.function.dba.php</string>
 				</dict>
@@ -3027,7 +3027,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(s(plit(i)?|ql_regcase)|ereg(i(_replace)?|_replace)?)\b</string>
+					<string>(?i)\b(ereg(_replace|i(_replace)?)?|s(plit(i)?|ql_regcase))\b</string>
 					<key>name</key>
 					<string>support.function.ereg.php</string>
 				</dict>
@@ -3045,7 +3045,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(exif_(t(humbnail|agname)|imagetype|read_data)|read_exif_data)\b</string>
+					<string>(?i)\b(exif_(imagetype|read_data|t(agname|humbnail))|read_exif_data)\b</string>
 					<key>name</key>
 					<string>support.function.exif.php</string>
 				</dict>
@@ -3057,13 +3057,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(finfo_(set_flags|close|open|file|buffer)|mime_content_type)\b</string>
+					<string>(?i)\b(finfo_(buffer|close|file|open|set_flags)|mime_content_type)\b</string>
 					<key>name</key>
 					<string>support.function.fileinfo.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bfilter_(has_var|i(nput(_array)?|d)|var(_array)?|list)\b</string>
+					<string>(?i)\bfilter_(has_var|i(d|nput(_array)?)|list|var(_array)?)\b</string>
 					<key>name</key>
 					<string>support.function.filter.php</string>
 				</dict>
@@ -3075,7 +3075,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(ngettext|textdomain|d(ngettext|c(ngettext|gettext)|gettext)|gettext|bind(textdomain|_textdomain_codeset))\b</string>
+					<string>(?i)\b(_|bind(_textdomain_codeset|textdomain)|d(c(gettext|ngettext)|gettext|ngettext)|gettext|ngettext|textdomain)\b</string>
 					<key>name</key>
 					<string>support.function.gettext.php</string>
 				</dict>
@@ -3087,7 +3087,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bhash(_(hmac(_file)?|copy|init|update(_(stream|file))?|fi(nal|le)|algos))?\b</string>
+					<string>(?i)\b(hash(_(algos|copy|fi(le|nal)|hmac(_file)?|init|pbkdf2|update(_(file|stream))?))?|mhash(_(count|get_(block_size|hash_name)|keygen_s2k))?)\b</string>
 					<key>name</key>
 					<string>support.function.hash.php</string>
 				</dict>
@@ -3099,7 +3099,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(iconv(_(s(tr(pos|len|rpos)|ubstr|et_encoding)|get_encoding|mime_(decode(_headers)?|encode)))?|ob_iconv_handler)\b</string>
+					<string>(?i)\biconv(_(get_encoding|mime_(decode(_headers)?|encode)|s(et_encoding|tr(len|pos|rpos)|ubstr)))?\b</string>
 					<key>name</key>
 					<string>support.function.iconv.php</string>
 				</dict>
@@ -3135,7 +3135,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bjson_(decode|encode|last_error)\b</string>
+					<string>(?i)\bjson_(decode|encode|last_error(_msg)?)\b</string>
 					<key>name</key>
 					<string>support.function.json.php</string>
 				</dict>
@@ -3147,7 +3147,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\blibxml_(set_streams_context|clear_errors|disable_entity_loader|use_internal_errors|get_(errors|last_error))\b</string>
+					<string>(?i)\blibxml_(clear_errors|disable_entity_loader|get_(errors|last_error)|set_(external_entity_loader|streams_context)|use_internal_errors)\b</string>
 					<key>name</key>
 					<string>support.function.libxml.php</string>
 				</dict>
@@ -3165,13 +3165,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bmb_(s(tr(str|cut|to(upper|lower)|i(str|pos|mwidth)|pos|width|len|r(chr|i(chr|pos)|pos))|ubst(itute_character|r(_count)?)|plit|end_mail)|http_(input|output)|c(heck_encoding|onvert_(case|encoding|variables|kana))|internal_encoding|output_handler|de(code_(numericentity|mimeheader)|tect_(order|encoding))|p(arse_str|referred_mime_name)|e(ncod(ing_aliases|e_(numericentity|mimeheader))|reg(i(_replace)?|_(search(_(setpos|init|pos|regs|get(pos|regs)))?|replace|match))?)|l(ist_encodings|anguage)|regex_(set_options|encoding)|get_info)\b</string>
+					<string>(?i)\bmb(_(c(heck_encoding|onvert_(case|encoding|kana|variables))|de(code_(mimeheader|numericentity)|tect_(encoding|order))|e(ncod(e_(mimeheader|numericentity)|ing_aliases)|reg(_(match|replace(_callback)?|search(_(get(pos|regs)|init|pos|regs|setpos))?)|i(_replace)?)?)|get_info|http_(input|output)|internal_encoding|l(anguage|ist_encodings)|output_handler|p(arse_str|referred_mime_name)|regex_(encoding|set_options)|s(end_mail|plit|tr(cut|i(mwidth|pos|str)|len|pos|r(chr|i(chr|pos)|pos)|str|to(lower|upper)|width)|ubst(itute_character|r(_count)?)))|ereg(_(match|replace|search(_(get(pos|regs)|init|pos|regs|setpos))?)|i(_replace)?)?|regex_encoding|split)\b</string>
 					<key>name</key>
 					<string>support.function.mbstring.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bm(crypt_(c(fb|reate_iv|bc)|ofb|decrypt|e(nc(_(self_test|is_block_(algorithm(_mode)?|mode)|get_(supported_key_sizes|iv_size|key_size|algorithms_name|modes_name|block_size))|rypt)|cb)|list_(algorithms|modes)|ge(neric(_(init|deinit|end))?|t_(cipher_name|iv_size|key_size|block_size))|module_(self_test|close|is_block_(algorithm(_mode)?|mode)|open|get_(supported_key_sizes|algo_(key_size|block_size))))|decrypt_generic)\b</string>
+					<string>(?i)\bm(crypt_(c(bc|fb|reate_iv)|decrypt|e(cb|nc(_(get_(algorithms_name|block_size|iv_size|key_size|modes_name|supported_key_sizes)|is_block_(algorithm(_mode)?|mode)|self_test)|rypt))|ge(neric(_(deinit|end|init))?|t_(block_size|cipher_name|iv_size|key_size))|list_(algorithms|modes)|module_(close|get_(algo_(block_size|key_size)|supported_key_sizes)|is_block_(algorithm(_mode)?|mode)|open|self_test)|ofb)|decrypt_generic)\b</string>
 					<key>name</key>
 					<string>support.function.mcrypt.php</string>
 				</dict>
@@ -3201,7 +3201,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bmysqli_(s(sl_set|t(ore_result|at|mt_(s(tore_result|end_long_data|qlstate)|num_rows|close|in(sert_id|it)|data_seek|p(aram_count|repare)|e(rr(no|or)|xecute)|f(ield_count|etch|ree_result)|a(ttr_(set|get)|ffected_rows)|res(ult_metadata|et)|get_(warnings|result)|bind_(param|result)))|e(nd_(query|long_data)|t_(charset|opt|local_infile_(handler|default))|lect_db)|qlstate|lave_query)|n(um_(fields|rows)|ext_result)|c(ha(nge_user|racter_set_name)|o(nnect(_err(no|or))?|mmit)|l(ient_encoding|ose))|thread_(safe|id)|in(sert_id|it|fo)|options|d(isable_r(pl_parse|eads_from_master)|ump_debug_info|ebug|ata_seek)|use_result|p(ing|oll|aram_count|repare)|e(scape_string|nable_r(pl_parse|eads_from_master)|rr(no|or)|xecute|mbedded_server_(start|end))|kill|query|f(ield_(seek|count|tell)|etch(_(object|field(s|_direct)?|lengths|a(ssoc|ll|rray)|row))?|ree_result)|warning_count|a(utocommit|ffected_rows)|r(ollback|pl_(p(arse_enabled|robe)|query_type)|e(port|a(p_async_query|l_(connect|escape_string|query))))|get_(server_(info|version)|host_info|c(harset|onnection_stats|lient_(stats|info|version)|ache_stats)|proto_info|warnings|metadata)|m(ore_results|ulti_query|aster_query)|bind_(param|result))\b</string>
+					<string>(?i)\bmysqli_(a(ffected_rows|utocommit)|begin_transaction|c(ha(nge_user|racter_set_name)|lose|o(mmit|nnect(_err(no|or))?))|d(ata_seek|ebug|ump_debug_info)|e(rr(no|or(_list)?)|scape_string|xecute)|f(etch_(a(ll|rray|ssoc)|field(_direct|s)?|lengths|object|row)|ield_(count|seek|tell)|ree_result)|get_(c(harset|lient_(info|stats|version)|onnection_stats)|host_info|proto_info|server_(info|version)|warnings)|in(fo|it|sert_id)|kill|m(ore_results|ulti_query)|n(ext_result|um_(fields|rows))|options|p(ing|oll|repare)|query|r(e(a(l_(connect|escape_string|query)|p_async_query)|fresh|lease_savepoint|port)|ollback)|s(avepoint|e(lect_db|t_(charset|opt))|qlstate|sl_set|t(at|mt_(a(ffected_rows|ttr_(get|set))|bind_(param|result)|close|data_seek|e(rr(no|or(_list)?)|xecute)|f(etch|ield_count|ree_result)|get_(result|warnings)|in(it|sert_id)|more_results|n(ext_result|um_rows)|p(aram_count|repare)|res(et|ult_metadata)|s(end_long_data|qlstate|tore_result))|ore_result))|thread_(id|safe)|use_result|warning_count)\b</string>
 					<key>name</key>
 					<string>support.function.mysqli.php</string>
 				</dict>
@@ -3243,7 +3243,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bopenssl_(s(ign|eal)|c(sr_(sign|new|export(_to_file)?|get_(subject|public_key))|ipher_iv_length)|open|d(h_compute_key|igest|ecrypt)|p(ublic_(decrypt|encrypt)|k(cs(12_(export(_to_file)?|read)|7_(sign|decrypt|encrypt|verify))|ey_(new|export(_to_file)?|free|get_(details|p(ublic|rivate))))|rivate_(decrypt|encrypt))|e(ncrypt|rror_string)|verify|free_key|random_pseudo_bytes|get_(cipher_methods|p(ublickey|rivatekey)|md_methods)|x509_(check(_private_key|purpose)|parse|export(_to_file)?|free|read))\b</string>
+					<string>(?i)\bopenssl_(c(ipher_iv_length|sr_(export(_to_file)?|get_(public_key|subject)|new|sign))|d(ecrypt|h_compute_key|igest)|e(ncrypt|rror_string)|free_key|get_(cipher_methods|md_methods|p(rivatekey|ublickey))|open|p(bkdf2|k(cs(12_(export(_to_file)?|read)|7_(decrypt|encrypt|sign|verify))|ey_(export(_to_file)?|free|get_(details|p(rivate|ublic))|new))|rivate_(decrypt|encrypt)|ublic_(decrypt|encrypt))|random_pseudo_bytes|s(eal|ign)|verify|x509_(check(_private_key|purpose)|export(_to_file)?|free|parse|read))\b</string>
 					<key>name</key>
 					<string>support.function.openssl.php</string>
 				</dict>
@@ -3261,7 +3261,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bpcntl_(s(ig(nal(_dispatch)?|timedwait|procmask|waitinfo)|etpriority)|exec|fork|w(stopsig|termsig|if(s(topped|ignaled)|exited)|exitstatus|ait(pid)?)|alarm|getpriority)\b</string>
+					<string>(?i)\bpcntl_(alarm|e(rrno|xec)|fork|get(_last_error|priority)|s(etpriority|ig(nal(_dispatch)?|procmask|timedwait|waitinfo)|trerror)|w(ait(pid)?|exitstatus|if(exited|s(ignaled|topped))|stopsig|termsig))\b</string>
 					<key>name</key>
 					<string>support.function.pcntl.php</string>
 				</dict>
@@ -3285,7 +3285,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bftp_(s(sl_connect|ystype|i(te|ze)|et_option)|n(list|b_(continue|put|f(put|get)|get))|c(h(dir|mod)|onnect|dup|lose)|delete|p(ut|wd|asv)|exec|quit|f(put|get)|login|alloc|r(ename|aw(list)?|mdir)|get(_option)?|m(dtm|kdir))\b</string>
+					<string>(?i)\bftp_(alloc|c(dup|h(dir|mod)|lose|onnect)|delete|exec|f(get|put)|get(_option)?|login|m(dtm|kdir)|n(b_(continue|f(get|put)|get|put)|list)|p(asv|ut|wd)|quit|r(aw(list)?|ename|mdir)|s(et_option|i(te|ze)|sl_connect|ystype))\b</string>
 					<key>name</key>
 					<string>support.function.php_ftp.php</string>
 				</dict>
@@ -3309,7 +3309,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bpreg_(split|quote|filter|last_error|replace(_callback)?|grep|match(_all)?)\b</string>
+					<string>(?i)\bpreg_(filter|grep|last_error|match(_all)?|quote|replace(_callback)?|split)\b</string>
 					<key>name</key>
 					<string>support.function.php_pcre.php</string>
 				</dict>
@@ -3321,13 +3321,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bzip_(close|open|entry_(name|c(ompress(ionmethod|edsize)|lose)|open|filesize|read)|read)\b</string>
+					<string>(?i)\bzip_(close|entry_(c(lose|ompress(edsize|ionmethod))|filesize|name|open|read)|open|read)\b</string>
 					<key>name</key>
 					<string>support.function.php_zip.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bposix_(s(trerror|et(sid|uid|pgid|e(uid|gid)|gid))|ctermid|t(tyname|imes)|i(satty|nitgroups)|uname|errno|kill|access|get(sid|cwd|uid|_last_error|p(id|pid|w(nam|uid)|g(id|rp))|e(uid|gid)|login|rlimit|g(id|r(nam|oups|gid)))|mk(nod|fifo))\b</string>
+					<string>(?i)\bposix_(access|ctermid|errno|get(_last_error|cwd|e(gid|uid)|g(id|r(gid|nam|oups))|login|p(g(id|rp)|id|pid|w(nam|uid))|rlimit|sid|uid)|i(nitgroups|satty)|kill|mk(fifo|nod)|s(et(e(gid|uid)|gid|pgid|sid|uid)|trerror)|t(imes|tyname)|uname)\b</string>
 					<key>name</key>
 					<string>support.function.posix.php</string>
 				</dict>
@@ -3345,7 +3345,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\breadline(_(c(ompletion_function|lear_history|allback_(handler_(install|remove)|read_char))|info|on_new_line|write_history|list_history|add_history|re(display|ad_history)))?\b</string>
+					<string>(?i)\breadline(_(add_history|c(allback_(handler_(install|remove)|read_char)|lear_history|ompletion_function)|info|on_new_line|re(ad_history|display)|write_history))?\b</string>
 					<key>name</key>
 					<string>support.function.readline.php</string>
 				</dict>
@@ -3369,19 +3369,19 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bsession_(s(tart|et_(save_handler|cookie_params)|ave_path)|name|c(ommit|ache_(expire|limiter))|i(s_registered|d)|de(stroy|code)|un(set|register)|encode|write_close|reg(ister|enerate_id)|get_cookie_params|module_name)\b</string>
+					<string>(?i)\bsession_(c(ache_(expire|limiter)|ommit)|de(code|stroy)|encode|get_cookie_params|id|module_name|name|reg(enerate_id|ister_shutdown)|s(ave_path|et_(cookie_params|save_handler)|ta(rt|tus))|unset|write_close)\b</string>
 					<key>name</key>
 					<string>support.function.session.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bshmop_(size|close|open|delete|write|read)\b</string>
+					<string>(?i)\bshmop_(close|delete|open|read|size|write)\b</string>
 					<key>name</key>
 					<string>support.function.shmop.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bsimplexml_(import_dom|load_(string|file))\b</string>
+					<string>(?i)\bsimplexml_(import_dom|load_(file|string))\b</string>
 					<key>name</key>
 					<string>support.function.simplexml.php</string>
 				</dict>
@@ -3399,7 +3399,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bsocket_(s(hutdown|trerror|e(nd(to)?|t_(nonblock|option|block)|lect))|c(onnect|l(ose|ear_error)|reate(_(pair|listen))?)|write|l(isten|ast_error)|accept|re(cv(from)?|ad)|get(sockname|_option|peername)|bind)\b</string>
+					<string>(?i)\bsocket_(accept|bind|c(l(ear_error|ose)|msg_space|onnect|reate(_(listen|pair))?)|get(_option|opt|peername|sockname)|import_stream|l(ast_error|isten)|re(ad|cv(from|msg)?)|s(e(lect|nd(msg|to)?|t(_(block|nonblock|option)|opt))|hutdown|trerror)|write)\b</string>
 					<key>name</key>
 					<string>support.function.sockets.php</string>
 				</dict>
@@ -3435,13 +3435,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(tidy_(s(et(opt|_encoding)|ave_config)|c(onfig_count|lean_repair)|is_x(html|ml)|diagnose|parse_(string|file)|error_count|warning_count|load_config|access_count|re(set_config|pair_(string|file))|get(opt|_(status|h(tml(_ver)?|ead)|config|o(utput|pt_doc)|error_buffer|r(oot|elease)|body)))|ob_tidyhandler)\b</string>
+					<string>(?i)\btidy_(access_count|c(lean_repair|onfig_count)|diagnose|error_count|get(_(body|config|error_buffer|h(ead|tml(_ver)?)|o(pt_doc|utput)|r(elease|oot)|status)|opt)|is_x(html|ml)|parse_(file|string)|repair_(file|string)|warning_count)\b</string>
 					<key>name</key>
 					<string>support.function.tidy.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\btoken_(name|get_all)\b</string>
+					<string>(?i)\btoken_(get_all|name)\b</string>
 					<key>name</key>
 					<string>support.function.tokenizer.php</string>
 				</dict>
@@ -3459,7 +3459,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bwddx_(serialize_va(lue|rs)|deserialize|packet_(start|end)|add_vars)\b</string>
+					<string>(?i)\bwddx_(add_vars|deserialize|packet_(end|start)|serialize_va(lue|rs))\b</string>
 					<key>name</key>
 					<string>support.function.wddx.php</string>
 				</dict>
@@ -3471,7 +3471,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(utf8_(decode|encode)|xml_(set_(start_namespace_decl_handler|notation_decl_handler|character_data_handler|object|default_handler|unparsed_entity_decl_handler|processing_instruction_handler|e(nd_namespace_decl_handler|lement_handler|xternal_entity_ref_handler))|parse(_into_struct|r_(set_option|create(_ns)?|free|get_option))?|error_string|get_(current_(column_number|line_number|byte_index)|error_code)))\b</string>
+					<string>(?i)\b(utf8_(decode|encode)|xml_(error_string|get_(current_(byte_index|column_number|line_number)|error_code)|parse(_into_struct|r_(create(_ns)?|free|get_option|set_option))?|set_(character_data_handler|default_handler|e(lement_handler|nd_namespace_decl_handler|xternal_entity_ref_handler)|notation_decl_handler|object|processing_instruction_handler|start_namespace_decl_handler|unparsed_entity_decl_handler)))\b</string>
 					<key>name</key>
 					<string>support.function.xml.php</string>
 				</dict>
@@ -3483,7 +3483,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bxmlwriter_(s(tart_(c(omment|data)|d(td(_(e(ntity|lement)|attlist))?|ocument)|pi|element(_ns)?|attribute(_ns)?)|et_indent(_string)?)|text|o(utput_memory|pen_(uri|memory))|end_(c(omment|data)|d(td(_(e(ntity|lement)|attlist))?|ocument)|pi|element|attribute)|f(ull_end_element|lush)|write_(c(omment|data)|dtd(_(e(ntity|lement)|attlist))?|pi|element(_ns)?|attribute(_ns)?|raw))\b</string>
+					<string>(?i)\bxmlwriter_(end_(attribute|c(data|omment)|d(ocument|td(_(attlist|e(lement|ntity)))?)|element|pi)|f(lush|ull_end_element)|o(pen_(memory|uri)|utput_memory)|s(et_indent(_string)?|tart_(attribute(_ns)?|c(data|omment)|d(ocument|td(_(attlist|e(lement|ntity)))?)|element(_ns)?|pi))|text|write_(attribute(_ns)?|c(data|omment)|dtd(_(attlist|e(lement|ntity)))?|element(_ns)?|pi|raw))\b</string>
 					<key>name</key>
 					<string>support.function.xmlwriter.php</string>
 				</dict>
@@ -3495,7 +3495,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(zlib_get_coding_type|readgzfile|gz(seek|c(ompress|lose)|tell|inflate|open|de(code|flate)|uncompress|p(uts|assthru)|e(ncode|of)|file|write|re(wind|ad)|get(s(s)?|c)))\b</string>
+					<string>(?i)\b(gz(c(lose|ompress)|de(code|flate)|e(ncode|of)|file|get(c|s(s)?)|inflate|open|p(assthru|uts)|re(ad|wind)|seek|tell|uncompress|write)|ob_gzhandler|readgzfile|zlib_(decode|encode|get_coding_type))\b</string>
 					<key>name</key>
 					<string>support.function.zlib.php</string>
 				</dict>
