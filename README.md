@@ -1,5 +1,17 @@
-Sublime PHP Grammar
-===================
+Sublime Text PHP Grammar
+========================
+
+- PHP [~5.5](http://semver.org)
+
+Changelog
+---------
+
+See [CHANGELOG.md](CHANGELOG.md).
+
+Contribute
+----------
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Installation
 ------------
@@ -37,9 +49,3 @@ Other PHP packages
 * [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets)
 * [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunitck)
 * [PHPUnit Snippets](https://github.com/gerardroche/sublime-phpunit-snippets)
-
-Contribute
-----------
-
-Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for information on how to
-contribute to Sublime PHP Grammar and its related projects.
