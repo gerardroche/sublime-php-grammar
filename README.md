@@ -6,12 +6,12 @@ Sublime Text PHP Grammar
 Changelog
 ---------
 
-See [CHANGELOG.md](CHANGELOG.md).
+See [CHANGELOG](CHANGELOG.md).
 
 Contribute
 ----------
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING](CONTRIBUTING.md).
 
 Installation
 ------------
