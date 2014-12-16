@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+0.3.0
+-----
+
+* Improved completions rules
+
+  * Fixed: 2efd4ea Completions are no longer cancelled for `else`, `do`, or `try`
+  * Fixed: 7b61943 Completions are no longer cancelled for keywords like
+    *class*, *function*, *unless* they are followed by a space and then a valid
+    php identifier i.e. `classa` no longer cancels completions, but `class a`
+    will.
+  * Added: f96d092 *interface* and *trait* can now cancel completions.
+
 0.2.0
 -----
 
