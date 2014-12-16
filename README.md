@@ -1,48 +1,47 @@
 Sublime Text PHP Grammar
 ========================
 
-- PHP [~5.5](http://semver.org)
+PHP [~5.5](http://semver.org) syntax definition.
 
-Changelog
----------
+## Features
+
+- Bug fixes
+- Improved indentation
+- Updated support for PHP ~5.5 builtin classes, functions, and constants
+
+## Changelog
 
 See [CHANGELOG](CHANGELOG.md).
 
-Contribute
-----------
+## Contribute
 
 See [CONTRIBUTING](CONTRIBUTING.md).
 
-Installation
-------------
+## Installation
 
-1. Disable the PHP package bundled with Sublime Text
+1. Disable the `PHP` package bundled with Sublime Text
 
-   - Add `PHP` to the list of ignored packages in the User Settings.
+   Add `PHP` to the list of ignored packages in the User Settings.
 
-     Go to `Preferences > Settings - User` and add the following:
+   Go to `Preferences > Settings - User` and add the following:
 
-     ```json
-     "ignored_packages":
-     [
-       "PHP"
-     ]
-     ```
+   ```json
+   "ignored_packages":
+   [
+     "PHP"
+   ]
+   ```
 
-2. Clone Sublime PHP Grammar into the Sublime Text packages directory:
+2. Clone into the `Packages` directory
 
-   For example on Ubuntu:
+   e.g. Ubuntu
 
    ```sh
    cd ~/.config/sublime-text-3/Packages
    git clone https://github.com/gerardroche/sublime-php-grammar.git
    ```
 
-3. Completions and snippets are not included in the Sublime PHP Grammar package.
-   See the list of PHP packages below.
-
-Other PHP packages
-------------------
+## Other PHP packages
 
 * [PHP Grammar](https://github.com/gerardroche/sublime-php-grammar)
 * [PHP Completions](https://github.com/gerardroche/sublime-phpck)
