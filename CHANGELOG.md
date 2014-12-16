@@ -15,7 +15,7 @@ CHANGELOG
 
   Not all support regexes were updated.
 
-  The update was done done using php reflection wherease the Textmate php
+  The update was done using php reflection whereas the Textmate php
   bundle, for example, uses the php documentation to extract support information
   to build the regexes.
 
