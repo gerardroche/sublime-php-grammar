@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-0.2.0-dev (next-version)
-------------------------
+0.2.0
+-----
 
 * Fixed: Herdoc and Nowdoc now preserves indentation
 * Fixed: Multiline arrays are now indented properly
