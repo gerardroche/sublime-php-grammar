@@ -1,113 +1,79 @@
-Contributing
-============
+# Contributing
 
-Contributions are always welcome.
+## Overview
+
+* [Where to begin](#where-to-begin)
+* [Resources](#resources)
+* [Running Tests](#running-tests)
+* [Indentation Tests](#indentation-tests)
+
+## Where to begin
 
 Pull requests for bug fixes should be based on the current stable branch master
 whereas pull requests for new features should be based on the develop.
 
-At the moment most work is done on the develop branch, so please look there
-first.
+## Resources
 
-Running the tests
------------------
+* [PHP Language Specifications][php-langspec]
+* [PHP Documentation][php-docs]
 
-**The test suite will currently only work on Sublime Text 3.**
+## Running Tests
 
-Ctrl+k Ctrl+t will run all the tests.
+_Note_: Currently the tests can only be run in Sublime Text 3.
 
-Indentation rules
------------------
+### Key Bindings
 
-### Write tests
+| OS X / Windows / Linux | Descriptions |
+|------------------------|--------------|
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>t</kbd> | Run all tests |
 
-Two files are required for a test: a `.test.php` file, and an `.expect.php`
-file.
+## Indentation Tests
 
-When the test suite is run, the contents of the `.test.php` file is loaded,
-reindented, and the result is then compared to the exact contents of the
-`.expect.php` file.
+Two files are required for an indentation test.
 
-Test files are placed in the `test/indentation` directory.
+1. `test/indentation/name_test.php`
+2. `test/indentation/name_test_expect.php`
 
-**Naming test files**
+The test suite will load the contents of the `name_test.php` file, reindent it, and compare the results with the contents of `name_test_expect.php`. If they match the test passes, if not it fails.
 
-Test files must be underscored, lowercased, and begin with a character in the
-character class `[a-z]`.
+### Example
 
-    [a-z][a-z0-9_]*.test.php
-    [a-z][a-z0-9_]*.expect.php
-
-Bug fixes that relate to an issue in the issue tracker should be prefixed with
-`bugfix{{id}}_`.
-
-**Example**
-
-
-*Note: the reason we start with at least one level of indentation is to try and
-avoid false-positives i.e. if we were not to do this then we would not see
-where indentation is decreased.*
-
-`test/indentation/if.test.php`
+`test/indentation/if-else.test.php`
 
     <?php
-
-    function start_with_at_least_one_indent() {
-
-                    echo 'Statement 1';
-                    if (true) {
-                        echo 'Statement 2';
-                        echo 'Statement 3';
-                        if (false) {
-                            echo 'Statement 4';
-                            echo 'Statement 5';
-                        } else {
-                            echo 'Statement 6';
-                            echo 'Statement 7';
-                        }
-                        echo 'Statement 8';
-                        echo 'Statement 9';
-                    }
-                    var_dump('.');
-
+    echo 'Statement 1';
+    if (true) {
+    echo 'Statement 2';
+    echo 'Statement 3';
+    if (false) {
+    echo 'Statement 4';
+    echo 'Statement 5';
+    } else {
+    echo 'Statement 6';
+    echo 'Statement 7';
     }
+    echo 'Statement 8';
+    echo 'Statement 9';
+    }
+    var_dump('.');
 
-    var_dump('begin...');
-    start_with_at_least_one_indent();
-    var_dump('done.');
+`test/indentation/if-else.expect.php`
 
-
-`test/indentation/if.expect.php`
-
-    <?php
-
-    function start_with_at_least_one_indent() {
-
-        echo 'Statement 1';
-        if (true) {
-            echo 'Statement 2';
-            echo 'Statement 3';
-            if (false) {
-                echo 'Statement 4';
-                echo 'Statement 5';
-            } else {
-                echo 'Statement 6';
-                echo 'Statement 7';
-            }
-            echo 'Statement 8';
-            echo 'Statement 9';
+    echo 'Statement 1';
+    if (true) {
+        echo 'Statement 2';
+        echo 'Statement 3';
+        if (false) {
+            echo 'Statement 4';
+            echo 'Statement 5';
+        } else {
+            echo 'Statement 6';
+            echo 'Statement 7';
         }
-        var_dump('.');
-
+        echo 'Statement 8';
+        echo 'Statement 9';
     }
+    var_dump('.');
 
-    var_dump('begin...');
-    start_with_at_least_one_indent();
-    var_dump('done.');
-
-
-Resources
----------
-
-- [PHP Language Specifications](https://github.com/php/php-langspec)
-- [PHP Documentation](https://github.com/php/php-langspec)
+[php-docs]: http://php.net/docs.php
+[php-langspec]: https://github.com/php/php-langspec
