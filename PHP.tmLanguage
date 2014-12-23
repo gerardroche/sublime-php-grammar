@@ -474,7 +474,7 @@
 							\s*(&amp;)? 					# Reference
 							\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
 							\s*(=)	# A default value
-							\s*(array)\s*(\()
+							\s*(?:(array(?=[^\[])|(?=\[))\s*(\(|\[))
 							</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -517,7 +517,7 @@
 					<key>contentName</key>
 					<string>meta.array.php</string>
 					<key>end</key>
-					<string>\)</string>
+					<string>\)|\]</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -2271,7 +2271,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(array)\s*(\()</string>
+					<string>(array(?=[^\[])|(?=\[))\s*(\(|\[)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2286,7 +2286,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\)</string>
+					<string>\)|\]</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
