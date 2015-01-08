@@ -1,5 +1,23 @@
 # php-grammar changelog
 
+## 0.4.0
+
+### Bug Fixes
+
+* SublimeTextIssues/DefaultPackages#17 Typehinted short array arg syntax
+
+### New Features
+
+* Add new PHP 5.5 `finally` keyword
+* Add new PHP 5.5 `yield` keyword
+* Add PHP 5.4. `trait` support
+* Add support for PHP 5.4 `__TRAIT__` magic constant
+
+### Changes
+
+* Renamed indentation test file names. File names are now *underscored* rather than dot separated e.g. `name.test.php`, `name.expect.php` are now `name_test.php`, `name_test_expect.php`. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+* The native PHP package is now automatically disabled. _Note_: Sublime text has a native package for PHP. However, when php-grammar is enabled, the native package causes some conflicts. For this reason, php-grammar will automatically disable it. Since it doesn't bring anything new over php-grammar, this is not a loss. But remember, when you disable php-grammar, you have to reenable the native PHP package manually (if you want).
+
 ## 0.3.0
 
 ### Bug Fixes
