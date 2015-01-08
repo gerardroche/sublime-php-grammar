@@ -385,7 +385,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>(?i)\b(TRUE|FALSE|NULL|__(FILE|DIR|FUNCTION|CLASS|METHOD|LINE|NAMESPACE)__|ON|OFF|YES|NO|NL|BR|TAB)\b</string>
+							<string>(?i)\b(TRUE|FALSE|NULL|__(FILE|DIR|FUNCTION|CLASS|METHOD|LINE|NAMESPACE|TRAIT)__|ON|OFF|YES|NO|NL|BR|TAB)\b</string>
 							<key>name</key>
 							<string>constant.language.php</string>
 						</dict>
@@ -474,7 +474,7 @@
 							\s*(&amp;)? 					# Reference
 							\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
 							\s*(=)	# A default value
-							\s*(array)\s*(\()
+							\s*(?:(array(?=[^\[])|(?=\[))\s*(\(|\[))
 							</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -517,7 +517,7 @@
 					<key>contentName</key>
 					<string>meta.array.php</string>
 					<key>end</key>
-					<string>\)</string>
+					<string>\)|\]</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1353,6 +1353,27 @@
 				</dict>
 				<dict>
 					<key>begin</key>
+					<string>(?i)^\s*(trait)\s+([a-zA-Z0-9_]+)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.trait.php</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.trait.php</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\{)</string>
+					<key>name</key>
+					<string>meta.trait.php</string>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>(?i)^\s*(abstract|final)?\s*(class)\s+([a-z0-9_]+)\s*</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -1507,7 +1528,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\s*\b(break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while)\b</string>
+					<string>\s*\b(break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield)\b</string>
 					<key>name</key>
 					<string>keyword.control.php</string>
 				</dict>
@@ -1577,7 +1598,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(catch|try|throw|exception)\b</string>
+					<string>\b(catch|try|throw|exception|finally)\b</string>
 					<key>name</key>
 					<string>keyword.control.exception.php</string>
 				</dict>
@@ -2271,7 +2292,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(array)\s*(\()</string>
+					<string>(array(?=[^\[])|(?=\[))\s*(\(|\[)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2286,7 +2307,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\)</string>
+					<string>\)|\]</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>

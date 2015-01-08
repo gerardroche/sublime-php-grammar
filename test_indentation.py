@@ -7,15 +7,11 @@ import re
 
 DEBUG = True
 
-def debug_msg(msg):
+def debug_message(msg):
     if DEBUG:
-        print('[PHP Language Grammar] [Indentation Test] %s' % (msg))
+        print('[PHPGrammar] [test_indentation] %s' % (msg))
 
-def error_msg(msg):
-    # @todo should this prompt person?
-    debug_msg("[ERROR] " + msg)
-
-class IndentationTestView:
+class IndentationTestView():
 
     def __init__(self):
         self.view = sublime.active_window().new_file()
@@ -48,12 +44,12 @@ class IndentationTestView:
     def close(self):
         self.view.window().run_command('close'),
 
-class TestIndentation(unittest.TestCase):
+class IndentationTest(unittest.TestCase):
 
     def getFile(self, name, ext):
         return self.readFile(os.path.join(
             __class__.getTestIndentationPath(),
-            name + '.' + ext
+            name + ext
         ))
 
     def readFile(self, filename):
@@ -70,16 +66,16 @@ class TestIndentation(unittest.TestCase):
         return self.getFile(name, __class__.getTestFileExt())
 
     def getTestFileExt():
-        return 'test.php';
+        return '_test.php';
 
     def getExpectedFile(self, name):
         return self.getFile(name, __class__.getExpectedFileExt())
 
     def getExpectedFileExt():
-        return 'expect.php';
+        return '_test_expect.php';
 
     def isValidTestName(name):
-        return re.search('^[a-z][a-z0-9_]*$', name);
+        return re.search('^[a-z][a-z0-9_]*[a-z0-9]$', name);
 
     def setUp(self):
         self.maxDiff = None
@@ -90,12 +86,12 @@ class TestIndentation(unittest.TestCase):
 
     def initDataProviders():
         indentationTests = []
-        for testFile in glob.glob(__class__.getTestIndentationPath() + '/*.' + __class__.getTestFileExt()):
-            name = os.path.basename(testFile).rpartition('.' + __class__.getTestFileExt())[0]
+        for testFile in glob.glob(__class__.getTestIndentationPath() + '/*' + __class__.getTestFileExt()):
+            name = os.path.basename(testFile).rpartition(__class__.getTestFileExt())[0]
             if __class__.isValidTestName(name):
                 indentationTests.append(name)
             else:
-                error_msg('Invalid indentation file name: %s' % name)
+                debug_message('Invalid indentation file name: %s' % name)
 
         for name in indentationTests:
             setattr(__class__, 'test_%s' % name, __class__.createIndentationTest(name))
@@ -110,14 +106,12 @@ class TestIndentation(unittest.TestCase):
 class PhpGrammarIndentationTests(sublime_plugin.WindowCommand):
 
     def run(self):
-        debug_msg('')
-        debug_msg('*** PHP Grammar Indentation Tests ***')
-        debug_msg('')
+        debug_message('[WindowCommand] php_grammar_indentation_tests')
 
         self.window.run_command('show_panel', {'panel': 'console'})
 
-        TestIndentation.initDataProviders()
+        IndentationTest.initDataProviders()
 
         unittest.TextTestRunner(verbosity=2).run(
-            unittest.TestLoader().loadTestsFromTestCase(TestIndentation)
+            unittest.TestLoader().loadTestsFromTestCase(IndentationTest)
         )
