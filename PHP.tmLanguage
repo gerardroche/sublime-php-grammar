@@ -385,7 +385,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>(?i)\b(TRUE|FALSE|NULL|__(FILE|DIR|FUNCTION|CLASS|METHOD|LINE|NAMESPACE)__|ON|OFF|YES|NO|NL|BR|TAB)\b</string>
+							<string>(?i)\b(TRUE|FALSE|NULL|__(FILE|DIR|FUNCTION|CLASS|METHOD|LINE|NAMESPACE|TRAIT)__|ON|OFF|YES|NO|NL|BR|TAB)\b</string>
 							<key>name</key>
 							<string>constant.language.php</string>
 						</dict>
