@@ -8,8 +8,8 @@
 
 ### New Features
 
-* Add new PHP 5.5 `finally` keyword
-* Add new PHP 5.5 `yield` keyword
+* Add PHP 5.5 `finally` keyword
+* Add PHP 5.5 `yield` keyword
 * Add PHP 5.4. `trait` support
 * Add support for PHP 5.4 `__TRAIT__` magic constant
 
@@ -34,9 +34,9 @@
 ### Bug Fixes
 
 * Fixed: Herdoc and Nowdoc now preserves indentation
-* Fixed: `[control_structure] (expr) :` now increasees indentation rather than just indenting the next line,
-* Fixed: `<?php [control_structure] (expr) : ?>` now increases indentation rather than just indenting the next line,
-* Fixed: `for (expr) { /* ... */ }` on the same line does not increase indentation anymore,
+* Fixed: `[control_structure] (expr) :` now increasees indentation rather than just indenting the next line
+* Fixed: `<?php [control_structure] (expr) : ?>` now increases indentation rather than just indenting the next line
+* Fixed: `for (expr) { /* ... */ }` on the same line does not increase indentation
 * Fixed: `declare (expr) :` now increasees indentation
 
 ### New Features
@@ -44,18 +44,25 @@
 * Multiline arrays are now indent properly
 * A new macro for newline on enter between array parens e.g. press enter where the cursor is `|`
 
-      $arr = array(|)
+    ```php
+    $variable = array(|)
+    ```
 
-  Old behaviour:
+    Old functionaility
 
-      $arr = array(
-      |)
+    ```php
+    $variable = array(
+        |)
+    ```
 
-  New behaviour:
+    New functionaility
 
-      $arr = array(
-          |
-      )
+    ```php
+    $variable = array(
+        |
+    )
+    ```
+
 * Added: An indentation test suite
 * Functions in symbols list are indented with two spaces
 * Updated: Builtin class, constant, and function support regexes to PHP 5.5.9
