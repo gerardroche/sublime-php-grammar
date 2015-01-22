@@ -9,7 +9,7 @@ DEBUG = True
 
 def debug_message(msg):
     if DEBUG:
-        print('[PHPGrammar] [test_indentation] %s' % (msg))
+        print('[php-grammar] [test_indentation] %s' % (msg))
 
 class IndentationTestView():
 
