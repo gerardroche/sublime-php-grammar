@@ -1,5 +1,15 @@
 # php-grammar changelog
 
+## 0.5.0
+
+## Bug Fixes
+
+* `__toString` magic method was not being highlighted by syntax highlighters properly.
+
+### New Features
+
+* Add PHP 5.6 `__debugInfo` magic method
+
 ## 0.4.0
 
 ### Bug Fixes
