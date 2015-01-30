@@ -5,5 +5,19 @@
         "context": [
             { "key": "setting.php-grammar.development_mode" }
         ]
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+l"],
+        "command": "php_grammar_test_language",
+        "context": [
+            { "key": "setting.php-grammar.development_mode" }
+        ]
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+c"],
+        "command": "php_grammar_copy_scope_name_to_clipboard",
+        "context": [
+            { "key": "setting.php-grammar.development_mode" }
+        ]
     }
 ]
