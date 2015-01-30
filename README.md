@@ -128,6 +128,17 @@ array(
 )
 ```
 
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd> in a valid context appends `;\n`
+
+```php
+array_pop($x|)
+```
+
+```
+array_pop($x);
+|
+```
+
 ## Installation
 
 _Note_: Sublime text has a native package for PHP. However, when php-grammar is enabled, the native package causes some conflicts. For this reason, php-grammar will automatically disable it. Since it doesn't bring anything new over php-grammar, this is not a loss. But remember, when you disable php-grammar, you have to reenable the native PHP package manually (if you want). Also, php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
