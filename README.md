@@ -5,6 +5,7 @@ php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent in
 ## Overview
 
 * [Features](#features)
+* [Macros](#macros)
 * [Installation](#installation)
 * [Similar Plugins](#similar-plugins)
 * [Contributing](#contributing)
@@ -16,34 +17,42 @@ php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent in
 ## Features
 
 * Updated syntax definition support for PHP [~5.6][semver] builtin classes, functions, and constants which provides more up to date support for syntax highlighters.
+* Decent macros
 * Decent indentation rules
     - Pressing <kbd>Enter</kbd> between array parentheses indents the cursor on the next line and puts any closing parentheses on the following line with its indentation decreased.
+
     ```php
-    $indentation = array(|)
+    $val = array(|)
     ```
+
     ```php
-    $indentation = array(
+    $val = array(
         |
     )
     ```
+
     - Pressing a closing parentheses of an array will automatically indent it to the correct position.
+
     ```php
-    $close_paren_indentation = array(
+    $val = array(
         array(
             array(
                 array(
                     |
     ```
+
     ```php 
-    $close_paren_indentation = array(
+    $val = array(
         array(
             array(
                 array(
                 )|
     ```
+
     - Select text and reindent with decent results `Menu > Edit > Line > Reindent`
+
     ```php
-    $reindent = array(
+    $val = array(
     array(
     array(
     array(
@@ -65,8 +74,9 @@ php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent in
     )
     );
     ```
+
     ```php
-    $reindent = array(
+    $val = array(
         array(
             array(
                 array(
@@ -89,13 +99,29 @@ php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent in
     );
     ```
 
+## Macros
+
+<kbd>Enter</kbd> in an empty array inserts `\n|\n` and reindents
+
+```php
+array(|)
+```
+
+```php
+array(
+    |
+)
+```
+
 ## Installation
 
 _Note_: Sublime text has a native package for PHP. However, when php-grammar is enabled, the native package causes some conflicts. For this reason, php-grammar will automatically disable it. Since it doesn't bring anything new over php-grammar, this is not a loss. But remember, when you disable php-grammar, you have to reenable the native PHP package manually (if you want). Also, php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
 
 If you are using Sublime Text 2, you have to disable the native package _manually_. To do that, add `PHP` to your `ignored_packages` list in ST user settings:
 
-    "ignored_packages": [..., "PHP"],
+```
+"ignored_packages": [..., "PHP"]
+```
 
 ### Manual installation
 
