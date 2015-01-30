@@ -6,7 +6,7 @@
     <key>settings</key>
     <dict>
         <key>cancelCompletion</key>
-        <string>^\s*((class|function|interface|trait)\s+[a-zA-Z_0-9]+)$</string>
+        <string>^\s*(((abstract|final)\s+)?class|((abstract|final|private|protected|public|static)\s+)*function|interface|trait)\s+[a-zA-Z_0-9]+$</string>
     </dict>
 </dict>
 </plist>

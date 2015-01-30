@@ -8,6 +8,7 @@
 * New macros
     - Append `,\n` on <kbd>Enter</kbd> in array strings. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
     - Append `;` on <kbd>Ctrl</kbd>+<kbd>Enter</kbd> in valid contexts
+* Minimise auto-complete noise: Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
 
 ### Changes
 
