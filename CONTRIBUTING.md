@@ -27,7 +27,7 @@ _Note_: Test runner key bindings are disabled by default. To enable them set `"p
 
 | OS X / Windows / Linux | Descriptions |
 |------------------------|--------------|
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>t</kbd> | Run all tests |
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>i</kbd> | Run indentation tests |
 
 ## Indentation Tests
 

@@ -12,7 +12,10 @@
 
 ### Changes
 
-* Test command key bindings are now disabled by default. They can be enabled by setting `"php-grammar.development_mode": true` in the preferences: `Menu > Preferences > Settings User`. See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
+* Tests
+
+    -  Test command key bindings are now disabled by default. They can be enabled by setting `"php-grammar.development_mode": true` in the preferences: `Menu > Preferences > Settings User`. See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
+    -  Key binding to run indentation tests is now <kbd>Ctrl</kbd>+<kbd>k</kbd> <kbd>Ctrl</kbd>+<kbd>i</kbd>
 
 ## 0.5.0
 

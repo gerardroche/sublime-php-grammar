@@ -1,6 +1,6 @@
 [
     {
-        "keys": ["ctrl+k", "ctrl+t"],
+        "keys": ["ctrl+k", "ctrl+i"],
         "command": "php_grammar_indentation_tests",
         "context": [
             { "key": "setting.php-grammar.development_mode" }
