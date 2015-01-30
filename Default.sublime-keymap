@@ -2,7 +2,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/Default/Add Line in Braces.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/add-line-in-braces.sublime-macro"},
         "context": [
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
@@ -13,7 +13,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/Default/Add Line in Braces.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/add-line-in-braces.sublime-macro"},
         "context": [
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
