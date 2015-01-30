@@ -23,6 +23,8 @@ _Note_: Currently the tests can only be run in Sublime Text 3.
 
 ### Key Bindings
 
+_Note_: Test runner key bindings are disabled by default. To enable them set `"php-grammar.development_mode": true` in preferences: `Menu > Preferences > Settings - User`
+
 | OS X / Windows / Linux | Descriptions |
 |------------------------|--------------|
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>t</kbd> | Run all tests |

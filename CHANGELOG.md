@@ -1,5 +1,11 @@
 # php-grammar changelog
 
+## next
+
+### Changes
+
+* Test command key bindings are now disabled by default. They can be enabled by setting `"php-grammar.development_mode": true` in the preferences: `Menu > Preferences > Settings User`. See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
+
 ## 0.5.0
 
 ## Bug Fixes
