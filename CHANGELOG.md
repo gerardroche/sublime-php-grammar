@@ -5,6 +5,7 @@
 ### Features
 
 * Macros are now limited to PHP scopes
+* New macro: Append `,\n` on <kbd>Enter</kbd> in array strings. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
 
 ### Changes
 
