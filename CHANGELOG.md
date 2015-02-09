@@ -10,7 +10,10 @@
     - Append `;` on <kbd>Ctrl</kbd>+<kbd>Enter</kbd> in valid contexts
 * Minimise auto-complete noise: Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
 * Tests
-  - Added a language test suite. See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
+    - Added a language test suite
+    - Added a indentation test and expectation in a single file test case
+
+    See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
 
 ### Changes
 

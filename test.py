@@ -140,11 +140,23 @@ class TestIndentation(unittest.TestCase):
         with open(file_name) as f:
             return f.read()
 
-    def createFileDataProiderTest(name):
+    def createFileDataProiderTest(test_file_name):
         def indentationTest(self):
-            self.view.insert(self.getFileContents(name, config.indentation_test_file_extension))
+            test_content = self.getFileContents(test_file_name, config.indentation_test_file_extension)
+
+            if '--TEST--' in test_content:
+                res = re.split('\n?--(?:TEST|FILE|EXPECT)--\n', test_content)
+                if not len(res) == 4:
+                    raise RuntimeError('Invalid indentation test: %s' % test_file_name)
+                test_content = res[2]
+                expected_content = res[3].rstrip("\n")
+            else:
+                expected_content = self.getFileContents(test_file_name, config.indentation_test_expect_file_extension)
+
+            self.view.insert(test_content)
             self.view.reindent()
-            self.assertEqual(self.getFileContents(name, config.indentation_test_expect_file_extension), self.view.to_str())
+            self.assertEqual(expected_content, self.view.to_str())
+
         return indentationTest
 
 class TestLanguage(unittest.TestCase):

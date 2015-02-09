@@ -22,34 +22,75 @@ _Note_: Test runner key bindings are disabled by default. To enable them set `"p
 
 ## Indentation Tests
 
-Two files are required for an indentation test.
+There are two options for writing indentation tests.
 
-1. `test/indentation/name_test.php`
-2. `test/indentation/name_test_expect.php`
+### Example 1 - Test and expectation in a single file
 
-The contents of `name_test.php` file is loaded, reindented, and compared to the contents of `name_test_expect.php`. If they match the test passes, if not the test fails.
+##### `test/indentation/if_else_test.php`
 
-### Example
+```
+--TEST--
+Basic if statement
+--FILE--
+<?php
+echo 'statement 1';
+if (true) {
+echo 'statement 2';
+echo 'statement 3';
+if (false) {
+echo 'statement 4';
+echo 'statement 5';
+} else {
+echo 'statement 6';
+echo 'statement 7';
+}
+echo 'statement 8';
+echo 'statement 9';
+}
+echo 'statement 10';
+?>
+--EXPECT--
+<?php
+echo 'Statement 1';
+if (true) {
+    echo 'Statement 2';
+    echo 'Statement 3';
+    if (false) {
+        echo 'Statement 4';
+        echo 'Statement 5';
+    } else {
+        echo 'Statement 6';
+        echo 'Statement 7';
+    }
+    echo 'Statement 8';
+    echo 'Statement 9';
+}
+echo 'Statement 10';
+?>
+```
+
+
+### Example 2 - Test and expectation in separate files
 
 ##### `test/indentation/if_else_test.php`
 
 ```
 <?php
-echo 'Statement 1';
+echo 'statement 1';
 if (true) {
-echo 'Statement 2';
-echo 'Statement 3';
+echo 'statement 2';
+echo 'statement 3';
 if (false) {
-echo 'Statement 4';
-echo 'Statement 5';
+echo 'statement 4';
+echo 'statement 5';
 } else {
-echo 'Statement 6';
-echo 'Statement 7';
+echo 'statement 6';
+echo 'statement 7';
 }
-echo 'Statement 8';
-echo 'Statement 9';
+echo 'statement 8';
+echo 'statement 9';
 }
-echo 'Statement 10';
+echo 'statement 10';
 ```
 
 ##### `test/indentation/if_else_expect.php`
