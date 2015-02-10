@@ -59,10 +59,23 @@ if DEBUG_MODE:
         Copy scope name under cursor to clipboard
         """
 
-        def run(self, edit):
+        def run(self, edit, assertion = None):
+
+            start_of_test_file = 0
+            for line_region in self.view.split_by_newlines(sublime.Region(0, self.view.size())):
+                if '--FILE--' in self.view.substr(line_region):
+                    start_of_test_file = self.view.rowcol(line_region.begin())[0] + 1
+
+            scope_name = ''
             for sel in self.view.sel():
-                scope_name = self.view.scope_name(sel.begin()).strip()
-                sublime.set_clipboard(scope_name)
+                for point in range(sel.begin(), sel.end() + 1):
+                    if assertion is not None:
+                        row_col = self.view.rowcol(point)
+                        scope_name += assertion + ':%s:%s:' % (row_col[0] - start_of_test_file, row_col[1])
+
+                    scope_name += self.view.scope_name(point).strip() + "\n"
+
+            sublime.set_clipboard(scope_name)
 
 class PHPGrammarTestView():
 
