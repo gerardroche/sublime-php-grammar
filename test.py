@@ -32,10 +32,6 @@ config = Config()
 
 if DEBUG_MODE:
 
-    #
-    # Only register development utils if in development mode
-    #
-
     class PhpGrammarDevUtilScopeStatus(sublime_plugin.EventListener):
 
         """
@@ -89,7 +85,6 @@ class PHPGrammarTestView():
 
     def insert(self, string):
         self.view.run_command('insert', {'characters': string})
-        # self.view.run_command('move_to', {'to': 'bof'})
 
     def to_str(self):
         return self.view.substr(sublime.Region(0, self.view.size()))
@@ -110,7 +105,6 @@ class IndentationTestView(PHPGrammarTestView):
             'force_indent': True,
             'single_line': False
         })
-        # self.view.run_command('move_to', {'to': 'bof'})
 
 class LanguageTestView(PHPGrammarTestView):
 
@@ -134,10 +128,6 @@ class LanguageTestView(PHPGrammarTestView):
             content += self.scope_name(point) + "\n"
 
         return content
-
-#
-# Unit tests
-#
 
 class TestIndentation(unittest.TestCase):
 
@@ -188,7 +178,8 @@ class TestLanguage(unittest.TestCase):
         self.assertGreater(selector_score, 0, 'Expected selector score greater than 0 for (line:%s, offset:%s, point:%s, selector:%s) *** ACTUAL: "%s"' % (line, offset, point, selector, actual_scope))
 
     def assertEqualsScope(self, line, offset, expected_scope):
-        actual_scope = self.view.scope_name(self.view.text_point(line, offset))
+        point = self.view.text_point(line, offset)
+        actual_scope = self.view.scope_name(point)
         self.assertEqual(expected_scope, actual_scope)
 
     def getFileContents(self, name, ext):
@@ -226,10 +217,6 @@ class TestLanguage(unittest.TestCase):
                         raise RuntimeError('Invalid language test file: %s' % test_file_name)
 
         return languageTest
-
-#
-# Test Commands
-#
 
 class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
 
