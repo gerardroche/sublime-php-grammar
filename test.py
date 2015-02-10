@@ -169,8 +169,10 @@ class TestLanguage(unittest.TestCase):
         self.view.close()
 
     def assertMatchSelector(self, line, offset, selector):
-        score = self.view.score_selector(self.view.text_point(line, offset), selector)
-        self.assertGreater(score, 0, 'Expected selector: %s' % selector)
+        point = self.view.text_point(line, offset)
+        selector_score = self.view.score_selector(point, selector)
+        actual_scope = self.view.scope_name(point)
+        self.assertGreater(selector_score, 0, 'Expected selector score greater than 0 for (line:%s, offset:%s, point:%s, selector:%s) *** ACTUAL: "%s"' % (line, offset, point, selector, actual_scope))
 
     def assertEqualsScope(self, line, offset, expected_scope):
         actual_scope = self.view.scope_name(self.view.text_point(line, offset))
