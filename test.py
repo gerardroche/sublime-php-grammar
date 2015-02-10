@@ -140,7 +140,7 @@ class TestIndentation(unittest.TestCase):
         with open(file_name) as f:
             return f.read()
 
-    def createFileDataProiderTest(test_file_name):
+    def createFileDataProviderTest(test_file_name):
         def indentationTest(self):
             test_content = self.getFileContents(test_file_name, config.indentation_test_file_extension)
 
@@ -227,7 +227,7 @@ class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
         for test_file_name in glob.glob(config.indentation_tests_path + '/*' + config.indentation_test_file_extension):
             name = os.path.basename(test_file_name).rpartition(config.indentation_test_file_extension)[0]
             if re.search('^[a-z][a-z0-9_]*[a-z0-9]$', name):
-                setattr(TestIndentation, 'test_file_data_provider_%s' % name, TestIndentation.createFileDataProiderTest(name))
+                setattr(TestIndentation, 'test_file_data_provider_%s' % name, TestIndentation.createFileDataProviderTest(name))
             else:
                 raise RuntimeError('Invalid indentation test file name: %s' % name)
 
