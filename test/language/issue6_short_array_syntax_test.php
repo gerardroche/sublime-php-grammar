@@ -25,8 +25,8 @@ match:2:8:meta.array.empty.php support.function.construct.php
 match:2:9:meta.array.empty.php support.function.construct.php
 match:2:10:meta.array.empty.php punctuation.definition.array.begin.php
 match:2:11:meta.array.empty.php punctuation.definition.array.end.php
-match:3:5:meta.array.php punctuation.definition.array.begin.php
-match:3:6:meta.array.php punctuation.definition.array.end.php
+match:3:5:meta.array.empty.php punctuation.definition.array.begin.php
+match:3:6:meta.array.empty.php punctuation.definition.array.end.php
 
 match:5:5:meta.array.php support.function.construct.php
 match:5:6:meta.array.php support.function.construct.php
