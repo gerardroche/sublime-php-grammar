@@ -78,6 +78,10 @@ class PHPGrammarTestView():
     def __init__(self):
         self.view = sublime.active_window().new_file()
         self.view.set_scratch(True)
+        self.view.settings().set('auto_indent', False)
+        self.view.settings().set('indent_to_bracket', False)
+        self.view.settings().set('tab_size', 4)
+        self.view.settings().set('trim_automatic_white_space', False)
         self.view.set_syntax_file(config.language_file_path)
 
     def close(self):
@@ -93,12 +97,7 @@ class IndentationTestView(PHPGrammarTestView):
 
     def __init__(self):
         super(IndentationTestView, self).__init__()
-        self.view.settings().set('auto_indent', False)
         self.view.settings().set('smart_indent', True)
-        self.view.settings().set('indent_to_bracket', False)
-        self.view.settings().set('draw_white_space', 'all')
-        self.view.settings().set('tab_size', 4)
-        self.view.settings().set('trim_automatic_white_space', True)
 
     def reindent(self):
         self.view.run_command('reindent', {
