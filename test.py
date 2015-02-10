@@ -201,6 +201,10 @@ class TestLanguage(unittest.TestCase):
             else:
                 assertions = res[3].splitlines()
                 for assertion in assertions:
+                    if not len(assertion) > 0:
+                        # allow blank lines
+                        continue
+
                     assertion = assertion.split(':')
 
                     name = assertion[0]
