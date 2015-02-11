@@ -52,7 +52,7 @@ if DEBUG_MODE:
     class PhpGrammarDevUtilCopyScopeNameToClipboard(sublime_plugin.TextCommand):
 
         """
-        Copy scope name under cursor to clipboard
+        Print & copy-to-clipboard the scope selection.
         """
 
         def run(self, edit, assertion = None):
@@ -70,6 +70,10 @@ if DEBUG_MODE:
                         scope_name += assertion + ':%s:%s:' % (row_col[0] - start_of_test_file, row_col[1])
 
                     scope_name += self.view.scope_name(point).strip() + "\n"
+
+            print('***')
+            print(scope_name)
+            print('***')
 
             sublime.set_clipboard(scope_name)
 
