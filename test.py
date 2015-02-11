@@ -32,10 +32,6 @@ config = Config()
 
 if DEBUG_MODE:
 
-    #
-    # Only register development utils if in development mode
-    #
-
     class PhpGrammarDevUtilScopeStatus(sublime_plugin.EventListener):
 
         """
@@ -59,16 +55,33 @@ if DEBUG_MODE:
         Copy scope name under cursor to clipboard
         """
 
-        def run(self, edit):
+        def run(self, edit, assertion = None):
+
+            start_of_test_file = 0
+            for line_region in self.view.split_by_newlines(sublime.Region(0, self.view.size())):
+                if '--FILE--' in self.view.substr(line_region):
+                    start_of_test_file = self.view.rowcol(line_region.begin())[0] + 1
+
+            scope_name = ''
             for sel in self.view.sel():
-                scope_name = self.view.scope_name(sel.begin()).strip()
-                sublime.set_clipboard(scope_name)
+                for point in range(sel.begin(), sel.end() + 1):
+                    if assertion is not None:
+                        row_col = self.view.rowcol(point)
+                        scope_name += assertion + ':%s:%s:' % (row_col[0] - start_of_test_file, row_col[1])
+
+                    scope_name += self.view.scope_name(point).strip() + "\n"
+
+            sublime.set_clipboard(scope_name)
 
 class PHPGrammarTestView():
 
     def __init__(self):
         self.view = sublime.active_window().new_file()
         self.view.set_scratch(True)
+        self.view.settings().set('auto_indent', False)
+        self.view.settings().set('indent_to_bracket', False)
+        self.view.settings().set('tab_size', 4)
+        self.view.settings().set('trim_automatic_white_space', False)
         self.view.set_syntax_file(config.language_file_path)
 
     def close(self):
@@ -76,7 +89,6 @@ class PHPGrammarTestView():
 
     def insert(self, string):
         self.view.run_command('insert', {'characters': string})
-        # self.view.run_command('move_to', {'to': 'bof'})
 
     def to_str(self):
         return self.view.substr(sublime.Region(0, self.view.size()))
@@ -85,19 +97,13 @@ class IndentationTestView(PHPGrammarTestView):
 
     def __init__(self):
         super(IndentationTestView, self).__init__()
-        self.view.settings().set('auto_indent', False)
         self.view.settings().set('smart_indent', True)
-        self.view.settings().set('indent_to_bracket', False)
-        self.view.settings().set('draw_white_space', 'all')
-        self.view.settings().set('tab_size', 4)
-        self.view.settings().set('trim_automatic_white_space', True)
 
     def reindent(self):
         self.view.run_command('reindent', {
             'force_indent': True,
             'single_line': False
         })
-        # self.view.run_command('move_to', {'to': 'bof'})
 
 class LanguageTestView(PHPGrammarTestView):
 
@@ -122,10 +128,6 @@ class LanguageTestView(PHPGrammarTestView):
 
         return content
 
-#
-# Unit tests
-#
-
 class TestIndentation(unittest.TestCase):
 
     def setUp(self):
@@ -140,7 +142,7 @@ class TestIndentation(unittest.TestCase):
         with open(file_name) as f:
             return f.read()
 
-    def createFileDataProiderTest(test_file_name):
+    def createFileDataProviderTest(test_file_name):
         def indentationTest(self):
             test_content = self.getFileContents(test_file_name, config.indentation_test_file_extension)
 
@@ -169,11 +171,14 @@ class TestLanguage(unittest.TestCase):
         self.view.close()
 
     def assertMatchSelector(self, line, offset, selector):
-        score = self.view.score_selector(self.view.text_point(line, offset), selector)
-        self.assertGreater(score, 0, 'Expected selector: %s' % selector)
+        point = self.view.text_point(line, offset)
+        selector_score = self.view.score_selector(point, selector)
+        actual_scope = self.view.scope_name(point)
+        self.assertGreater(selector_score, 0, 'Expected selector score greater than 0 for (line:%s, offset:%s, point:%s, selector:%s) *** ACTUAL: "%s"' % (line, offset, point, selector, actual_scope))
 
     def assertEqualsScope(self, line, offset, expected_scope):
-        actual_scope = self.view.scope_name(self.view.text_point(line, offset))
+        point = self.view.text_point(line, offset)
+        actual_scope = self.view.scope_name(point)
         self.assertEqual(expected_scope, actual_scope)
 
     def getFileContents(self, name, ext):
@@ -196,6 +201,10 @@ class TestLanguage(unittest.TestCase):
             else:
                 assertions = res[3].splitlines()
                 for assertion in assertions:
+                    if not len(assertion) > 0:
+                        # allow blank lines
+                        continue
+
                     assertion = assertion.split(':')
 
                     name = assertion[0]
@@ -212,10 +221,6 @@ class TestLanguage(unittest.TestCase):
 
         return languageTest
 
-#
-# Test Commands
-#
-
 class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
 
     def run(self):
@@ -227,7 +232,7 @@ class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
         for test_file_name in glob.glob(config.indentation_tests_path + '/*' + config.indentation_test_file_extension):
             name = os.path.basename(test_file_name).rpartition(config.indentation_test_file_extension)[0]
             if re.search('^[a-z][a-z0-9_]*[a-z0-9]$', name):
-                setattr(TestIndentation, 'test_file_data_provider_%s' % name, TestIndentation.createFileDataProiderTest(name))
+                setattr(TestIndentation, 'test_file_data_provider_%s' % name, TestIndentation.createFileDataProviderTest(name))
             else:
                 raise RuntimeError('Invalid indentation test file name: %s' % name)
 

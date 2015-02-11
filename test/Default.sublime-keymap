@@ -14,8 +14,24 @@
         ]
     },
     {
-        "keys": ["ctrl+k", "ctrl+c"],
-        "command": "php_grammar_copy_scope_name_to_clipboard",
+        "keys": ["ctrl+k", "ctrl+c", "ctrl+a"],
+        "command": "php_grammar_dev_util_copy_scope_name_to_clipboard",
+        "context": [
+            { "key": "setting.php-grammar.development_mode" }
+        ]
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+c", "ctrl+e"],
+        "command": "php_grammar_dev_util_copy_scope_name_to_clipboard",
+        "args": {"assertion": "equal"},
+        "context": [
+            { "key": "setting.php-grammar.development_mode" }
+        ]
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+c", "ctrl+m"],
+        "command": "php_grammar_dev_util_copy_scope_name_to_clipboard",
+        "args": {"assertion": "match"},
         "context": [
             { "key": "setting.php-grammar.development_mode" }
         ]
