@@ -4,28 +4,29 @@
 
 ### Bug Fixes
 
-* Short array syntax scope #6
+* Grammar
+    - Short array syntax scope is now similar to function construct array scope e.g. `array(/*...*/)` and `[/*...*/]` #6
 
 ### New Features
 
-* Macros are now limited to PHP scopes
-* New macros
-    - Append `,\n` on <kbd>Enter</kbd> in array strings. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
-    - Append `;\n` on <kbd>Ctrl</kbd>+<kbd>Enter</kbd> in valid contexts
-* Minimise auto-complete noise: Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
+* Macros
+    - Macros are now limited to PHP scopes
+    - New macros
+        + Append `,\n` on <kbd>Enter</kbd> in array strings. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
+        + Append `;\n` on <kbd>Ctrl</kbd>+<kbd>Enter</kbd> in valid contexts
+* Completion rules
+    - Minimised auto-complete noise. Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
 * Grammar
     - Empty short array syntax arrays are now scoped similar to empty function construct arrays e.g. both `array()` and `[]` now scoped with `meta.array.empty.php` 
 * Tests
     - Added a language test suite. Closes #2
     - Added a indentation test and expectation in a single file test case
 
-    See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
-
 ### Changes
 
 * Tests
 
-    -  Test command key bindings are now disabled by default. They can be enabled by setting `"php-grammar.development_mode": true` in the preferences: `Menu > Preferences > Settings User`. See [CONTRIBUTING.md](https://github.com/gerardroche/sublime-php-grammar/blob/master/CONTRIBUTING.md) for more details.
+    -  Test command key bindings are now disabled by default. They can be enabled by setting `"php-grammar.development_mode": true` in the preferences: `Menu > Preferences > Settings User`.
     -  Key binding to run indentation tests is now <kbd>Ctrl</kbd>+<kbd>k</kbd> <kbd>Ctrl</kbd>+<kbd>i</kbd>
 
 ## 0.5.0
