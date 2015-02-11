@@ -13,6 +13,8 @@
     - Append `,\n` on <kbd>Enter</kbd> in array strings. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
     - Append `;\n` on <kbd>Ctrl</kbd>+<kbd>Enter</kbd> in valid contexts
 * Minimise auto-complete noise: Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
+* Grammar
+    - Empty short array syntax arrays are now scoped similar to empty function construct arrays e.g. both `array()` and `[]` now scoped with `meta.array.empty.php` 
 * Tests
     - Added a language test suite. Closes #2
     - Added a indentation test and expectation in a single file test case
