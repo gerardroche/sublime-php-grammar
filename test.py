@@ -71,6 +71,8 @@ if DEBUG_MODE:
 
                     scope_name += self.view.scope_name(point).strip() + "\n"
 
+            scope_name = scope_name.strip()
+
             print('***')
             print(scope_name)
             print('***')
