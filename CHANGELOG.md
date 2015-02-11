@@ -2,7 +2,11 @@
 
 ## next
 
-### Features
+### Bug Fixes
+
+* Short array syntax scope #6
+
+### New Features
 
 * Macros are now limited to PHP scopes
 * New macros
