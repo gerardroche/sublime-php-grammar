@@ -2,7 +2,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/add-line-in-braces.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
         "context": [
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array.empty", "match_all": true },
@@ -12,7 +12,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/insert-eol-comma-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-comma-and-newline.sublime-macro"},
         "context": [
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array string.quoted", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
@@ -22,7 +22,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/insert-eol-semicolon-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-and-newline.sublime-macro"},
         "context": [
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
