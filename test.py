@@ -57,27 +57,44 @@ if DEBUG_MODE:
 
         def run(self, edit, assertion = None):
 
-            start_of_test_file = 0
-            for line_region in self.view.split_by_newlines(sublime.Region(0, self.view.size())):
-                if '--FILE--' in self.view.substr(line_region):
-                    start_of_test_file = self.view.rowcol(line_region.begin())[0] + 1
+            view_region = sublime.Region(0, self.view.size())
+            view_as_string = self.view.substr(view_region)
+            test_file = TestFile.from_string(view_as_string)
 
-            scope_name = ''
+            print(self.view.file_name())
+
+            if test_file:
+                for line_region in self.view.split_by_newlines(view_region):
+                    line = self.view.substr(line_region)
+                    row_col = self.view.rowcol(line_region.begin())
+                    if '--FILE--' in line:
+                        test_file_content_begin_row = row_col[0] + 1
+                    if '--EXPECT--' in line:
+                        test_file_expect_begin_point = line_region.end() + 1
+
+            scope_repr = ''
             for sel in self.view.sel():
-                for point in range(sel.begin(), sel.end() + 1):
+                for point in range(sel.begin(), sel.end()):
                     if assertion is not None:
                         row_col = self.view.rowcol(point)
-                        scope_name += assertion + ':%s:%s:' % (row_col[0] - start_of_test_file, row_col[1])
-
-                    scope_name += self.view.scope_name(point).strip() + "\n"
-
-            scope_name = scope_name.strip()
+                        row = row_col[0]
+                        if test_file:
+                            row = row - test_file_content_begin_row
+                        col = row_col[1]
+                        scope_repr += assertion + ':%s:%s:' % (row, col)
+                    scope_repr += self.view.scope_name(point).strip() + "\n"
+            scope_repr = scope_repr.strip()
 
             print('***')
-            print(scope_name)
+            print(scope_repr)
             print('***')
 
-            sublime.set_clipboard(scope_name)
+            if test_file and test_file_expect_begin_point:
+                print('test file')
+                region = sublime.Region(test_file_expect_begin_point, self.view.size())
+                self.view.replace(edit, region, scope_repr)
+
+            sublime.set_clipboard(scope_repr)
 
 class PHPGrammarTestView():
 
@@ -132,7 +149,28 @@ class LanguageTestView(PHPGrammarTestView):
         for point in range(self.view.size()):
             content += self.scope_name(point) + "\n"
 
-        return content
+        return content.strip()
+
+class TestFile():
+
+    def __init__(self, test, content, expect):
+        self.test = test
+        self.content = content
+        self.expect = expect
+
+    def from_view(view):
+        return TestFile.from_string(view.substr(sublime.Region(0, view.size())))
+
+    def from_string(string, raise_if_not_valid_msg = None):
+        res = re.match('^--TEST--\n(.+)\n--FILE--\n(.*)\n--EXPECT--\n(.*)\n$', string, re.DOTALL)
+
+        if not res:
+            if raise_if_not_valid_msg is not None:
+                raise RuntimeError(raise_if_not_valid_msg)
+            else:
+                return None
+
+        return TestFile(res.group(1), res.group(2), res.group(3))
 
 class TestIndentation(unittest.TestCase):
 
@@ -150,20 +188,18 @@ class TestIndentation(unittest.TestCase):
 
     def createFileDataProviderTest(test_file_name):
         def indentationTest(self):
-            test_content = self.getFileContents(test_file_name, config.indentation_test_file_extension)
+            content = self.getFileContents(test_file_name, config.indentation_test_file_extension)
 
-            if '--TEST--' in test_content:
-                res = re.split('\n?--(?:TEST|FILE|EXPECT)--\n', test_content)
-                if not len(res) == 4:
-                    raise RuntimeError('Invalid indentation test: %s' % test_file_name)
-                test_content = res[2]
-                expected_content = res[3].rstrip("\n")
+            if '--TEST--' in content:
+                test_file = TestFile.from_string(content, 'Invalid indentation test: %s' % test_file_name)
+                content = test_file.content
+                expect = test_file.expect
             else:
-                expected_content = self.getFileContents(test_file_name, config.indentation_test_expect_file_extension)
+                expect = self.getFileContents(test_file_name, config.indentation_test_expect_file_extension)
 
-            self.view.insert(test_content)
+            self.view.insert(content)
             self.view.reindent()
-            self.assertEqual(expected_content, self.view.to_str())
+            self.assertEqual(expect, self.view.to_str())
 
         return indentationTest
 
@@ -185,6 +221,10 @@ class TestLanguage(unittest.TestCase):
     def assertEqualsScope(self, line, offset, expected_scope):
         point = self.view.text_point(line, offset)
         actual_scope = self.view.scope_name(point)
+
+        print('***')
+        print(actual_scope)
+        print('***')
         self.assertEqual(expected_scope, actual_scope)
 
     def getFileContents(self, name, ext):
@@ -194,18 +234,15 @@ class TestLanguage(unittest.TestCase):
 
     def createFileDataProviderTest(test_file_name):
         def languageTest(self):
-            data = self.getFileContents(test_file_name, config.language_test_file_extension)
+            content = self.getFileContents(test_file_name, config.language_test_file_extension)
+            test_file = TestFile.from_string(content, 'Invalid language test: %s' % test_file_name)
 
-            res = re.split('\n?--(?:TEST|FILE|EXPECT)--\n', data)
-            if not len(res) == 4:
-                raise RuntimeError('Invalid language test: %s' % test_file_name)
+            self.view.insert(test_file.content)
 
-            self.view.insert(res[2])
-
-            if ':' not in res[3]:
-                self.assertEquals(res[3], self.view.to_scope_name_repr())
+            if ':' not in test_file.expect:
+                self.assertEquals(test_file.expect, self.view.to_scope_name_repr())
             else:
-                assertions = res[3].splitlines()
+                assertions = test_file.expect.splitlines()
                 for assertion in assertions:
                     if not len(assertion) > 0:
                         # allow blank lines

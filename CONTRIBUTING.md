@@ -19,6 +19,9 @@ _Note_: Test runner key bindings are disabled by default. To enable them set `"p
 |------------------------|--------------|
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>i</kbd> | Run indentation tests |
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>l</kbd> | Run language tests |
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>a</kbd> | Language DevTool copy scope name to clipboard |
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>e</kbd> | Language DevTool copy "equals" type scope name to clipboard |
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>m</kbd> | Language DevTool copy "match" type scope name to clipboard |
 
 ## Indentation Tests
 
