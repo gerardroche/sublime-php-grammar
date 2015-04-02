@@ -2445,7 +2445,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\@(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b</string>
+					<string>\@\b(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b</string>
 					<key>name</key>
 					<string>keyword.other.phpdoc.php</string>
 				</dict>
@@ -2462,6 +2462,12 @@
 					<string>\{(@(link)).+?\}</string>
 					<key>name</key>
 					<string>meta.tag.inline.phpdoc.php</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\@[a-z0-9_-]+</string>
+					<key>name</key>
+					<string>keyword.other.phpdoc.php</string>
 				</dict>
 			</array>
 		</dict>
