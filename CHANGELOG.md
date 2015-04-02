@@ -6,6 +6,8 @@
 
 * Grammar
     - Short array syntax scope is now similar to function construct array scope e.g. `array(/*...*/)` and `[/*...*/]` #6
+* Macros
+  - <kbd>Ctrl</kbd>+<kbd>Enter</kbd> Append semicolon and newline macro now works with PHP 5.4 array syntax 
 
 ### New Features
 
