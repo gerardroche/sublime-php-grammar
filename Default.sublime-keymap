@@ -20,6 +20,16 @@
         ]
     },
     {
+        "keys": ["ctrl+;"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon.sublime-macro"},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "('|\"||\\)|\\])$", "match_all": true }
+        ]
+    },
+    {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-and-newline.sublime-macro"},

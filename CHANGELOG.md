@@ -2,6 +2,11 @@
 
 ## next
 
+### New Features
+
+* Macros
+  - New <kbd>Ctrl</kbd>+<kbd>;</kbd> Append semicolon. Works *only* in relevant contexts e.g. `$x = 'str|'`, `$x = call(|)`
+
 ### Bug Fixes
 
 * Grammar
