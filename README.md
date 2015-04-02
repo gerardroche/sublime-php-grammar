@@ -101,21 +101,19 @@ php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent in
 
 ## Macros
 
-<kbd>Enter</kbd> in an empty array inserts `\n|\n` and reindents
+
+| Keymap | Context | Example | Description |
+|--------|---------|---------|-------------|
+| <kbd>Enter</kbd> | Empty array | <code>array(&#124;)</code> or <code>[&#124;]</code> | Wrap cursor with `\n`'s and indent cursor line |
+| <kbd>Enter</kbd> | Array string | <code>array('string&#124;'</code> | Append `,\n` |
+| <kbd>Enter</kbd> | Array string | <code>array('string&#124;'</code> | Append `,\n` |
+
+*To insert literals in contexts where it has been overriden prefix the literal with <kbd>Ctrl</kbd>.*
+
+<kbd>Enter</kbd>
 
 ```php
 array(|)
-```
-
-```php
-array(
-    |
-)
-```
-
-<kbd>Enter</kbd> in array string appends `,\n`. *To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
-
-```php
 array(
     'x|'
 )
@@ -123,12 +121,15 @@ array(
 
 ```php
 array(
+    |
+)
+array(
     'x',
     |
 )
 ```
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> in a valid context appends `;\n`
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
 ```php
 array_pop($x|)
