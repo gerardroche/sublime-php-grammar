@@ -2102,6 +2102,25 @@
 					<string>#string-backtick</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.array.begin.php</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.array.end.php</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\[)(\])</string>
+					<key>name</key>
+					<string>meta.array.empty.php</string>
+				</dict>
+				<dict>
 					<key>begin</key>
 					<string>\[</string>
 					<key>beginCaptures</key>
@@ -2109,7 +2128,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.array.begin.php</string>
+							<string>punctuation.definition.array.begin.php</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2119,9 +2138,11 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.array.end.php</string>
+							<string>punctuation.definition.array.end.php</string>
 						</dict>
 					</dict>
+					<key>name</key>
+					<string>meta.array.php</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -2424,7 +2445,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\@(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b</string>
+					<string>\@\b(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b</string>
 					<key>name</key>
 					<string>keyword.other.phpdoc.php</string>
 				</dict>
@@ -2441,6 +2462,12 @@
 					<string>\{(@(link)).+?\}</string>
 					<key>name</key>
 					<string>meta.tag.inline.phpdoc.php</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\@[a-z0-9_-]+</string>
+					<key>name</key>
+					<string>keyword.other.phpdoc.php</string>
 				</dict>
 			</array>
 		</dict>
