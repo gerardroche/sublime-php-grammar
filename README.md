@@ -100,43 +100,16 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 ## Macros
 
-| Keymap | Context | Example | Description |
-|--------|---------|---------|-------------|
-| <kbd>Enter</kbd> | Empty array | <code>array(&#124;)</code> or <code>[&#124;]</code> | Wrap cursor with `\n`'s and indent cursor line |
-| <kbd>Enter</kbd> | Array string | <code>array('string&#124;'</code> | Append `,\n` |
-| <kbd>Enter</kbd> | Array string | <code>array('string&#124;'</code> | Append `,\n` |
+| Keymap | Context | Description |
+|--------|---------| ------------|
+| <kbd>Enter</kbd> | Empty array | Wrap cursor with `\n`'s and indent cursor line |
+| <kbd>Enter</kbd> | Array string | Append `,\n` |
+| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | *valid* | Append `;\n` |
+| <kbd>Ctrl</kbd>+<kbd>;</kbd> | *valid* | Append `;` |
 
-*To insert literals in contexts where it has been overriden prefix the literal with <kbd>Ctrl</kbd>.*
+*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
 
-<kbd>Enter</kbd>
-
-```php
-array(|)
-array(
-    'x|'
-)
-```
-
-```php
-array(
-    |
-)
-array(
-    'x',
-    |
-)
-```
-
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-
-```php
-array_pop($x|)
-```
-
-```
-array_pop($x);
-|
-```
+*To insert literals in a context where it is overriden by a macro prefix the literal with <kbd>Ctrl</kbd>.*
 
 ## Installation
 

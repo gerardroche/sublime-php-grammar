@@ -12,9 +12,9 @@
 **New Features / Enhancements**
 
 * New macro: <kbd>Enter</kbd> appends `,\n` in array strings.
-* New macro: To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>
 * New macro: <kbd>Ctrl</kbd>+<kbd>Enter</kbd> appends `;\n` *in valid contexts*
-* New macro: <kbd>Ctrl</kbd>+<kbd>;</kbd> appends semicolon *in valid contexts*
+* New macro: <kbd>Ctrl</kbd>+<kbd>;</kbd> appends `;` *in valid contexts*
+* New macro: To insert a literal newline key <kbd>Shift</kbd>+<kbd>Enter</kbd>
 * Minimised auto-complete noise. Completion rules now cancel completions for method declarations and class declarations with modifiers. e.g. typing at `public function |` and `abstract class |`.
 * Empty short array syntax arrays are now scoped similar to empty function construct arrays e.g. both `array()` and `[]` now scoped with `meta.array.empty.php`
 * Testing: Added a language test suite. Closes #2
