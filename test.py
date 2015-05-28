@@ -18,15 +18,15 @@ class Config():
     def __init__(self):
         self.package_root_path = os.path.dirname(__file__)
         self.package_name = os.path.basename(self.package_root_path)
-        self.language_file_path = os.path.join('Packages', self.package_name, 'PHP.tmLanguage')
+        self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.tmLanguage')
         self.tests_path = os.path.join(self.package_root_path, 'test')
 
         self.indentation_tests_path = os.path.join(self.tests_path, 'indentation')
         self.indentation_test_file_extension = '_test.php'
         self.indentation_test_expect_file_extension = '_test_expect.php'
 
-        self.language_tests_path = os.path.join(self.tests_path, 'language')
-        self.language_test_file_extension = '_test.php'
+        self.syntax_tests_path = os.path.join(self.tests_path, 'syntax')
+        self.syntax_test_file_extension = '_test.php'
 
 config = Config()
 
@@ -42,14 +42,22 @@ if DEBUG_MODE:
             for region in view.sel():
                 scope_name = view.scope_name(region.begin()).strip()
                 view.set_status('scope', scope_name)
+                return
 
-        # on_post_window_command doesn't work so on_window_command will have to do
-        def on_window_command(self, window, command_name, args):
+        def on_post_window_command(self, window, command_name, args):
             for region in window.active_view().sel():
                 scope_name = window.active_view().scope_name(region.begin()).strip()
-                window.active_view().set_status('scope', scope_name)
+                window.active_view().set_status('scope', 'Scope Name: "' + scope_name + '"')
+                return
 
-    class PhpGrammarDevUtilCopyScopeNameToClipboard(sublime_plugin.TextCommand):
+        if 3000 <= int(sublime.version()) < 3070:
+            # Works around issue where on_post_window_command never gets called
+            # See https://github.com/SublimeTextIssues/Core/issues/141
+            def on_window_command(self, window, command_name, args):
+                self.on_post_window_command(window, command_name, args)
+
+    # TODO implement a better syntax test helper tool
+    class PhpGrammarSyntaxTestHelperTool(sublime_plugin.TextCommand):
 
         """
         Print & copy-to-clipboard the scope selection.
@@ -90,56 +98,34 @@ if DEBUG_MODE:
             print('***')
 
             if test_file and test_file_expect_begin_point:
-                print('test file')
                 region = sublime.Region(test_file_expect_begin_point, self.view.size())
                 self.view.replace(edit, region, scope_repr)
 
             sublime.set_clipboard(scope_repr)
 
-class PHPGrammarTestView():
+class ViewTestCase(unittest.TestCase):
 
-    def __init__(self):
+    def setUp(self):
         self.view = sublime.active_window().new_file()
         self.view.set_scratch(True)
         self.view.settings().set('auto_indent', False)
         self.view.settings().set('indent_to_bracket', False)
         self.view.settings().set('tab_size', 4)
         self.view.settings().set('trim_automatic_white_space', False)
-        self.view.set_syntax_file(config.language_file_path)
+        self.view.settings().set('smart_indent', True)
+        self.view.set_syntax_file(config.syntax_file_path)
 
-    def close(self):
-        self.view.window().run_command('close'),
+    def tearDown(self):
+        if self.view:
+            self.view.close()
 
-    def insert(self, string):
-        self.view.run_command('insert', {'characters': string})
+    def set_view_content(self, content):
+        self.view.run_command('insert', {'characters': content})
 
-    def to_str(self):
+    def view_to_str(self):
         return self.view.substr(sublime.Region(0, self.view.size()))
 
-class IndentationTestView(PHPGrammarTestView):
-
-    def __init__(self):
-        super(IndentationTestView, self).__init__()
-        self.view.settings().set('smart_indent', True)
-
-    def reindent(self):
-        self.view.run_command('reindent', {
-            'force_indent': True,
-            'single_line': False
-        })
-
-class LanguageTestView(PHPGrammarTestView):
-
-    def text_point(self, line, offset):
-        return self.view.text_point(line, offset)
-
-    def scope_name(self, point):
-        return self.view.scope_name(point).strip() # Note: scope_name() seems to return the scope name with a trailing <Space>
-
-    def score_selector(self, point, selector):
-        return self.view.score_selector(point, selector)
-
-    def to_scope_name_repr(self):
+    def view_to_scope_name_repr(self):
         """
         Returns a string "scope names" representation of the
         view content. Each point in the view is converted to
@@ -147,7 +133,7 @@ class LanguageTestView(PHPGrammarTestView):
         """
         content = ''
         for point in range(self.view.size()):
-            content += self.scope_name(point) + "\n"
+            content += self.view.scope_name(point).strip() + "\n"
 
         return content.strip()
 
@@ -157,6 +143,10 @@ class TestFile():
         self.test = test
         self.content = content
         self.expect = expect
+
+    def from_file(file_name, raise_if_not_valid_msg=None):
+        with open(file_name) as f:
+            return TestFile.from_string(f.read(), raise_if_not_valid_msg)
 
     def from_view(view):
         return TestFile.from_string(view.substr(sublime.Region(0, view.size())))
@@ -172,14 +162,7 @@ class TestFile():
 
         return TestFile(res.group(1), res.group(2), res.group(3))
 
-class TestIndentation(unittest.TestCase):
-
-    def setUp(self):
-        self.view = IndentationTestView()
-        self.maxDiff = None
-
-    def tearDown(self):
-        self.view.close()
+class TestIndentation(ViewTestCase):
 
     def getFileContents(self, name, ext):
         file_name = os.path.join(config.indentation_tests_path, name + ext)
@@ -193,54 +176,43 @@ class TestIndentation(unittest.TestCase):
             if '--TEST--' in content:
                 test_file = TestFile.from_string(content, 'Invalid indentation test: %s' % test_file_name)
                 content = test_file.content
-                expect = test_file.expect
+                expected_str = test_file.expect
             else:
-                expect = self.getFileContents(test_file_name, config.indentation_test_expect_file_extension)
+                expected_str = self.getFileContents(test_file_name, config.indentation_test_expect_file_extension)
 
-            self.view.insert(content)
-            self.view.reindent()
-            self.assertEqual(expect, self.view.to_str())
+            self.set_view_content(content)
+            self.view.run_command('reindent', {
+                'force_indent': True,
+                'single_line': False
+            })
+            self.assertEqual(expected_str, self.view_to_str())
 
         return indentationTest
 
-class TestLanguage(unittest.TestCase):
-
-    def setUp(self):
-        self.maxDiff = None
-        self.view = LanguageTestView()
-
-    def tearDown(self):
-        self.view.close()
+class TestSyntax(ViewTestCase):
 
     def assertMatchSelector(self, line, offset, selector):
         point = self.view.text_point(line, offset)
         selector_score = self.view.score_selector(point, selector)
-        actual_scope = self.view.scope_name(point)
+        actual_scope = self.view.scope_name(point).strip()
         self.assertGreater(selector_score, 0, 'Expected selector score greater than 0 for (line:%s, offset:%s, point:%s, selector:%s) *** ACTUAL: "%s"' % (line, offset, point, selector, actual_scope))
 
     def assertEqualsScope(self, line, offset, expected_scope):
         point = self.view.text_point(line, offset)
-        actual_scope = self.view.scope_name(point)
-
-        print('***')
-        print(actual_scope)
-        print('***')
+        actual_scope = self.view.scope_name(point).strip()
         self.assertEqual(expected_scope, actual_scope)
 
-    def getFileContents(self, name, ext):
-        file_name = os.path.join(config.language_tests_path, name + ext)
-        with open(file_name) as f:
-            return f.read()
-
     def createFileDataProviderTest(test_file_name):
-        def languageTest(self):
-            content = self.getFileContents(test_file_name, config.language_test_file_extension)
-            test_file = TestFile.from_string(content, 'Invalid language test: %s' % test_file_name)
+        def syntaxTest(self):
+            test_file = TestFile.from_file(
+                os.path.join(config.syntax_tests_path, test_file_name + config.syntax_test_file_extension),
+                'Invalid syntax test: %s' % test_file_name
+            )
 
-            self.view.insert(test_file.content)
+            self.set_view_content(test_file.content)
 
             if ':' not in test_file.expect:
-                self.assertEquals(test_file.expect, self.view.to_scope_name_repr())
+                self.assertEquals(test_file.expect, self.view_to_scope_name_repr())
             else:
                 assertions = test_file.expect.splitlines()
                 for assertion in assertions:
@@ -260,14 +232,17 @@ class TestLanguage(unittest.TestCase):
                     elif name == 'equal':
                         self.assertEqualsScope(line, offset, selector)
                     else:
-                        raise RuntimeError('Invalid language test file: %s' % test_file_name)
+                        raise RuntimeError('Invalid syntax test file: %s' % test_file_name)
 
-        return languageTest
+        return syntaxTest
 
-class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
+class RunPhpGrammarIndentationTests(sublime_plugin.WindowCommand):
 
     def run(self):
-        debug_message('command: php_grammar_test_indentation')
+        print('')
+        print('')
+        print('Running PHP Grammar Indentation Tests')
+        print('=====================================')
 
         self.window.run_command('show_panel', {'panel': 'console'})
 
@@ -279,29 +254,38 @@ class PhpGrammarTestIndentation(sublime_plugin.WindowCommand):
             else:
                 raise RuntimeError('Invalid indentation test file name: %s' % name)
 
-        unittest.TextTestRunner(verbosity=2).run(
+        unittest.TextTestRunner(verbosity=1).run(
             unittest.TestLoader().loadTestsFromTestCase(TestIndentation)
         )
 
         self.window.focus_group(self.window.active_group())
 
-class PhpGrammarTestLanguage(sublime_plugin.WindowCommand):
+class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
 
     def run(self):
-        debug_message('command: php_grammar_test_language')
+        print('')
+        print('')
+        print('Running PHP Grammar Syntax Tests')
+        print('================================')
 
         self.window.run_command('show_panel', {'panel': 'console'})
 
         # Setup data providers
-        for test_file_name in glob.glob(config.language_tests_path + '/*' + config.language_test_file_extension):
-            name = os.path.basename(test_file_name).rpartition(config.language_test_file_extension)[0]
+        for test_file_name in glob.glob(config.syntax_tests_path + '/*' + config.syntax_test_file_extension):
+            name = os.path.basename(test_file_name).rpartition(config.syntax_test_file_extension)[0]
             if re.search('^[a-z][a-z0-9_]*[a-z0-9]$', name):
-                setattr(TestLanguage, 'test_file_data_provider_%s' % name, TestLanguage.createFileDataProviderTest(name))
+                setattr(TestSyntax, 'test_file_data_provider_%s' % name, TestSyntax.createFileDataProviderTest(name))
             else:
                 raise RuntimeError('Invalid language test file name: %s' % name)
 
-        unittest.TextTestRunner(verbosity=2).run(
-            unittest.TestLoader().loadTestsFromTestCase(TestLanguage)
+        unittest.TextTestRunner(verbosity=1).run(
+            unittest.TestLoader().loadTestsFromTestCase(TestSyntax)
         )
 
         self.window.focus_group(self.window.active_group())
+
+class RunPhpGrammarTests(sublime_plugin.WindowCommand):
+
+    def run(self):
+        self.window.run_command('run_php_grammar_syntax_tests')
+        self.window.run_command('run_php_grammar_indentation_tests')

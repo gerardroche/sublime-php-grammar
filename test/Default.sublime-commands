@@ -1,0 +1,14 @@
+[
+    {
+        "caption": "PHP Grammar: Run Indentation Tests",
+        "command": "run_php_grammar_indentation_tests"
+    },
+    {
+        "caption": "PHP Grammar: Run Syntax Tests",
+        "command": "run_php_grammar_syntax_tests"
+    },
+    {
+        "caption": "PHP Grammar: Run All Tests",
+        "command": "run_php_grammar_tests"
+    }
+]

@@ -1,6 +1,10 @@
 # php-grammar changelog
 
-## 0.5.0 - May 27, 2015
+## next
+
+* Refactor test suite
+
+## 0.5.0
 
 **Fixes**
 

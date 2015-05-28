@@ -11,14 +11,18 @@
 
 _Note_: Currently the tests can only be run in Sublime Text 3.
 
+From the command palette (<kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>P</kbd>):
+
+* PHP Grammar: Run All Tests
+* PHP Grammar: Run Indentation Tests
+* PHP Grammar: Run Syntax Tests
+
 ### Key Bindings
 
 _Note_: Test runner key bindings are disabled by default. To enable them set `"php-grammar.development_mode": true` in preferences: `Menu > Preferences > Settings - User`
 
 | OS X / Windows / Linux | Descriptions |
 |------------------------|--------------|
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>i</kbd> | Run indentation tests |
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>l</kbd> | Run language tests |
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>a</kbd> | Language DevTool copy scope name to clipboard |
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>e</kbd> | Language DevTool copy "equals" type scope name to clipboard |
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>m</kbd> | Language DevTool copy "match" type scope name to clipboard |
