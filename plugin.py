@@ -11,5 +11,6 @@ def disable_native_php_package():
 
     if 'PHP' not in ignored_packages:
         ignored_packages.append('PHP')
+        ignored_packages.sort()
         settings.set('ignored_packages', ignored_packages)
         sublime.save_settings('Preferences.sublime-settings')
