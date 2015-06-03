@@ -1,10 +1,14 @@
-# php-grammar changelog
+# sublime-php-grammar changelog
 
-## next
+## 0.7.0
 
-* Refactor test suite
+* Refactored test suite
+    - Tests are now run via the Command Palette:
+        + PHP Grammar: Run All Tests
+        + PHP Grammar: Run Syntax Tests
+        + PHP Grammar: Run Indentations Tests
 
-## 0.5.0
+## 0.6.0
 
 **Fixes**
 
