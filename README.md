@@ -16,86 +16,52 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 ## Features
 
 * Updated syntax definition support for PHP [~5.6][semver] builtin classes, functions, and constants which provides more up to date support for syntax highlighters.
-* Decent macros
-* Decent indentation rules
-    - Pressing <kbd>Enter</kbd> between array parentheses indents the cursor on the next line and puts any closing parentheses on the following line with its indentation decreased.
+* Decent indentation rules; **Reindent** `Menu > Edit > Line > Reindent` e.g.
 
     ```php
-    $val = array(|)
+    Original                     | Reindented
+    ---------------------------------------------------------------------
+    $val = array(                | $val = array(
+    array(                       |     array(
+    array(                       |         array(
+    array(                       |             array(
+    array(                       |                 array(
+    array(                       |                     array(
+    )                            |                     )
+    )                            |                 )
+    )                            |             )
+    )                            |         )
+    ),                           |     ),
+    'x' => 'y',                  |     'x' => 'y',
+    "multi" => array(            |         "multi" => array(
+    "dimensional" => array(      |             "dimensional" => array(
+    "array" => "x"               |                 "array" => "x"
+    'x' => array(                |                 'x' => array(
+    'y' => 'z'                   |                     'y' => 'z'
+    )                            |                 )
+    )                            |             )
+    )                            |     )
+    );                           | );
     ```
+
+* Decent macros; e.g.
+    - Press <kbd>Enter</kbd> between array parentheses indents cursor on next line and puts any closing parentheses `)` on following line with its indentation decreased
 
     ```php
-    $val = array(
-        |
-    )
+    $val = array(|)             | $val = array(
+                                |     |
+                                | )
     ```
 
-    - Pressing a closing parentheses of an array will automatically indent it to the correct position.
+    - Press closing parentheses `)` while in an array structure automatically indents it to the correct position
 
     ```php
-    $val = array(
-        array(
-            array(
-                array(
-                    |
-    ```
 
-    ```php 
-    $val = array(
-        array(
-            array(
-                array(
-                )|
-    ```
-
-    - Select text and reindent with decent results `Menu > Edit > Line > Reindent`
-
-    ```php
-    $val = array(
-    array(
-    array(
-    array(
-    array(
-    array(
-    )
-    )
-    )
-    )
-    ),
-    'x' => 'y',
-    "multi" => array(
-    "dimensional" => array(
-    "array" => "x"
-    'x' => array(
-    'y' => 'z'
-    )
-    )
-    )
-    );
-    ```
-
-    ```php
-    $val = array(
-        array(
-            array(
-                array(
-                    array(
-                        array(
-                        )
-                    )
-                )
-            )
-        ),
-        'x' => 'y',
-        "multi" => array(
-            "dimensional" => array(
-                "array" => "x"
-                'x' => array(
-                    'y' => 'z'
-                )
-            )
-        )
-    );
+    $val = array(               | $val = array(
+        array(                  |     array(
+            array(              |         array(
+                array(          |             array(
+                    |           |             )|
     ```
 
 ## Macros
