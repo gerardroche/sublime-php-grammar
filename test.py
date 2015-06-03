@@ -265,8 +265,8 @@ class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
     def run(self):
         print('')
         print('')
-        print('Running PHP Grammar Syntax Tests')
-        print('================================')
+        print('PHP Grammar Syntax Tests')
+        print('========================')
 
         self.window.run_command('show_panel', {'panel': 'console'})
 
