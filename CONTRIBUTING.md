@@ -3,7 +3,7 @@
 ## Overview
 
 * [Running Tests](#running-tests)
-* [Indentation Tests](#indentation-tests)
+* [Syntax Tests](#syntax-tests)
 * [Language Tests](#language-tests)
 * [Resources](#resources)
 
@@ -14,8 +14,8 @@ _Note_: Currently the tests can only be run in Sublime Text 3.
 From the command palette (<kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>P</kbd>):
 
 * PHP Grammar: Run All Tests
-* PHP Grammar: Run Indentation Tests
 * PHP Grammar: Run Syntax Tests
+* PHP Grammar: Run Indentation Tests
 
 ### Key Bindings
 
@@ -27,11 +27,84 @@ _Note_: Test runner key bindings are disabled by default. To enable them set `"p
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>e</kbd> | Language DevTool copy "equals" type scope name to clipboard |
 | <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>m</kbd> | Language DevTool copy "match" type scope name to clipboard |
 
+## Syntax Tests
+
+| Assertion | Description |
+|-----------|-------------|
+| `equal:[line]:[offset]:[selector]` | Exact match select by line and offset |
+| `match:[line]:[offset]:[selector]` | Match score greater than zero by line and offset |
+
+### Example 1 - Test exact scope of file
+
+##### `test/syntax/namespace_test.php`
+
+```
+--TEST--
+Basic namespace
+--FILE--
+<?php
+
+namespace Name;
+
+?>
+--EXPECT--
+source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
+source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
+source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
+source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
+source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
+source.php source.php.embedded.block.html
+source.php source.php.embedded.block.html
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
+source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
+source.php source.php.embedded.block.html punctuation.terminator.expression.php
+source.php source.php.embedded.block.html
+source.php source.php.embedded.block.html
+source.php source.php.embedded.block.html punctuation.section.embedded.end.php source.php
+source.php source.php.embedded.block.html punctuation.section.embedded.end.php
+```
+
+### Example 2 - Test points in file with assertions
+
+##### `test/syntax/basic_support_function_test.php`
+
+```
+--TEST--
+Basic function support
+--FILE--
+<?php
+
+array_map();
+str_shuffle();
+\str_shuffle();
+
+?>
+--EXPECT--
+equal:2:0:source.php source.php.embedded.block.html support.function.array.php
+match:2:0:source.php support.function
+match:2:0:support.function
+match:3:0:source.php support.function.string.php
+match:4:0:source.php punctuation.separator.inheritance.php
+match:4:1:source.php support.function.string.php
+```
+
 ## Indentation Tests
 
 There are two options for writing indentation tests.
 
-### Example 1 - Test and expectation in a single file
+### 1 - Test and expectation in a single file
 
 ##### `test/indentation/if_else_test.php`
 
@@ -77,7 +150,7 @@ echo 'Statement 10';
 ```
 
 
-### Example 2 - Test and expectation in separate files
+### 2 - Test and expectation in separate files
 
 ##### `test/indentation/if_else_test.php`
 
@@ -118,79 +191,6 @@ if (true) {
     echo 'Statement 9';
 }
 echo 'Statement 10';
-```
-
-## Language Tests
-
-| Assertion | Description |
-|-----------|-------------|
-| `equal:[line]:[offset]:[selector]` | Exact match select by line and offset |
-| `match:[line]:[offset]:[selector]` | Match score greater than zero by line and offset |
-
-### Example 1 - Test exact scope of file
-
-##### `test/language/namespace_test.php`
-
-```
---TEST--
-Basic namespace
---FILE--
-<?php
-
-namespace Name;
-
-?>
---EXPECT--
-source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
-source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
-source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
-source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
-source.php source.php.embedded.block.html punctuation.section.embedded.begin.php
-source.php source.php.embedded.block.html
-source.php source.php.embedded.block.html
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php keyword.other.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
-source.php source.php.embedded.block.html meta.namespace.php entity.name.type.namespace.php
-source.php source.php.embedded.block.html punctuation.terminator.expression.php
-source.php source.php.embedded.block.html
-source.php source.php.embedded.block.html
-source.php source.php.embedded.block.html punctuation.section.embedded.end.php source.php
-source.php source.php.embedded.block.html punctuation.section.embedded.end.php
-```
-
-### Example 2 - Test points in file with assertions
-
-##### `test/language/basic_support_function_test.php`
-
-```
---TEST--
-Basic function support
---FILE--
-<?php
-
-array_map();
-str_shuffle();
-\str_shuffle();
-
-?>
---EXPECT--
-equal:2:0:source.php source.php.embedded.block.html support.function.array.php
-match:2:0:source.php support.function
-match:2:0:support.function
-match:3:0:source.php support.function.string.php
-match:4:0:source.php punctuation.separator.inheritance.php
-match:4:1:source.php support.function.string.php
 ```
 
 ## Resources
