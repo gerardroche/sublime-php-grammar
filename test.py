@@ -19,6 +19,7 @@ class Config():
         self.package_root_path = os.path.dirname(__file__)
         self.package_name = os.path.basename(self.package_root_path)
         self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.tmLanguage')
+        # self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.sublime-syntax')
         self.tests_path = os.path.join(self.package_root_path, 'test')
 
         self.indentation_tests_path = os.path.join(self.tests_path, 'indentation')
@@ -113,6 +114,8 @@ class ViewTestCase(unittest.TestCase):
         self.view.settings().set('tab_size', 4)
         self.view.settings().set('trim_automatic_white_space', False)
         self.view.settings().set('smart_indent', True)
+        self.view.settings().set('tab_size', 4)
+        self.view.settings().set('translate_tabs_to_spaces', True)
         self.view.set_syntax_file(config.syntax_file_path)
 
     def tearDown(self):
