@@ -1,5 +1,9 @@
 # sublime-php-grammar changelog
 
+## 0.8.0
+
+* Added `PHP.sublime-syntax` for newer versions of ST3. See http://www.sublimetext.com/forum/viewtopic.php?f=2&t=18634&start=0
+
 ## 0.7.0
 
 * Refactored test suite
