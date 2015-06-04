@@ -1,0 +1,1267 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: PHP
+comment: |
+  TODO:
+  • Try to improve parameters list syntax – scope numbers, ‘=’, ‘,’ and possibly be intelligent about entity ordering
+  • Is meta.function-call the correct scope? I've added it to my theme but by default it's not highlighted
+file_extensions:
+  - php
+  - php3
+  - php4
+  - php5
+  - phpt
+  - phtml
+  - aw
+  - ctp
+first_line_match: '^#!.*(?<!-)php[0-9]{0,1}\b'
+scope: source.php
+contexts:
+  main:
+    - match: |-
+        (?x)
+          (^\s*)?             # 1 - Leading whitespace
+            (             # 2 - meta.embedded.line.empty.php
+              (           # 3 - Open Tag
+                (?:
+                  ((?<=\?>)<)   # 4 - Consecutive tags
+                  | <
+                )
+                \?(?i:php|=)?
+              )
+                (\s*)       # 5 - Loneliness
+              ((\?)>)         # 6 - Close Tag
+                          # 7 - Scope ? as scope.php
+            )
+          (
+            \1              # Match nothing if there was no
+                          #   leading whitespace...
+            | (\s*$\n)?         # or match trailing whitespace.
+          )
+      comment: Matches empty tags.
+      captures:
+        1: punctuation.whitespace.embedded.leading.php
+        2: source.php.embedded.line.empty.html
+        3: punctuation.section.embedded.begin.php
+        4: meta.consecutive-tags.php
+        5: source.php
+        6: punctuation.section.embedded.end.php
+        7: source.php
+        8: punctuation.whitespace.embedded.trailing.php
+    - match: ^\s*(?=<\?)
+      comment: Catches tags with preceeding whitespace.
+      captures:
+        0: punctuation.whitespace.embedded.leading.php
+      push:
+        - match: (?<=\?>)(\s*$\n)?
+          captures:
+            0: punctuation.whitespace.embedded.trailing.php
+          pop: true
+        - match: <\?(?i:php|=)?
+          captures:
+            0: punctuation.section.embedded.begin.php
+          push:
+            - meta_scope: source.php.embedded.block.html
+            - match: (\?)>
+              captures:
+                0: punctuation.section.embedded.end.php
+                1: source.php
+              pop: true
+            - include: language
+    - match: (((?<=\?>)<)|<)\?(?i:php|=)?
+      comment: Catches the remainder.
+      captures:
+        0: punctuation.section.embedded.begin.php
+        2: meta.consecutive-tags.php
+      push:
+        - meta_scope: source.php.embedded.line.html
+        - match: (\?)>
+          captures:
+            0: punctuation.section.embedded.end.php
+            1: source.php
+          pop: true
+        - include: language
+    - include: scope:text.html.basic
+  class-builtin:
+    - match: (?i)(\\)?\b(?>A(?>ppendIterator|rray(?>Access|Iterator|Object))|Bad(?>FunctionCallException|MethodCallException)|C(?>a(?>chingIterator|llbackFilterIterator)|losure|ountable)|D(?>OM(?>Attr|C(?>dataSection|haracterData|o(?>mment|nfiguration))|Do(?>cument(?>Fragment|Type)?|mError)|E(?>lement|ntity(?>Reference)?|rrorHandler|xception)|Implementation(?>List|Source)?|Locator|N(?>ame(?>List|SpaceNode|dNodeMap)|o(?>de(?>List)?|tation))|ProcessingInstruction|String(?>Extend|List)|T(?>ext|ypeinfo)|UserDataHandler|XPath)|ate(?>Interval|Period|Time(?>I(?>mmutable|nterface)|Zone)?)|irectory(?>Iterator)?|omainException)|E(?>mptyIterator|rrorException|xception)|Fil(?>esystemIterator|terIterator)|G(?>enerator|lobIterator)|I(?>n(?>finiteIterator|validArgumentException)|terator(?>Aggregate|Iterator)?)|Json(?>IncrementalParser|Serializable)|L(?>engthException|i(?>bXMLError|mitIterator)|ogicException)|MultipleIterator|NoRewindIterator|O(?>ut(?>Of(?>BoundsException|RangeException)|erIterator)|verflowException)|P(?>DO(?>Exception|Row|Statement)?|arentIterator|har(?>Data|Exception|FileInfo)?)|R(?>angeException|e(?>cursive(?>ArrayIterator|Ca(?>chingIterator|llbackFilterIterator)|DirectoryIterator|FilterIterator|Iterator(?>Iterator)?|RegexIterator|TreeIterator)|flect(?>ion(?>Class|Ex(?>ception|tension)|Function(?>Abstract)?|Method|Object|P(?>arameter|roperty)|ZendExtension)?|or)|gexIterator)|untimeException)|S(?>QLite3(?>Result|Stmt)?|e(?>ekableIterator|rializable|ssion(?>Handler(?>Interface)?|IdInterface))|impleXML(?>Element|Iterator)|oap(?>Client|Fault|Header|Param|Server|Var)|pl(?>DoublyLinkedList|Fi(?>le(?>Info|Object)|xedArray)|Heap|M(?>axHeap|inHeap)|Ob(?>jectStorage|server)|PriorityQueue|Queue|S(?>tack|ubject)|TempFileObject))|Traversable|Un(?>derflowException|expectedValueException)|XML(?>Reader|Writer)|ZipArchive|__PHP_Incomplete_Class|finfo|mysqli(?>_(?>driver|result|s(?>ql_exception|tmt)|warning))?|php_user_filter|stdClass|tidy(?>Node)?)\b
+      scope: support.class.builtin.php
+      captures:
+        1: punctuation.separator.inheritance.php
+  class-name:
+    - match: '(?i)(?=\\?[a-z_0-9]+\\)'
+      push:
+        - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+          captures:
+            1: support.class.php
+          pop: true
+        - include: namespace
+    - include: class-builtin
+    - match: '(?=[\\a-zA-Z_])'
+      push:
+        - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+          captures:
+            1: support.class.php
+          pop: true
+        - include: namespace
+  comments:
+    - match: /\*\*(?:#@\+)?\s*$
+      comment: |
+        This now only highlights a docblock if the first line contains only /**
+                                        - this is to stop highlighting everything as invalid when people do comment banners with /******** ...
+                                        - Now matches /**#@+ too - used for docblock templates: http://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblocktemplate
+      captures:
+        0: punctuation.definition.comment.php
+      push:
+        - meta_scope: comment.block.documentation.phpdoc.php
+        - match: \*/
+          pop: true
+        - include: php_doc
+    - match: /\*
+      captures:
+        0: punctuation.definition.comment.php
+      push:
+        - meta_scope: comment.block.php
+        - match: \*/
+          pop: true
+    - match: (//).*?($\n?|(?=\?>))
+      scope: comment.line.double-slash.php
+      captures:
+        1: punctuation.definition.comment.php
+    - match: (#).*?($\n?|(?=\?>))
+      scope: comment.line.number-sign.php
+      captures:
+        1: punctuation.definition.comment.php
+  constants:
+    - match: |-
+        (?xi)(?=
+        (
+            (\\[a-z_][a-z_0-9]*\\[a-z_][a-z_0-9\\]*)|
+            ([a-z_][a-z_0-9]*\\[a-z_][a-z_0-9\\]*)
+        )
+        [^a-z_0-9\\])
+      push:
+        - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+          captures:
+            1: constant.other.php
+          pop: true
+        - include: namespace
+    - match: '(?=\\?[a-zA-Z_\x{7f}-\x{ff}])'
+      push:
+        - match: '(?=[^\\a-zA-Z_\x{7f}-\x{ff}])'
+          pop: true
+        - match: (?i)\b(TRUE|FALSE|NULL|__(FILE|DIR|FUNCTION|CLASS|METHOD|LINE|NAMESPACE|TRAIT)__|ON|OFF|YES|NO|NL|BR|TAB)\b
+          scope: constant.language.php
+        - match: (\\)?\b(?>DE(?>BUG_BACKTRACE_(?>IGNORE_ARGS|PROVIDE_OBJECT)|FAULT_INCLUDE_PATH)|E_(?>ALL|CO(?>MPILE_(?>ERROR|WARNING)|RE_(?>ERROR|WARNING))|DEPRECATED|ERROR|NOTICE|PARSE|RECOVERABLE_ERROR|STRICT|USER_(?>DEPRECATED|ERROR|NOTICE|WARNING)|WARNING)|FALSE|NULL|P(?>EAR_(?>EXTENSION_DIR|INSTALL_DIR)|HP_(?>BIN(?>ARY|DIR)|CONFIG_FILE_(?>PATH|SCAN_DIR)|D(?>ATADIR|EBUG)|E(?>OL|XT(?>ENSION_DIR|RA_VERSION))|INT_(?>MAX|SIZE)|L(?>IBDIR|OCALSTATEDIR)|M(?>A(?>JOR_VERSION|NDIR|XPATHLEN)|INOR_VERSION)|O(?>S|UTPUT_HANDLER_(?>C(?>LEAN(?>ABLE)?|ONT)|DISABLED|END|F(?>INAL|LUSH(?>ABLE)?)|REMOVABLE|ST(?>ART(?>ED)?|DFLAGS)|WRITE))|PREFIX|RELEASE_VERSION|S(?>API|HLIB_SUFFIX|YSCONFDIR)|VERSION(?>_ID)?|ZTS))|STD(?>ERR|IN|OUT)|TRUE|UPLOAD_ERR_(?>CANT_WRITE|EXTENSION|FORM_SIZE|INI_SIZE|NO_(?>FILE|TMP_DIR)|OK|PARTIAL)|ZEND_(?>DEBUG_BUILD|THREAD_SAFE))\b
+          scope: support.constant.core.php
+          captures:
+            1: punctuation.separator.inheritance.php
+        - match: (\\)?\b(?>A(?>B(?>DAY_(?>1|2|3|4|5|6|7)|MON_(?>1(?>0|1|2)?|2|3|4|5|6|7|8|9))|LT_DIGITS|M_STR|SSERT_(?>ACTIVE|BAIL|CALLBACK|QUIET_EVAL|WARNING))|C(?>ASE_(?>LOWER|UPPER)|HAR_MAX|O(?>DESET|NNECTION_(?>ABORTED|NORMAL|TIMEOUT)|UNT_(?>NORMAL|RECURSIVE))|R(?>EDITS_(?>ALL|DOCS|FULLPAGE|G(?>ENERAL|ROUP)|MODULES|QA|SAPI)|NCYSTR|YPT_(?>BLOWFISH|EXT_DES|MD5|S(?>ALT_LENGTH|HA(?>256|512)|TD_DES))))|D(?>AY_(?>1|2|3|4|5|6|7)|IRECTORY_SEPARATOR|NS_(?>A(?>6|AAA|LL|NY)?|CNAME|HINFO|MX|N(?>APTR|S)|PTR|S(?>OA|RV)|TXT)|_(?>FMT|T_FMT))|E(?>NT_(?>COMPAT|DISALLOWED|HTML(?>401|5)|IGNORE|NOQUOTES|QUOTES|SUBSTITUTE|X(?>HTML|ML1))|RA(?>_(?>D_(?>FMT|T_FMT)|T_FMT))?|XTR_(?>IF_EXISTS|OVERWRITE|PREFIX_(?>ALL|I(?>F_EXISTS|NVALID)|SAME)|REFS|SKIP))|F(?>ILE_(?>APPEND|BINARY|IGNORE_NEW_LINES|NO_DEFAULT_CONTEXT|SKIP_EMPTY_LINES|TEXT|USE_INCLUDE_PATH)|NM_(?>CASEFOLD|NOESCAPE|P(?>ATHNAME|ERIOD)))|GLOB_(?>AVAILABLE_FLAGS|BRACE|ERR|MARK|NO(?>CHECK|ESCAPE|SORT)|ONLYDIR)|HTML_(?>ENTITIES|SPECIALCHARS)|I(?>MAGETYPE_(?>BMP|COUNT|GIF|I(?>CO|FF)|J(?>B2|P(?>2|C|EG(?>2000)?|X))|P(?>NG|SD)|SW(?>C|F)|TIFF_(?>II|MM)|UNKNOWN|WBMP|XBM)|N(?>F(?>O_(?>ALL|C(?>ONFIGURATION|REDITS)|ENVIRONMENT|GENERAL|LICENSE|MODULES|VARIABLES))?|I_(?>ALL|PERDIR|S(?>CANNER_(?>NORMAL|RAW)|YSTEM)|USER)))|L(?>C_(?>ALL|C(?>OLLATE|TYPE)|M(?>ESSAGES|ONETARY)|NUMERIC|TIME)|O(?>CK_(?>EX|NB|SH|UN)|G_(?>A(?>LERT|UTH(?>PRIV)?)|C(?>ONS|R(?>IT|ON))|D(?>AEMON|EBUG)|E(?>MERG|RR)|INFO|KERN|L(?>OCAL(?>0|1|2|3|4|5|6|7)|PR)|MAIL|N(?>DELAY|EWS|O(?>TICE|WAIT))|ODELAY|P(?>ERROR|ID)|SYSLOG|U(?>SER|UCP)|WARNING)))|M(?>ON_(?>1(?>0|1|2)?|2|3|4|5|6|7|8|9)|_(?>1_PI|2_(?>PI|SQRTPI)|E(?>ULER)?|L(?>N(?>10|2|PI)|OG(?>10E|2E))|PI(?>_(?>2|4))?|SQRT(?>1_2|2|3|PI)))|N(?>AN|OEXPR)|P(?>A(?>SSWORD_(?>BCRYPT(?>_DEFAULT_COST)?|DEFAULT)|TH(?>INFO_(?>BASENAME|DIRNAME|EXTENSION|FILENAME)|_SEPARATOR))|HP_(?>QUERY_RFC(?>1738|3986)|ROUND_HALF_(?>DOWN|EVEN|ODD|UP)|URL_(?>FRAGMENT|HOST|P(?>A(?>SS|TH)|ORT)|QUERY|SCHEME|USER))|M_STR|SFS_(?>ERR_FATAL|F(?>EED_ME|LAG_(?>FLUSH_(?>CLOSE|INC)|NORMAL))|PASS_ON))|RADIXCHAR|S(?>CANDIR_SORT_(?>ASCENDING|DESCENDING|NONE)|EEK_(?>CUR|END|SET)|ORT_(?>ASC|DESC|FLAG_CASE|LOCALE_STRING|N(?>ATURAL|UMERIC)|REGULAR|STRING)|TR(?>EAM_(?>BUFFER_(?>FULL|LINE|NONE)|C(?>AST_(?>AS_STREAM|FOR_SELECT)|LIENT_(?>ASYNC_CONNECT|CONNECT|PERSISTENT)|RYPTO_METHOD_(?>SSLv(?>2(?>3_(?>CLIENT|SERVER)|_(?>CLIENT|SERVER))|3_(?>CLIENT|SERVER))|TLS_(?>CLIENT|SERVER)))|FILTER_(?>ALL|READ|WRITE)|I(?>GNORE_URL|PPROTO_(?>I(?>CMP|P)|RAW|TCP|UDP)|S_URL)|M(?>ETA_(?>ACCESS|GROUP(?>_NAME)?|OWNER(?>_NAME)?|TOUCH)|KDIR_RECURSIVE|UST_SEEK)|NOTIFY_(?>AUTH_RE(?>QUIRED|SULT)|CO(?>MPLETED|NNECT)|F(?>AILURE|ILE_SIZE_IS)|MIME_TYPE_IS|PROGRESS|RE(?>DIRECTED|SOLVE)|SEVERITY_(?>ERR|INFO|WARN))|O(?>OB|PTION_(?>BLOCKING|READ_(?>BUFFER|TIMEOUT)|WRITE_BUFFER))|P(?>EEK|F_(?>INET(?>6)?|UNIX))|REPORT_ERRORS|S(?>ERVER_(?>BIND|LISTEN)|HUT_(?>RD(?>WR)?|WR)|OCK_(?>DGRAM|R(?>AW|DM)|S(?>EQPACKET|TREAM)))|U(?>RL_STAT_(?>LINK|QUIET)|SE_PATH))|_PAD_(?>BOTH|LEFT|RIGHT)))|T(?>HOUSEP|_FMT(?>_AMPM)?)|YESEXPR)\b
+          scope: support.constant.std.php
+          captures:
+            1: punctuation.separator.inheritance.php
+        - match: (\\)?\b(?>A(?>F_(?>INET(?>6)?|UNIX)|PACHE_MAP)|BUS_(?>ADR(?>ALN|ERR)|OBJERR)|C(?>AL_(?>DOW_(?>DAYNO|LONG|SHORT)|EASTER_(?>ALWAYS_(?>GREGORIAN|JULIAN)|DEFAULT|ROMAN)|FRENCH|GREGORIAN|J(?>EWISH(?>_ADD_(?>ALAFIM(?>_GERESH)?|GERESHAYIM))?|ULIAN)|MONTH_(?>FRENCH|GREGORIAN_(?>LONG|SHORT)|J(?>EWISH|ULIAN_(?>LONG|SHORT)))|NUM_CALS)|LD_(?>CONTINUED|DUMPED|EXITED|KILLED|STOPPED|TRAPPED))|D(?>ATE_(?>ATOM|COOKIE|ISO8601|R(?>FC(?>1(?>036|123)|2822|3339|8(?>22|50))|SS)|W3C)|OM(?>STRING_SIZE_ERR|_(?>HIERARCHY_REQUEST_ERR|IN(?>DEX_SIZE_ERR|USE_ATTRIBUTE_ERR|VALID_(?>ACCESS_ERR|CHARACTER_ERR|MODIFICATION_ERR|STATE_ERR))|N(?>AMESPACE_ERR|O(?>T_(?>FOUND_ERR|SUPPORTED_ERR)|_(?>DATA_ALLOWED_ERR|MODIFICATION_ALLOWED_ERR)))|PHP_ERR|SYNTAX_ERR|VALIDATION_ERR|WRONG_DOCUMENT_ERR)))|EXIF_USE_MBSTRING|F(?>IL(?>EINFO_(?>CONTINUE|DEVICES|MIME(?>_(?>ENCODING|TYPE))?|NONE|PRESERVE_ATIME|RAW|SYMLINK)|TER_(?>CALLBACK|DEFAULT|F(?>LAG_(?>ALLOW_(?>FRACTION|HEX|OCTAL|SCIENTIFIC|THOUSAND)|E(?>MPTY_STRING_NULL|NCODE_(?>AMP|HIGH|LOW))|HOST_REQUIRED|IPV(?>4|6)|NO(?>NE|_(?>ENCODE_QUOTES|PRIV_RANGE|RES_RANGE))|PATH_REQUIRED|QUERY_REQUIRED|S(?>CHEME_REQUIRED|TRIP_(?>BACKTICK|HIGH|LOW)))|ORCE_ARRAY)|NULL_ON_FAILURE|REQUIRE_(?>ARRAY|SCALAR)|SANITIZE_(?>E(?>MAIL|NCODED)|FULL_SPECIAL_CHARS|MAGIC_QUOTES|NUMBER_(?>FLOAT|INT)|S(?>PECIAL_CHARS|TRI(?>NG|PPED))|URL)|UNSAFE_RAW|VALIDATE_(?>BOOLEAN|EMAIL|FLOAT|I(?>NT|P)|MAC|REGEXP|URL)))|ORCE_(?>DEFLATE|GZIP)|PE_(?>FLT(?>DIV|INV|OVF|RES|SUB|UND)|INT(?>DIV|OVF))|TP_(?>A(?>SCII|UTO(?>RESUME|SEEK))|BINARY|F(?>AILED|INISHED)|IMAGE|MOREDATA|T(?>EXT|IMEOUT_SEC)))|GD_(?>BUNDLED|EXTRA_VERSION|M(?>AJOR_VERSION|INOR_VERSION)|RELEASE_VERSION|VERSION)|HASH_HMAC|I(?>CONV_(?>IMPL|MIME_DECODE_(?>CONTINUE_ON_ERROR|STRICT)|VERSION)|LL_(?>BADSTK|COPROC|ILL(?>ADR|OP(?>C|N)|TRP)|PRV(?>OPC|REG))|MG_(?>A(?>FFINE_(?>ROTATE|S(?>CALE|HEAR_(?>HORIZONTAL|VERTICAL))|TRANSLATE)|RC_(?>CHORD|EDGED|NOFILL|PIE|ROUNDED))|B(?>E(?>LL|SSEL)|I(?>CUBIC(?>_FIXED)?|LINEAR_FIXED)|LACKMAN|OX|SPLINE)|C(?>ATMULLROM|OLOR_(?>BRUSHED|STYLED(?>BRUSHED)?|T(?>ILED|RANSPARENT))|ROP_(?>BLACK|DEFAULT|SIDES|T(?>HRESHOLD|RANSPARENT)|WHITE))|EFFECT_(?>ALPHABLEND|NORMAL|OVERLAY|REPLACE)|F(?>ILTER_(?>BRIGHTNESS|CO(?>LORIZE|NTRAST)|E(?>DGEDETECT|MBOSS)|G(?>AUSSIAN_BLUR|RAYSCALE)|MEAN_REMOVAL|NEGATE|PIXELATE|S(?>ELECTIVE_BLUR|MOOTH))|LIP_(?>BOTH|HORIZONTAL|VERTICAL))|G(?>AUSSIAN|D2_(?>COMPRESSED|RAW)|ENERALIZED_CUBIC|IF)|H(?>A(?>MMING|NNING)|ERMITE)|JP(?>EG|G)|MITCHELL|NEAREST_NEIGHBOUR|P(?>NG|OWER)|QUADRATIC|SINC|TRIANGLE|W(?>BMP|EIGHTED4)|XPM)|NPUT_(?>COOKIE|ENV|GET|POST|REQUEST|SE(?>RVER|SSION))|P(?>PROTO_IP(?>V6)?|V6_(?>HOPLIMIT|MULTICAST_(?>HOPS|IF|LOOP)|PKTINFO|RECV(?>HOPLIMIT|PKTINFO|TCLASS)|TCLASS|UNICAST_HOPS)|_MULTICAST_(?>IF|LOOP|TTL)))|JSON_(?>BIGINT_AS_STRING|C_(?>BUNDLED|VERSION)|ERROR_(?>CTRL_CHAR|DEPTH|INF_OR_NAN|NONE|RECURSION|S(?>TATE_MISMATCH|YNTAX)|U(?>NSUPPORTED_TYPE|TF8))|FORCE_OBJECT|HEX_(?>A(?>MP|POS)|QUOT|TAG)|NUMERIC_CHECK|OBJECT_AS_ARRAY|P(?>AR(?>SER_NOTSTRICT|TIAL_OUTPUT_ON_ERROR)|RETTY_PRINT)|UNESCAPED_(?>SLASHES|UNICODE))|LIBXML_(?>COMPACT|D(?>OTTED_VERSION|TD(?>ATTR|LOAD|VALID))|ERR_(?>ERROR|FATAL|NONE|WARNING)|HTML_NO(?>DEFDTD|IMPLIED)|LOADED_VERSION|N(?>O(?>BLANKS|CDATA|E(?>MPTYTAG|NT|RROR)|NET|WARNING|XMLDECL)|SCLEAN)|P(?>ARSEHUGE|EDANTIC)|SCHEMA_CREATE|VERSION|XINCLUDE)|M(?>B_(?>CASE_(?>LOWER|TITLE|UPPER)|OVERLOAD_(?>MAIL|REGEX|STRING))|C(?>AST_(?>BLOCK_SOURCE|JOIN_(?>GROUP|SOURCE_GROUP)|LEAVE_(?>GROUP|SOURCE_GROUP)|UNBLOCK_SOURCE)|RYPT_(?>3DES|ARCFOUR(?>_IV)?|BLOWFISH(?>_COMPAT)?|C(?>AST_(?>128|256)|RYPT)|DE(?>CRYPT|S|V_(?>RANDOM|URANDOM))|EN(?>CRYPT|IGNA)|GOST|IDEA|LOKI97|M(?>ARS|ODE_(?>C(?>BC|FB)|ECB|NOFB|OFB|STREAM))|PANAMA|R(?>AND|C(?>2|6)|IJNDAEL_(?>1(?>28|92)|256))|S(?>AFER(?>128|64|PLUS)|ERPENT|KIPJACK)|T(?>HREEWAY|RIPLEDES|WOFISH)|WAKE|XTEA))|HASH_(?>ADLER32|CRC32(?>B)?|FNV1(?>32|64|A(?>32|64))|GOST|HAVAL(?>1(?>28|60|92)|2(?>24|56))|JOAAT|MD(?>2|4|5)|RIPEMD(?>1(?>28|60)|256|320)|S(?>HA(?>1|2(?>24|56)|384|512)|NEFRU256)|TIGER(?>1(?>28|60))?|WHIRLPOOL)|SG_(?>C(?>MSG_CLOEXEC|ONFIRM|TRUNC)|DONT(?>ROUTE|WAIT)|E(?>AGAIN|NOMSG|O(?>F|R)|RRQUEUE|XCEPT)|IPC_NOWAIT|MORE|NO(?>ERROR|SIGNAL)|OOB|PEEK|TRUNC|WAIT(?>ALL|FORONE))|YSQLI_(?>A(?>S(?>SOC|YNC)|UTO_INCREMENT_FLAG)|B(?>INARY_FLAG|LOB_FLAG|OTH)|C(?>LIENT_(?>COMPRESS|FOUND_ROWS|I(?>GNORE_SPACE|NTERACTIVE)|NO_SCHEMA|SSL)|URSOR_TYPE_(?>FOR_UPDATE|NO_CURSOR|READ_ONLY|SCROLLABLE))|D(?>ATA_TRUNCATED|EBUG_TRACE_ENABLED)|ENUM_FLAG|GROUP_FLAG|INIT_COMMAND|MULTIPLE_KEY_FLAG|N(?>O(?>T_NULL_FLAG|_D(?>ATA|EFAULT_VALUE_FLAG))|UM(?>_FLAG)?)|O(?>N_UPDATE_NOW_FLAG|PT_(?>C(?>AN_HANDLE_EXPIRED_PASSWORDS|ONNECT_TIMEOUT)|INT_AND_FLOAT_NATIVE|LOCAL_INFILE|NET_(?>CMD_BUFFER_SIZE|READ_BUFFER_SIZE)|SSL_VERIFY_SERVER_CERT))|P(?>ART_KEY_FLAG|RI_KEY_FLAG)|RE(?>AD_DEFAULT_(?>FILE|GROUP)|FRESH_(?>BACKUP_LOG|GRANT|HOSTS|LOG|MASTER|S(?>LAVE|TATUS)|T(?>ABLES|HREADS))|PORT_(?>ALL|ERROR|INDEX|OFF|STRICT))|S(?>E(?>RVER_(?>P(?>S_OUT_PARAMS|UBLIC_KEY)|QUERY_(?>NO_(?>GOOD_INDEX_USED|INDEX_USED)|WAS_SLOW))|T_(?>CHARSET_(?>DIR|NAME)|FLAG))|T(?>MT_ATTR_(?>CURSOR_TYPE|PREFETCH_ROWS|UPDATE_MAX_LENGTH)|ORE_RESULT))|T(?>IMESTAMP_FLAG|RANS_(?>COR_(?>AND_(?>CHAIN|NO_CHAIN)|NO_RELEASE|RELEASE)|START_(?>READ_(?>ONLY|WRITE)|WITH_CONSISTENT_SNAPSHOT))|YPE_(?>B(?>IT|LOB)|CHAR|D(?>ATE(?>TIME)?|ECIMAL|OUBLE)|ENUM|FLOAT|GEOMETRY|INT(?>24|ERVAL)|LONG(?>LONG|_BLOB)?|MEDIUM_BLOB|N(?>EWD(?>ATE|ECIMAL)|ULL)|S(?>ET|HORT|TRING)|TI(?>ME(?>STAMP)?|NY(?>_BLOB)?)|VAR_STRING|YEAR))|U(?>N(?>IQUE_KEY_FLAG|SIGNED_FLAG)|SE_RESULT)|ZEROFILL_FLAG))|OPENSSL_(?>ALGO_(?>DSS1|MD(?>4|5)|RMD160|SHA(?>1|2(?>24|56)|384|512))|CIPHER_(?>3DES|AES_(?>1(?>28_CBC|92_CBC)|256_CBC)|DES|RC2_(?>128|40|64))|KEYTYPE_(?>D(?>H|SA)|EC|RSA)|NO_PADDING|PKCS1_(?>OAEP_PADDING|PADDING)|RAW_DATA|SSLV23_PADDING|TLSEXT_SERVER_NAME|VERSION_(?>NUMBER|TEXT)|ZERO_PADDING)|P(?>C(?>NTL_E(?>2BIG|A(?>CCES|GAIN)|CHILD|FAULT|I(?>N(?>TR|VAL)|O|SDIR)|L(?>IBBAD|OOP)|MFILE|N(?>AMETOOLONG|FILE|O(?>E(?>NT|XEC)|MEM|TDIR))|PERM|SRCH|TXTBSY)|RE_VERSION)|HP_(?>BINARY_READ|NORMAL_READ|SESSION_(?>ACTIVE|DISABLED|NONE))|KCS7_(?>BINARY|DETACHED|NO(?>ATTR|C(?>ERTS|HAIN)|INTERN|SIGS|VERIFY)|TEXT)|NG_(?>ALL_FILTERS|FILTER_(?>AVG|NONE|PAETH|SUB|UP)|NO_FILTER)|O(?>LL_(?>ERR|HUP|IN|MSG|OUT|PRI)|SIX_(?>F_OK|R_OK|S_IF(?>BLK|CHR|IFO|REG|SOCK)|W_OK|X_OK))|R(?>EG_(?>BA(?>CKTRACK_LIMIT_ERROR|D_UTF8_(?>ERROR|OFFSET_ERROR))|GREP_INVERT|INTERNAL_ERROR|NO_ERROR|OFFSET_CAPTURE|PATTERN_ORDER|RECURSION_LIMIT_ERROR|S(?>ET_ORDER|PLIT_(?>DELIM_CAPTURE|NO_EMPTY|OFFSET_CAPTURE)))|IO_(?>P(?>GRP|ROCESS)|USER)))|READLINE_LIB|S(?>CM_(?>CREDENTIALS|RIGHTS)|EGV_(?>ACCERR|MAPERR)|I(?>G(?>A(?>BRT|LRM)|B(?>ABY|US)|C(?>HLD|LD|ONT)|FPE|HUP|I(?>LL|NT|O(?>T)?)|KILL|P(?>IPE|OLL|ROF|WR)|QUIT|S(?>EGV|T(?>KFLT|OP)|YS)|T(?>ERM|RAP|STP|T(?>IN|OU))|U(?>RG|SR(?>1|2))|VTALRM|WINCH|X(?>CPU|FSZ)|_(?>BLOCK|DFL|ERR|IGN|SETMASK|UNBLOCK))|_(?>ASYNCIO|KERNEL|MESGQ|QUEUE|SIGIO|T(?>IMER|KILL)|USER))|O(?>AP_(?>1_(?>1|2)|A(?>CTOR_(?>N(?>EXT|ONE)|UNLIMATERECEIVER)|UTHENTICATION_(?>BASIC|DIGEST))|COMPRESSION_(?>ACCEPT|DEFLATE|GZIP)|DOCUMENT|ENC(?>ODED|_(?>ARRAY|OBJECT))|FUNCTIONS_ALL|LITERAL|PERSISTENCE_(?>REQUEST|SESSION)|RPC|S(?>INGLE_ELEMENT_ARRAYS|SL_METHOD_(?>SSLv(?>2(?>3)?|3)|TLS))|USE_XSI_ARRAY_TYPE|WAIT_ONE_WAY_CALLS)|CK(?>ET_E(?>2BIG|A(?>CCES|D(?>DR(?>INUSE|NOTAVAIL)|V)|FNOSUPPORT|GAIN|LREADY)|B(?>AD(?>E|F(?>D)?|MSG|R(?>QC)?|SLT)|USY)|C(?>HRNG|O(?>MM|NN(?>ABORTED|RE(?>FUSED|SET))))|D(?>ESTADDRREQ|QUOT)|EXIST|FAULT|HOST(?>DOWN|UNREACH)|I(?>DRM|N(?>PROGRESS|TR|VAL)|O|S(?>CONN|DIR|NAM))|L(?>2(?>HLT|NSYNC)|3(?>HLT|RST)|NRNG|OOP)|M(?>EDIUMTYPE|FILE|LINK|SGSIZE|ULTIHOP)|N(?>AMETOOLONG|ET(?>DOWN|RESET|UNREACH)|FILE|O(?>ANO|BUFS|CSI|D(?>ATA|EV)|ENT|L(?>CK|INK)|M(?>E(?>DIUM|M)|SG)|NET|PROTOOPT|S(?>PC|R|TR|YS)|T(?>BLK|CONN|DIR|EMPTY|SOCK|TY|UNIQ))|XIO)|OPNOTSUPP|P(?>ERM|FNOSUPPORT|IPE|ROTO(?>NOSUPPORT|TYPE)?)|R(?>E(?>M(?>CHG|OTE(?>IO)?)|START)|OFS)|S(?>HUTDOWN|OCKTNOSUPPORT|PIPE|RMNT|TRPIPE)|T(?>IME(?>DOUT)?|OOMANYREFS)|U(?>NATCH|SERS)|WOULDBLOCK|X(?>DEV|FULL))|_(?>DGRAM|R(?>AW|DM)|S(?>EQPACKET|TREAM)))|L_(?>SOCKET|TCP|UDP)|MAXCONN|_(?>B(?>INDTODEVICE|ROADCAST)|D(?>EBUG|ONTROUTE)|ERROR|KEEPALIVE|LINGER|OOBINLINE|PASSCRED|R(?>CV(?>BUF|LOWAT|TIMEO)|EUSE(?>ADDR|PORT))|SND(?>BUF|LOWAT|TIMEO)|TYPE))|QLITE3_(?>ASSOC|B(?>LOB|OTH)|FLOAT|INTEGER|NU(?>LL|M)|OPEN_(?>CREATE|READ(?>ONLY|WRITE))|TEXT)|UNFUNCS_RET_(?>DOUBLE|STRING|TIMESTAMP))|T(?>CP_NODELAY|IDY_(?>NODETYPE_(?>ASP|C(?>DATA|OMMENT)|DOCTYPE|END|JSTE|P(?>HP|ROCINS)|ROOT|S(?>ECTION|TART(?>END)?)|TEXT|XMLDECL)|TAG_(?>A(?>BBR|CRONYM|DDRESS|LIGN|PPLET|REA)?|B(?>ASE(?>FONT)?|DO|GSOUND|IG|L(?>INK|OCKQUOTE)|ODY|R|UTTON)?|C(?>APTION|ENTER|ITE|O(?>DE|L(?>GROUP)?|MMENT))|D(?>D|EL|FN|I(?>R|V)|L|T)|EM(?>BED)?|F(?>IELDSET|O(?>NT|RM)|RAME(?>SET)?)|H(?>1|2|3|4|5|6|EAD|R|TML)|I(?>FRAME|LAYER|MG|N(?>PUT|S)|SINDEX)?|K(?>BD|EYGEN)|L(?>A(?>BEL|YER)|EGEND|I(?>NK|STING)?)|M(?>A(?>P|RQUEE)|E(?>NU|TA)|ULTICOL)|NO(?>BR|EMBED|FRAMES|LAYER|S(?>AVE|CRIPT))|O(?>BJECT|L|PT(?>GROUP|ION))|P(?>ARAM|LAINTEXT|RE)?|Q|R(?>B(?>C)?|P|T(?>C)?|UBY)|S(?>AMP|CRIPT|E(?>LECT|RV(?>ER|LET))|MALL|PA(?>CER|N)|T(?>R(?>IKE|ONG)|YLE)|U(?>B|P))?|T(?>ABLE|BODY|D|EXTAREA|FOOT|H(?>EAD)?|ITLE|R|T)|U(?>L|NKNOWN)?|VAR|WBR|XMP))|RAP_(?>BRKPT|TRACE))|UNKNOWN_TYPE|W(?>NOHANG|SDL_CACHE_(?>BOTH|DISK|MEMORY|NONE)|UNTRACED)|X(?>509_PURPOSE_(?>ANY|CRL_SIGN|NS_SSL_SERVER|S(?>MIME_(?>ENCRYPT|SIGN)|SL_(?>CLIENT|SERVER)))|DEBUG_(?>CC_(?>DEAD_CODE|UNUSED)|TRACE_(?>APPEND|COMPUTERIZED|HTML))|ML_(?>ATTRIBUTE_(?>CDATA|DECL_NODE|EN(?>TITY|UMERATION)|ID(?>REF(?>S)?)?|N(?>MTOKEN(?>S)?|O(?>DE|TATION)))|C(?>DATA_SECTION_NODE|OMMENT_NODE)|D(?>OCUMENT_(?>FRAG_NODE|NODE|TYPE_NODE)|TD_NODE)|E(?>LEMENT_(?>DECL_NODE|NODE)|NTITY_(?>DECL_NODE|NODE|REF_NODE)|RROR_(?>A(?>SYNC_ENTITY|TTRIBUTE_EXTERNAL_ENTITY_REF)|B(?>AD_CHAR_REF|INARY_ENTITY_REF)|DUPLICATE_ATTRIBUTE|EXTERNAL_ENTITY_HANDLING|IN(?>CORRECT_ENCODING|VALID_TOKEN)|JUNK_AFTER_DOC_ELEMENT|MISPLACED_XML_PI|NO(?>NE|_(?>ELEMENTS|MEMORY))|PAR(?>AM_ENTITY_REF|TIAL_CHAR)|RECURSIVE_ENTITY_REF|SYNTAX|TAG_MISMATCH|UN(?>CLOSED_(?>CDATA_SECTION|TOKEN)|DEFINED_ENTITY|KNOWN_ENCODING)))|HTML_DOCUMENT_NODE|LOCAL_NAMESPACE|N(?>AMESPACE_DECL_NODE|OTATION_NODE)|OPTION_(?>CASE_FOLDING|SKIP_(?>TAGSTART|WHITE)|TARGET_ENCODING)|PI_NODE|SAX_IMPL|TEXT_NODE)|SD_(?>1999_(?>NAMESPACE|TIMEINSTANT)|ANY(?>TYPE|URI|XML)|B(?>ASE64BINARY|OOLEAN|YTE)|D(?>ATE(?>TIME)?|ECIMAL|OUBLE|URATION)|ENTIT(?>IES|Y)|FLOAT|G(?>DAY|MONTH(?>DAY)?|YEAR(?>MONTH)?)|HEXBINARY|I(?>D(?>REF(?>S)?)?|NT(?>EGER)?)|L(?>ANGUAGE|ONG)|N(?>AME(?>SPACE)?|CNAME|EGATIVEINTEGER|MTOKEN(?>S)?|O(?>N(?>NEGATIVEINTEGER|POSITIVEINTEGER)|RMALIZEDSTRING|TATION))|POSITIVEINTEGER|QNAME|S(?>HORT|TRING)|T(?>IME|OKEN)|UNSIGNED(?>BYTE|INT|LONG|SHORT)))|ZLIB_ENCODING_(?>DEFLATE|GZIP|RAW))\b
+          scope: support.constant.ext.php
+          captures:
+            1: punctuation.separator.inheritance.php
+        - match: (\\)?\bT_(?>A(?>BSTRACT|ND_EQUAL|RRAY(?>_CAST)?|S)|B(?>AD_CHARACTER|OOL(?>EAN_(?>AND|OR)|_CAST)|REAK)|C(?>A(?>LLABLE|SE|TCH)|HARACTER|L(?>ASS(?>_C)?|O(?>NE|SE_TAG))|O(?>MMENT|N(?>CAT_EQUAL|ST(?>ANT_ENCAPSED_STRING)?|TINUE))|URLY_OPEN)|D(?>E(?>C(?>LARE)?|FAULT)|I(?>R|V_EQUAL)|NUMBER|O(?>C_COMMENT|LLAR_OPEN_CURLY_BRACES|UBLE_(?>ARROW|C(?>AST|OLON)))?)|E(?>CHO|LSE(?>IF)?|MPTY|N(?>CAPSED_AND_WHITESPACE|D(?>DECLARE|FOR(?>EACH)?|IF|SWITCH|WHILE|_HEREDOC))|VAL|X(?>IT|TENDS))|F(?>I(?>LE|NAL(?>LY)?)|OR(?>EACH)?|UNC(?>TION|_C))|G(?>LOBAL|OTO)|HALT_COMPILER|I(?>F|MPLEMENTS|N(?>C(?>LUDE(?>_ONCE)?)?|LINE_HTML|ST(?>ANCEOF|EADOF)|T(?>ERFACE|_CAST))|S(?>SET|_(?>EQUAL|GREATER_OR_EQUAL|IDENTICAL|NOT_(?>EQUAL|IDENTICAL)|SMALLER_OR_EQUAL)))|L(?>I(?>NE|ST)|NUMBER|OGICAL_(?>AND|OR|XOR))|M(?>ETHOD_C|INUS_EQUAL|OD_EQUAL|UL_EQUAL)|N(?>AMESPACE|EW|S_(?>C|SEPARATOR)|UM_STRING)|O(?>BJECT_(?>CAST|OPERATOR)|PEN_TAG(?>_WITH_ECHO)?|R_EQUAL)|P(?>AAMAYIM_NEKUDOTAYIM|LUS_EQUAL|R(?>I(?>NT|VATE)|OTECTED)|UBLIC)|RE(?>QUIRE(?>_ONCE)?|TURN)|S(?>L(?>_EQUAL)?|R(?>_EQUAL)?|T(?>A(?>RT_HEREDOC|TIC)|RING(?>_(?>CAST|VARNAME))?)|WITCH)|T(?>HROW|R(?>AIT(?>_C)?|Y))|U(?>NSET(?>_CAST)?|SE)|VAR(?>IABLE)?|WHI(?>LE|TESPACE)|XOR_EQUAL|YIELD)\b
+          scope: support.constant.parser-token.php
+          captures:
+            1: punctuation.separator.inheritance.php
+        - match: '[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*'
+          comment: |
+            In PHP, any identifier which is not a variable is taken to be a constant.
+                                    However, if there is no constant defined with the given name then a notice
+                                    is generated and the constant is assumed to have the value of its name.
+          scope: constant.other.php
+  function-arguments:
+    - include: comments
+    - match: |-
+        (?x)
+        \s*(array) # Typehint
+        \s*(&)?           # Reference
+        \s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
+        \s*(=)  # A default value
+        \s*(?:(array(?=[^\[])|(?=\[))\s*(\(|\[))
+      captures:
+        1: storage.type.php
+        2: storage.modifier.reference.php
+        3: variable.other.php
+        4: punctuation.definition.variable.php
+        5: keyword.operator.assignment.php
+        6: support.function.construct.php
+        7: punctuation.definition.array.begin.php
+      push:
+        - meta_scope: meta.function.argument.array.php
+        - meta_content_scope: meta.array.php
+        - match: '\)|\]'
+          captures:
+            0: punctuation.definition.array.end.php
+          pop: true
+        - include: comments
+        - include: strings
+        - include: numbers
+    - match: |-
+        (?xi)
+        \s*(array) # Typehint
+        \s*(&)?           # Reference
+        \s*((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
+        (?:
+          \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
+        )?
+        \s*(?=,|\)|/[/*]|\#|$) # A closing parentheses (end of argument list) or a comma or a comment
+      scope: meta.function.argument.array.php
+      captures:
+        1: storage.type.php
+        2: storage.modifier.reference.php
+        3: variable.other.php
+        4: punctuation.definition.variable.php
+        5: keyword.operator.assignment.php
+        6: constant.language.php
+        7: invalid.illegal.non-null-typehinted.php
+    - match: '(?i)(?=[a-z_0-9\\]*[a-z_][a-z_0-9]*\s*&?\s*\$)'
+      push:
+        - meta_scope: meta.function.argument.typehinted.php
+        - match: '(?=,|\)|/[/*]|\#|$)'
+          pop: true
+        - include: class-name
+        - match: |-
+            (?xi)
+                                  \s*([a-z_][a-z_0-9]*)? # Typehinted class name
+                                  \s*(&)?           # Reference
+                                  \s*((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
+                                  (?:
+                                    \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
+                                  )?
+                                  \s*(?=,|\)|/[/*]|\#|$) # A closing parentheses (end of argument list) or a comma
+
+          captures:
+            1: support.class.php
+            2: storage.modifier.reference.php
+            3: variable.other.php
+            4: punctuation.definition.variable.php
+            5: keyword.operator.assignment.php
+            6: constant.language.php
+            7: invalid.illegal.non-null-typehinted.php
+    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#)'
+      scope: meta.function.argument.no-default.php
+      captures:
+        1: storage.modifier.reference.php
+        2: variable.other.php
+        3: punctuation.definition.variable.php
+    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(?:\s*(=)\s*)\s*'
+      captures:
+        1: storage.modifier.reference.php
+        2: variable.other.php
+        3: punctuation.definition.variable.php
+        4: keyword.operator.assignment.php
+      push:
+        - meta_scope: meta.function.argument.default.php
+        - match: '(?=,|\)|/[/*]|\#)'
+          pop: true
+        - include: parameter-default-types
+  function-call:
+    - match: '(?i)(?=\\?[a-z_0-9\\]+\\[a-z_][a-z0-9_]*\s*\()'
+      comment: Functions in a user-defined namespace (overrides any built-ins)
+      push:
+        - match: (?=\s*\()
+          pop: true
+        - include: user-function-call
+    - match: (?i)\b(print|echo)\b
+      scope: support.function.construct.php
+    - match: '(?i)(\\)?(?=\b[a-z_][a-z_0-9]*\s*\()'
+      comment: Root namespace function calls (built-in or user)
+      captures:
+        1: punctuation.separator.inheritance.php
+      push:
+        - match: (?=\s*\()
+          pop: true
+        - match: (?i)\b(isset|unset|e(val|mpty)|list)(?=\s*\()
+          scope: support.function.construct.php
+        - include: support
+        - include: user-function-call
+  heredoc:
+    - match: '(?=<<<\s*(''?)([a-zA-Z_]+[a-zA-Z0-9_]*)(\1)\s*$)'
+      push:
+        - meta_scope: string.unquoted.heredoc.php
+        - match: ^((HTML|XML|SQL|JAVASCRIPT|JSON|CSS)|\2)\b
+          captures:
+            1: keyword.operator.heredoc.php
+            2: punctuation.section.embedded.end.php
+          pop: true
+        - match: (<<<)\s*(HTML)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.html
+            - meta_content_scope: text.html
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:text.html.basic
+            - include: interpolation
+        - match: (<<<)\s*(XML)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.xml
+            - meta_content_scope: text.xml
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:text.xml
+            - include: interpolation
+        - match: (<<<)\s*(SQL)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.sql
+            - meta_content_scope: source.sql
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:source.sql
+            - include: interpolation
+        - match: (<<<)\s*(JAVASCRIPT)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.js
+            - meta_content_scope: source.js
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:source.js
+            - include: interpolation
+        - match: (<<<)\s*(JSON)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.json
+            - meta_content_scope: source.json
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:source.json
+            - include: interpolation
+        - match: (<<<)\s*(CSS)\s*$\n?
+          captures:
+            0: punctuation.section.embedded.begin.php
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: meta.embedded.css
+            - meta_content_scope: source.css
+            - match: (?=^\2\b)
+              pop: true
+            - include: scope:source.css
+            - include: interpolation
+        - match: '(<<<)\s*([a-zA-Z_]+[a-zA-Z0-9_]*)'
+          captures:
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - match: (?=^\2\b)
+              pop: true
+            - include: interpolation
+        - match: '(<<<)\s*''([a-zA-Z_]+[a-zA-Z0-9_]*)'''
+          captures:
+            1: punctuation.definition.string.php
+            2: keyword.operator.heredoc.php
+          push:
+            - meta_scope: string.unquoted.nowdoc.php
+            - match: (?=^\2\b)
+              pop: true
+  instantiation:
+    - match: (?i)(new)\s+
+      captures:
+        1: keyword.other.new.php
+      push:
+        - match: '(?i)(?=[^$a-z0-9_\\])'
+          pop: true
+        - match: "(parent|static|self)(?=[^a-z0-9_])"
+          scope: storage.type.php
+        - include: class-name
+        - include: variable-name
+  interpolation:
+    - match: '\\[0-7]{1,3}'
+      scope: constant.numeric.octal.php
+    - match: '\\x[0-9A-Fa-f]{1,2}'
+      scope: constant.numeric.hex.php
+    - match: '\\[nrt\\\$\"]'
+      scope: constant.character.escape.php
+    - match: '(\{)(?=\$.*?\})'
+      captures:
+        1: punctuation.definition.variable.php
+      push:
+        - match: '(\})'
+          captures:
+            1: punctuation.definition.variable.php
+          pop: true
+        - include: language
+    - include: variable-name
+  invoke-call:
+    - match: '(?i)(\$+)([a-z_][a-z_0-9]*)(?=\s*\()'
+      scope: meta.function-call.invoke.php
+      captures:
+        1: punctuation.definition.variable.php
+        2: variable.other.php
+  language:
+    - include: comments
+    - match: '(?i)^\s*(interface)\s+([a-z0-9_]+)\s*(extends)?\s*'
+      captures:
+        1: storage.type.interface.php
+        2: entity.name.type.interface.php
+        3: storage.modifier.extends.php
+      push:
+        - meta_scope: meta.interface.php
+        - match: '([a-zA-Z0-9_]+)?\s*(?:(?=\{)|$)'
+          captures:
+            1: entity.other.inherited-class.php
+          pop: true
+        - include: namespace
+    - match: '(?i)^\s*(namespace)\b\s+(?=([a-z0-9_\\]+\s*($|[;{]|(\/[\/*])))|$)'
+      captures:
+        1: keyword.other.namespace.php
+      push:
+        - meta_scope: meta.namespace.php
+        - meta_content_scope: entity.name.type.namespace.php
+        - match: '(?i)(?=\s*$|[^a-z0-9_\\])'
+          pop: true
+        - match: \\
+          scope: punctuation.separator.inheritance.php
+    - match: (?i)\s*\b(use)\s+
+      captures:
+        1: keyword.other.use.php
+      push:
+        - meta_scope: meta.use.php
+        - match: (?=;|(?:^\s*$))
+          pop: true
+        - include: comments
+        - match: '(?i)\s*(?=[a-z_0-9\\])'
+          push:
+            - match: |-
+                (?xi)(?:
+                    (?:\s*(as)\b\s*([a-z_0-9]*)\s*(?=,|;|$))
+                    |(?=,|;|$)
+                )
+              captures:
+                1: keyword.other.use-as.php
+                2: support.other.namespace.use-as.php
+              pop: true
+            - include: class-builtin
+            - match: '(?i)\s*(?=[\\a-z_0-9])'
+              push:
+                - meta_scope: support.other.namespace.use.php
+                - match: '$|(?=[\s,;])'
+                  pop: true
+                - match: \\
+                  scope: punctuation.separator.inheritance.php
+        - match: \s*,\s*
+    - match: '(?i)^\s*(trait)\s+([a-zA-Z0-9_]+)'
+      captures:
+        1: storage.type.trait.php
+        2: entity.name.type.trait.php
+      push:
+        - meta_scope: meta.trait.php
+        - match: '(?=\{)'
+          pop: true
+    - match: '(?i)^\s*(abstract|final)?\s*(class)\s+([a-z0-9_]+)\s*'
+      captures:
+        1: storage.modifier.abstract.php
+        2: storage.type.class.php
+        3: entity.name.type.class.php
+      push:
+        - meta_scope: meta.class.php
+        - match: "(?=[;{])"
+          pop: true
+        - include: comments
+        - match: (?i)(extends)\s+
+          captures:
+            1: storage.modifier.extends.php
+          push:
+            - meta_content_scope: meta.other.inherited-class.php
+            - match: '(?i)(?=[^a-z_0-9\\])'
+              pop: true
+            - match: '(?i)(?=\\?[a-z_0-9]+\\)'
+              push:
+                - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+                  captures:
+                    1: entity.other.inherited-class.php
+                  pop: true
+                - include: namespace
+            - include: class-builtin
+            - include: namespace
+            - match: "(?i)[a-z_][a-z_0-9]*"
+              scope: entity.other.inherited-class.php
+        - match: (?i)(implements)\s+
+          captures:
+            1: storage.modifier.implements.php
+          push:
+            - match: "(?i)(?=[;{])"
+              pop: true
+            - include: comments
+            - match: '(?i)(?=[a-z0-9_\\]+)'
+              push:
+                - meta_content_scope: meta.other.inherited-class.php
+                - match: '(?i)(?:\s*(?:,|(?=[^a-z0-9_\\\s]))\s*)'
+                  pop: true
+                - match: '(?i)(?=\\?[a-z_0-9]+\\)'
+                  push:
+                    - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+                      captures:
+                        1: entity.other.inherited-class.php
+                      pop: true
+                    - include: namespace
+                - include: class-builtin
+                - include: namespace
+                - match: "(?i)[a-z_][a-z_0-9]*"
+                  scope: entity.other.inherited-class.php
+    - match: \s*\b(break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield)\b
+      scope: keyword.control.php
+    - match: (?i)\b((?:require|include)(?:_once)?)\b\s*
+      captures:
+        1: keyword.control.import.include.php
+      push:
+        - meta_scope: meta.include.php
+        - match: (?=\s|;|$)
+          pop: true
+        - include: language
+    - match: \b(catch)\b\s*\(\s*
+      captures:
+        1: keyword.control.exception.catch.php
+      push:
+        - meta_scope: meta.catch.php
+        - match: '([A-Za-z_][A-Za-z_0-9]*)\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*\)'
+          captures:
+            1: support.class.exception.php
+            2: variable.other.php
+            3: punctuation.definition.variable.php
+          pop: true
+        - include: namespace
+    - match: \b(catch|try|throw|exception|finally)\b
+      scope: keyword.control.exception.php
+    - match: (?i)\b(function)\s*(&\s*)?(?=\()
+      captures:
+        1: storage.type.function.php
+        2: storage.modifier.reference.php
+      push:
+        - meta_scope: meta.function.closure.php
+        - match: '\{'
+          pop: true
+        - match: (\()
+          captures:
+            1: punctuation.definition.parameters.begin.php
+          push:
+            - meta_content_scope: meta.function.arguments.php
+            - match: (\))
+              captures:
+                1: punctuation.definition.parameters.end.php
+              pop: true
+            - include: function-arguments
+        - match: (?i)(use)\s*(\()
+          captures:
+            1: keyword.other.function.use.php
+            2: punctuation.definition.parameters.begin.php
+          push:
+            - match: (\))
+              captures:
+                1: punctuation.definition.parameters.end.php
+              pop: true
+            - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\))'
+              scope: meta.function.closure.use.php
+              captures:
+                1: storage.modifier.reference.php
+                2: variable.other.php
+                3: punctuation.definition.variable.php
+    - match: |-
+        (?x)\s*
+                      ((?:(?:final|abstract|public|private|protected|static)\s+)*)
+                        (function)
+                        (?:\s+|(\s*&\s*))
+                        (?:
+                            (__(?:call|construct|debugInfo|destruct|get|set|isset|unset|toString|clone|set_state|sleep|wakeup|autoload|invoke|callStatic))
+                            |([a-zA-Z0-9_]+)
+                        )
+                        \s*
+                        (\()
+      captures:
+        1: storage.modifier.php
+        2: storage.type.function.php
+        3: storage.modifier.reference.php
+        4: support.function.magic.php
+        5: entity.name.function.php
+        6: punctuation.definition.parameters.begin.php
+      push:
+        - meta_scope: meta.function.php
+        - meta_content_scope: meta.function.arguments.php
+        - match: (\))
+          captures:
+            1: punctuation.definition.parameters.end.php
+          pop: true
+        - include: function-arguments
+    - include: invoke-call
+    - match: |-
+        (?xi)\s*(?=
+                        [a-z_0-9$\\]+(::)
+                                (?:
+                            ([a-z_][a-z_0-9]*)\s*\(
+                            |
+                            ((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)
+                            |
+                            ([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)
+                        )?
+                    )
+      push:
+        - match: |-
+            (?x)(::)
+                                    (?:
+                                ([A-Za-z_][A-Za-z_0-9]*)\s*\(
+                                |
+                                ((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+                                |
+                                ([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+                            )?
+          captures:
+            1: keyword.operator.class.php
+            2: meta.function-call.static.php
+            3: variable.other.class.php
+            4: punctuation.definition.variable.php
+            5: constant.other.class.php
+          pop: true
+        - match: (self|static|parent)\b
+          scope: storage.type.php
+        - include: class-name
+        - include: variable-name
+    - include: variables
+    - include: strings
+    - match: (array)(\()(\))
+      scope: meta.array.empty.php
+      captures:
+        1: support.function.construct.php
+        2: punctuation.definition.array.begin.php
+        3: punctuation.definition.array.end.php
+    - match: (array)(\()
+      captures:
+        1: support.function.construct.php
+        2: punctuation.definition.array.begin.php
+      push:
+        - meta_scope: meta.array.php
+        - match: \)
+          captures:
+            0: punctuation.definition.array.end.php
+          pop: true
+        - include: language
+    - match: (?i)\s*\(\s*(array|real|double|float|int(eger)?|bool(ean)?|string|object|binary|unset)\s*\)
+      captures:
+        1: storage.type.php
+    - match: (?i)\b(array|real|double|float|int(eger)?|bool(ean)?|string|class|clone|var|function|interface|parent|self|object)\b
+      scope: storage.type.php
+    - match: (?i)\b(global|abstract|const|extends|implements|final|p(r(ivate|otected)|ublic)|static)\b
+      scope: storage.modifier.php
+    - include: object
+    - match: ;
+      scope: punctuation.terminator.expression.php
+    - include: heredoc
+    - match: \.=?
+      scope: keyword.operator.string.php
+    - match: "=>"
+      scope: keyword.operator.key.php
+    - match: '(?:(\=)(&))|(&(?=[$A-Za-z_]))'
+      captures:
+        1: keyword.operator.assignment.php
+        2: storage.modifier.reference.php
+        3: storage.modifier.reference.php
+    - match: (@)
+      scope: keyword.operator.error-control.php
+    - match: (\-\-|\+\+)
+      scope: keyword.operator.increment-decrement.php
+    - match: (\-|\+|\*|/|%)
+      scope: keyword.operator.arithmetic.php
+    - match: (?i)(!|&&|\|\|)|\b(and|or|xor|as)\b
+      scope: keyword.operator.logical.php
+    - include: function-call
+    - match: <<|>>|~|\^|&|\|
+      scope: keyword.operator.bitwise.php
+    - match: (===|==|!==|!=|<=|>=|<>|<|>)
+      scope: keyword.operator.comparison.php
+    - match: "="
+      scope: keyword.operator.assignment.php
+    - match: '(?i)\b(instanceof)\b\s+(?=[\\$a-z_])'
+      captures:
+        1: keyword.operator.type.php
+      push:
+        - match: '(?=[^\\$A-Za-z_0-9])'
+          pop: true
+        - include: class-name
+        - include: variable-name
+    - include: numbers
+    - include: instantiation
+    - match: '(?i)(goto)\s+([a-z_][a-z_0-9]*)'
+      captures:
+        1: keyword.control.goto.php
+        2: support.other.php
+    - match: '(?i)^\s*([a-z_][a-z_0-9]*)\s*:'
+      captures:
+        1: entity.name.goto-label.php
+    - include: string-backtick
+    - match: '(\[)(\])'
+      scope: meta.array.empty.php
+      captures:
+        1: punctuation.definition.array.begin.php
+        2: punctuation.definition.array.end.php
+    - match: '\['
+      captures:
+        0: punctuation.definition.array.begin.php
+      push:
+        - meta_scope: meta.array.php
+        - match: '\]'
+          captures:
+            0: punctuation.definition.array.end.php
+          pop: true
+        - include: language
+    - include: constants
+  namespace:
+    - match: '(?i)(?:(namespace)|[a-z0-9_]+)?(\\)(?=.*?[^a-z_0-9\\])'
+      captures:
+        1: variable.language.namespace.php
+        2: punctuation.separator.inheritance.php
+      push:
+        - meta_scope: support.other.namespace.php
+        - match: '(?i)(?=[a-z0-9_]*[^a-z0-9_\\])'
+          pop: true
+        - match: (?i)(\\)
+          captures:
+            1: punctuation.separator.inheritance.php
+  numbers:
+    - match: '\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)\b'
+      scope: constant.numeric.php
+  object:
+    - match: '(->)(\$?\{)'
+      captures:
+        1: keyword.operator.class.php
+        2: punctuation.definition.variable.php
+      push:
+        - match: '(\})'
+          captures:
+            1: punctuation.definition.variable.php
+          pop: true
+        - include: language
+    - match: |-
+        (?x)(->)
+        (?:
+            ([A-Za-z_][A-Za-z_0-9]*)\s*\(
+            |
+            ((\$+)?[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+        )?
+      captures:
+        1: keyword.operator.class.php
+        2: meta.function-call.object.php
+        3: variable.other.property.php
+        4: punctuation.definition.variable.php
+  parameter-default-types:
+    - include: strings
+    - include: numbers
+    - include: string-backtick
+    - include: variables
+    - match: "=>"
+      scope: keyword.operator.key.php
+    - match: "="
+      scope: keyword.operator.assignment.php
+    - match: '&(?=\s*\$)'
+      scope: storage.modifier.reference.php
+    - match: '(array(?=[^\[])|(?=\[))\s*(\(|\[)'
+      captures:
+        1: support.function.construct.php
+        2: punctuation.definition.array.begin.php
+      push:
+        - meta_scope: meta.array.php
+        - match: '\)|\]'
+          captures:
+            0: punctuation.definition.array.end.php
+          pop: true
+        - include: parameter-default-types
+    - include: instantiation
+    - match: |-
+        (?xi)\s*(?=
+                        [a-z_0-9\\]+(::)
+                        ([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)?
+                    )
+      push:
+        - match: '(?i)(::)([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)?'
+          captures:
+            1: keyword.operator.class.php
+            2: constant.other.class.php
+          pop: true
+        - include: class-name
+    - include: constants
+  php_doc:
+    - match: ^(?!\s*\*).*$\n?
+      comment: PHPDocumentor only recognises lines with an asterisk as the first non-whitespaces character
+      scope: invalid.illegal.missing-asterisk.phpdoc.php
+    - match: ^\s*\*\s*(@access)\s+((public|private|protected)|(.+))\s*$
+      captures:
+        1: keyword.other.phpdoc.php
+        3: storage.modifier.php
+        4: invalid.illegal.wrong-access-type.phpdoc.php
+    - match: "((https?|s?ftp|ftps|file|smb|afp|nfs|(x-)?man|gopher|txmt)://|mailto:)[-:@a-zA-Z0-9_.~%+/?=&#]+(?<![.?:])"
+      scope: markup.underline.link.php
+    - match: (@xlink)\s+(.+)\s*$
+      captures:
+        1: keyword.other.phpdoc.php
+        2: markup.underline.link.php
+    - match: \@\b(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b
+      scope: keyword.other.phpdoc.php
+    - match: '\{(@(link)).+?\}'
+      scope: meta.tag.inline.phpdoc.php
+      captures:
+        1: keyword.other.phpdoc.php
+    - match: '(?i)\@[a-z0-9_-]+'
+      scope: keyword.other.phpdoc.php
+  regex-double-quoted:
+    - match: '(?x)"/ (?= (\\.|[^"/])++/[imsxeADSUXu]*" )'
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.regexp.double-quoted.php
+        - match: '(/)([imsxeADSUXu]*)(")'
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: '(\\){1,2}[.$^\[\]{}]'
+          comment: Escaped from the regexp – there can also be 2 backslashes (since 1 will escape the first)
+          scope: constant.character.escape.regex.php
+        - include: interpolation
+        - match: '(\{)\d+(,\d+)?(\})'
+          scope: string.regexp.arbitrary-repitition.php
+          captures:
+            1: punctuation.definition.arbitrary-repitition.php
+            3: punctuation.definition.arbitrary-repitition.php
+        - match: '\[(?:\^?\])?'
+          captures:
+            0: punctuation.definition.character-class.php
+          push:
+            - meta_scope: string.regexp.character-class.php
+            - match: '\]'
+              pop: true
+            - include: interpolation
+        - match: "[$^+*]"
+          scope: keyword.operator.regexp.php
+  regex-single-quoted:
+    - match: '(?x)''/ (?= (\\.|[^''/])++/[imsxeADSUXu]*'' )'
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.regexp.single-quoted.php
+        - match: "(/)([imsxeADSUXu]*)(')"
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: '(\{)\d+(,\d+)?(\})'
+          scope: string.regexp.arbitrary-repitition.php
+          captures:
+            1: punctuation.definition.arbitrary-repitition.php
+            3: punctuation.definition.arbitrary-repitition.php
+        - match: '(\\){1,2}[.$^\[\]{}]'
+          comment: Escaped from the regexp – there can also be 2 backslashes (since 1 will escape the first)
+          scope: constant.character.escape.regex.php
+        - match: '\\{1,2}[\\'']'
+          comment: Escaped from the PHP string – there can also be 2 backslashes (since 1 will escape the first)
+          scope: constant.character.escape.php
+        - match: '\[(?:\^?\])?'
+          captures:
+            0: punctuation.definition.character-class.php
+          push:
+            - meta_scope: string.regexp.character-class.php
+            - match: '\]'
+              pop: true
+            - match: '\\[\\''\[\]]'
+              scope: constant.character.escape.php
+        - match: "[$^+*]"
+          scope: keyword.operator.regexp.php
+  sql-string-double-quoted:
+    - match: '"\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b)'
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.quoted.double.sql.php
+        - meta_content_scope: source.sql.embedded.php
+        - match: '"'
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: '#(\\"|[^"])*(?="|$\n?)'
+          scope: comment.line.number-sign.sql
+        - match: '--(\\"|[^"])*(?="|$\n?)'
+          scope: comment.line.double-dash.sql
+        - match: '\\[\\"`'']'
+          scope: constant.character.escape.php
+        - match: '''(?=((\\'')|[^''"])*("|$))'
+          comment: |
+            Unclosed strings must be captured to avoid them eating the remainder of the PHP script
+                                Sample case: $sql = "SELECT * FROM bar WHERE foo = '" . $variable . "'"
+          scope: string.quoted.single.unclosed.sql
+        - match: '`(?=((\\`)|[^`"])*("|$))'
+          comment: |
+            Unclosed strings must be captured to avoid them eating the remainder of the PHP script
+                                Sample case: $sql = "SELECT * FROM bar WHERE foo = '" . $variable . "'"
+          scope: string.quoted.other.backtick.unclosed.sql
+        - match: "'"
+          push:
+            - meta_scope: string.quoted.single.sql
+            - match: "'"
+              pop: true
+            - include: interpolation
+        - match: "`"
+          push:
+            - meta_scope: string.quoted.other.backtick.sql
+            - match: "`"
+              pop: true
+            - include: interpolation
+        - include: interpolation
+        - include: scope:source.sql
+  sql-string-single-quoted:
+    - match: '''\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b)'
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.quoted.single.sql.php
+        - meta_content_scope: source.sql.embedded.php
+        - match: "'"
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: '#(\\''|[^''])*(?=''|$\n?)'
+          scope: comment.line.number-sign.sql
+        - match: '--(\\''|[^''])*(?=''|$\n?)'
+          scope: comment.line.double-dash.sql
+        - match: '\\[\\''`"]'
+          scope: constant.character.escape.php
+        - match: '`(?=((\\`)|[^`''])*(''|$))'
+          comment: |
+            Unclosed strings must be captured to avoid them eating the remainder of the PHP script
+                                Sample case: $sql = "SELECT * FROM bar WHERE foo = '" . $variable . "'"
+          scope: string.quoted.other.backtick.unclosed.sql
+        - match: '"(?=((\\")|[^"''])*(''|$))'
+          comment: |
+            Unclosed strings must be captured to avoid them eating the remainder of the PHP script
+                                Sample case: $sql = "SELECT * FROM bar WHERE foo = '" . $variable . "'"
+          scope: string.quoted.double.unclosed.sql
+        - include: scope:source.sql
+  string-backtick:
+    - match: "`"
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.interpolated.php
+        - match: "`"
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.php
+        - include: interpolation
+  string-double-quoted:
+    - match: '"'
+      comment: This contentName is just to allow the usage of “select scope” to select the string contents first, then the string with quotes
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.quoted.double.php
+        - meta_content_scope: meta.string-contents.quoted.double.php
+        - match: '"'
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - include: interpolation
+  string-single-quoted:
+    - match: "'"
+      captures:
+        0: punctuation.definition.string.begin.php
+      push:
+        - meta_scope: string.quoted.single.php
+        - meta_content_scope: meta.string-contents.quoted.single.php
+        - match: "'"
+          captures:
+            0: punctuation.definition.string.end.php
+          pop: true
+        - match: '\\[\\'']'
+          scope: constant.character.escape.php
+  strings:
+    - include: regex-double-quoted
+    - include: sql-string-double-quoted
+    - include: string-double-quoted
+    - include: regex-single-quoted
+    - include: sql-string-single-quoted
+    - include: string-single-quoted
+  support:
+    - match: (?i)\bapc_(s(tore|ma_info)|c(ompile_file|lear_cache|a(s|che_info))|inc|de(c|fine_constants|lete(_file)?)|exists|fetch|load_constants|add|bin_(dump(file)?|load(file)?))\b
+      scope: support.function.apc.php
+    - match: (?i)\b(s(huffle|izeof|ort)|n(ext|at(sort|casesort))|c(o(unt|mpact)|urrent)|in_array|u(sort|ksort|asort)|p(os|rev)|e(nd|ach|xtract)|k(sort|ey|rsort)|list|a(sort|r(sort|ray(_(s(hift|um|plice|earch|lice)|c(h(unk|ange_key_case)|o(unt_values|mbine))|intersect(_(u(key|assoc)|key|assoc))?|diff(_(u(key|assoc)|key|assoc))?|u(n(shift|ique)|intersect(_(uassoc|assoc))?|diff(_(uassoc|assoc))?)|p(op|ush|ad|roduct)|values|key(s|_exists)|f(il(ter|l(_keys)?)|lip)|walk(_recursive)?|r(e(duce|place(_recursive)?|verse)|and)|m(ultisort|erge(_recursive)?|ap)))?))|r(sort|eset|ange))\b
+      scope: support.function.array.php
+    - match: (?i)\b(s(how_source|ys_getloadavg|leep)|highlight_(string|file)|con(stant|nection_(status|timeout|aborted))|time_(sleep_until|nanosleep)|ignore_user_abort|d(ie|efine(d)?)|u(sleep|n(iqid|pack))|__halt_compiler|p(hp_(strip_whitespace|check_syntax)|ack)|e(val|xit)|get_browser)\b
+      scope: support.function.basic_functions.php
+    - match: (?i)\bbc(?>add|comp|div|m(?>od|ul)|pow(?>mod)?|s(?>cale|qrt|ub))\b
+      scope: support.function.bcmath.php
+    - match: (?i)\bbz(?>c(?>lose|ompress)|decompress|err(?>no|or|str)|flush|open|read|write)\b
+      scope: support.function.bz2.php
+    - match: (?i)\b(?>cal_(?>days_in_month|from_jd|info|to_jd)|easter_da(?>te|ys)|frenchtojd|gregoriantojd|j(?>d(?>dayofweek|monthname|to(?>french|gregorian|j(?>ewish|ulian)|unix))|ewishtojd|uliantojd)|unixtojd)\b
+      scope: support.function.calendar.php
+    - match: (?i)\b(c(lass_(exists|alias)|all_user_method(_array)?)|i(s_(subclass_of|a)|nterface_exists)|property_exists|get_(c(lass(_(vars|methods))?|alled_class)|object_vars|declared_(classes|interfaces)|parent_class)|method_exists)\b
+      scope: support.function.classobj.php
+    - match: (?i)\b(com_(set|create_guid|i(senum|nvoke)|pr(int_typeinfo|op(set|put|get))|event_sink|load(_typelib)?|addref|release|get(_active_object)?|message_pump)|variant_(s(ub|et(_type)?)|n(ot|eg)|c(a(st|t)|mp)|i(nt|div|mp)|or|d(iv|ate_(to_timestamp|from_timestamp))|pow|eqv|fix|a(nd|dd|bs)|round|get_type|xor|m(od|ul)))\b
+      scope: support.function.com.php
+    - match: (?i)\bctype_(?>al(?>num|pha)|cntrl|digit|graph|lower|p(?>rint|unct)|space|upper|xdigit)\b
+      scope: support.function.ctype.php
+    - match: (?i)\bcurl_(setopt(_array)?|c(opy_handle|lose)|init|e(rr(no|or)|xec)|version|getinfo|multi_(select|close|in(it|fo_read)|exec|add_handle|remove_handle|getcontent))\b
+      scope: support.function.curl.php
+    - match: (?i)\b(?>checkdate|date(?>_(?>add|create(?>_(?>from_format|immutable(?>_from_format)?))?|d(?>ate_set|efault_timezone_(?>get|set)|iff)|format|get_last_errors|i(?>nterval_(?>create_from_date_string|format)|sodate_set)|modify|offset_get|parse(?>_from_format)?|su(?>b|n(?>_info|rise|set))|time(?>_set|stamp_(?>get|set)|zone_(?>get|set))))?|g(?>etdate|m(?>date|mktime|strftime))|idate|localtime|mktime|str(?>ftime|totime)|time(?>zone_(?>abbreviations_list|identifiers_list|location_get|name_(?>from_abbr|get)|o(?>ffset_get|pen)|transitions_get|version_get))?)\b
+      scope: support.function.datetime.php
+    - match: (?i)\bdba_(?>close|delete|exists|f(?>etch|irstkey)|handlers|insert|key_split|list|nextkey|op(?>en|timize)|popen|replace|sync)\b
+      scope: support.function.dba.php
+    - match: (?i)\bdbx_(sort|c(o(nnect|mpare)|lose)|e(scape_string|rror)|query|fetch_row)\b
+      scope: support.function.dbx.php
+    - match: (?i)\b(scandir|c(h(dir|root)|losedir)|opendir|dir|re(winddir|addir)|getcwd)\b
+      scope: support.function.dir.php
+    - match: (?i)\b(domxml_(new_doc|open_(file|mem)|version|x(slt_(stylesheet(_(doc|file))?|version)|mltree))|xp(tr_(new_context|eval)|ath_(new_context|eval(_expression)?|register_ns(_auto)?)))\b
+      scope: support.function.domxml.php
+    - match: (?i)\bdotnet_load\b
+      scope: support.function.dotnet.php
+    - match: (?i)\benchant_(dict_(s(tore_replacement|uggest)|check|is_in_session|describe|quick_check|add_to_(session|personal)|get_error)|broker_(set_ordering|init|d(ict_exists|escribe)|free(_dict)?|list_dicts|request_(dict|pwl_dict)|get_error))\b
+      scope: support.function.enchant.php
+    - match: (?i)\b(?>ereg(?>_replace|i(?>_replace)?)?|s(?>plit(?>i)?|ql_regcase))\b
+      scope: support.function.ereg.php
+    - match: (?i)\b(set_e(rror_handler|xception_handler)|trigger_error|debug_(print_backtrace|backtrace)|user_error|error_(log|reporting|get_last)|restore_e(rror_handler|xception_handler))\b
+      scope: support.function.errorfunc.php
+    - match: (?i)\b(s(hell_exec|ystem)|p(assthru|roc_(nice|close|terminate|open|get_status))|e(scapeshell(cmd|arg)|xec))\b
+      scope: support.function.exec.php
+    - match: (?i)\b(?>exif_(?>imagetype|read_data|t(?>agname|humbnail))|read_exif_data)\b
+      scope: support.function.exif.php
+    - match: (?i)\b(s(ymlink|tat|et_file_buffer)|c(h(own|grp|mod)|opy|learstatcache)|t(ouch|empnam|mpfile)|is_(dir|uploaded_file|executable|file|writ(eable|able)|link|readable)|d(i(sk(_(total_space|free_space)|freespace)|rname)|elete)|u(nlink|mask)|p(close|open|a(thinfo|rse_ini_(string|file)))|f(s(canf|tat|eek)|nmatch|close|t(ell|runcate)|ile(size|ctime|type|inode|owner|_(put_contents|exists|get_contents)|perms|atime|group|mtime)?|open|p(ut(s|csv)|assthru)|eof|flush|write|lock|read|get(s(s)?|c(sv)?))|l(stat|ch(own|grp)|ink(info)?)|r(e(name|wind|a(d(file|link)|lpath(_cache_(size|get))?))|mdir)|glob|m(ove_uploaded_file|kdir)|basename)\b
+      scope: support.function.file.php
+    - match: (?i)\b(?>finfo_(?>buffer|close|file|open|set_flags)|mime_content_type)\b
+      scope: support.function.fileinfo.php
+    - match: (?i)\bfilter_(?>has_var|i(?>d|nput(?>_array)?)|list|var(?>_array)?)\b
+      scope: support.function.filter.php
+    - match: (?i)\b(c(all_user_func(_array)?|reate_function)|unregister_tick_function|f(orward_static_call(_array)?|unc(tion_exists|_(num_args|get_arg(s)?)))|register_(shutdown_function|tick_function)|get_defined_functions)\b
+      scope: support.function.funchand.php
+    - match: (?i)\b(?>_|bind(?>_textdomain_codeset|textdomain)|d(?>c(?>gettext|ngettext)|gettext|ngettext)|gettext|ngettext|textdomain)\b
+      scope: support.function.gettext.php
+    - match: (?i)\bgmp_(s(can(1|0)|trval|ign|ub|etbit|qrt(rem)?)|hamdist|ne(g|xtprime)|c(om|lrbit|mp)|testbit|in(tval|it|vert)|or|div(_(q(r)?|r)|exact)?|jacobi|p(o(pcount|w(m)?)|erfect_square|rob_prime)|fact|legendre|a(nd|dd|bs)|random|gcd(ext)?|xor|m(od|ul))\b
+      scope: support.function.gmp.php
+    - match: (?i)\b(?>hash(?>_(?>algos|copy|fi(?>le|nal)|hmac(?>_file)?|init|pbkdf2|update(?>_(?>file|stream))?))?|mhash(?>_(?>count|get_(?>block_size|hash_name)|keygen_s2k))?)\b
+      scope: support.function.hash.php
+    - match: (?i)\b(http_(s(upport|end_(st(atus|ream)|content_(type|disposition)|data|file|last_modified))|head|negotiate_(c(harset|ontent_type)|language)|c(hunked_decode|ache_(etag|last_modified))|throttle|inflate|d(eflate|ate)|p(ost_(data|fields)|ut_(stream|data|file)|ersistent_handles_(c(ount|lean)|ident)|arse_(headers|cookie|params|message))|re(direct|quest(_(method_(name|unregister|exists|register)|body_encode))?)|get(_request_(headers|body(_stream)?))?|match_(etag|request_header|modified)|build_(str|cookie|url))|ob_(inflatehandler|deflatehandler|etaghandler))\b
+      scope: support.function.http.php
+    - match: (?i)\biconv(?>_(?>get_encoding|mime_(?>decode(?>_headers)?|encode)|s(?>et_encoding|tr(?>len|pos|rpos)|ubstr)))?\b
+      scope: support.function.iconv.php
+    - match: (?i)\biis_(s(t(op_serv(ice|er)|art_serv(ice|er))|et_(s(cript_map|erver_rights)|dir_security|app_settings))|add_server|remove_server|get_(s(cript_map|erv(ice_state|er_(rights|by_(comment|path))))|dir_security))\b
+      scope: support.function.iisfunc.php
+    - match: (?i)\b(i(ptc(parse|embed)|mage(s(y|tring(up)?|et(style|t(hickness|ile)|pixel|brush)|avealpha|x)|c(har(up)?|o(nvolution|py(res(ized|ampled)|merge(gray)?)?|lor(s(total|et|forindex)|closest(hwb|alpha)?|transparent|deallocate|exact(alpha)?|a(t|llocate(alpha)?)|resolve(alpha)?|match))|reate(truecolor|from(string|jpeg|png|wbmp|g(if|d(2(part)?)?)|x(pm|bm)))?)|t(ypes|tf(text|bbox)|ruecolortopalette)|i(struecolor|nterlace)|2wbmp|d(estroy|ashedline)|jpeg|_type_to_(extension|mime_type)|p(s(slantfont|text|e(ncodefont|xtendfont)|freefont|loadfont|bbox)|ng|olygon|alettecopy)|ellipse|f(t(text|bbox)|il(ter|l(toborder|ed(polygon|ellipse|arc|rectangle))?)|ont(height|width))|wbmp|l(ine|oadfont|ayereffect)|a(ntialias|lphablending|rc)|r(otate|ectangle)|g(if|d(2)?|ammacorrect|rab(screen|window))|xbm))|jpeg2wbmp|png2wbmp|g(d_info|etimagesize))\b
+      scope: support.function.image.php
+    - match: (?i)\b(s(ys_get_temp_dir|et_(time_limit|include_path|magic_quotes_runtime))|ini_(set|alter|restore|get(_all)?)|zend_(thread_id|version|logo_guid)|dl|p(hp(credits|info|_(sapi_name|ini_(scanned_files|loaded_file)|uname|logo_guid)|version)|utenv)|extension_loaded|version_compare|assert(_options)?|restore_include_path|g(c_(collect_cycles|disable|enable(d)?)|et(opt|_(c(urrent_user|fg_var)|include(d_files|_path)|defined_constants|extension_funcs|loaded_extensions|required_files|magic_quotes_(runtime|gpc))|env|lastmod|rusage|my(inode|uid|pid|gid)))|m(emory_get_(usage|peak_usage)|a(in|gic_quotes_runtime)))\b
+      scope: support.function.info.php
+    - match: (?i)\bibase_(se(t_event_handler|rv(ice_(detach|attach)|er_info))|n(um_(params|fields)|ame_result)|c(o(nnect|mmit(_ret)?)|lose)|t(imefmt|rans)|d(elete_user|rop_db|b_info)|p(connect|aram_info|repare)|e(rr(code|msg)|xecute)|query|f(ield_info|etch_(object|assoc|row)|ree_(event_handler|query|result))|wait_event|a(dd_user|ffected_rows)|r(ollback(_ret)?|estore)|gen_id|m(odify_user|aintain_db)|b(lob_(c(lose|ancel|reate)|i(nfo|mport)|open|echo|add|get)|ackup))\b
+      scope: support.function.interbase.php
+    - match: (?i)\b(n(ormalizer_(normalize|is_normalized)|umfmt_(set_(symbol|text_attribute|pattern|attribute)|create|parse(_currency)?|format(_currency)?|get_(symbol|text_attribute|pattern|error_(code|message)|locale|attribute)))|collator_(s(ort(_with_sort_keys)?|et_(strength|attribute))|c(ompare|reate)|asort|get_(s(trength|ort_key)|error_(code|message)|locale|attribute))|transliterator_(create(_(inverse|from_rules))?|transliterate|list_ids|get_error_(code|message))|i(ntl_(is_failure|error_name|get_error_(code|message))|dn_to_(u(nicode|tf8)|ascii))|datefmt_(set_(calendar|timezone_id|pattern|lenient)|create|is_lenient|parse|format|localtime|get_(calendar|time(type|zone_id)|datetype|pattern|error_(code|message)|locale))|locale_(set_default|compose|parse|filter_matches|lookup|accept_from_http|get_(script|d(isplay_(script|name|variant|language|region)|efault)|primary_language|keywords|all_variants|region))|resourcebundle_(c(ount|reate)|locales|get(_error_(code|message))?)|grapheme_(s(tr(str|i(str|pos)|pos|len|r(ipos|pos))|ubstr)|extract)|msgfmt_(set_pattern|create|parse(_message)?|format(_message)?|get_(pattern|error_(code|message)|locale)))\b
+      scope: support.function.intl.php
+    - match: (?i)\bjson_(?>decode|encode|last_error(?>_msg)?)\b
+      scope: support.function.json.php
+    - match: (?i)\bldap_(s(tart_tls|ort|e(t_(option|rebind_proc)|arch)|asl_bind)|next_(entry|attribute|reference)|c(o(nnect|unt_entries|mpare)|lose)|t61_to_8859|d(n2ufn|elete)|8859_to_t61|unbind|parse_re(sult|ference)|e(rr(no|2str|or)|xplode_dn)|f(irst_(entry|attribute|reference)|ree_result)|list|add|re(name|ad)|get_(option|dn|entries|values(_len)?|attributes)|mod(ify|_(del|add|replace))|bind)\b
+      scope: support.function.ldap.php
+    - match: (?i)\blibxml_(?>clear_errors|disable_entity_loader|get_(?>errors|last_error)|set_(?>external_entity_loader|streams_context)|use_internal_errors)\b
+      scope: support.function.libxml.php
+    - match: (?i)\b(ezmlm_hash|mail)\b
+      scope: support.function.mail.php
+    - match: (?i)\b(s(in(h)?|qrt|rand)|h(ypot|exdec)|c(os(h)?|eil)|tan(h)?|is_(nan|infinite|finite)|octdec|de(c(hex|oct|bin)|g2rad)|p(i|ow)|exp(m1)?|f(loor|mod)|l(cg_value|og(1(p|0))?)|a(sin(h)?|cos(h)?|tan(h|2)?|bs)|r(ound|a(nd|d2deg))|getrandmax|m(t_(srand|rand|getrandmax)|in|ax)|b(indec|ase_convert))\b
+      scope: support.function.math.php
+    - match: (?i)\bmb(?>_(?>c(?>heck_encoding|onvert_(?>case|encoding|kana|variables))|de(?>code_(?>mimeheader|numericentity)|tect_(?>encoding|order))|e(?>ncod(?>e_(?>mimeheader|numericentity)|ing_aliases)|reg(?>_(?>match|replace(?>_callback)?|search(?>_(?>get(?>pos|regs)|init|pos|regs|setpos))?)|i(?>_replace)?)?)|get_info|http_(?>input|output)|internal_encoding|l(?>anguage|ist_encodings)|output_handler|p(?>arse_str|referred_mime_name)|regex_(?>encoding|set_options)|s(?>end_mail|plit|tr(?>cut|i(?>mwidth|pos|str)|len|pos|r(?>chr|i(?>chr|pos)|pos)|str|to(?>lower|upper)|width)|ubst(?>itute_character|r(?>_count)?)))|ereg(?>_(?>match|replace|search(?>_(?>get(?>pos|regs)|init|pos|regs|setpos))?)|i(?>_replace)?)?|regex_encoding|split)\b
+      scope: support.function.mbstring.php
+    - match: (?i)\bm(?>crypt_(?>c(?>bc|fb|reate_iv)|decrypt|e(?>cb|nc(?>_(?>get_(?>algorithms_name|block_size|iv_size|key_size|modes_name|supported_key_sizes)|is_block_(?>algorithm(?>_mode)?|mode)|self_test)|rypt))|ge(?>neric(?>_(?>deinit|end|init))?|t_(?>block_size|cipher_name|iv_size|key_size))|list_(?>algorithms|modes)|module_(?>close|get_(?>algo_(?>block_size|key_size)|supported_key_sizes)|is_block_(?>algorithm(?>_mode)?|mode)|open|self_test)|ofb)|decrypt_generic)\b
+      scope: support.function.mcrypt.php
+    - match: (?i)\bmemcache_debug\b
+      scope: support.function.memcache.php
+    - match: (?i)\bmhash(_(count|keygen_s2k|get_(hash_name|block_size)))?\b
+      scope: support.function.mhash.php
+    - match: (?i)\bbson_(decode|encode)\b
+      scope: support.function.mongo.php
+    - match: (?i)\bmysql_(s(tat|e(t_charset|lect_db))|num_(fields|rows)|c(onnect|l(ient_encoding|ose)|reate_db)|t(hread_id|ablename)|in(sert_id|fo)|d(ata_seek|rop_db|b_(name|query))|unbuffered_query|p(connect|ing)|e(scape_string|rr(no|or))|query|f(ield_(seek|name|t(ype|able)|flags|len)|etch_(object|field|lengths|a(ssoc|rray)|row)|ree_result)|list_(tables|dbs|processes|fields)|affected_rows|re(sult|al_escape_string)|get_(server_info|host_info|client_info|proto_info))\b
+      scope: support.function.mysql.php
+    - match: (?i)\bmysqli_(?>a(?>ffected_rows|utocommit)|begin_transaction|c(?>ha(?>nge_user|racter_set_name)|lose|o(?>mmit|nnect(?>_err(?>no|or))?))|d(?>ata_seek|ebug|ump_debug_info)|e(?>rr(?>no|or(?>_list)?)|scape_string|xecute)|f(?>etch_(?>a(?>ll|rray|ssoc)|field(?>_direct|s)?|lengths|object|row)|ield_(?>count|seek|tell)|ree_result)|get_(?>c(?>harset|lient_(?>info|stats|version)|onnection_stats)|host_info|proto_info|server_(?>info|version)|warnings)|in(?>fo|it|sert_id)|kill|m(?>ore_results|ulti_query)|n(?>ext_result|um_(?>fields|rows))|options|p(?>ing|oll|repare)|query|r(?>e(?>a(?>l_(?>connect|escape_string|query)|p_async_query)|fresh|lease_savepoint|port)|ollback)|s(?>avepoint|e(?>lect_db|t_(?>charset|opt))|qlstate|sl_set|t(?>at|mt_(?>a(?>ffected_rows|ttr_(?>get|set))|bind_(?>param|result)|close|data_seek|e(?>rr(?>no|or(?>_list)?)|xecute)|f(?>etch|ield_count|ree_result)|get_(?>result|warnings)|in(?>it|sert_id)|more_results|n(?>ext_result|um_rows)|p(?>aram_count|repare)|res(?>et|ult_metadata)|s(?>end_long_data|qlstate|tore_result))|ore_result))|thread_(?>id|safe)|use_result|warning_count)\b
+      scope: support.function.mysqli.php
+    - match: (?i)\bmysqlnd_ms_(set_user_pick_server|query_is_select|get_stats)\b
+      scope: support.function.mysqlnd-ms.php
+    - match: (?i)\bmysqlnd_qc_(set_user_handlers|c(hange_handler|lear_cache)|get_(handler|c(ore_stats|ache_info)|query_trace_log))\b
+      scope: support.function.mysqlnd-qc.php
+    - match: (?i)\b(s(yslog|ocket_(set_(timeout|blocking)|get_status)|et(cookie|rawcookie))|header(s_(sent|list)|_remove)?|c(heckdnsrr|loselog)|i(net_(ntop|pton)|p2long)|openlog|d(ns_(check_record|get_(record|mx))|efine_syslog_variables)|pfsockopen|fsockopen|long2ip|get(servby(name|port)|host(name|by(name(l)?|addr))|protobyn(umber|ame)|mxrr))\b
+      scope: support.function.network.php
+    - match: (?i)\bnsapi_(virtual|re(sponse_headers|quest_headers))\b
+      scope: support.function.nsapi.php
+    - match: (?i)\b(deaggregate|aggregat(ion_info|e(_(info|properties(_by_(list|regexp))?|methods(_by_(list|regexp))?))?))\b
+      scope: support.function.objaggregation.php
+    - match: (?i)\boci(s(tatementtype|e(tprefetch|rverversion)|avelob(file)?)|n(umcols|ew(c(ollection|ursor)|descriptor)|logon)|c(o(l(umn(s(cale|ize)|name|type(raw)?|isnull|precision)|l(size|trim|a(ssign(elem)?|ppend)|getelem|max))|mmit)|loselob|ancel)|internaldebug|definebyname|_(s(tatement_type|e(t_(client_i(nfo|dentifier)|prefetch|edition|action|module_name)|rver_version))|n(um_(fields|rows)|ew_(c(o(nnect|llection)|ursor)|descriptor))|c(o(nnect|mmit)|l(ient_version|ose)|ancel)|internal_debug|define_by_name|p(connect|a(ssword_change|rse))|e(rror|xecute)|f(ield_(s(cale|ize)|name|type(_raw)?|is_null|precision)|etch(_(object|a(ssoc|ll|rray)|row))?|ree_statement)|lob_(copy|is_equal)|r(ollback|esult)|bind_(array_by_name|by_name))|p(logon|arse)|e(rror|xecute)|f(etch(statement|into)?|ree(statement|c(ollection|ursor)|desc))|write(temporarylob|lobtofile)|lo(adlob|go(n|ff))|r(o(wcount|llback)|esult)|bindbyname)\b
+      scope: support.function.oci8.php
+    - match: (?i)\bopenssl_(?>c(?>ipher_iv_length|sr_(?>export(?>_to_file)?|get_(?>public_key|subject)|new|sign))|d(?>ecrypt|h_compute_key|igest)|e(?>ncrypt|rror_string)|free_key|get_(?>cipher_methods|md_methods|p(?>rivatekey|ublickey))|open|p(?>bkdf2|k(?>cs(?>12_(?>export(?>_to_file)?|read)|7_(?>decrypt|encrypt|sign|verify))|ey_(?>export(?>_to_file)?|free|get_(?>details|p(?>rivate|ublic))|new))|rivate_(?>decrypt|encrypt)|ublic_(?>decrypt|encrypt))|random_pseudo_bytes|s(?>eal|ign)|verify|x509_(?>check(?>_private_key|purpose)|export(?>_to_file)?|free|parse|read))\b
+      scope: support.function.openssl.php
+    - match: (?i)\b(o(utput_(add_rewrite_var|reset_rewrite_vars)|b_(start|clean|implicit_flush|end_(clean|flush)|flush|list_handlers|g(zhandler|et_(status|c(ontents|lean)|flush|le(ngth|vel)))))|flush)\b
+      scope: support.function.output.php
+    - match: (?i)\boverload\b
+      scope: support.function.overload.php
+    - match: (?i)\bpcntl_(?>alarm|e(?>rrno|xec)|fork|get(?>_last_error|priority)|s(?>etpriority|ig(?>nal(?>_dispatch)?|procmask|timedwait|waitinfo)|trerror)|w(?>ait(?>pid)?|exitstatus|if(?>exited|s(?>ignaled|topped))|stopsig|termsig))\b
+      scope: support.function.pcntl.php
+    - match: (?i)\bpg_(se(nd_(prepare|execute|query(_params)?)|t_(client_encoding|error_verbosity)|lect)|host|num_(fields|rows)|c(o(n(nect(ion_(status|reset|busy))?|vert)|py_(to|from))|l(ient_encoding|ose)|ancel_query)|t(ty|ra(nsaction_status|ce))|insert|options|d(elete|bname)|u(n(trace|escape_bytea)|pdate)|p(connect|ing|ort|ut_line|arameter_status|repare)|e(scape_(string|bytea)|nd_copy|xecute)|version|query(_params)?|f(ield_(size|n(um|ame)|t(ype(_oid)?|able)|is_null|prtlen)|etch_(object|a(ssoc|ll(_columns)?|rray)|r(ow|esult))|ree_result)|l(o_(seek|c(lose|reate)|tell|import|open|unlink|export|write|read(_all)?)|ast_(notice|oid|error))|affected_rows|result_(s(tatus|eek)|error(_field)?)|get_(notify|pid|result)|meta_data)\b
+      scope: support.function.pgsql.php
+    - match: (?i)\b(virtual|apache_(setenv|note|child_terminate|lookup_uri|re(s(ponse_headers|et_timeout)|quest_headers)|get(_(version|modules)|env))|getallheaders)\b
+      scope: support.function.php_apache.php
+    - match: (?i)\bdom_import_simplexml\b
+      scope: support.function.php_dom.php
+    - match: (?i)\bftp_(?>alloc|c(?>dup|h(?>dir|mod)|lose|onnect)|delete|exec|f(?>get|put)|get(?>_option)?|login|m(?>dtm|kdir)|n(?>b_(?>continue|f(?>get|put)|get|put)|list)|p(?>asv|ut|wd)|quit|r(?>aw(?>list)?|ename|mdir)|s(?>et_option|i(?>te|ze)|sl_connect|ystype))\b
+      scope: support.function.php_ftp.php
+    - match: (?i)\bimap_(s(can(mailbox)?|tatus|ort|ubscribe|e(t(_quota|flag_full|acl)|arch)|avebody)|header(s|info)?|num_(recent|msg)|c(heck|l(ose|earflag_full)|reate(mailbox)?)|t(hread|imeout)|open|delete(mailbox)?|8bit|u(n(subscribe|delete)|tf(7_(decode|encode)|8)|id)|ping|e(rrors|xpunge)|qprint|fetch(structure|header|text|_overview|mime|body)|l(sub|ist(s(can|ubscribed)|mailbox)?|ast_error)|a(ppend|lerts)|r(e(name(mailbox)?|open)|fc822_(parse_(headers|adrlist)|write_address))|g(c|et(subscribed|_quota(root)?|acl|mailboxes))|m(sgno|ime_header_decode|ail(_(co(py|mpose)|move)|boxmsginfo)?)|b(inary|ody(struct)?|ase64))\b
+      scope: support.function.php_imap.php
+    - match: (?i)\bmssql_(select_db|n(um_(fields|rows)|ext_result)|c(onnect|lose)|init|data_seek|pconnect|execute|query|f(ield_(seek|name|type|length)|etch_(object|field|a(ssoc|rray)|row|batch)|ree_(statement|result))|r(ows_affected|esult)|g(uid_string|et_last_message)|min_(error_severity|message_severity)|bind)\b
+      scope: support.function.php_mssql.php
+    - match: (?i)\bodbc_(s(tatistics|pecialcolumns|etoption)|n(um_(fields|rows)|ext_result)|c(o(nnect|lumn(s|privileges)|mmit)|ursor|lose(_all)?)|table(s|privileges)|d(o|ata_source)|p(connect|r(imarykeys|ocedure(s|columns)|epare))|e(rror(msg)?|xec(ute)?)|f(ield_(scale|n(um|ame)|type|precision|len)|oreignkeys|etch_(into|object|array|row)|ree_result)|longreadlen|autocommit|r(ollback|esult(_all)?)|gettypeinfo|binmode)\b
+      scope: support.function.php_odbc.php
+    - match: (?i)\bpreg_(?>filter|grep|last_error|match(?>_all)?|quote|replace(?>_callback)?|split)\b
+      scope: support.function.php_pcre.php
+    - match: (?i)\b(spl_(classes|object_hash|autoload(_(call|unregister|extensions|functions|register))?)|class_(implements|parents)|iterator_(count|to_array|apply))\b
+      scope: support.function.php_spl.php
+    - match: (?i)\bzip_(?>close|entry_(?>c(?>lose|ompress(?>edsize|ionmethod))|filesize|name|open|read)|open|read)\b
+      scope: support.function.php_zip.php
+    - match: (?i)\bposix_(?>access|ctermid|errno|get(?>_last_error|cwd|e(?>gid|uid)|g(?>id|r(?>gid|nam|oups))|login|p(?>g(?>id|rp)|id|pid|w(?>nam|uid))|rlimit|sid|uid)|i(?>nitgroups|satty)|kill|mk(?>fifo|nod)|s(?>et(?>e(?>gid|uid)|gid|pgid|sid|uid)|trerror)|t(?>imes|tyname)|uname)\b
+      scope: support.function.posix.php
+    - match: (?i)\bset(threadtitle|proctitle)\b
+      scope: support.function.proctitle.php
+    - match: (?i)\bpspell_(s(tore_replacement|uggest|ave_wordlist)|new(_(config|personal))?|c(heck|onfig_(save_repl|create|ignore|d(ict_dir|ata_dir)|personal|r(untogether|epl)|mode)|lear_session)|add_to_(session|personal))\b
+      scope: support.function.pspell.php
+    - match: (?i)\breadline(?>_(?>add_history|c(?>allback_(?>handler_(?>install|remove)|read_char)|lear_history|ompletion_function)|info|on_new_line|re(?>ad_history|display)|write_history))?\b
+      scope: support.function.readline.php
+    - match: (?i)\brecode(_(string|file))?\b
+      scope: support.function.recode.php
+    - match: (?i)\brrd_(create|tune|info|update|error|f(irst|etch)|last(update)?|restore|graph|xport)\b
+      scope: support.function.rrd.php
+    - match: (?i)\b(s(hm_(has_var|detach|put_var|attach|remove(_var)?|get_var)|em_(acquire|re(lease|move)|get))|ftok|msg_(s(tat_queue|e(nd|t_queue))|queue_exists|re(ceive|move_queue)|get_queue))\b
+      scope: support.function.sem.php
+    - match: (?i)\bsession_(?>c(?>ache_(?>expire|limiter)|ommit)|de(?>code|stroy)|encode|get_cookie_params|id|module_name|name|reg(?>enerate_id|ister_shutdown)|s(?>ave_path|et_(?>cookie_params|save_handler)|ta(?>rt|tus))|unset|write_close)\b
+      scope: support.function.session.php
+    - match: (?i)\bshmop_(?>close|delete|open|read|size|write)\b
+      scope: support.function.shmop.php
+    - match: (?i)\bsimplexml_(?>import_dom|load_(?>file|string))\b
+      scope: support.function.simplexml.php
+    - match: (?i)\bsnmp(set|2_(set|walk|real_walk|get(next)?)|_(set_(oid_(numeric_print|output_format)|enum_print|valueretrieval|quick_print)|read_mib|get_(valueretrieval|quick_print))|3_(set|walk|real_walk|get(next)?)|walk(oid)?|realwalk|get(next)?)\b
+      scope: support.function.snmp.php
+    - match: (?i)\b(?>is_soap_fault|use_soap_error_handler)\b
+      scope: support.function.soap.php
+    - match: (?i)\bsocket_(?>accept|bind|c(?>l(?>ear_error|ose)|msg_space|onnect|reate(?>_(?>listen|pair))?)|get(?>_option|opt|peername|sockname)|import_stream|l(?>ast_error|isten)|re(?>ad|cv(?>from|msg)?)|s(?>e(?>lect|nd(?>msg|to)?|t(?>_(?>block|nonblock|option)|opt))|hutdown|trerror)|write)\b
+      scope: support.function.sockets.php
+    - match: (?i)\bsqlite_(s(ingle_query|eek)|has_(prev|more)|n(um_(fields|rows)|ext)|c(hanges|olumn|urrent|lose|reate_(function|aggregate))|open|u(nbuffered_query|df_(decode_binary|encode_binary))|p(open|rev)|e(scape_string|rror_string|xec)|valid|key|query|f(ield_name|etch_(s(tring|ingle)|column_types|object|a(ll|rray))|actory)|l(ib(encoding|version)|ast_(insert_rowid|error))|array_query|rewind|busy_timeout)\b
+      scope: support.function.sqlite.php
+    - match: (?i)\bstats_(s(ta(ndard_deviation|t_(noncentral_t|correlation|in(nerproduct|dependent_t)|p(owersum|ercentile|aired_t)|gennch|binomial_coef))|kew)|harmonic_mean|c(ovariance|df_(n(oncentral_(chisquare|f)|egative_binomial)|c(hisquare|auchy)|t|uniform|poisson|exponential|f|weibull|l(ogistic|aplace)|gamma|b(inomial|eta)))|den(s_(n(ormal|egative_binomial)|c(hisquare|auchy)|t|pmf_(hypergeometric|poisson|binomial)|exponential|f|weibull|l(ogistic|aplace)|gamma|beta)|_uniform)|variance|kurtosis|absolute_deviation|rand_(setall|phrase_to_seeds|ranf|ge(n_(no(ncen(tral_(t|f)|ral_chisquare)|rmal)|chisquare|t|i(nt|uniform|poisson|binomial(_negative)?)|exponential|f(uniform)?|gamma|beta)|t_seeds)))\b
+      scope: support.function.stats.php
+    - match: (?i)\bs(tream_(s(ocket_(s(hutdown|e(ndto|rver))|client|pair|enable_crypto|accept|recvfrom|get_name)|upports_lock|e(t_(timeout|write_buffer|read_buffer|blocking)|lect))|notification_callback|co(ntext_(set_(option|default|params)|create|get_(options|default|params))|py_to_stream)|is_local|encoding|filter_(prepend|append|re(gister|move))|wrapper_(unregister|re(store|gister))|re(solve_include_path|gister_wrapper)|get_(contents|transports|filters|wrappers|line|meta_data)|bucket_(new|prepend|append|make_writeable))|et_socket_blocking)\b
+      scope: support.function.streamsfuncs.php
+    - match: (?i)\b(s(scanf|ha1(_file)?|tr(s(tr|pn)|n(c(asecmp|mp)|atc(asecmp|mp))|c(spn|hr|oll|asecmp|mp)|t(o(upper|k|lower)|r)|i(str|p(slashes|cslashes|os|_tags))|_(s(huffle|plit)|ireplace|pad|word_count|r(ot13|ep(eat|lace))|getcsv)|p(os|brk)|len|r(chr|ipos|pos|ev))|imilar_text|oundex|ubstr(_(co(unt|mpare)|replace))?|printf|etlocale)|h(tml(specialchars(_decode)?|_entity_decode|entities)|ebrev(c)?)|n(umber_format|l(2br|_langinfo))|c(h(op|unk_split|r)|o(nvert_(cyr_string|uu(decode|encode))|unt_chars)|r(ypt|c32))|trim|implode|ord|uc(first|words)|join|p(arse_str|rint(f)?)|e(cho|xplode)|v(sprintf|printf|fprintf)|quote(d_printable_(decode|encode)|meta)|fprintf|wordwrap|l(cfirst|trim|ocaleconv|evenshtein)|add(slashes|cslashes)|rtrim|get_html_translation_table|m(oney_format|d5(_file)?|etaphone)|bin2hex)\b
+      scope: support.function.string.php
+    - match: (?i)\bsybase_(se(t_message_handler|lect_db)|num_(fields|rows)|c(onnect|lose)|d(eadlock_retry_count|ata_seek)|unbuffered_query|pconnect|query|f(ield_seek|etch_(object|field|a(ssoc|rray)|row)|ree_result)|affected_rows|result|get_last_message|min_(server_severity|client_severity|error_severity|message_severity))\b
+      scope: support.function.sybase.php
+    - match: (?i)\btidy_(?>access_count|c(?>lean_repair|onfig_count)|diagnose|error_count|get(?>_(?>body|config|error_buffer|h(?>ead|tml(?>_ver)?)|o(?>pt_doc|utput)|r(?>elease|oot)|status)|opt)|is_x(?>html|ml)|parse_(?>file|string)|repair_(?>file|string)|warning_count)\b
+      scope: support.function.tidy.php
+    - match: (?i)\btoken_(?>get_all|name)\b
+      scope: support.function.tokenizer.php
+    - match: (?i)\b(http_build_query|url(decode|encode)|parse_url|rawurl(decode|encode)|get_(headers|meta_tags)|base64_(decode|encode))\b
+      scope: support.function.url.php
+    - match: (?i)\b(s(trval|e(ttype|rialize))|i(s(set|_(s(calar|tring)|nu(ll|meric)|callable|int(eger)?|object|double|float|long|array|re(source|al)|bool))|ntval|mport_request_variables)|d(oubleval|ebug_zval_dump)|unse(t|rialize)|print_r|empty|var_(dump|export)|floatval|get(type|_(defined_vars|resource_type)))\b
+      scope: support.function.var.php
+    - match: (?i)\bwddx_(?>add_vars|deserialize|packet_(?>end|start)|serialize_va(?>lue|rs))\b
+      scope: support.function.wddx.php
+    - match: (?i)\bxhprof_(sample_(disable|enable)|disable|enable)\b
+      scope: support.function.xhprof.php
+    - match: (?i)\b(?>utf8_(?>decode|encode)|xml_(?>error_string|get_(?>current_(?>byte_index|column_number|line_number)|error_code)|parse(?>_into_struct|r_(?>create(?>_ns)?|free|get_option|set_option))?|set_(?>character_data_handler|default_handler|e(?>lement_handler|nd_namespace_decl_handler|xternal_entity_ref_handler)|notation_decl_handler|object|processing_instruction_handler|start_namespace_decl_handler|unparsed_entity_decl_handler)))\b
+      scope: support.function.xml.php
+    - match: (?i)\bxmlrpc_(se(t_type|rver_(c(all_method|reate)|destroy|add_introspection_data|register_(introspection_callback|method)))|is_fault|decode(_request)?|parse_method_descriptions|encode(_request)?|get_type)\b
+      scope: support.function.xmlrpc.php
+    - match: (?i)\bxmlwriter_(?>end_(?>attribute|c(?>data|omment)|d(?>ocument|td(?>_(?>attlist|e(?>lement|ntity)))?)|element|pi)|f(?>lush|ull_end_element)|o(?>pen_(?>memory|uri)|utput_memory)|s(?>et_indent(?>_string)?|tart_(?>attribute(?>_ns)?|c(?>data|omment)|d(?>ocument|td(?>_(?>attlist|e(?>lement|ntity)))?)|element(?>_ns)?|pi))|text|write_(?>attribute(?>_ns)?|c(?>data|omment)|dtd(?>_(?>attlist|e(?>lement|ntity)))?|element(?>_ns)?|pi|raw))\b
+      scope: support.function.xmlwriter.php
+    - match: (?i)\bxslt_(set(opt|_(s(cheme_handler(s)?|ax_handler(s)?)|object|e(ncoding|rror_handler)|log|base))|create|process|err(no|or)|free|getopt|backend_(name|info|version))\b
+      scope: support.function.xslt.php
+    - match: (?i)\b(?>gz(?>c(?>lose|ompress)|de(?>code|flate)|e(?>ncode|of)|file|get(?>c|s(?>s)?)|inflate|open|p(?>assthru|uts)|re(?>ad|wind)|seek|tell|uncompress|write)|ob_gzhandler|readgzfile|zlib_(?>decode|encode|get_coding_type))\b
+      scope: support.function.zlib.php
+    - match: (?i)\bis_int(eger)?\b
+      scope: support.function.alias.php
+  user-function-call:
+    - match: '(?i)(?=[a-z_0-9\\]*[a-z_][a-z0-9_]*\s*\()'
+      push:
+        - meta_scope: meta.function-call.php
+        - match: '(?i)[a-z_][a-z_0-9]*(?=\s*\()'
+          pop: true
+        - include: namespace
+  var_basic:
+    - match: |-
+        (?x)
+        (\$+)[a-zA-Z_\x{7f}-\x{ff}]
+        [a-zA-Z0-9_\x{7f}-\x{ff}]*?\b
+      scope: variable.other.php
+      captures:
+        1: punctuation.definition.variable.php
+  var_global:
+    - match: (\$)((_(COOKIE|FILES|GET|POST|REQUEST))|arg(v|c))\b
+      scope: variable.other.global.php
+      captures:
+        1: punctuation.definition.variable.php
+  var_global_safer:
+    - match: (\$)((GLOBALS|_(ENV|SERVER|SESSION)))
+      scope: variable.other.global.safer.php
+      captures:
+        1: punctuation.definition.variable.php
+  variable-name:
+    - include: var_global
+    - include: var_global_safer
+    - match: |-
+        (?x)
+        ((\$)(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
+        (?:
+          (->)(\g<name>)
+          |
+          (\[)
+            (?:(\d+)|((\$)\g<name>)|(\w+))
+          (\])
+        )?
+      comment: "Simple syntax: $foo, $foo[0], $foo[$bar], $foo->bar"
+      captures:
+        1: variable.other.php
+        2: punctuation.definition.variable.php
+        4: keyword.operator.class.php
+        5: variable.other.property.php
+        6: punctuation.section.array.begin.php
+        7: constant.numeric.index.php
+        8: variable.other.index.php
+        9: punctuation.definition.variable.php
+        10: string.unquoted.index.php
+        11: punctuation.section.array.end.php
+    - match: |-
+        (?x)
+        ((\$\{)(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
+      comment: 'Simple syntax with braces: "foo${bar}baz"'
+      captures:
+        1: variable.other.php
+        2: punctuation.definition.variable.php
+        4: punctuation.definition.variable.php
+  variables:
+    - include: var_global
+    - include: var_global_safer
+    - include: var_basic
+    - match: '(\$\{)(?=.*?\})'
+      captures:
+        1: punctuation.definition.variable.php
+      push:
+        - match: '(\})'
+          captures:
+            1: punctuation.definition.variable.php
+          pop: true
+        - include: language
