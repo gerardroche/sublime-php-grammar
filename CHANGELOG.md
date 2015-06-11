@@ -2,7 +2,7 @@
 
 ## 0.9.0-next
 
-* As of build 3092 the root PHP scope is `embedding.php text.html.basic` and all `source.php.embedded.*.html` scopes are now `meta.embedded.*.php`. This should not impact the majority of packages that have a dependecy on php scopes.
+* As of ST build 3092 the root PHP scope is `embedding.php text.html.basic` and all `source.php.embedded.*.html` scopes are now `meta.embedded.*.php`. This should not impact the majority of packages that have a dependecy on php scopes.
 
     ```
     Previously
@@ -14,9 +14,11 @@
     embedding.php text.html.basic meta.embedded.block.php source.php meta.namespace.php keyword.other.namespace.php
     ```
 
+* Updated builtin classes, support constants & functions to PHP 5.6.9
+
 ## 0.8.0
 
-* Added `PHP.sublime-syntax` for newer versions of ST3 > 3092. See http://www.sublimetext.com/forum/viewtopic.php?f=2&t=18634&start=0
+* Added `PHP.sublime-syntax` for newer versions of ST3 (>= 3092). See http://www.sublimetext.com/forum/viewtopic.php?f=2&t=18634&start=0
 
 ## 0.7.0
 
