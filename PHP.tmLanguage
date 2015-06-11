@@ -8,13 +8,6 @@
 	<key>fileTypes</key>
 	<array>
 		<string>php</string>
-		<!-- <string>php3</string>
-		<string>php4</string>
-		<string>php5</string>
-		<string>phpt</string>
-		<string>phtml</string>
-		<string>aw</string>
-		<string>ctp</string> -->
 	</array>
 	<key>firstLineMatch</key>
 	<string>^#!.*(?&lt;!-)php[0-9]{0,1}\b</string>
@@ -200,10 +193,6 @@
 				</dict>
 			</array>
 		</dict>
-		<!-- <dict>
-			<key>include</key>
-			<string>text.html.basic</string>
-		</dict>	 -->
 	</array>
 	<key>repository</key>
 	<dict>
