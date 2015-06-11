@@ -16,10 +16,14 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 ## Features
 
 * Updated syntax definition support for PHP [~5.6][semver] builtin classes, functions, and constants which provides more up to date support for syntax highlighters.
-* Decent indentation rules; **Reindent** `Menu > Edit > Line > Reindent` e.g.
+* Decent indentation rules
+
+    Reindent.
 
     ```php
-    Original                     | Reindented
+    Menu > Edit > Line > Reindent
+    ---------------------------------------------------------------------
+    Original                  -> | Reindented
     ---------------------------------------------------------------------
     $val = array(                | $val = array(
     array(                       |     array(
@@ -44,19 +48,11 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
     );                           | );
     ```
 
-* Decent macros; e.g.
-    - Press <kbd>Enter</kbd> between array parentheses indents cursor on next line and puts any closing parentheses `)` on following line with its indentation decreased
+    Press closing parentheses in an array context automatically indents to the correct position.
 
     ```php
-    $val = array(|)             | $val = array(
-                                |     |
-                                | )
-    ```
-
-    - Press closing parentheses `)` while in an array structure automatically indents it to the correct position
-
-    ```php
-
+    Press )
+    ---------------------------------------------------------------------
     $val = array(               | $val = array(
         array(                  |     array(
             array(              |         array(
@@ -64,18 +60,54 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
                     |           |             )|
     ```
 
+* Decent macros
+
+    <kbd>Enter</kbd>
+
+    ```php
+    $val = array(|)             | $val = array(
+                                |     |
+                                | )
+    ```
+
+    <kbd>Enter</kbd>
+
+    ```php
+    $val = array(               | $val = array(
+        'str|'                  |     'str',
+    )                           |     |
+                                | )
+    ```
+
+    <kbd>Ctrl</kbd>+<kbd>;</kbd>
+
+    ```
+    $val = 'str|ing'            | $val = 'str|ing';
+    ```
+
+    <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+
+    ```
+    Press Ctrl+Enter
+    ---------------------------------------------------------------------
+    $val = 'str|ing'            | $val = 'string';
+                                | |
+    ```
+
 ## Macros
+
+*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
+
+*To insert literal in a an overriden context prefix the literal with <kbd>Ctrl</kbd>.*
 
 | Keymap | Context | Description |
 |--------|---------| ------------|
 | <kbd>Enter</kbd> | Empty array | Wrap cursor with `\n`'s and indent cursor line |
 | <kbd>Enter</kbd> | Array string | Append `,\n` |
-| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | *valid* | Append `;\n` |
-| <kbd>Ctrl</kbd>+<kbd>;</kbd> | *valid* | Append `;` |
+| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | *\** | Append `;\n` |
+| <kbd>Ctrl</kbd>+<kbd>;</kbd> | *\** | Append `;` |
 
-*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
-
-*To insert literals in a context where it is overriden by a macro prefix the literal with <kbd>Ctrl</kbd>.*
+*\* means contexts where the result of the macro makes sense and is valid syntax.*
 
 ## Installation
 
