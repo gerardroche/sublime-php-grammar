@@ -1142,7 +1142,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\\[nrt\\\$\"]</string>
+					<string>\\[efnrtv\\\$\"]</string>
 					<key>name</key>
 					<string>constant.character.escape.php</string>
 				</dict>

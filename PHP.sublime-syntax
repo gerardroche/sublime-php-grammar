@@ -397,7 +397,7 @@ contexts:
       scope: constant.numeric.octal.php
     - match: '\\x[0-9A-Fa-f]{1,2}'
       scope: constant.numeric.hex.php
-    - match: '\\[nrt\\\$\"]'
+    - match: '\\[efnrtv\\\$\"]'
       scope: constant.character.escape.php
     - match: '(\{)(?=\$.*?\})'
       captures:

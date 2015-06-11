@@ -16,6 +16,7 @@
 
 * Updated builtin classes, support constants & functions to PHP 5.6.9
 * Fixed: Array type hints are now case-insensitive
+* Added: string escape sequences `\e`, `\f`, and `\v`
 
 ## 0.8.0
 
