@@ -1,5 +1,7 @@
 # Contributing
 
+**_Note_: The test suite only works in ST3**
+
 ## Overview
 
 * [Running Tests](#running-tests)
@@ -9,38 +11,39 @@
 
 ## Running Tests
 
-_Note_: Currently the tests can only be run in Sublime Text 3.
+Command Palette:
 
-From the command palette (<kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>P</kbd>):
+* `PHP Grammar: Run All Tests`
+* `PHP Grammar: Run Syntax Tests`
+* `PHP Grammar: Run Indentation Tests`
 
-* PHP Grammar: Run All Tests
-* PHP Grammar: Run Syntax Tests
-* PHP Grammar: Run Indentation Tests
+## Test Generators
 
-### Key Bindings
+Command Palette:
 
-_Note_: Test runner key bindings are disabled by default. To enable them set `"php-grammar.development_mode": true` in preferences: `Menu > Preferences > Settings - User`
-
-| OS X / Windows / Linux | Descriptions |
-|------------------------|--------------|
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>a</kbd> | Language DevTool copy scope name to clipboard |
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>e</kbd> | Language DevTool copy "equals" type scope name to clipboard |
-| <kbd>Ctrl</kbd>+<kbd>k</kbd>, <kbd>Ctrl</kbd>+<kbd>c</kbd>, <kbd>Ctrl</kbd>+<kbd>m</kbd> | Language DevTool copy "match" type scope name to clipboard |
+* `PHP Grammar: Generate Syntax Test Expectation`: If a syntax test file is in the current view the `--EXPECT--` part of the test is replaced with the expected `--FILE--` scope content.
 
 ## Syntax Tests
 
-| Assertion | Description |
-|-----------|-------------|
-| `equal:[line]:[offset]:[selector]` | Exact match select by line and offset |
-| `match:[line]:[offset]:[selector]` | Match score greater than zero by line and offset |
+* All syntax tests are place in `test/syntax`
+* All syntax test file names must end with `_test.php`
 
-### Example 1 - Test exact scope of file
+**Test File Fields:**
 
-##### `test/syntax/namespace_test.php`
+* `--TEST--` Description *(required)*
+* `--FILE--` Actual text to test against *(required)*
+* `--EXPECT--` Expected text *(required)*
+* `--SYNTAX--` Defaults to `Packages/php-grammar/PHP.tmLanguage` *(optional)*
+
+**Test File Example:**
+
+`test/syntax/namespace_test.php`
 
 ```
 --TEST--
 Basic namespace
+--SYNTAX--
+Packages/php-grammar/PHP.tmLanguage
 --FILE--
 <?php
 
@@ -76,7 +79,12 @@ source.php source.php.embedded.block.html punctuation.section.embedded.end.php s
 source.php source.php.embedded.block.html punctuation.section.embedded.end.php
 ```
 
-### Example 2 - Test points in file with assertions
+### Testing the scope of specific points
+
+| Assertion | Description |
+|-----------|-------------|
+| `equal:[line]:[offset]:[selector]` | Exact match select by line and offset |
+| `match:[line]:[offset]:[selector]` | Match score greater than zero by line and offset |
 
 ##### `test/syntax/basic_support_function_test.php`
 
@@ -104,7 +112,7 @@ match:4:1:source.php support.function.string.php
 
 There are two options for writing indentation tests.
 
-### 1 - Test and expectation in a single file
+### Test and expectation in a single file
 
 ##### `test/indentation/if_else_test.php`
 
@@ -149,8 +157,7 @@ echo 'Statement 10';
 ?>
 ```
 
-
-### 2 - Test and expectation in separate files
+### Test and expectation in separate files
 
 ##### `test/indentation/if_else_test.php`
 
