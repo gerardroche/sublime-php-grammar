@@ -10,5 +10,9 @@
     {
         "caption": "PHP Grammar: Run All Tests",
         "command": "run_php_grammar_tests"
+    },
+    {
+        "caption": "PHP Grammar: Generate Syntax Test Expectation",
+        "command": "generate_php_grammar_syntax_test_expectation"
     }
 ]
