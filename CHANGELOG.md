@@ -1,8 +1,8 @@
 # sublime-php-grammar changelog
 
-## 0.9.0-next
+## 0.9.0
 
-* As of ST build 3092 the root PHP scope is `embedding.php text.html.basic` and all `source.php.embedded.*.html` scopes are now `meta.embedded.*.php`. This should not impact the majority of packages that have a dependecy on php scopes.
+* Added: As of ST build 3092 the root PHP scope is `embedding.php text.html.basic` and all `source.php.embedded.*.html` scopes are now `meta.embedded.*.php`. This should not impact the majority of packages that have a dependecy on php scopes.
 
     ```
     Previously
@@ -14,10 +14,10 @@
     embedding.php text.html.basic meta.embedded.block.php source.php meta.namespace.php keyword.other.namespace.php
     ```
 
-* Updated builtin classes, support constants & functions to PHP 5.6.9
-* Fixed: Array type hints are now case-insensitive
-* Added: string escape sequences `\e`, `\f`, and `\v`
+* Added: Update builtin classes, support constants and support functions to PHP 5.6.9
+* Added: String escape sequences `\e`, `\f`, and `\v`
 * Added: PHP syntax is now applied to unknown filetypes that begin with `<?php ` *(`>= 3092` only)*
+* Fixed: Array type hints are now case-insensitive
 
 ## 0.8.0
 
