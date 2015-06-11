@@ -16,73 +16,77 @@ file_extensions:
   - aw
   - ctp
 first_line_match: '^#!.*(?<!-)php[0-9]{0,1}\b'
-scope: source.php
+scope: embedding.php
 contexts:
   main:
-    - match: |-
-        (?x)
-          (^\s*)?             # 1 - Leading whitespace
-            (             # 2 - meta.embedded.line.empty.php
-              (           # 3 - Open Tag
-                (?:
-                  ((?<=\?>)<)   # 4 - Consecutive tags
-                  | <
+    - match: ''
+      push: 'scope:text.html.basic'
+      with_prototype:
+        - match: |-
+            (?x)
+              (^\s*)?             # 1 - Leading whitespace
+                (             # 2 - meta.embedded.line.empty.php
+                  (           # 3 - Open Tag
+                    (?:
+                      ((?<=\?>)<)   # 4 - Consecutive tags
+                      | <
+                    )
+                    \?(?i:php|=)?
+                  )
+                    (\s*)       # 5 - Loneliness
+                  ((\?)>)         # 6 - Close Tag
+                              # 7 - Scope ? as scope.php
                 )
-                \?(?i:php|=)?
+              (
+                \1              # Match nothing if there was no
+                              #   leading whitespace...
+                | (\s*$\n)?         # or match trailing whitespace.
               )
-                (\s*)       # 5 - Loneliness
-              ((\?)>)         # 6 - Close Tag
-                          # 7 - Scope ? as scope.php
-            )
-          (
-            \1              # Match nothing if there was no
-                          #   leading whitespace...
-            | (\s*$\n)?         # or match trailing whitespace.
-          )
-      comment: Matches empty tags.
-      captures:
-        1: punctuation.whitespace.embedded.leading.php
-        2: source.php.embedded.line.empty.html
-        3: punctuation.section.embedded.begin.php
-        4: meta.consecutive-tags.php
-        5: source.php
-        6: punctuation.section.embedded.end.php
-        7: source.php
-        8: punctuation.whitespace.embedded.trailing.php
-    - match: ^\s*(?=<\?)
-      comment: Catches tags with preceeding whitespace.
-      captures:
-        0: punctuation.whitespace.embedded.leading.php
-      push:
-        - match: (?<=\?>)(\s*$\n)?
+          comment: Matches empty tags.
           captures:
-            0: punctuation.whitespace.embedded.trailing.php
-          pop: true
-        - match: <\?(?i:php|=)?
+            1: punctuation.whitespace.embedded.leading.php
+            2: meta.embedded.line.empty.php
+            3: punctuation.section.embedded.begin.php
+            4: meta.consecutive-tags.php
+            5: source.php
+            6: punctuation.section.embedded.end.php
+            7: source.php
+            8: punctuation.whitespace.embedded.trailing.php
+        - match: ^\s*(?=<\?)
+          comment: Catches tags with preceeding whitespace.
+          captures:
+            0: punctuation.whitespace.embedded.leading.php
+          push:
+            - match: (?<=\?>)(\s*$\n)?
+              captures:
+                0: punctuation.whitespace.embedded.trailing.php
+              pop: true
+            - match: <\?(?i:php|=)?
+              captures:
+                0: punctuation.section.embedded.begin.php
+              push:
+                - meta_scope: meta.embedded.block.php
+                - meta_content_scope: source.php
+                - match: (\?)>
+                  captures:
+                    0: punctuation.section.embedded.end.php
+                    1: source.php
+                  pop: true
+                - include: language
+        - match: (((?<=\?>)<)|<)\?(?i:php|=)?
+          comment: Catches the remainder.
           captures:
             0: punctuation.section.embedded.begin.php
+            2: meta.consecutive-tags.php
           push:
-            - meta_scope: source.php.embedded.block.html
+            - meta_scope: meta.embedded.line.php
+            - meta_content_scope: source.php
             - match: (\?)>
               captures:
                 0: punctuation.section.embedded.end.php
                 1: source.php
               pop: true
             - include: language
-    - match: (((?<=\?>)<)|<)\?(?i:php|=)?
-      comment: Catches the remainder.
-      captures:
-        0: punctuation.section.embedded.begin.php
-        2: meta.consecutive-tags.php
-      push:
-        - meta_scope: source.php.embedded.line.html
-        - match: (\?)>
-          captures:
-            0: punctuation.section.embedded.end.php
-            1: source.php
-          pop: true
-        - include: language
-    - include: scope:text.html.basic
   class-builtin:
     - match: (?i)(\\)?\b(?>A(?>ppendIterator|rray(?>Access|Iterator|Object))|Bad(?>FunctionCallException|MethodCallException)|C(?>a(?>chingIterator|llbackFilterIterator)|losure|ountable)|D(?>OM(?>Attr|C(?>dataSection|haracterData|o(?>mment|nfiguration))|Do(?>cument(?>Fragment|Type)?|mError)|E(?>lement|ntity(?>Reference)?|rrorHandler|xception)|Implementation(?>List|Source)?|Locator|N(?>ame(?>List|SpaceNode|dNodeMap)|o(?>de(?>List)?|tation))|ProcessingInstruction|String(?>Extend|List)|T(?>ext|ypeinfo)|UserDataHandler|XPath)|ate(?>Interval|Period|Time(?>I(?>mmutable|nterface)|Zone)?)|irectory(?>Iterator)?|omainException)|E(?>mptyIterator|rrorException|xception)|Fil(?>esystemIterator|terIterator)|G(?>enerator|lobIterator)|I(?>n(?>finiteIterator|validArgumentException)|terator(?>Aggregate|Iterator)?)|Json(?>IncrementalParser|Serializable)|L(?>engthException|i(?>bXMLError|mitIterator)|ogicException)|MultipleIterator|NoRewindIterator|O(?>ut(?>Of(?>BoundsException|RangeException)|erIterator)|verflowException)|P(?>DO(?>Exception|Row|Statement)?|arentIterator|har(?>Data|Exception|FileInfo)?)|R(?>angeException|e(?>cursive(?>ArrayIterator|Ca(?>chingIterator|llbackFilterIterator)|DirectoryIterator|FilterIterator|Iterator(?>Iterator)?|RegexIterator|TreeIterator)|flect(?>ion(?>Class|Ex(?>ception|tension)|Function(?>Abstract)?|Method|Object|P(?>arameter|roperty)|ZendExtension)?|or)|gexIterator)|untimeException)|S(?>QLite3(?>Result|Stmt)?|e(?>ekableIterator|rializable|ssion(?>Handler(?>Interface)?|IdInterface))|impleXML(?>Element|Iterator)|oap(?>Client|Fault|Header|Param|Server|Var)|pl(?>DoublyLinkedList|Fi(?>le(?>Info|Object)|xedArray)|Heap|M(?>axHeap|inHeap)|Ob(?>jectStorage|server)|PriorityQueue|Queue|S(?>tack|ubject)|TempFileObject))|Traversable|Un(?>derflowException|expectedValueException)|XML(?>Reader|Writer)|ZipArchive|__PHP_Incomplete_Class|finfo|mysqli(?>_(?>driver|result|s(?>ql_exception|tmt)|warning))?|php_user_filter|stdClass|tidy(?>Node)?)\b
       scope: support.class.builtin.php
