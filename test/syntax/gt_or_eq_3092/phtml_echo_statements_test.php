@@ -1,7 +1,5 @@
 --TEST--
 PHTML echo statements
-SYNTAX
-Packages/HTML/HTML.tmLanguage
 --SYNTAX--
 Packages/php-grammar/PHP.sublime-syntax
 --FILE--
