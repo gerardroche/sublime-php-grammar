@@ -34,7 +34,7 @@ embedding.php text.html.basic meta.embedded.line.php source.php string.quoted.si
 embedding.php text.html.basic meta.embedded.line.php source.php string.quoted.single.php punctuation.definition.string.end.php
 embedding.php text.html.basic meta.embedded.line.php source.php punctuation.terminator.expression.php
 embedding.php text.html.basic meta.embedded.line.php source.php
-embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php source.php
+embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.tag.inline.any.html punctuation.definition.tag.begin.html
 embedding.php text.html.basic meta.tag.inline.any.html punctuation.definition.tag.begin.html
@@ -55,7 +55,7 @@ embedding.php text.html.basic meta.embedded.line.php source.php string.quoted.si
 embedding.php text.html.basic meta.embedded.line.php source.php string.quoted.single.php punctuation.definition.string.end.php
 embedding.php text.html.basic meta.embedded.line.php source.php punctuation.terminator.expression.php
 embedding.php text.html.basic meta.embedded.line.php source.php
-embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php source.php
+embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.tag.inline.any.html punctuation.definition.tag.begin.html
 embedding.php text.html.basic meta.tag.inline.any.html punctuation.definition.tag.begin.html
@@ -84,7 +84,7 @@ embedding.php text.html.basic meta.embedded.block.php source.php string.quoted.s
 embedding.php text.html.basic meta.embedded.block.php source.php string.quoted.single.php punctuation.definition.string.end.php
 embedding.php text.html.basic meta.embedded.block.php source.php punctuation.terminator.expression.php
 embedding.php text.html.basic meta.embedded.block.php source.php
-embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
 embedding.php text.html.basic punctuation.whitespace.embedded.trailing.php
 embedding.php text.html.basic meta.tag.inline.any.html punctuation.definition.tag.begin.html

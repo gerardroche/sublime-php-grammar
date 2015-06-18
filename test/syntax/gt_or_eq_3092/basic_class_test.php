@@ -29,5 +29,5 @@ embedding.php text.html.basic meta.embedded.block.php source.php
 embedding.php text.html.basic meta.embedded.block.php source.php
 embedding.php text.html.basic meta.embedded.block.php source.php
 embedding.php text.html.basic meta.embedded.block.php source.php
-embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php

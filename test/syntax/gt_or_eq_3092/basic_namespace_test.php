@@ -53,5 +53,5 @@ embedding.php text.html.basic meta.embedded.block.php source.php meta.namespace.
 embedding.php text.html.basic meta.embedded.block.php source.php punctuation.terminator.expression.php
 embedding.php text.html.basic meta.embedded.block.php source.php
 embedding.php text.html.basic meta.embedded.block.php source.php
-embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
 embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
