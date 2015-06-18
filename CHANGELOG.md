@@ -1,5 +1,10 @@
 # sublime-php-grammar changelog
 
+## 0.10.0
+
+* Fixed: Closing php tag `?>` no longer contains `source.php` scope
+* Fixed: Test suite was not running all syntax tests
+
 ## 0.9.0
 
 * Added: As of ST build 3092 the root PHP scope is `embedding.php text.html.basic` and all `source.php.embedded.*.html` scopes are now `meta.embedded.*.php`. This should not impact the majority of packages that have a dependecy on php scopes.

@@ -67,10 +67,9 @@ contexts:
               push:
                 - meta_scope: meta.embedded.block.php
                 - meta_content_scope: source.php
-                - match: (\?)>
+                - match: \?>
                   captures:
                     0: punctuation.section.embedded.end.php
-                    1: source.php
                   pop: true
                 - include: language
         - match: (((?<=\?>)<)|<)\?(?i:php|=)?
@@ -81,10 +80,9 @@ contexts:
           push:
             - meta_scope: meta.embedded.line.php
             - meta_content_scope: source.php
-            - match: (\?)>
+            - match: \?>
               captures:
                 0: punctuation.section.embedded.end.php
-                1: source.php
               pop: true
             - include: language
   class-builtin:
