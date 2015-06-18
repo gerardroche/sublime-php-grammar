@@ -1,6 +1,6 @@
 # sublime-php-grammar changelog
 
-## 0.10.0 (upcoming)
+## 0.10.0
 
 * Fixed: Closing php tag `?>` no longer contains `source.php` scope
 * Fixed: Test suite was not running all syntax tests
