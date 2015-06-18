@@ -3,6 +3,7 @@
 ## 0.10.0 (upcoming)
 
 * Fixed: Closing php tag `?>` no longer contains `source.php` scope
+* Fixed: Test suite was not running all syntax tests
 
 ## 0.9.0
 
