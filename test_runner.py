@@ -57,34 +57,34 @@ class SublimeViewAPI():
 
         return content.strip()
 
+class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+
+        test_begin_line_region = self.view.find('^--TEST--$', 0)
+        file_begin_line_region = self.view.find('^--FILE--$', 0)
+        expect_begin_line_region = self.view.find('^--EXPECT--$', 0)
+
+        if test_begin_line_region.empty() or file_begin_line_region.empty() or expect_begin_line_region.empty():
+            return
+
+        file_desciption_region = sublime.Region(test_begin_line_region.end() + 1, file_begin_line_region.begin() - 1)
+        file_content_region = sublime.Region(file_begin_line_region.end() + 1, expect_begin_line_region.begin() - 1)
+        expect_content_region = sublime.Region(expect_begin_line_region.end() + 1, self.view.size())
+
+        if file_desciption_region.empty() or file_content_region.empty():
+            return
+
+        file_content_scope_repr = SublimeViewAPI(self.view).to_scope_name_repr(file_content_region)
+
+        self.view.replace(edit, expect_content_region, file_content_scope_repr.strip())
+
+def is_enabled(self):
+    if not self.view.file_name():
+        return False
+    return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
+
 if DEBUG_MODE:
-
-    class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
-
-        def run(self, edit):
-
-            test_begin_line_region = self.view.find('^--TEST--$', 0)
-            file_begin_line_region = self.view.find('^--FILE--$', 0)
-            expect_begin_line_region = self.view.find('^--EXPECT--$', 0)
-
-            if test_begin_line_region.empty() or file_begin_line_region.empty() or expect_begin_line_region.empty():
-                return
-
-            file_desciption_region = sublime.Region(test_begin_line_region.end() + 1, file_begin_line_region.begin() - 1)
-            file_content_region = sublime.Region(file_begin_line_region.end() + 1, expect_begin_line_region.begin() - 1)
-            expect_content_region = sublime.Region(expect_begin_line_region.end() + 1, self.view.size())
-
-            if file_desciption_region.empty() or file_content_region.empty():
-                return
-
-            file_content_scope_repr = SublimeViewAPI(self.view).to_scope_name_repr(file_content_region)
-
-            self.view.replace(edit, expect_content_region, file_content_scope_repr.strip())
-
-    def is_enabled(self):
-        if not self.view.file_name():
-            return False
-        return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
 
     class PhpGrammarShowCursorScopeNameInStatusLine(sublime_plugin.EventListener):
 
