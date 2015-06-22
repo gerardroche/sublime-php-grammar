@@ -27,3 +27,10 @@ $single_quotes = 'INSERT INTO tbl_name (col1, col2) VALUES (15, col1 * 2);';
 //                  ^ source.sql keyword
 //                          ^ source.sql keyword
 //                                                      ^ source.sql keyword
+
+$HERDOC = <<<SQL
+SELECT * FROM users WHERE active;
+// ^ source.sql keyword
+//          ^ source.sql keyword
+//                  ^ source.sql keyword
+SQL;
