@@ -1,5 +1,10 @@
 # sublime-php-grammar changelog
 
+## 0.11.0 (upcoming)
+
+* Add in support for `php7`, `inc`, `module`, `profile`, and `install` extensions
+* Fix typo in scope: s/repitition/repetition
+
 ## 0.10.0
 
 * Fixed: Closing php tag `?>` no longer contains `source.php` scope
