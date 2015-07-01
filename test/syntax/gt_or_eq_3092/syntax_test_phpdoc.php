@@ -68,13 +68,29 @@
  * ------
  *
  * {@example [URI] [<description>]}
-//   ^ comment.block.documentation.phpdoc keyword
+//   ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
+ * An inline {@example [URI] [<description>]} tag.
+//              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
  * {@inheritdoc}
-//   ^ comment.block.documentation.phpdoc keyword
+//   ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
+ * An inline {@inheritdoc} tag.
+//              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
  * {@internal [<description>]}
-//   ^ comment.block.documentation.phpdoc keyword
+//   ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
+ * An inline {@internal [<description>]} tag.
+//              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
  * {@link [URI] [<description>]}
-//   ^ comment.block.documentation.phpdoc keyword
+//   ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
+ * An inline {@link [URI] [<description>]} tag.
+//              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
  *
  * Deprecated
  * ----------
