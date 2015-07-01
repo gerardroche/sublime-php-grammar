@@ -828,7 +828,7 @@ contexts:
       scope: meta.tag.inline.phpdoc.php
       captures:
         1: keyword.other.phpdoc.php
-    - match: '(?i)\*\s+(\@[a-z0-9_-]+)'
+    - match: '(?i)\s(\@[a-z0-9_-]+)\s'
       captures:
         1: keyword.other.phpdoc.php
   regex-double-quoted:
