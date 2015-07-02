@@ -1,10 +1,10 @@
 # sublime-php-grammar changelog
 
-## 0.11.0 (upcoming)
+## 0.11.0
 
-* Emails addresses `name@example.com`, placeholders `@foo@` and other non phpdoc tags are no longer matched as phpdoc tags. #11, #14
+* Email addresses `name@example.com`, placeholders `@foo@` and other non phpdoc tags are no longer matched as phpdoc tags. #11, #14
 * Add "example", "inheritdoc", and "internal" inline phpdoc keywords #11, #13
-* Add in support for `php7`, `inc`, `module`, `profile`, and `install` extensions
+* Add support for `php7`, `inc`, `module`, `profile`, and `install` extensions
 * Fix typo in scope: s/repitition/repetition
 
 ## 0.10.0
