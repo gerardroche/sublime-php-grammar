@@ -43,13 +43,6 @@ function start_with_at_least_one_indent() {
                     <?= ($i * $i)."\n"; ?>
                 <?php endfor; ?>
                 <?php var_dump($i); ?>
-
-                <?php var_dump('.'); ?>
-                <?php declare(ticks = 0) : ?>
-                    <?php echo "Statement 1\n"; ?>
-                    <?= "Statement 2\n"; ?>
-                <?php enddeclare; ?>
-                <?php var_dump('.'); ?>
                 <?php
 
 }
@@ -101,13 +94,6 @@ function start_with_at_least_one_indent() {
         <?= ($i * $i)."\n"; ?>
     <?php endfor; ?>
     <?php var_dump($i); ?>
-
-    <?php var_dump('.'); ?>
-    <?php declare(ticks = 0) : ?>
-        <?php echo "Statement 1\n"; ?>
-        <?= "Statement 2\n"; ?>
-    <?php enddeclare; ?>
-    <?php var_dump('.'); ?>
     <?php
 
 }
