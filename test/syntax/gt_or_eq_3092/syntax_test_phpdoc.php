@@ -91,6 +91,12 @@
  * An inline {@link [URI] [<description>]} tag.
 //              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
  *
+ * {@see [URI|FQSEN] [<description>]}
+//   ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
+ * An inline {@see [URI|FQSEN] [<description>]} tag.
+//              ^ comment.block.documentation.phpdoc meta.tag.inline.phpdoc keyword
+ *
  *
  * Deprecated
  * ----------

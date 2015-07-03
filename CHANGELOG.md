@@ -1,5 +1,9 @@
 # sublime-php-grammar changelog
 
+## 0.12.0 (upcoming)
+
+* Add `{@see *}` inline phpdoc keyword
+
 ## 0.11.0
 
 * Email addresses `name@example.com`, placeholders `@foo@` and other non phpdoc tags are no longer matched as phpdoc tags. #11, #14
