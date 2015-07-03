@@ -3,6 +3,7 @@
 ## 0.12.0 (upcoming)
 
 * Add `{@see *}` inline phpdoc keyword
+* Invalid PHPDoc tags, tags that don't start with an asterisk followed by only whitespace, are no longer matched as phpdoc keywords e.g. `* foo @tag`
 
 ## 0.11.0
 
