@@ -824,11 +824,11 @@ contexts:
         2: markup.underline.link.php
     - match: \@\b(a(bstract|uthor)|c(ategory|opyright)|example|global|internal|li(cense|nk)|pa(ckage|ram)|return|s(ee|ince|tatic|ubpackage)|t(hrows|odo)|v(ar|ersion)|uses|deprecated|final)\b
       scope: keyword.other.phpdoc.php
-    - match: '\{(@(example|inheritdoc|internal|link)).*\}'
+    - match: '\{(@(example|inheritdoc|internal|link|see)).*\}'
       scope: meta.tag.inline.phpdoc.php
       captures:
         1: keyword.other.phpdoc.php
-    - match: '(?i)\s(\@[a-z0-9_-]+)\s'
+    - match: '(?i)\*\s+(\@[a-z0-9_-]+)\s'
       captures:
         1: keyword.other.phpdoc.php
   regex-double-quoted:

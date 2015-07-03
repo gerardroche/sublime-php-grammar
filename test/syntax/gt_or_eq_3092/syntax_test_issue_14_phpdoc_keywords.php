@@ -4,8 +4,14 @@
 /**
  * @api
 //   ^ keyword
+ *    @api
+//      ^ keyword
+ *                  @api
+//                   ^ keyword
  * @valid
 //   ^ keyword
+ *                  @valid
+//                      ^ keyword
  */
 
 /**
@@ -33,4 +39,9 @@
 //      ^ -keyword
 //       ^ -keyword
 //        ^ -keyword
+ */
+
+/**
+ * x @api
+//     ^ -keyword
  */

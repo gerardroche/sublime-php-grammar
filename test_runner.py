@@ -79,10 +79,10 @@ class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
 
         self.view.replace(edit, expect_content_region, file_content_scope_repr.strip())
 
-def is_enabled(self):
-    if not self.view.file_name():
-        return False
-    return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
+    def is_enabled(self):
+        if not self.view.file_name():
+            return False
+        return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
 
 if DEBUG_MODE:
 
