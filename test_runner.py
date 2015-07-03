@@ -115,8 +115,26 @@ if DEBUG_MODE:
                 return
 
 class __php_grammar_test_replace_view_content(sublime_plugin.TextCommand):
+
     def run(self, edit, text=''):
         self.view.replace(edit, sublime.Region(0, self.view.size()), text)
+
+class __php_grammar_test_replace_cursor_position(sublime_plugin.TextCommand):
+
+    def run(self, edit, reverse=False):
+
+        if reverse:
+            cursor_position = self.view.sel()[0]
+            self.view.replace(edit, cursor_position, '|')
+        else:
+            cursor_placeholder = self.view.find('\|', 0)
+
+            if not cursor_placeholder or cursor_placeholder.empty():
+                return
+
+            self.view.sel().clear()
+            self.view.sel().add(cursor_placeholder.begin())
+            self.view.replace(edit, cursor_placeholder, '')
 
 class ViewTestCase(unittest.TestCase):
 
@@ -137,10 +155,14 @@ class ViewTestCase(unittest.TestCase):
         if self.view:
             self.view.close()
 
-    def set_view_content(self, content):
+    def set_view_content(self, content, replace_cursor_position=False):
         self.view.run_command('__php_grammar_test_replace_view_content', {'text': content})
+        if replace_cursor_position:
+            self.view.run_command('__php_grammar_test_replace_cursor_position')
 
-    def get_view_content(self):
+    def get_view_content(self, replace_cursor_position=False):
+        if replace_cursor_position:
+            self.view.run_command('__php_grammar_test_replace_cursor_position', {'reverse': True})
         return SublimeViewAPI(self.view).to_str()
 
     def view_to_scope_name_repr(self):
@@ -198,6 +220,19 @@ class TestIndentation(ViewTestCase):
             self.set_view_content(test_file.actual_content)
             self.view.run_command('reindent', { 'force_indent': True, 'single_line': False })
             self.assertEqual(test_file.expected_content, self.get_view_content(), "\n\ntest:" + test_file_name)
+
+class TestMacro(ViewTestCase):
+
+    def test_macro_file_tests(self):
+
+        test_files = glob.glob(os.path.join(configuration.tests_root_path, 'macro') + '/*_test.php')
+
+        for test_file_name in test_files:
+
+            test_file = TestFile.from_file(test_file_name)
+            self.set_view_content(test_file.actual_content, replace_cursor_position=True)
+            self.view.run_command('run_macro_file', {'file': 'res://Packages/php-grammar/macros/wrap-newlines.sublime-macro'})
+            self.assertEqual(test_file.expected_content, self.get_view_content(replace_cursor_position=True), "\n\ntest:" + test_file_name)
 
 class TestSyntax(ViewTestCase):
 
@@ -282,25 +317,35 @@ class TextTestRunner():
         self.window = window
         self.test_loader = unittest.TestLoader()
         self.suite = unittest.TestSuite()
+        self.syntax_tests_added = False
 
     def run_all_tests(self):
         self._add_all_indentation_tests()
         self._add_all_syntax_tests()
+        self._add_all_macro_tests()
         self._run()
 
     def run_syntax_tests(self):
         self._add_all_syntax_tests()
         self._run()
 
+    def _add_all_syntax_tests(self):
+        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
+        self.syntax_tests_added = True
+
     def run_indentation_tests(self):
         self._add_all_indentation_tests()
         self._run()
 
-    def _add_all_syntax_tests(self):
-        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
-
     def _add_all_indentation_tests(self):
         self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestIndentation))
+
+    def run_macro_tests(self):
+        self._add_all_macro_tests()
+        self._run()
+
+    def _add_all_macro_tests(self):
+        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestMacro))
 
     def _run(self):
 
@@ -311,24 +356,23 @@ class TextTestRunner():
 
         def run_and_display():
 
-            import sublime_api
-            output = "Running **/syntax_test_* tests...\n"
-            tests = sublime.find_resources("syntax_test*")
-            num_failed = 0
-            for t in tests:
-                test_output = sublime_api.run_syntax_test(t)
-                if len(test_output) > 0:
-                    num_failed += 1
-                    output += test_output + "\n"
+            if self.syntax_tests_added:
+                import sublime_api
+                output = "Running **/syntax_test_* tests...\n"
+                tests = sublime.find_resources("syntax_test*")
+                num_failed = 0
+                for t in tests:
+                    test_output = sublime_api.run_syntax_test(t)
+                    if len(test_output) > 0:
+                        num_failed += 1
+                        output += test_output + "\n"
 
-            self.append_string_to_display(display, output)
+                self.append_string_to_display(display, output)
 
-            if num_failed > 0:
-                self.append_string_to_display(display, "FAILED: %d of %d tests failed\n\n" % (num_failed, len(tests)))
-            else:
-                self.append_string_to_display(display, "Success: %d tests passed\n\n" % len(tests))
-
-            self.append_string_to_display(display, 'Running php-grammar/test/syntax/*/*_tests.php tests...')
+                if num_failed > 0:
+                    self.append_string_to_display(display, "FAILED: %d of %d tests failed\n\n" % (num_failed, len(tests)))
+                else:
+                    self.append_string_to_display(display, "Success: %d tests passed\n\n" % len(tests))
 
             runner.run(self.suite)
 
@@ -352,6 +396,12 @@ class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
     def run(self):
         test_runner = TextTestRunner(self.window)
         test_runner.run_syntax_tests()
+
+class RunPhpGrammarMacroTests(sublime_plugin.WindowCommand):
+
+    def run(self):
+        test_runner = TextTestRunner(self.window)
+        test_runner.run_macro_tests()
 
 class RunPhpGrammarTests(sublime_plugin.WindowCommand):
 
