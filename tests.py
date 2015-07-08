@@ -19,7 +19,7 @@ class Configuration():
     def on_load(self):
         self.package_root_path = os.path.dirname(__file__)
         self.package_name = os.path.basename(self.package_root_path)
-        self.tests_root_path = os.path.join(self.package_root_path, 'test')
+        self.tests_root_path = os.path.join(self.package_root_path, 'tests')
 
         if int(sublime.version()) >= 3092:
             self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.sublime-syntax')
@@ -114,12 +114,12 @@ if DEBUG_MODE:
                 view.set_status('scope', 'Scope: "' + scope_name + '"')
                 return
 
-class __php_grammar_test_replace_view_content(sublime_plugin.TextCommand):
+class __php_grammar_test_view_replace(sublime_plugin.TextCommand):
 
-    def run(self, edit, text=''):
+    def run(self, edit, text):
         self.view.replace(edit, sublime.Region(0, self.view.size()), text)
 
-class __php_grammar_test_replace_cursor_position(sublime_plugin.TextCommand):
+class __php_grammar_test_view_replace_cursor(sublime_plugin.TextCommand):
 
     def run(self, edit, reverse=False):
 
@@ -156,13 +156,13 @@ class ViewTestCase(unittest.TestCase):
             self.view.close()
 
     def set_view_content(self, content, replace_cursor_position=False):
-        self.view.run_command('__php_grammar_test_replace_view_content', {'text': content})
+        self.view.run_command('__php_grammar_test_view_replace', {'text': content})
         if replace_cursor_position:
-            self.view.run_command('__php_grammar_test_replace_cursor_position')
+            self.view.run_command('__php_grammar_test_view_replace_cursor')
 
     def get_view_content(self, replace_cursor_position=False):
         if replace_cursor_position:
-            self.view.run_command('__php_grammar_test_replace_cursor_position', {'reverse': True})
+            self.view.run_command('__php_grammar_test_view_replace_cursor', {'reverse': True})
         return SublimeViewAPI(self.view).to_str()
 
     def view_to_scope_name_repr(self):
