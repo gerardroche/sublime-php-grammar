@@ -19,7 +19,7 @@ class Configuration():
     def on_load(self):
         self.package_root_path = os.path.dirname(__file__)
         self.package_name = os.path.basename(self.package_root_path)
-        self.tests_root_path = os.path.join(self.package_root_path, 'test')
+        self.tests_root_path = os.path.join(self.package_root_path, 'tests')
 
         if int(sublime.version()) >= 3092:
             self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.sublime-syntax')

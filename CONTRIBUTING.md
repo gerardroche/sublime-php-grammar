@@ -24,6 +24,7 @@ From the command palette:
 * `PHP Grammar: Run All Tests`
 * `PHP Grammar: Run Syntax Tests`
 * `PHP Grammar: Run Indentation Tests`
+* `PHP Grammar: Run Macro Tests`
 
 ## Indentation Tests
 
@@ -31,7 +32,7 @@ There are two options for writing indentation tests. Test & expectation in a sin
 
 **Test and expectation in a single file**
 
-`test/indentation/if_else_test.php`
+`tests/indentation/if_else_test.php`
 
 ```
 --TEST--
@@ -76,7 +77,7 @@ echo 'Statement 10';
 
 **Test and expectation in separate files**
 
-`test/indentation/if_else_test.php`
+`tests/indentation/if_else_test.php`
 
 ```
 <?php
@@ -97,7 +98,7 @@ echo 'statement 9';
 echo 'statement 10';
 ```
 
-`test/indentation/if_else_expect.php`
+`tests/indentation/if_else_expect.php`
 
 ```
 echo 'Statement 1';
@@ -123,13 +124,13 @@ echo 'Statement 10';
 
 See http://www.sublimetext.com/docs/3/syntax.html for the new syntax test spec. 
 
-* All new syntax tests are place in `test/syntax/gt_or_eq_3092/`
+* All new syntax tests are place in `tests/syntax/gt_or_eq_3092/`
 * All new syntax test file names must be in the format `syntax_test_*.php`
 
 ### Alternative syntax test spec (deprecated)
 
 * All syntax test file names must end with `_test.php`
-* All syntax tests are place in `test/syntax/`
+* All syntax tests are place in `tests/syntax/`
 
 **Test File Fields:**
 
@@ -146,7 +147,7 @@ If a syntax test file is in the current view the `--EXPECT--` part of the test i
 
 **Example:**
 
-`test/syntax/namespace_test.php`
+`tests/syntax/namespace_test.php`
 
 ```
 --TEST--
@@ -199,7 +200,7 @@ source.php source.php.embedded.block.html punctuation.section.embedded.end.php
 
 **Example**
 
-`test/syntax/basic_support_function_test.php`
+`tests/syntax/basic_support_function_test.php`
 
 ```
 --TEST--
