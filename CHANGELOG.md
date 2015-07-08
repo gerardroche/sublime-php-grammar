@@ -1,6 +1,6 @@
 # sublime-php-grammar changelog
 
-## 0.13.0 (upcoming)
+## 0.13.0
 
 * Fixed: Third-party syntaxes, "source.php" scope not working #21
 
