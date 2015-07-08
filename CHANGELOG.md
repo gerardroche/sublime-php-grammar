@@ -1,5 +1,9 @@
 # sublime-php-grammar changelog
 
+## 0.13.0 (upcoming)
+
+* Fixed: Third-party syntaxes, "source.php" scope not working #21
+
 ## 0.12.0
 
 * Add `{@see *}` inline phpdoc keyword
