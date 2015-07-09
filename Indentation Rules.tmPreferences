@@ -14,6 +14,7 @@
 		<key>increaseIndentPattern</key>
 		<string>(?x)
 			^.*(\{[^}"']*)$
+			| ^.*(\([^)"']*)$
 			| \s* (?:&lt;\?(?:php)?\s+)? (if|else(if)?|for(each)?|while|declare).*:(?!.*end\2)
 		</string>
 
@@ -22,6 +23,7 @@
 			^ (.*\*/)? \s* \} .* $
 			| \s* (?:&lt;\?(?:php)?\s+)? (else(if)?.*:|end(if|for(each)?|while|declare)\s*;)
 			| ^\s*\)+[,;]?\s*$ # hack for matching last paren in arrays
+			| ^\s*[)}\]]
 		</string>
 
 		<key>disableIndentNextLinePattern</key>
@@ -30,7 +32,8 @@
 		<key>indentNextLinePattern</key>
 		<string>(?x)
 			^(?!.*(#|//|\*/|&lt;\?))(?!.*[};:]\s*(//|/\*.*\*/\s*$)).*[^\s;:{}]\s*$
-			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)</string>
+			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)
+		</string>
 
 		<key>bracketIndentNextLinePattern</key>
 		<string>(?x)
