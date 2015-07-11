@@ -39,6 +39,8 @@ contexts:
       push:
         - meta_scope: comment.block.documentation.phpdoc.php
         - match: \*/
+          captures:
+            0: punctuation.definition.comment.php
           pop: true
         - include: php_doc
     - match: /\*
@@ -47,6 +49,8 @@ contexts:
       push:
         - meta_scope: comment.block.php
         - match: \*/
+          captures:
+            0: punctuation.definition.comment.php
           pop: true
     - match: (//).*?($\n?|(?=\?>))
       scope: comment.line.double-slash.php
@@ -182,6 +186,11 @@ contexts:
       push:
         - meta_scope: meta.function.argument.default.php
         - match: '(?=,|\)|/[/*]|\#)'
+          captures:
+            1: storage.modifier.reference.php
+            2: variable.other.php
+            3: punctuation.definition.variable.php
+            4: keyword.operator.assignment.php
           pop: true
         - include: parameter-default-types
   function-call:
@@ -610,7 +619,7 @@ contexts:
     - match: (?i)(!|&&|\|\|)|\b(and|or|xor|as)\b
       scope: keyword.operator.logical.php
     - include: function-call
-    - match: <<|>>|~|\^|&|\|
+    - match: '<<|>>|~|\^|&|\|'
       scope: keyword.operator.bitwise.php
     - match: (===|==|!==|!=|<=|>=|<>|<|>)
       scope: keyword.operator.comparison.php
@@ -773,6 +782,8 @@ contexts:
           push:
             - meta_scope: string.regexp.character-class.php
             - match: '\]'
+              captures:
+                0: punctuation.definition.character-class.php
               pop: true
             - include: interpolation
         - match: "[$^+*]"
@@ -804,6 +815,8 @@ contexts:
           push:
             - meta_scope: string.regexp.character-class.php
             - match: '\]'
+              captures:
+                0: punctuation.definition.character-class.php
               pop: true
             - match: '\\[\\''\[\]]'
               scope: constant.character.escape.php
