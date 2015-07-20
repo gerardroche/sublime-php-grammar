@@ -58,7 +58,7 @@ embedding.php text.html.basic meta.tag.structure.any.html entity.other.attribute
 embedding.php text.html.basic meta.tag.structure.any.html entity.other.attribute-name.html
 embedding.php text.html.basic meta.tag.structure.any.html entity.other.attribute-name.html
 embedding.php text.html.basic meta.tag.structure.any.html entity.other.attribute-name.html
-embedding.php text.html.basic meta.tag.structure.any.html
+embedding.php text.html.basic meta.tag.structure.any.html punctuation.separator.key-value.html
 embedding.php text.html.basic meta.tag.structure.any.html string.quoted.double.html punctuation.definition.string.begin.html
 embedding.php text.html.basic meta.tag.structure.any.html string.quoted.double.html
 embedding.php text.html.basic meta.tag.structure.any.html string.quoted.double.html
@@ -97,7 +97,7 @@ embedding.php text.html.basic meta.tag.inline.any.html entity.other.attribute-na
 embedding.php text.html.basic meta.tag.inline.any.html entity.other.attribute-name.html
 embedding.php text.html.basic meta.tag.inline.any.html entity.other.attribute-name.html
 embedding.php text.html.basic meta.tag.inline.any.html entity.other.attribute-name.html
-embedding.php text.html.basic meta.tag.inline.any.html
+embedding.php text.html.basic meta.tag.inline.any.html punctuation.separator.key-value.html
 embedding.php text.html.basic meta.tag.inline.any.html string.quoted.double.html punctuation.definition.string.begin.html
 embedding.php text.html.basic meta.tag.inline.any.html string.quoted.double.html
 embedding.php text.html.basic meta.tag.inline.any.html string.quoted.double.html
