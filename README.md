@@ -98,14 +98,71 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 *To insert literal in a an overriden context prefix the literal with <kbd>Ctrl</kbd>.*
 
-| Keymap | Context | Description |
-|--------|---------| ------------|
-| <kbd>Enter</kbd> | Empty array | Wrap cursor with `\n`'s and indent cursor line |
-| <kbd>Enter</kbd> | Array string | Append `,\n` |
-| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | *\** | Append `;\n` |
-| <kbd>Ctrl</kbd>+<kbd>;</kbd> | *\** | Append `;` |
+**Empty array** <kbd>Enter</kbd>
 
-*\* means contexts where the result of the macro makes sense and is valid syntax.*
+```php
+$_ = array(|)               | $_ = array(
+                            |     |
+                            | )
+```
+
+**Array string** <kbd>Enter</kbd>
+
+```php
+$_ = array(                 | $_ = array(
+    'str|'                  |     'str',
+)                           |     |
+                            | )
+```
+
+**Complete semi-colon** <kbd>Ctrl</kbd>+<kbd>;</kbd>
+
+Appends semi-colon in various relevant contexts.
+
+```php
+$_ = 'str|ing'              | $_ = 'str|ing';
+
+function_call(|)            | function_call();|
+```
+
+**Complete semi-colon and put cursor on next line** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+
+Appends semi-colon and inserts a newline in various relevant contexts.
+
+```php
+$_ = 'str|ing'              | $_ = 'string';
+                            | |
+
+function_call(|)            | function_call();
+                            | |
+```
+
+**Complete control structure braces** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+
+This completion will trigger with the cursor anywhere before the last parenthesis of the control structure statement.
+
+```php
+if ($condition|)            | if ($condition) {
+                            |     |
+                            | }
+
+foreach ($x => $y|)         | foreach ($x => $y) {
+                            |     |
+                            | }
+
+while ($condition|)         | while ($condition) {
+                            |     |
+                            | }
+
+for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
+                            |     |
+                            | }
+
+switch ($condition|)         | switch ($condition|) {
+                            |     |
+                            | }
+```
+
 
 ## Installation
 
@@ -119,7 +176,7 @@ If you are using Sublime Text 2, you have to disable the native package _manuall
 
 ### Manual installation
 
-1. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform: 
+1. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
     * Sublime Text 3
         - Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
         - OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
