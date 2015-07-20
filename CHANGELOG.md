@@ -1,5 +1,9 @@
 # sublime-php-grammar changelog
 
+## 0.14.0 (upcoming)
+
+* Fixed bug `Ctrl+;` macro regex typo
+
 ## 0.13.0
 
 * Fixed: Third-party syntaxes, "source.php" scope not working #21
