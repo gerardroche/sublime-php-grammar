@@ -5,7 +5,7 @@
 * Cherry pick from native PHP package: Added missing pop scope names
 * Fixed bug `Ctrl+;` macro regex typo
 * `Ctrl+Enter` macro now triggers inside strings
-* Added a complete braces macro for control statements #23
+* Added a `Ctrl+Enter` complete braces macro for control statements #23
 
 ## 0.13.0
 
