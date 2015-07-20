@@ -3,6 +3,7 @@
 ## 0.14.0 (upcoming)
 
 * Fixed bug `Ctrl+;` macro regex typo
+* `Ctrl+Enter` macro now triggers inside strings
 
 ## 0.13.0
 
