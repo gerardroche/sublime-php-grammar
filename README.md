@@ -15,7 +15,8 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 ## Features
 
-* Updated syntax definition support for PHP [~5.6][semver] builtin classes, functions, and constants which provides more up to date support for syntax highlighters.
+* Syntax definition support for PHP [~5.6][semver]. *Provides more up to date support for syntax highlighters.*
+* Decent macros
 * Decent indentation rules
 
     Reindent.
@@ -60,45 +61,11 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
                     |           |             )|
     ```
 
-* Decent macros
-
-    <kbd>Enter</kbd>
-
-    ```php
-    $val = array(|)             | $val = array(
-                                |     |
-                                | )
-    ```
-
-    <kbd>Enter</kbd>
-
-    ```php
-    $val = array(               | $val = array(
-        'str|'                  |     'str',
-    )                           |     |
-                                | )
-    ```
-
-    <kbd>Ctrl</kbd>+<kbd>;</kbd>
-
-    ```
-    $val = 'str|ing'            | $val = 'str|ing';
-    ```
-
-    <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-
-    ```
-    $val = 'str|ing'            | $val = 'string';
-                                | |
-    ```
-
 ## Macros
 
-*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
+*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd> and to insert any other literal prefix it with <kbd>Ctrl</kbd>.*
 
-*To insert literal in a an overriden context prefix the literal with <kbd>Ctrl</kbd>.*
-
-**Empty array** <kbd>Enter</kbd>
+**Empty arrays** <kbd>Enter</kbd>
 
 ```php
 $_ = array(|)               | $_ = array(
@@ -106,7 +73,7 @@ $_ = array(|)               | $_ = array(
                             | )
 ```
 
-**Array string** <kbd>Enter</kbd>
+**Array strings** <kbd>Enter</kbd>
 
 ```php
 $_ = array(                 | $_ = array(
@@ -115,9 +82,7 @@ $_ = array(                 | $_ = array(
                             | )
 ```
 
-**Complete semi-colon** <kbd>Ctrl</kbd>+<kbd>;</kbd>
-
-Appends semi-colon in various relevant contexts.
+**Append semicolons** <kbd>Ctrl</kbd>+<kbd>;</kbd>
 
 ```php
 $_ = 'str|ing'              | $_ = 'str|ing';
@@ -125,9 +90,7 @@ $_ = 'str|ing'              | $_ = 'str|ing';
 function_call(|)            | function_call();|
 ```
 
-**Complete semi-colon and put cursor on next line** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-
-Appends semi-colon and inserts a newline in various relevant contexts.
+**Append semicolons and newlines** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
 ```php
 $_ = 'str|ing'              | $_ = 'string';
@@ -137,9 +100,7 @@ function_call(|)            | function_call();
                             | |
 ```
 
-**Complete control structure braces** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-
-This completion will trigger with the cursor anywhere before the last parenthesis of the control structure statement.
+**Auto pair braces** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
 ```php
 if ($condition|)            | if ($condition) {
@@ -158,8 +119,21 @@ for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
                             |     |
                             | }
 
-switch ($condition|)         | switch ($condition|) {
+switch ($condition|)        | switch ($condition|) {
                             |     |
+                            | }
+
+function x(|)               | function x()
+                            | {
+                            |     |
+                            | }
+
+class x                     | class x
+{                           | {
+    public function y(|)    |     public function y()
+}                           |     {
+                            |         |
+                            |     }
                             | }
 ```
 
