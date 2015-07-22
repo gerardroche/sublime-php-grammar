@@ -42,7 +42,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/complete-braces.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
         "context": [
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
