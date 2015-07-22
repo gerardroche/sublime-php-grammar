@@ -52,5 +52,33 @@
             { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*(for(each)?|if|switch|while)\\s*\\(", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
         ]
-    }
+    },
+
+    // auto pair braces: elseif, catch
+
+    {
+        "keys": ["ctrl+enter"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*\\}\\s*(catch|elseif)\\s*\\(", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
+        ]
+    },
+
+    // auto pair braces: functions, methods
+
+    {
+        "keys": ["ctrl+enter"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-next-line.sublime-macro"},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.function.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*((final|abstract|static)\\s+)*((private|protected|public)\\s+)*function\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
+        ]
+    },
 ]
