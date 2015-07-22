@@ -39,6 +39,9 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\"|\\)|\\])$", "match_all": true }
         ]
     },
+
+    // auto pair braces: if, for, foreach, switch, while
+
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
@@ -46,7 +49,7 @@
         "context": [
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
-            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*(if|for(each)?|switch|while)", "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*(for(each)?|if|switch|while)\\s*\\(", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
         ]
     }
