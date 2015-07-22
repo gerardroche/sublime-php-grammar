@@ -2,10 +2,10 @@
 
 ## 0.14.0 (upcoming)
 
-* Cherry pick from native PHP package: Added missing pop scope names
-* Fixed bug `Ctrl+;` macro regex typo
-* `Ctrl+Enter` macro now triggers inside strings
-* Added a `Ctrl+Enter` complete braces macro for control statements #23
+* Added `Ctrl+Enter` auto pair braces support for control structures, language constructs, functions, and methods #23
+* Updated all latest changes from native PHP package
+* Fixed typo bug in `Ctrl+;` macro regex
+* Fixed `Ctrl+Enter` macro now triggers inside strings
 
 ## 0.13.0
 
