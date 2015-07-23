@@ -23,7 +23,7 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
     Reindent.
 
-    ```php
+    ```
     Menu > Edit > Line > Reindent
     ---------------------------------------------------------------------
     Original                  -> | Reindented
@@ -53,7 +53,7 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
     Press closing parentheses in an array context automatically indents to the correct position.
 
-    ```php
+    ```
     Press )
     ---------------------------------------------------------------------
     $val = array(               | $val = array(
@@ -69,7 +69,7 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 <kbd>Enter</kbd> **empty arrays**
 
-```php
+```
 $_ = array(|)               | $_ = array(
                             |     |
                             | )
@@ -77,7 +77,7 @@ $_ = array(|)               | $_ = array(
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> **array strings**
 
-```php
+```
 $_ = array(                 | $_ = array(
     'str|'                  |     'str',
 )                           |     |
@@ -86,7 +86,7 @@ $_ = array(                 | $_ = array(
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> **append semicolons and newlines**
 
-```php
+```
 $_ = 'str|ing'              | $_ = 'string';
                             | |
 
@@ -96,7 +96,7 @@ function_call(|)            | function_call();
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> **auto pair braces**
 
-```php
+```
 if ($condition|)            | if ($condition) {
                             |     |
                             | }
@@ -133,7 +133,7 @@ class x                     | class x
 
 <kbd>Ctrl</kbd>+<kbd>;</kbd> **append semi-colon**
 
-```php
+```
 $_ = 'str|ing'              | $_ = 'str|ing';
 
 function_call(|)            | function_call();|
