@@ -2,6 +2,8 @@
 
 sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
+**Sublime Text 3 only**
+
 ## Overview
 
 * [Features](#features)
@@ -139,7 +141,11 @@ function_call(|)            | function_call();|
 
 ## Installation
 
+**Sublime Text 3 only**
+
 ### Package Control installation
+
+**Sublime Text 3 only**
 
 The preferred method of installation is via Package Control.
 
@@ -159,16 +165,13 @@ If you are using Sublime Text 2, you have to disable the native package _manuall
 
 ### Manual installation
 
+**Sublime Text 3 only**
+
 1. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
-    * Sublime Text 3
-        - Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
-        - OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
-        - Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
-2. Restart Sublime Text to complete installation. The features listed above should now be available.
-  * Sublime Text 2
-        - Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-2/Packages/php-grammar`
-        - OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/php-grammar`
-        - Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 2/Packages/php-grammar`
+    * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
+    * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
+    * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
+2. Restart Sublime Text to complete installation
 
 *Cloning into the Packages while ST is open can cause some warning message dialogs to appear and syntax highlighting to appear broken. This is harmless. Close the dialogs and files with no syntax highlighting and reopen them, and  restart ST. to avoid the dialog messages, close ST before cloning.*
 
