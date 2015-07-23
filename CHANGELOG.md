@@ -2,6 +2,7 @@
 
 ## 0.14.0 (upcoming)
 
+* Added to Package Control #1
 * Added "ctrl+enter" auto pair braces support for control structures, language constructs, functions, and methods #23
 * Updated all latest changes from native PHP package
 * Changed "enter" append comma and newline in array strings to "ctrl+enter" #25

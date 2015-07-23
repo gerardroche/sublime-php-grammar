@@ -139,6 +139,16 @@ function_call(|)            | function_call();|
 
 ## Installation
 
+### Package Control installation
+
+The preferred method of installation is via Package Control.
+
+1. Install [Package Control]
+2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
+3. Type `install package` and hit Return. A list of available packages will be displayed.
+4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
+5. Restart Sublime Text to complete installation. The features listed above should now be available.
+
 _Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
 
 If you are using Sublime Text 2, you have to disable the native package _manually_. To do that, add `PHP` to your `ignored_packages` list in ST user settings:
