@@ -13,7 +13,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-comma-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-comma-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array string.quoted", "match_all": true },
@@ -35,7 +35,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php - meta.array string.quoted", "match_all": true },
