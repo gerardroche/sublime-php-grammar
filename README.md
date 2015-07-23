@@ -149,7 +149,7 @@ function_call(|)            | function_call();|
 
 The preferred method of installation is via Package Control.
 
-1. Install [Package Control]
+1. Install [Package Control](https://packagecontrol.io)
 2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
 3. Type `install package` and hit Return. A list of available packages will be displayed.
 4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
