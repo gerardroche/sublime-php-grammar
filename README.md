@@ -17,7 +17,7 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 ## Features
 
-* Syntax definition support for PHP [~5.6][semver]. *Provides more up to date support for syntax highlighters.*
+* Syntax definition support for PHP [~5.6](http://semver.org). *Provides more up to date support for syntax highlighters.*
 * Decent macros
 * Decent indentation rules
 
@@ -157,12 +157,6 @@ The preferred method of installation is via Package Control.
 
 _Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
 
-If you are using Sublime Text 2, you have to disable the native package _manually_. To do that, add `PHP` to your `ignored_packages` list in ST user settings:
-
-```
-"ignored_packages": [..., "PHP"]
-```
-
 ### Manual installation
 
 **Sublime Text 3 only**
@@ -173,7 +167,7 @@ If you are using Sublime Text 2, you have to disable the native package _manuall
     * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
 2. Restart Sublime Text to complete installation
 
-*Cloning into the Packages while ST is open can cause some warning message dialogs to appear and syntax highlighting to appear broken. This is harmless. Close the dialogs and files with no syntax highlighting and reopen them, and  restart ST. to avoid the dialog messages, close ST before cloning.*
+_Note_: Cloning into the Packages while ST is open can cause some warning message dialogs to appear and syntax highlighting to appear broken. This is harmless. Close the dialogs and files with no syntax highlighting and reopen them, and  restart ST. to avoid the dialog messages, close ST before cloning.
 
 ## Contributing
 
@@ -187,12 +181,11 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## Complementary Plugins
 
-* [php-completions]
-* [php-grammar]
-* [php-snippets]
-* [phpunit-completions]
-* [phpunit-snippets]
-* [phpunit]
+* [PHP Completions](https://github.com/gerardroche/sublime-phpck)
+* [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets)
+* [PHPUnit](https://github.com/gerardroche/sublime-phpunit)
+* [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunit-completions)
+* [PHPUnit Snippets](https://github.com/gerardroche/sublime-phpunit-snippets)
 
 ## Credits
 
@@ -200,15 +193,4 @@ Originally converted from the [PHP TextMate bundle](https://github.com/textmate/
 
 ## License
 
-sublime-php-grammar is released under the [BSD 3-Clause License][license].
-
-[license]: LICENSE
-[Package Control]: https://packagecontrol.io
-[php-completions]: https://github.com/gerardroche/sublime-phpck
-[php-fig]: http://www.php-fig.org
-[php-grammar]: https://github.com/gerardroche/sublime-php-grammar
-[php-snippets]: https://github.com/gerardroche/sublime-php-snippets
-[phpunit-completions]: https://github.com/gerardroche/sublime-phpunitck
-[phpunit-snippets]: https://github.com/gerardroche/sublime-phpunit-snippets
-[phpunit]: https://github.com/gerardroche/sublime-phpunit
-[semver]: http://semver.org
+sublime-php-grammar is released under the [BSD 3-Clause License](LICENSE).
