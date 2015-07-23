@@ -65,7 +65,7 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 *To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd> and to insert any other literal prefix it with <kbd>Ctrl</kbd>.*
 
-**Empty arrays** <kbd>Enter</kbd>
+<kbd>Enter</kbd> **empty arrays**
 
 ```php
 $_ = array(|)               | $_ = array(
@@ -73,7 +73,7 @@ $_ = array(|)               | $_ = array(
                             | )
 ```
 
-**Array strings** <kbd>Enter</kbd>
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **array strings**
 
 ```php
 $_ = array(                 | $_ = array(
@@ -82,15 +82,7 @@ $_ = array(                 | $_ = array(
                             | )
 ```
 
-**Append semicolons** <kbd>Ctrl</kbd>+<kbd>;</kbd>
-
-```php
-$_ = 'str|ing'              | $_ = 'str|ing';
-
-function_call(|)            | function_call();|
-```
-
-**Append semicolons and newlines** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **append semicolons and newlines**
 
 ```php
 $_ = 'str|ing'              | $_ = 'string';
@@ -100,7 +92,7 @@ function_call(|)            | function_call();
                             | |
 ```
 
-**Auto pair braces** <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **auto pair braces**
 
 ```php
 if ($condition|)            | if ($condition) {
@@ -137,6 +129,13 @@ class x                     | class x
                             | }
 ```
 
+<kbd>Ctrl</kbd>+<kbd>;</kbd> **append semi-colon**
+
+```php
+$_ = 'str|ing'              | $_ = 'str|ing';
+
+function_call(|)            | function_call();|
+```
 
 ## Installation
 

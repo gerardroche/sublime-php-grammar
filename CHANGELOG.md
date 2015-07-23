@@ -2,10 +2,11 @@
 
 ## 0.14.0 (upcoming)
 
-* Added `Ctrl+Enter` auto pair braces support for control structures, language constructs, functions, and methods #23
+* Added "ctrl+enter" auto pair braces support for control structures, language constructs, functions, and methods #23
 * Updated all latest changes from native PHP package
-* Fixed typo bug in `Ctrl+;` macro regex
-* Fixed `Ctrl+Enter` macro now triggers inside strings
+* Changed "enter" append comma and newline in array strings to "ctrl+enter" #25
+* Fixed typo bug in "ctrl+;" macro regex
+* Fixed "ctrl+enter" macro now triggers inside strings
 
 ## 0.13.0
 
