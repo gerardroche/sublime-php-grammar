@@ -15,10 +15,10 @@ class x implements \Countable {}
 //                 ^ punctuation.separator.inheritance
 //                      ^ support.class.builtin
 
-class e extends Exception {}
+class x extends Exception {}
 //                  ^ support.class.builtin
 
-class e extends \Exception {}
+class x extends \Exception {}
 //              ^ punctuation.separator.inheritance
 //                  ^ support.class.builtin
 

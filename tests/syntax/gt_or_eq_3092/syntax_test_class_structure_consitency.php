@@ -1,7 +1,9 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-// TODO fix multiple extends matching is consistency
+/**
+ * Basic
+ */
 
 interface Name extends ExtendC {}
 // ^ meta storage.type

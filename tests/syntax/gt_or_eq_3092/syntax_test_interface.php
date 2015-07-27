@@ -17,7 +17,7 @@ interface Name {}
 // ^ meta.interface storage.type.interface
 //         ^ meta.interface entity.name.type.interface
 
-interface Name extends ExtendA
+interface Name extends ExtendsA
 // ^ meta.interface storage.type.interface
 //         ^ meta.interface entity.name.type.interface
 //               ^ meta.interface storage.modifier.extends
