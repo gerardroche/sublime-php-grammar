@@ -58,3 +58,13 @@ class Name extends ExtendA implements ImplementsA, ImplementsB, ImplementsC
 {
 
 }
+
+/**
+ * Resolves #29
+ */
+
+abstract class Name {}
+// ^ meta.class storage.modifier.abstract
+
+final class Name {}
+// ^ meta.class storage.modifier.final

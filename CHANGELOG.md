@@ -9,6 +9,7 @@
 * Fixed typo bug in "ctrl+;" macro regex
 * Fixed "ctrl+enter" macro now triggers inside strings
 * Fixed #31 only last inherited interface gets highlighted
+* Fixed #29 final class storage modifier scope
 
 ## 0.13.0
 

@@ -418,11 +418,12 @@ contexts:
         - meta_scope: meta.trait.php
         - match: '(?=\{)'
           pop: true
-    - match: '(?i)^\s*(abstract|final)?\s*(class)\s+([a-z0-9_]+)\s*'
+    - match: '(?i)^\s*(?:(abstract)|(final))?\s*(class)\s+([a-z0-9_]+)\s*'
       captures:
         1: storage.modifier.abstract.php
-        2: storage.type.class.php
-        3: entity.name.type.class.php
+        2: storage.modifier.final.php
+        3: storage.type.class.php
+        4: entity.name.type.class.php
       push:
         - meta_scope: meta.class.php
         - match: "(?=[;{])"
