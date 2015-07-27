@@ -171,7 +171,7 @@ contexts:
             5: keyword.operator.assignment.php
             6: constant.language.php
             7: invalid.illegal.non-null-typehinted.php
-    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#)'
+    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#|$)'
       scope: meta.function.argument.no-default.php
       captures:
         1: storage.modifier.reference.php
@@ -185,7 +185,7 @@ contexts:
         4: keyword.operator.assignment.php
       push:
         - meta_scope: meta.function.argument.default.php
-        - match: '(?=,|\)|/[/*]|\#)'
+        - match: '(?=,|\)|/[/*]|\#|$)'
           captures:
             1: storage.modifier.reference.php
             2: variable.other.php
