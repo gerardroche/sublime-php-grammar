@@ -8,6 +8,7 @@
 * Changed "enter" append comma and newline in array strings to "ctrl+enter" #25
 * Fixed typo bug in "ctrl+;" macro regex
 * Fixed "ctrl+enter" macro now triggers inside strings
+* Fixed #31 only last inherited interface gets highlighted
 
 ## 0.13.0
 

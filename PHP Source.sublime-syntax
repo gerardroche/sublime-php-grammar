@@ -353,11 +353,25 @@ contexts:
         3: storage.modifier.extends.php
       push:
         - meta_scope: meta.interface.php
-        - match: '([a-zA-Z0-9_]+)?\s*(?:(?=\{)|$)'
-          captures:
-            1: entity.other.inherited-class.php
+        - match: '(?=\{)'
           pop: true
-        - include: namespace
+        - include: comments
+        - match: '(?i)(?=[a-z0-9_\\]+)'
+          push:
+            - meta_content_scope: meta.other.inherited-class.php
+            - match: '(?i)(?:\s*(?:,|(?=[^a-z0-9_\\\s]))\s*)'
+              pop: true
+            - match: '(?i)(?=\\?[a-z_0-9]+\\)'
+              push:
+                - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+                  captures:
+                    1: entity.other.inherited-class.php
+                  pop: true
+                - include: namespace
+            - include: class-builtin
+            - include: namespace
+            - match: "(?i)[a-z_][a-z_0-9]*"
+              scope: entity.other.inherited-class.php
     - match: '(?i)^\s*(namespace)\b\s+(?=([a-z0-9_\\]+\s*($|[;{]|(\/[\/*])))|$)'
       captures:
         1: keyword.other.namespace.php
