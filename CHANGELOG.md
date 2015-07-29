@@ -1,5 +1,17 @@
 # sublime-php-grammar changelog
 
+## 0.14.0 (upcoming)
+
+* Added to Package Control #1
+* Added "ctrl+enter" auto pair braces support for control structures, language constructs, functions, and methods #23
+* Updated all latest changes from native PHP package
+* Changed "enter" append comma and newline in array strings to "ctrl+enter" #25
+* Fixed typo bug in "ctrl+;" macro regex
+* Fixed "ctrl+enter" macro now triggers inside strings
+* Fixed #31 only last inherited interface gets highlighted
+* Fixed #29 final class storage modifier scope
+* Fixed #12 multiline function arguments scope
+
 ## 0.13.0
 
 * Fixed: Third-party syntaxes, "source.php" scope not working #21

@@ -17,7 +17,7 @@ interface Name {}
 // ^ meta.interface storage.type.interface
 //         ^ meta.interface entity.name.type.interface
 
-interface Name extends ExtendA
+interface Name extends ExtendsA
 // ^ meta.interface storage.type.interface
 //         ^ meta.interface entity.name.type.interface
 //               ^ meta.interface storage.modifier.extends
@@ -26,13 +26,12 @@ interface Name extends ExtendA
 
 }
 
-// TODO fix multiple inheritance matching
-interface Name extends ExtendA, ExtendB, ExtendC
+interface Name extends ExtendsA, ExtendsB, ExtendsC
 // ^ meta.interface storage.type.interface
 //         ^ meta.interface entity.name.type.interface
 //               ^ meta.interface storage.modifier.extends
-//                  TODO ^ -meta.interface entity.other.inherited-class
-//                          TODO ^ -meta.interface entity.other.inherited-class
+//                      ^ meta.interface entity.other.inherited-class
+//                                  ^ meta.interface entity.other.inherited-class
 //                                          ^ meta.interface entity.other.inherited-class
 {
 

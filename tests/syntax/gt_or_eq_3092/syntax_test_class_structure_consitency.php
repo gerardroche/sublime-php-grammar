@@ -1,20 +1,51 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-// TODO fix multiple extends matching is consistency
+/**
+ * Basic
+ */
 
-interface Name extends ExtendC {}
+interface Name {}
+// ^ meta storage.type
+//          ^ meta entity.name.type
+class ____Name {}
+// ^ meta storage.type
+//          ^ meta entity.name.type
+trait ____Name {}
+// ^ meta storage.type
+//          ^ meta entity.name.type
+
+/**
+ * Extends
+ */
+
+interface Name extends ExtendsName {}
 // ^ meta storage.type
 //          ^ meta entity.name.type
 //              ^ meta storage.modifier.extends
-//                      ^ meta entity.other.inherited-class
-
-class Name extends ExtendC {}
+//                      ^ meta entity.other
+class ____Name extends ExtendsName {}
 // ^ meta storage.type
-//      ^ meta entity.name.type
-//          ^ meta storage.modifier.extends
-//                  ^ meta entity.other.inherited-class
+//          ^ meta entity.name.type
+//              ^ meta storage.modifier.extends
+//                      ^ meta entity.other
 
-trait Name {}
+
+/**
+ * Extends|Implements multiple
+ */
+
+interface Name extends Extends_____A, Extends____B, Extends___C {}
 // ^ meta storage.type
-//      ^ meta entity.name.type
+//          ^ meta entity.name.type
+//              ^ meta storage.modifier
+//                      ^ meta entity.other
+//                                      ^ meta entity.other
+//                                                  ^ meta entity.other
+class ____Name implements ImplementsA, ImplementsB, ImplementsC {}
+// ^ meta storage.type
+//          ^ meta entity.name.type
+//              ^ meta storage.modifier
+//                          ^ meta entity.other
+//                                      ^ meta entity.other
+//                                                  ^ meta entity.other

@@ -26,18 +26,6 @@ class Name extends ExtendA
 
 }
 
-// TODO fix multiple extends matching
-class Name extends ExtendA, ExtendsB, ExtendsC
-// ^ meta.class storage.type.class
-//      ^ meta.class entity.name.type.class
-//          ^ meta.class storage.modifier.extends
-//                  ^ meta.class meta.other.inherited-class entity.other.inherited-class
-//                          TODO ^ -meta.class meta.other.inherited-class entity.other.inherited-class
-//                                  TODO ^ -meta.class meta.other.inherited-class entity.other.inherited-class
-{
-
-}
-
 class Name implements ImplementsA
 // ^ meta.class storage.type.class
 //      ^ meta.class entity.name.type.class
@@ -58,18 +46,25 @@ class Name implements ImplementsA, ImplementsB, ImplementsC
 
 }
 
-// TODO fix multiple extends matching
-class Name extends ExtendA, ExtendsB, ExtendsC implements ImplementsA, ImplementsB, ImplementsC
+class Name extends ExtendA implements ImplementsA, ImplementsB, ImplementsC
 // ^ meta.class storage.type.class
 //      ^ meta.class entity.name.type.class
 //          ^ meta.class storage.modifier.extends
 //                  ^ meta.class meta.other.inherited-class entity.other.inherited-class
-//                          TODO ^ -meta.class meta.other.inherited-class entity.other.inherited-class
-//                                  TODO ^ -meta.class meta.other.inherited-class entity.other.inherited-class
-//                                                  ^ meta.class storage.modifier.implements
-//                                                              ^ meta.class meta.other.inherited-class entity.other.inherited-class
-//                                                                          ^ meta.class meta.other.inherited-class entity.other.inherited-class
-//                                                                                          ^ meta.class meta.other.inherited-class entity.other.inherited-class
+//                          ^ meta.class storage.modifier.implements
+//                                      ^ meta.class meta.other.inherited-class entity.other.inherited-class
+//                                                      ^ meta.class meta.other.inherited-class entity.other.inherited-class
+//                                                                  ^ meta.class meta.other.inherited-class entity.other.inherited-class
 {
 
 }
+
+/**
+ * Resolves #29
+ */
+
+abstract class Name {}
+// ^ meta.class storage.modifier.abstract
+
+final class Name {}
+// ^ meta.class storage.modifier.final

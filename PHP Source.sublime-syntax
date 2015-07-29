@@ -39,6 +39,8 @@ contexts:
       push:
         - meta_scope: comment.block.documentation.phpdoc.php
         - match: \*/
+          captures:
+            0: punctuation.definition.comment.php
           pop: true
         - include: php_doc
     - match: /\*
@@ -47,6 +49,8 @@ contexts:
       push:
         - meta_scope: comment.block.php
         - match: \*/
+          captures:
+            0: punctuation.definition.comment.php
           pop: true
     - match: (//).*?($\n?|(?=\?>))
       scope: comment.line.double-slash.php
@@ -167,7 +171,7 @@ contexts:
             5: keyword.operator.assignment.php
             6: constant.language.php
             7: invalid.illegal.non-null-typehinted.php
-    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#)'
+    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#|$)'
       scope: meta.function.argument.no-default.php
       captures:
         1: storage.modifier.reference.php
@@ -181,7 +185,12 @@ contexts:
         4: keyword.operator.assignment.php
       push:
         - meta_scope: meta.function.argument.default.php
-        - match: '(?=,|\)|/[/*]|\#)'
+        - match: '(?=,|\)|/[/*]|\#|$)'
+          captures:
+            1: storage.modifier.reference.php
+            2: variable.other.php
+            3: punctuation.definition.variable.php
+            4: keyword.operator.assignment.php
           pop: true
         - include: parameter-default-types
   function-call:
@@ -344,11 +353,25 @@ contexts:
         3: storage.modifier.extends.php
       push:
         - meta_scope: meta.interface.php
-        - match: '([a-zA-Z0-9_]+)?\s*(?:(?=\{)|$)'
-          captures:
-            1: entity.other.inherited-class.php
+        - match: '(?=\{)'
           pop: true
-        - include: namespace
+        - include: comments
+        - match: '(?i)(?=[a-z0-9_\\]+)'
+          push:
+            - meta_content_scope: meta.other.inherited-class.php
+            - match: '(?i)(?:\s*(?:,|(?=[^a-z0-9_\\\s]))\s*)'
+              pop: true
+            - match: '(?i)(?=\\?[a-z_0-9]+\\)'
+              push:
+                - match: '(?i)([a-z_][a-z_0-9]*)?(?=[^a-z0-9_\\])'
+                  captures:
+                    1: entity.other.inherited-class.php
+                  pop: true
+                - include: namespace
+            - include: class-builtin
+            - include: namespace
+            - match: "(?i)[a-z_][a-z_0-9]*"
+              scope: entity.other.inherited-class.php
     - match: '(?i)^\s*(namespace)\b\s+(?=([a-z0-9_\\]+\s*($|[;{]|(\/[\/*])))|$)'
       captures:
         1: keyword.other.namespace.php
@@ -395,11 +418,12 @@ contexts:
         - meta_scope: meta.trait.php
         - match: '(?=\{)'
           pop: true
-    - match: '(?i)^\s*(abstract|final)?\s*(class)\s+([a-z0-9_]+)\s*'
+    - match: '(?i)^\s*(?:(abstract)|(final))?\s*(class)\s+([a-z0-9_]+)\s*'
       captures:
         1: storage.modifier.abstract.php
-        2: storage.type.class.php
-        3: entity.name.type.class.php
+        2: storage.modifier.final.php
+        3: storage.type.class.php
+        4: entity.name.type.class.php
       push:
         - meta_scope: meta.class.php
         - match: "(?=[;{])"
@@ -610,7 +634,7 @@ contexts:
     - match: (?i)(!|&&|\|\|)|\b(and|or|xor|as)\b
       scope: keyword.operator.logical.php
     - include: function-call
-    - match: <<|>>|~|\^|&|\|
+    - match: '<<|>>|~|\^|&|\|'
       scope: keyword.operator.bitwise.php
     - match: (===|==|!==|!=|<=|>=|<>|<|>)
       scope: keyword.operator.comparison.php
@@ -773,6 +797,8 @@ contexts:
           push:
             - meta_scope: string.regexp.character-class.php
             - match: '\]'
+              captures:
+                0: punctuation.definition.character-class.php
               pop: true
             - include: interpolation
         - match: "[$^+*]"
@@ -804,6 +830,8 @@ contexts:
           push:
             - meta_scope: string.regexp.character-class.php
             - match: '\]'
+              captures:
+                0: punctuation.definition.character-class.php
               pop: true
             - match: '\\[\\''\[\]]'
               scope: constant.character.escape.php

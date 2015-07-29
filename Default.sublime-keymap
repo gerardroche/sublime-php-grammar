@@ -4,16 +4,18 @@
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
         "context": [
+            { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array.empty", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
         ]
     },
     {
-        "keys": ["enter"],
+        "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-comma-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-comma-newline.sublime-macro"},
         "context": [
+            { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array string.quoted", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\")$", "match_all": true }
@@ -24,19 +26,66 @@
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon.sublime-macro"},
         "context": [
+            { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
-            { "key": "following_text", "operator": "regex_contains", "operand": "('|\"||\\)|\\])$", "match_all": true }
+            { "key": "following_text", "operator": "regex_contains", "operand": "('|\"|\\)|\\])$", "match_all": true }
         ]
     },
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-and-newline.sublime-macro"},
+        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-newline.sublime-macro"},
         "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selector", "operator": "equal", "operand": "source.php - meta.array string.quoted", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "('|\"|\\)|\\])$", "match_all": true }
+        ]
+    },
+
+    // auto pair braces: if, for, foreach, switch, while
+
+    {
+        "keys": ["ctrl+enter"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
-            { "key": "following_text", "operator": "regex_contains", "operand": "(\\)|\\])$", "match_all": true }
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*(for(each)?|if|switch|while)\\s*\\(", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
+        ]
+    },
+
+    // auto pair braces: elseif, catch
+
+    {
+        "keys": ["ctrl+enter"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*\\}\\s*(catch|elseif)\\s*\\(", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
+        ]
+    },
+
+    // auto pair braces: functions, methods
+
+    {
+        "keys": ["ctrl+enter"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-next-line.sublime-macro"},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.function.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*((final|abstract|static)\\s+)*((private|protected|public)\\s+)*function\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
         ]
     }
 ]
