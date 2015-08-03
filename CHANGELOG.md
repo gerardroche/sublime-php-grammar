@@ -1,11 +1,12 @@
 # sublime-php-grammar changelog
 
-## 0.14.0 (upcoming)
+## 0.14.0
 
 * Added to Package Control #1
 * Added "ctrl+enter" auto pair braces support for control structures, language constructs, functions, and methods #23
 * Updated all latest changes from native PHP package
 * Changed "enter" append comma and newline in array strings to "ctrl+enter" #25
+* ST2 is no longer actively supported
 * Fixed typo bug in "ctrl+;" macro regex
 * Fixed "ctrl+enter" macro now triggers inside strings
 * Fixed #31 only last inherited interface gets highlighted
