@@ -839,7 +839,7 @@ contexts:
         - match: "[$^+*]"
           scope: keyword.operator.regexp.php
   sql-string-double-quoted:
-    - match: '"\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b)'
+    - match: '"\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b(?:[^"]))'
       captures:
         0: punctuation.definition.string.begin.php
       push:
@@ -880,7 +880,7 @@ contexts:
         - include: interpolation
         - include: scope:source.sql
   sql-string-single-quoted:
-    - match: '''\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b)'
+    - match: '''\s*(?=(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER)\b(?:[^'']))'
       captures:
         0: punctuation.definition.string.begin.php
       push:

@@ -4,6 +4,7 @@
 
 * Added support for .php_cs filetypes #35
 * Fixed leading whitespace removed from keyword scopes #36
+* Fixed strings like "SELECT", "DELETE" no longer match as sql #38
 
 ## 0.14.0
 
