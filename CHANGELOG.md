@@ -1,5 +1,9 @@
 # sublime-php-grammar changelog
 
+### 0.15.0-dev
+
+* Added support for .php_cs filetypes #35
+
 ## 0.14.0
 
 * Added to Package Control #1
