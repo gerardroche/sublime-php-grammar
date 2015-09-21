@@ -3,8 +3,10 @@
 ### 0.15.0-dev
 
 * Added support for .php_cs filetypes #35
+* Added newline and indent on enter macro for function parens e.g. func(|), new cls(|) #4
 * Fixed leading whitespace removed from keyword scopes #36
 * Fixed strings like "SELECT", "DELETE" no longer match as sql #38
+* Fixed function parens are no longer deindent on next line #4
 
 ## 0.14.0
 

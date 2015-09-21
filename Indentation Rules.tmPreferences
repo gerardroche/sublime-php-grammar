@@ -9,12 +9,13 @@
 	<dict>
 
 		<key>indentParens</key>
-		<true/>
+		<false/>
 
 		<key>increaseIndentPattern</key>
 		<string>(?x)
 			^.*(\{[^}"']*)$
 			| \s* (?:&lt;\?(?:php)?\s+)? (if|else(if)?|for(each)?|while|declare).*:(?!.*end\2)
+			| ^.*\(\s*$
 		</string>
 
 		<key>decreaseIndentPattern</key>
