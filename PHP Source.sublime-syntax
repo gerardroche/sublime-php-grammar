@@ -470,8 +470,9 @@ contexts:
                 - include: namespace
                 - match: "(?i)[a-z_][a-z_0-9]*"
                   scope: entity.other.inherited-class.php
-    - match: \s*\b(break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield)\b
-      scope: keyword.control.php
+    - match: \s*\b((break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield))\b
+      captures:
+        1: keyword.control.php
     - match: (?i)\b((?:require|include)(?:_once)?)\b\s*
       captures:
         1: keyword.control.import.include.php

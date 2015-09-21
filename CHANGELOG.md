@@ -3,6 +3,7 @@
 ### 0.15.0-dev
 
 * Added support for .php_cs filetypes #35
+* Fixed leading whitespace removed from keyword scopes #36
 
 ## 0.14.0
 
