@@ -4,10 +4,6 @@
         "command": "run_php_grammar_indentation_tests"
     },
     {
-        "caption": "PHP Grammar: Run Macro Tests",
-        "command": "run_php_grammar_macro_tests"
-    },
-    {
         "caption": "PHP Grammar: Run Syntax Tests",
         "command": "run_php_grammar_syntax_tests"
     },
