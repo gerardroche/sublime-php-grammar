@@ -65,63 +65,87 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 ## Macros
 
-*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd> and to insert any other literal prefix it with <kbd>Ctrl</kbd>.*
+*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
 
-<kbd>Enter</kbd> **empty arrays**
+*To insert any other literal prefix it with <kbd>Ctrl</kbd>.*
+
+<kbd>Enter</kbd>
 
 ```
-$_ = array(|)               | $_ = array(
+array(|)                    | array(
                             |     |
                             | )
 ```
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **array strings**
+```
+function_call(|)            | function_call(
+                            |     |
+                            | )
+```
 
 ```
-$_ = array(                 | $_ = array(
+new class_name(|)           | new class_name(
+                            |     |
+                            | )
+```
+
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+
+```
+array(                      | array(
     'str|'                  |     'str',
 )                           |     |
                             | )
 ```
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **append semicolons and newlines**
+```
+'str|ing'                   | 'string';
+                            | |
+```
 
 ```
-$_ = 'str|ing'              | $_ = 'string';
-                            | |
-
 function_call(|)            | function_call();
                             | |
 ```
-
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **auto pair braces**
 
 ```
 if ($condition|)            | if ($condition) {
                             |     |
                             | }
+```
 
+```
 foreach ($x => $y|)         | foreach ($x => $y) {
                             |     |
                             | }
+```
 
+```
 while ($condition|)         | while ($condition) {
                             |     |
                             | }
+```
 
+```
 for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
                             |     |
                             | }
+```
 
+```
 switch ($condition|)        | switch ($condition|) {
                             |     |
                             | }
+```
 
+```
 function x(|)               | function x()
                             | {
                             |     |
                             | }
+```
 
+```
 class x                     | class x
 {                           | {
     public function y(|)    |     public function y()
@@ -131,11 +155,13 @@ class x                     | class x
                             | }
 ```
 
-<kbd>Ctrl</kbd>+<kbd>;</kbd> **append semi-colon**
+<kbd>Ctrl</kbd>+<kbd>;</kbd>
 
 ```
-$_ = 'str|ing'              | $_ = 'str|ing';
+'str|ing'                   | 'str|ing';
+```
 
+```
 function_call(|)            | function_call();|
 ```
 
