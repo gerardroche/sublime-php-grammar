@@ -1,4 +1,4 @@
-# sublime-php-grammar
+# gerardroche/sublime-php-grammar
 
 sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
@@ -219,4 +219,4 @@ Originally converted from the [PHP TextMate bundle](https://github.com/textmate/
 
 ## License
 
-sublime-php-grammar is released under the [BSD 3-Clause License](LICENSE).
+Released under the [BSD 3-Clause License](LICENSE).
