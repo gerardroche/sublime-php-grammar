@@ -31,7 +31,8 @@
 		<key>indentNextLinePattern</key>
 		<string>(?x)
 			^(?!.*(#|//|\*/|&lt;\?))(?!.*[};:]\s*(//|/\*.*\*/\s*$)).*[^\s;:{}]\s*$
-			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)</string>
+			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)
+		</string>
 
 		<key>bracketIndentNextLinePattern</key>
 		<string>(?x)
