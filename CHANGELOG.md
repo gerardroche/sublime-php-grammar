@@ -8,6 +8,7 @@
 * Fixed leading whitespace removed from keyword scopes #36
 * Fixed strings like "SELECT", "DELETE" no longer match as sql #38
 * Fixed function parens are no longer deindent on next line #4
+* Fixed #40 one line control statement indentation rules
 
 ## 0.14.0
 
