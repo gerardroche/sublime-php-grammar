@@ -36,7 +36,7 @@
 
 		<key>bracketIndentNextLinePattern</key>
 		<string>(?x)
-			  ^ \s* \b(if|while|else|elseif|foreach|declare)\b [^;]* $
+			  ^ \s* \b(?>if|while|else(?>if)?|foreach|declare)\b [^;]* $
 			| ^ \s* \bfor\b [^}]* $
 		</string>
 
