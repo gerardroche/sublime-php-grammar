@@ -36,8 +36,8 @@
 
 		<key>bracketIndentNextLinePattern</key>
 		<string>(?x)
-		^ \s* \b(if|while|else|elseif|foreach|declare)\b [^;]* $
-		| ^ \s* \b(for)\b [^}]* $
+			^ \s* \b(if|while|else|elseif|foreach|declare)\b [^;]* $
+			| ^ \s* \b(for)\b [^}]* $
 		</string>
 
 	</dict>
