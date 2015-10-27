@@ -9,19 +9,22 @@
 	<dict>
 
 		<key>indentParens</key>
-		<true/>
+		<false/>
 
 		<key>increaseIndentPattern</key>
 		<string>(?x)
-			^.*(\{[^}"']*)$
+			  ^.*(\{[^}"']*)$
 			| \s* (?:&lt;\?(?:php)?\s+)? (if|else(if)?|for(each)?|while|declare).*:(?!.*end\2)
+			| ^.*\(\s*$
 		</string>
 
 		<key>decreaseIndentPattern</key>
 		<string>(?x)
-			^ (.*\*/)? \s* \} .* $
+			  ^ (.*\*/)? \s* \} .* $
 			| \s* (?:&lt;\?(?:php)?\s+)? (else(if)?.*:|end(if|for(each)?|while|declare)\s*;)
-			| ^\s*\)+[,;]?\s*$ # hack for matching last paren in arrays
+			| ^\s*\)\s*\{\s*$
+			| ^\s*\)\s*use\s*\((.*\)\s*\{)?\s*$
+			| ^\s*\)+[,;]?\s*$
 		</string>
 
 		<key>disableIndentNextLinePattern</key>
@@ -29,13 +32,14 @@
 
 		<key>indentNextLinePattern</key>
 		<string>(?x)
-			^(?!.*(#|//|\*/|&lt;\?))(?!.*[};:]\s*(//|/\*.*\*/\s*$)).*[^\s;:{}]\s*$
-			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)</string>
+			  ^(?!.*(#|//|\*/|&lt;\?))(?!.*[};:]\s*(//|/\*.*\*/\s*$)).*[^\s;:{}]\s*$
+			| &lt;\?php.+?\b(if|else(?:if)?|for(?:each)?|while)\b.*:(?!.*end\1)
+		</string>
 
 		<key>bracketIndentNextLinePattern</key>
 		<string>(?x)
-		^ \s* \b(if|while|else|elseif|foreach|declare)\b [^;]* $
-		| ^ \s* \b(for)\b [^}]* $
+			  ^ \s* \b(?>if|else(?>if)?|foreach|while|declare)\b [^;}]* $
+			| ^ \s* \bfor\b [^}]* $
 		</string>
 
 	</dict>

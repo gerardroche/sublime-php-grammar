@@ -3,7 +3,7 @@ PSR 2 Coding Style Guide Example 6 (b)
 
 https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 
-TODO see https://github.com/gerardroche/sublime-php-grammar/issues/19
+See https://github.com/gerardroche/sublime-php-grammar/issues/19
 --FILE--
 <?php
 
@@ -54,6 +54,7 @@ $shortArgs_longVars = function ($arg) use (
 ?>
 --EXPECT--
 <?php
+
 $longArgs_noVars = function (
     $longArgument,
     $longerArgument,

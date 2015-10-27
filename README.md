@@ -1,4 +1,4 @@
-# sublime-php-grammar
+# gerardroche/sublime-php-grammar
 
 sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
@@ -65,63 +65,87 @@ sublime-php-grammar plugin for Sublime Text. Provides a PHP syntax definition, d
 
 ## Macros
 
-*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd> and to insert any other literal prefix it with <kbd>Ctrl</kbd>.*
+*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
 
-<kbd>Enter</kbd> **empty arrays**
+*To insert any other literal prefix it with <kbd>Ctrl</kbd>.*
+
+<kbd>Enter</kbd>
 
 ```
-$_ = array(|)               | $_ = array(
+array(|)                    | array(
                             |     |
                             | )
 ```
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **array strings**
+```
+function_call(|)            | function_call(
+                            |     |
+                            | )
+```
 
 ```
-$_ = array(                 | $_ = array(
+new class_name(|)           | new class_name(
+                            |     |
+                            | )
+```
+
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+
+```
+array(                      | array(
     'str|'                  |     'str',
 )                           |     |
                             | )
 ```
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **append semicolons and newlines**
+```
+'str|ing'                   | 'string';
+                            | |
+```
 
 ```
-$_ = 'str|ing'              | $_ = 'string';
-                            | |
-
 function_call(|)            | function_call();
                             | |
 ```
-
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd> **auto pair braces**
 
 ```
 if ($condition|)            | if ($condition) {
                             |     |
                             | }
+```
 
+```
 foreach ($x => $y|)         | foreach ($x => $y) {
                             |     |
                             | }
+```
 
+```
 while ($condition|)         | while ($condition) {
                             |     |
                             | }
+```
 
+```
 for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
                             |     |
                             | }
+```
 
+```
 switch ($condition|)        | switch ($condition|) {
                             |     |
                             | }
+```
 
+```
 function x(|)               | function x()
                             | {
                             |     |
                             | }
+```
 
+```
 class x                     | class x
 {                           | {
     public function y(|)    |     public function y()
@@ -131,12 +155,22 @@ class x                     | class x
                             | }
 ```
 
-<kbd>Ctrl</kbd>+<kbd>;</kbd> **append semi-colon**
+<kbd>Ctrl</kbd>+<kbd>;</kbd>
 
 ```
-$_ = 'str|ing'              | $_ = 'str|ing';
+'str|ing'                   | 'str|ing';
+```
 
+```
 function_call(|)            | function_call();|
+```
+
+<kbd>Tab</kbd>
+
+```
+$arr = array(               | $arr = array(
+    'str'|                  |     'str' => |
+)                           | )
 ```
 
 ## Installation
@@ -155,7 +189,7 @@ The preferred method of installation is via Package Control.
 4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
 5. Restart Sublime Text to complete installation. The features listed above should now be available.
 
-_Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
+_Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions](https://github.com/gerardroche/sublime-phpck) and [snippets](https://github.com/gerardroche/sublime-php-snippets) as separate packages.
 
 ### Manual installation
 
@@ -193,4 +227,4 @@ Originally converted from the [PHP TextMate bundle](https://github.com/textmate/
 
 ## License
 
-sublime-php-grammar is released under the [BSD 3-Clause License](LICENSE).
+Released under the [BSD 3-Clause License](LICENSE).

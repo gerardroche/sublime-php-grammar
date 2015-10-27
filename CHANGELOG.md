@@ -1,5 +1,17 @@
 # sublime-php-grammar changelog
 
+### 0.15.0-dev
+
+* Added support for .php_cs filetypes #35
+* Added newline and indent on enter macro for function parens e.g. func(|), new cls(|) #4
+* Added smart tab complete " => " #41
+* Fixed #36 leading whitespace removed from keyword scopes
+* Fixed #38 strings like "SELECT", "DELETE" no longer match as sql
+* Fixed #4 function parens are no longer deindent on next line
+* Fixed #40 one line control statement indentation rules
+* Fixed #17 PSR-2 method argument indentation rules
+* Fixed #19 PSR-2 closure indentation rules
+
 ## 0.14.0
 
 * Added to Package Control #1

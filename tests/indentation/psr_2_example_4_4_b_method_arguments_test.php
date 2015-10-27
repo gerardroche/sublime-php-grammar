@@ -3,7 +3,7 @@ PSR 2 Coding Style Guide Example 4.4 (b)
 
 https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 
-TODO see https://github.com/gerardroche/sublime-php-grammar/issues/17
+See https://github.com/gerardroche/sublime-php-grammar/issues/17
 --FILE--
 <?php
 

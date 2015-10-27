@@ -221,19 +221,6 @@ class TestIndentation(ViewTestCase):
             self.view.run_command('reindent', { 'force_indent': True, 'single_line': False })
             self.assertEqual(test_file.expected_content, self.get_view_content(), "\n\ntest:" + test_file_name)
 
-class TestMacro(ViewTestCase):
-
-    def test_macro_file_tests(self):
-
-        test_files = glob.glob(os.path.join(configuration.tests_root_path, 'macro') + '/*_test.php')
-
-        for test_file_name in test_files:
-
-            test_file = TestFile.from_file(test_file_name)
-            self.set_view_content(test_file.actual_content, replace_cursor_position=True)
-            self.view.run_command('run_macro_file', {'file': 'res://Packages/php-grammar/macros/wrap-newlines.sublime-macro'})
-            self.assertEqual(test_file.expected_content, self.get_view_content(replace_cursor_position=True), "\n\ntest:" + test_file_name)
-
 class TestSyntax(ViewTestCase):
 
     def test_syntax_file_tests(self):
@@ -322,7 +309,6 @@ class TextTestRunner():
     def run_all_tests(self):
         self._add_all_indentation_tests()
         self._add_all_syntax_tests()
-        self._add_all_macro_tests()
         self._run()
 
     def run_syntax_tests(self):
@@ -339,13 +325,6 @@ class TextTestRunner():
 
     def _add_all_indentation_tests(self):
         self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestIndentation))
-
-    def run_macro_tests(self):
-        self._add_all_macro_tests()
-        self._run()
-
-    def _add_all_macro_tests(self):
-        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestMacro))
 
     def _run(self):
 
@@ -396,12 +375,6 @@ class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
     def run(self):
         test_runner = TextTestRunner(self.window)
         test_runner.run_syntax_tests()
-
-class RunPhpGrammarMacroTests(sublime_plugin.WindowCommand):
-
-    def run(self):
-        test_runner = TextTestRunner(self.window)
-        test_runner.run_macro_tests()
 
 class RunPhpGrammarTests(sublime_plugin.WindowCommand):
 
