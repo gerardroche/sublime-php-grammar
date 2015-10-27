@@ -189,7 +189,7 @@ The preferred method of installation is via Package Control.
 4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
 5. Restart Sublime Text to complete installation. The features listed above should now be available.
 
-_Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions][php-completions] and [snippets][php-snippets] as separate packages.
+_Note_: Sublime text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions](https://github.com/gerardroche/sublime-phpck) and [snippets](https://github.com/gerardroche/sublime-php-snippets) as separate packages.
 
 ### Manual installation
 
