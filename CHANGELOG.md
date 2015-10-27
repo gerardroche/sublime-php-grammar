@@ -9,6 +9,8 @@
 * Fixed strings like "SELECT", "DELETE" no longer match as sql #38
 * Fixed function parens are no longer deindent on next line #4
 * Fixed #40 one line control statement indentation rules
+* Fixed #17 PSR-2 method argument indentation rules
+* Fixed #19 PSR-2 closure indentation rules
 
 ## 0.14.0
 
