@@ -165,6 +165,14 @@ class x                     | class x
 function_call(|)            | function_call();|
 ```
 
+<kbd>Tab</kbd>
+
+```
+$arr = array(               | $arr = array(
+    'str'|                  |     'str' => |
+)                           | )
+```
+
 ## Installation
 
 **Sublime Text 3 only**
