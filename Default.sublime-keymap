@@ -24,6 +24,19 @@
         ]
     },
     {
+        "keys": ["tab"],
+        "command": "insert",
+        "args": {"characters": " => "},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "setting.auto_indent", "operator": "equal", "operand": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.array", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*('|\")[^'\"]*('|\")\\s*$", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*$", "match_all": true }
+        ]
+    },
+    {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-comma-newline.sublime-macro"},
