@@ -169,6 +169,12 @@ function_call(|)            | function_call();|
 
 ```
 $arr = array(               | $arr = array(
+    'str|'                  |     'str' => |
+)                           | )
+```
+
+```
+$arr = array(               | $arr = array(
     'str'|                  |     'str' => |
 )                           | )
 ```

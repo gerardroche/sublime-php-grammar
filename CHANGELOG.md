@@ -4,7 +4,7 @@
 
 * Added support for .php_cs filetypes #35
 * Added newline and indent on enter macro for function parens e.g. func(|), new cls(|) #4
-* Added smart tab complete " => " #41
+* Added smart tab complete " => " #41 and #42
 * Fixed #36 leading whitespace removed from keyword scopes
 * Fixed #38 strings like "SELECT", "DELETE" no longer match as sql
 * Fixed #4 function parens are no longer deindent on next line
