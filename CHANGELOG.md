@@ -1,6 +1,6 @@
-# sublime-php-grammar changelog
+# gerardroche/sublime-php-grammar changelog
 
-### 0.15.0-dev
+## 0.15.0-dev
 
 * Added support for .php_cs filetypes #35
 * Added newline and indent on enter macro for function parens e.g. func(|), new cls(|) #4
