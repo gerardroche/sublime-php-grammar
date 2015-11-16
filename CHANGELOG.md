@@ -4,18 +4,18 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
-## 0.15.0-dev
+## 0.15.0
 
-* Added support for .php_cs filetypes #35
-* Added newline and indent on enter macro for function parens e.g. func(|), new cls(|) #4
-* Added smart tab complete " => " #41 and #42
-* Added: Package Settings Menu with README, CHANGELOG, and LICENSE links
-* Fixed #36 leading whitespace removed from keyword scopes
-* Fixed #38 strings like "SELECT", "DELETE" no longer match as sql
-* Fixed #4 function parens are no longer deindent on next line
-* Fixed #40 one line control statement indentation rules
-* Fixed #17 PSR-2 method argument indentation rules
-* Fixed #19 PSR-2 closure indentation rules
+* Added: [#35](https://github.com/gerardroche/sublime-php-grammar/issues/35) support for .php_cs filetypes
+* Added: [#4](https://github.com/gerardroche/sublime-php-grammar/issues/4) newline and indent on enter macro for function parens e.g. func(|), new cls(|)
+* Added: [#41](https://github.com/gerardroche/sublime-php-grammar/issues/41) and [#42](https://github.com/gerardroche/sublime-php-grammar/issues/42) smart tab complete " => "
+* Added: [#46](https://github.com/gerardroche/sublime-php-grammar/issues/46) Package Settings Menu with README, CHANGELOG, and LICENSE links
+* Fixed: [#36](https://github.com/gerardroche/sublime-php-grammar/issues/36) leading whitespace removed from keyword scopes
+* Fixed: [#38](https://github.com/gerardroche/sublime-php-grammar/issues/38) strings like "SELECT", "DELETE" no longer match as sql
+* Fixed: [#4](https://github.com/gerardroche/sublime-php-grammar/issues/4) function parens are no longer deindent on next line
+* Fixed: [#40](https://github.com/gerardroche/sublime-php-grammar/issues/40) one line control statement indentation rules
+* Fixed: [#17](https://github.com/gerardroche/sublime-php-grammar/issues/17) PSR-2 method argument indentation rules
+* Fixed: [#19](https://github.com/gerardroche/sublime-php-grammar/issues/19) PSR-2 closure indentation rules
 
 ## 0.14.0
 
