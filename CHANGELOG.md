@@ -1,5 +1,9 @@
 # gerardroche/sublime-php-grammar changelog
 
+**All fixes and improvments since version 0.9.0 and all future fixes and improvements only apply to ST >= 3095** because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntaxes.
+
+I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
+
 ## 0.15.0-dev
 
 * Added support for .php_cs filetypes #35
