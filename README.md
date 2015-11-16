@@ -10,6 +10,10 @@ Provides a PHP syntax definition, decent indentation rules, macros, and other us
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
+### Known issues
+
+* Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
+
 ## Overview
 
 * [Features](#features)
