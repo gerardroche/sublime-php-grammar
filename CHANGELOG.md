@@ -4,6 +4,10 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
+## 0.15.1
+
+* Added: [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45) "error loading syntax file" dialog on install
+
 ## 0.15.0
 
 * Added: [#35](https://github.com/gerardroche/sublime-php-grammar/issues/35) support for .php_cs filetypes
