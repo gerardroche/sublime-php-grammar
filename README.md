@@ -17,67 +17,53 @@ I know that many can't update to the latest build. The package will continue wor
 ## Overview
 
 * [Features](#features)
-* [Macros](#macros)
 * [Installation](#installation)
+* [Usage](#usage)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
-* [Complementary Plugins](#complementary-plugins)
 * [Credits](#credits)
 * [License](#license)
 
 ## Features
 
-* Syntax definition support for PHP [~5.6](http://semver.org). *Provides more up to date support for syntax highlighters.*
-* Decent macros
+* Support for PHP [~5.6](http://semver.org)
+* Improved support for syntax highlighters
+* Decent macros and smart completions
 * Decent indentation rules
 
-    Reindent.
+## Installation
 
-    ```
-    Menu > Edit > Line > Reindent
-    ---------------------------------------------------------------------
-    Original                  -> | Reindented
-    ---------------------------------------------------------------------
-    $val = array(                | $val = array(
-    array(                       |     array(
-    array(                       |         array(
-    array(                       |             array(
-    array(                       |                 array(
-    array(                       |                     array(
-    )                            |                     )
-    )                            |                 )
-    )                            |             )
-    )                            |         )
-    ),                           |     ),
-    'x' => 'y',                  |     'x' => 'y',
-    "multi" => array(            |         "multi" => array(
-    "dimensional" => array(      |             "dimensional" => array(
-    "array" => "x"               |                 "array" => "x"
-    'x' => array(                |                 'x' => array(
-    'y' => 'z'                   |                     'y' => 'z'
-    )                            |                 )
-    )                            |             )
-    )                            |     )
-    );                           | );
-    ```
+Note: This package disables the native PHP package including its completions and snippets. If you disable or remove this package, you will need to reenable the native PHP package manually.
 
-    Press closing parentheses in an array context automatically indents to the correct position.
+Completions and snippets are provided by individual packages:
 
-    ```
-    Press )
-    ---------------------------------------------------------------------
-    $val = array(               | $val = array(
-        array(                  |     array(
-            array(              |         array(
-                array(          |             array(
-                    |           |             )|
-    ```
+* [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
+* [PHP Snippets](https://packagecontrol.io/packages/php-snippets)
 
-## Macros
+### Package Control installation
 
-*To insert a literal newline <kbd>Shift</kbd>+<kbd>Enter</kbd>.*
+The preferred method of installation is via Package Control.
 
-*To insert any other literal prefix it with <kbd>Ctrl</kbd>.*
+1. Install [Package Control](https://packagecontrol.io).
+2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
+3. Type `install package` and hit Return. A list of available packages will be displayed.
+4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
+5. Restart Sublime Text to complete ins,rtallation. The features listed above should now be available.
+
+### Manual installation
+
+1. Close Sublime Text.
+2. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
+    * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
+    * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
+    * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
+3. Restart Sublime Text to complete installation. The features listed above should now be available.
+
+## Usage
+
+### Macros
+
+To press any character overriden by a macro or smart completion prefix it with <kbd>Ctrl</kbd> or <kbd>Shift</kbd> e.g. to insert a newline press <kbd>Shift</kbd>+<kbd>Enter</kbd> or a tab press <kbd>Shift</kbd>+<kbd>Tab</kbd>.
 
 <kbd>Enter</kbd>
 
@@ -85,15 +71,11 @@ I know that many can't update to the latest build. The package will continue wor
 array(|)                    | array(
                             |     |
                             | )
-```
 
-```
 function_call(|)            | function_call(
                             |     |
                             | )
-```
 
-```
 new class_name(|)           | new class_name(
                             |     |
                             | )
@@ -106,56 +88,38 @@ array(                      | array(
     'str|'                  |     'str',
 )                           |     |
                             | )
-```
 
-```
 'str|ing'                   | 'string';
                             | |
-```
 
-```
 function_call(|)            | function_call();
                             | |
-```
 
-```
 if ($condition|)            | if ($condition) {
                             |     |
                             | }
-```
 
-```
 foreach ($x => $y|)         | foreach ($x => $y) {
                             |     |
                             | }
-```
 
-```
 while ($condition|)         | while ($condition) {
                             |     |
                             | }
-```
 
-```
 for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
                             |     |
                             | }
-```
 
-```
 switch ($condition|)        | switch ($condition|) {
                             |     |
                             | }
-```
 
-```
 function x(|)               | function x()
                             | {
                             |     |
                             | }
-```
 
-```
 class x                     | class x
 {                           | {
     public function y(|)    |     public function y()
@@ -169,9 +133,7 @@ class x                     | class x
 
 ```
 'str|ing'                   | 'str|ing';
-```
 
-```
 function_call(|)            | function_call();|
 ```
 
@@ -181,38 +143,46 @@ function_call(|)            | function_call();|
 $arr = array(               | $arr = array(
     'str|'                  |     'str' => |
 )                           | )
-```
 
-```
 $arr = array(               | $arr = array(
     'str'|                  |     'str' => |
 )                           | )
 ```
 
-## Installation
+### Indentation rules
 
-### Package Control installation
+To reindent:
 
-The preferred method of installation is via Package Control.
+1. select the code to reindent
+2. select `Menu > Edit > Line > Reindent`
 
-1. Install [Package Control](https://packagecontrol.io).
-2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
-3. Type `install package` and hit Return. A list of available packages will be displayed.
-4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
-5. Restart Sublime Text to complete installation. The features listed above should now be available.
+Example
 
-_Note_: Sublime Text has a native package for PHP. However, when sublime-php-grammar is enabled, the native package causes some conflicts. For this reason, sublime-php-grammar will automatically disable it. Since it doesn't bring anything new over sublime-php-grammar, this is not a loss. But remember, when you disable sublime-php-grammar, you have to reenable the native PHP package manually (if you want). Also, sublime-php-grammar provides [completions](https://github.com/gerardroche/sublime-phpck) and [snippets](https://github.com/gerardroche/sublime-php-snippets) as separate packages.
+```
+Original                   ->  Reindented
 
-### Manual installation
-
-1. Close Sublime Text.
-2. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
-    * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
-    * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
-    * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
-3. Restart Sublime Text to complete installation. The features listed above should now be available.
-
-_Note_: Cloning into the Packages while ST is open can cause some warning message dialogs to appear and syntax highlighting to appear broken. This is harmless. Close the dialogs and files with no syntax highlighting and reopen them, and  restart ST. to avoid the dialog messages, close ST before cloning.
+$val = array(                | $val = array(
+array(                       |     array(
+array(                       |         array(
+array(                       |             array(
+array(                       |                 array(
+array(                       |                     array(
+)                            |                     )
+)                            |                 )
+)                            |             )
+)                            |         )
+),                           |     ),
+'x' => 'y',                  |     'x' => 'y',
+"multi" => array(            |         "multi" => array(
+"dimensional" => array(      |             "dimensional" => array(
+"array" => "x"               |                 "array" => "x"
+'x' => array(                |                 'x' => array(
+'y' => 'z'                   |                     'y' => 'z'
+)                            |                 )
+)                            |             )
+)                            |     )
+);                           | );
+```
 
 ## Contributing
 
@@ -224,17 +194,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 See [CHANGELOG.md](CHANGELOG.md).
 
-## Complementary Plugins
-
-* [PHP Completions](https://github.com/gerardroche/sublime-phpck)
-* [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets)
-* [PHPUnit](https://github.com/gerardroche/sublime-phpunit)
-* [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunit-completions)
-* [PHPUnit Snippets](https://github.com/gerardroche/sublime-phpunit-snippets)
-
 ## Credits
 
-Originally converted from the [PHP TextMate bundle](https://github.com/textmate/php.tmbundle) and bundled with Sublime Text.
+Originally converted from the [PHP TextMate package](https://github.com/textmate/php.tmbundle) bundled with Sublime Text.
 
 ## License
 
