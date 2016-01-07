@@ -1,5 +1,13 @@
 [
+    // ------------------------------------------------------------------------
+    // Format empty array on Enter
+    // ------------------------------------------------------------------------
     {
+        // ## Example
+        //
+        // $arr = array(|)  | $arr = array(
+        //                  |     |
+        //                  | )
         "keys": ["enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
@@ -10,7 +18,21 @@
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
         ]
     },
+
+    // ------------------------------------------------------------------------
+    // Format on Enter
+    // ------------------------------------------------------------------------
     {
+        // ## Examples
+        //
+        // function_call(|)            | function_call(
+        //                             |     |
+        //                             | )
+        //
+        // new class_name(|)           | new class_name(
+        //                             |     |
+        //                             | )
+        //
         "keys": ["enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
@@ -23,6 +45,21 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "^\\)\\s*$", "match_all": true }
         ]
     },
+
+    // ------------------------------------------------------------------------
+    // Auto complete array " => " on Tab within array declarations
+    // ------------------------------------------------------------------------
+    //
+    // ## Examples
+    //
+    // $arr = array(               | $arr = array(
+    //     'str|'                  |     'str' => |
+    // )                           | )
+    //
+    // $arr = array(               | $arr = array(
+    //     'str'|                  |     'str' => |
+    // )                           | )
+    //
     {
         "keys": ["tab"],
         "command": "run_macro_file",
@@ -49,7 +86,18 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "^('|\")\\s*$", "match_all": true }
         ]
     },
+
+    // ------------------------------------------------------------------------
+    // Auto complete eol comma within array declaration
+    // ------------------------------------------------------------------------
     {
+        // ## Example
+        //
+        // $arr = array(    | $arr = array(
+        //     'str|'       |     'str',
+        // )                |     |
+        //                  | )
+        //
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-comma-newline.sublime-macro"},
@@ -60,7 +108,12 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\")$", "match_all": true }
         ]
     },
+
+    // ------------------------------------------------------------------------
+    // Auto complete eol semicolon
+    // ------------------------------------------------------------------------
     {
+        // Only insert a semicolon at eol
         "keys": ["ctrl+;"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon.sublime-macro"},
@@ -72,6 +125,7 @@
         ]
     },
     {
+        // Insert a semicolon at eol and move to a new line
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-newline.sublime-macro"},
@@ -83,9 +137,30 @@
         ]
     },
 
-    // auto pair braces: if, for, foreach, switch, while
-
+    // ------------------------------------------------------------------------
+    // Auto complete braces on ctrl+enter
+    // ------------------------------------------------------------------------
+    //
+    // ## Examples
+    //
+    // Press ctrl+enter anywhere on lines where auto inserting braces makes
+    // sense, like some of the following:
+    //
+    // for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
+    //                             |     |
+    //                             | }
+    //
+    // switch ($condition|)        | switch ($condition|) {
+    //                             |     |
+    //                             | }
+    //
+    // function x(|)               | function x()
+    //                             | {
+    //                             |     |
+    //                             | }
+    //
     {
+        // for, foreach, if, switch, while
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
@@ -97,10 +172,8 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
         ]
     },
-
-    // auto pair braces: elseif, catch
-
     {
+        // catch, elseif
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
@@ -112,10 +185,8 @@
             { "key": "following_text", "operator": "regex_contains", "operand": "\\)$", "match_all": true }
         ]
     },
-
-    // auto pair braces: functions, methods
-
     {
+        // functions, methods
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-next-line.sublime-macro"},
