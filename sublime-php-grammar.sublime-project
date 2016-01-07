@@ -4,5 +4,9 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings":
+	{
+		"default_line_ending": "LF"
+	}
 }
