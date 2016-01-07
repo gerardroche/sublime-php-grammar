@@ -2,15 +2,15 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Symbols List: Functions</string>
+	<string>Symbols List: Traits</string>
 	<key>scope</key>
-	<string>entity.name.function.php, support.function.magic.php</string>
+	<string>entity.name.type.trait.php</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^/  /</string>
+		<string>s/^/\(T\) /</string>
 	</dict>
 </dict>
 </plist>
