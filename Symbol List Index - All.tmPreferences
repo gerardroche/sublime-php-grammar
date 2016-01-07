@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>scope</key>
+    <!-- <string>entity.name.function.php, support.other.namespace.use-as.php, entity.name.type.namespace.php, entity.name.type.class.php, entity.name.type.interface.php, entity.name.type.trait.php</string> -->
+    <string>support.other.namespace.use-as.php</string>
+    <key>settings</key>
+    <dict>
+        <key>showInIndexedSymbolList</key>
+        <string>1</string>
+        <!--
+        <key>symbolIndexTransformation</key>
+        <string>/^//</string>
+        -->
+    </dict>
+</dict>
+</plist>
