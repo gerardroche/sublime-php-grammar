@@ -4,6 +4,12 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
+## 0.16.0-dev
+
+* Added: Indicators to the symbols list (Ctrl+R). Namespaces, Classes, Function and Traits are now prefixed with (N), (C), (F), and (T).
+* Added: syntax support for "use function" and "use const"
+* Added: Namespace aliases are now indexed symbols. This adds support for the "Goto definition..." command.
+
 ## 0.15.1
 
 * Added: [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45) "error loading syntax file" dialog on install
