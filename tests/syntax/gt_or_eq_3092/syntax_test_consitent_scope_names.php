@@ -1,51 +1,59 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-/**
- * Basic
- */
+// ----------------------------------------------------------------------------
+// Meta storage types
+// ----------------------------------------------------------------------------
 
 interface Name {}
 // ^ meta storage.type
-//          ^ meta entity.name.type
-class ____Name {}
+class Name {}
 // ^ meta storage.type
-//          ^ meta entity.name.type
-trait ____Name {}
+trait Name {}
 // ^ meta storage.type
+
+// ----------------------------------------------------------------------------
+// Meta entity name types
+// ----------------------------------------------------------------------------
+
+interface Name {}
+//          ^ meta entity.name.type
+class ABCDName {}
+//          ^ meta entity.name.type
+trait ABCDName {}
 //          ^ meta entity.name.type
 
-/**
- * Extends
- */
+// ----------------------------------------------------------------------------
+// Meta storage modifiers
+// ----------------------------------------------------------------------------
 
 interface Name extends ExtendsName {}
-// ^ meta storage.type
-//          ^ meta entity.name.type
-//              ^ meta storage.modifier.extends
+//              ^ meta storage.modifier
+class ABCDName extends ExtendsName {}
+//              ^ meta storage.modifier
+class ABCDName implements ImplementedName {}
+//              ^ meta storage.modifier
+
+// ----------------------------------------------------------------------------
+// Meta entity other
+// ----------------------------------------------------------------------------
+
+interface Name extends ExtendsName {}
 //                      ^ meta entity.other
 class ____Name extends ExtendsName {}
-// ^ meta storage.type
-//          ^ meta entity.name.type
-//              ^ meta storage.modifier.extends
 //                      ^ meta entity.other
 
 
-/**
- * Extends|Implements multiple
- */
+// ----------------------------------------------------------------------------
+// Meta entity other (multiple)
+// ----------------------------------------------------------------------------
 
-interface Name extends Extends_____A, Extends____B, Extends___C {}
-// ^ meta storage.type
-//          ^ meta entity.name.type
-//              ^ meta storage.modifier
-//                      ^ meta entity.other
-//                                      ^ meta entity.other
-//                                                  ^ meta entity.other
-class ____Name implements ImplementsA, ImplementsB, ImplementsC {}
-// ^ meta storage.type
-//          ^ meta entity.name.type
-//              ^ meta storage.modifier
+interface Name extends ExtendsABCDEFG, ExtendsABCD, ExtendsC {}
 //                          ^ meta entity.other
 //                                      ^ meta entity.other
-//                                                  ^ meta entity.other
+//                                                      ^ meta entity.other
+
+class ABCDName implements ImplementsA, ImplementsB, ImplementsC {}
+//                          ^ meta entity.other
+//                                      ^ meta entity.other
+//                                                      ^ meta entity.other
