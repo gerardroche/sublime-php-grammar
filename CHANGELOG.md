@@ -4,7 +4,7 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
-## 0.16.0-dev
+## 0.16.0
 
 * Added: Indicators to the symbols list (Ctrl+R). Namespaces, Classes, Function and Traits are now prefixed with (N), (C), (F), and (T).
 * Added: syntax support for "use function" and "use const"
