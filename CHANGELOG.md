@@ -6,7 +6,8 @@ I know that many can't update to the latest build. The package will continue wor
 
 ## 0.17.0-dev
 
-* Added: #57 added punctuation scope for braces
+* Added: #57 punctuation scope for braces
+* Added: #59 output scope for echo and print statement
 * Fixed: #56 indentation for empty brackets
 * Fixed: #58 syntax bracket handling for closures
 

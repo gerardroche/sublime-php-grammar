@@ -2,17 +2,17 @@
 <?php
 
 echo 'hello world';
-// ^ support.function.construct
-//  ^ -support.function.construct
+// ^ support.function.construct.output
+//  ^ -support.function
 
 echo "hello world";
-// ^ support.function.construct
-//  ^ -support.function.construct
+// ^ support.function.construct.output
+//  ^ -support.function
 
 print 'hello world';
-// ^ support.function.construct
-//   ^ -support.function.construct
+// ^ support.function.construct.output
+//   ^ -support.function
 
 print "hello world";
-// ^ support.function.construct
-//   ^ -support.function.construct
+// ^ support.function.construct.output
+//   ^ -support.function

@@ -201,7 +201,7 @@ contexts:
           pop: true
         - include: user-function-call
     - match: (?i)\b(print|echo)\b
-      scope: support.function.construct.php
+      scope: support.function.construct.output.php
     - match: '(?i)(\\)?(?=\b[a-z_][a-z_0-9]*\s*\()'
       comment: Root namespace function calls (built-in or user)
       captures:
