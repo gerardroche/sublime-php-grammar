@@ -507,7 +507,7 @@ contexts:
         2: storage.modifier.reference.php
       push:
         - meta_scope: meta.function.closure.php
-        - match: '\{'
+        - match: '(?=\{)'
           pop: true
         - match: (\()
           captures:

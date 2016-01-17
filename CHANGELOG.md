@@ -8,6 +8,7 @@ I know that many can't update to the latest build. The package will continue wor
 
 * Added: #57 added punctuation scope for braces
 * Fixed: #56 indentation for empty brackets
+* Fixed: #58 syntax bracket handling for closures
 
 ## 0.16.0
 
