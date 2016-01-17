@@ -346,6 +346,10 @@ contexts:
         2: variable.other.php
   language:
     - include: comments
+    - match: '\{'
+      scope: punctuation.section.scope.begin.php
+    - match: '\}'
+      scope: punctuation.section.scope.end.php
     - match: '(?i)^\s*(interface)\s+([a-z0-9_]+)\s*(extends)?\s*'
       captures:
         1: storage.type.interface.php

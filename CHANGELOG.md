@@ -4,6 +4,11 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
+## 0.17.0-dev
+
+* Added: #57 added punctuation scope for braces
+* Fixed: #56 indentation for empty brackets
+
 ## 0.16.0
 
 * Added: Indicators to the symbols list (Ctrl+R). Namespaces, Classes, Function and Traits are now prefixed with (N), (C), (F), and (T).
