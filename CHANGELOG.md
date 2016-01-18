@@ -10,6 +10,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: #59 output scope for echo and print statement
 * Fixed: #56 indentation for empty brackets
 * Fixed: #58 syntax bracket handling for closures
+* Fixed: #61, #62, and #63 operator scopes not matching correctly
 
 ## 0.16.0
 
