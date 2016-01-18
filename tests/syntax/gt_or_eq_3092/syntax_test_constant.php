@@ -1,13 +1,32 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-true || TRUE | false | FALSE;
+true;
 // ^ constant.language.boolean
-//      ^ constant.language.boolean
-//              ^ constant.language.boolean
-//                      ^ constant.language.boolean
+TRUE;
+// ^ constant.language.boolean
+false;
+// ^ constant.language.boolean
+FALSE;
+// ^ constant.language.boolean
 
+// Magic constants
 
+__LINE__;
+// ^ constant.language.magic
+__FILE__;
+// ^ constant.language.magic
+__DIR__;
+// ^ constant.language.magic
+__FUNCTION__;
+// ^ constant.language.magic
+__CLASS__;
+// ^ constant.language.magic
+__TRAIT__;
+// ^ constant.language.magic
+__METHOD__;
+// ^ constant.language.magic
+__NAMESPACE__;
 
 E_ALL
 // ^ support.constant.core
