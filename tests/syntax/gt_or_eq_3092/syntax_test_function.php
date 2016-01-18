@@ -91,7 +91,7 @@ function x(array $a = []) {}
 //                     ^ meta.function meta.function.arguments meta.function.argument.array punctuation.definition.array.end
 
 /**
- * With type hint
+ * With userland class type hint
  */
 
 function x(Name $a) {}
@@ -99,14 +99,18 @@ function x(Name $a) {}
 //              ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //               ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
 
-function x(Countable $a) {}
-//         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
-//                   ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
-//                    ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
-
 function x(Name $a = null) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //              ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //               ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
 //                 ^ meta.function meta.function.arguments meta.function.argument.typehinted keyword.operator.assignment
 //                   ^ meta.function meta.function.arguments meta.function.argument.typehinted constant
+
+/**
+ * With builtin class type hint
+ */
+
+function x(Countable $a) {}
+//         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class.builtin
+//                   ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
+//                    ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
