@@ -1,6 +1,14 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
+true || TRUE | false | FALSE;
+// ^ constant.language.boolean
+//      ^ constant.language.boolean
+//              ^ constant.language.boolean
+//                      ^ constant.language.boolean
+
+
+
 E_ALL
 // ^ support.constant.core
 \E_ALL
