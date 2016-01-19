@@ -33,9 +33,7 @@ I know that many can't update to the latest build. The package will continue wor
 
 ## Installation
 
-Note: This package disables the native PHP package including its completions and snippets. If you disable or remove this package, you will need to reenable the native PHP package manually.
-
-Completions and snippets are provided by individual packages:
+Completions and snippets are provided by individual packages.
 
 * [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
 * [PHP Snippets](https://packagecontrol.io/packages/php-snippets)
@@ -50,6 +48,8 @@ The preferred method of installation is via Package Control.
 4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
 5. Restart Sublime Text to complete ins,rtallation. The features listed above should now be available.
 
+If you disable or remove this package, you will need to reenable the native PHP package manually.
+
 ### Manual installation
 
 1. Close Sublime Text.
@@ -58,6 +58,8 @@ The preferred method of installation is via Package Control.
     * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
     * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
 3. Restart Sublime Text to complete installation. The features listed above should now be available.
+
+If you disable or remove this package, you will need to reenable the native PHP package manually.
 
 ## Usage
 
