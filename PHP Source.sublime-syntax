@@ -79,7 +79,7 @@ contexts:
         - match: '(?=[^\\a-zA-Z_\x{7f}-\x{ff}])'
           pop: true
         - match: (?i)\bNULL\b
-          scope: constant.language.php
+          scope: constant.language.null.php
         - match: (?i)\b(?>TRUE|FALSE)\b
           scope: constant.language.boolean.php
         - match: (?i)\b(?>__(?>F(?>ILE|UNCTION)|DIR|CLASS|METHOD|LINE|NAMESPACE|TRAIT)__)\b

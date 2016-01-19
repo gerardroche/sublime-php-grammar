@@ -1,6 +1,15 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
+// Null
+
+null;
+// ^ constant.language.null
+NULL;
+// ^ constant.language.null
+
+// Boolean
+
 true;
 // ^ constant.language.boolean
 TRUE;
