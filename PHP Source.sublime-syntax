@@ -951,6 +951,8 @@ contexts:
             0: punctuation.definition.string.end.php
           pop: true
         - include: interpolation
+        - match: '%s'
+          scope: constant.character.format-argument.php
   string-single-quoted:
     - match: "'"
       captures:
@@ -964,6 +966,8 @@ contexts:
           pop: true
         - match: '\\[\\'']'
           scope: constant.character.escape.php
+        - match: '%s'
+          scope: constant.character.format-argument.php
   strings:
     - include: regex-double-quoted
     - include: sql-string-double-quoted

@@ -7,6 +7,7 @@ I know that many can't update to the latest build. The package will continue wor
 ## 0.18.0-dev
 
 * Added: punctuation.definition.(end|begin).php scope to parens
+* Added: constant.character.format-argument scope for sprintf %s arguments in strings
 * Removed: ambiguous filetypes like install, profile, etc
 
 ## 0.17.0
