@@ -10,7 +10,7 @@ false;
 FALSE;
 // ^ constant.language.boolean
 
-// Magic constants
+// Magic
 
 __LINE__;
 // ^ constant.language.magic
@@ -27,6 +27,9 @@ __TRAIT__;
 __METHOD__;
 // ^ constant.language.magic
 __NAMESPACE__;
+// ^ constant.language.magic
+
+// Core
 
 E_ALL
 // ^ support.constant.core
