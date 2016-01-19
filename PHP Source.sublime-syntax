@@ -78,7 +78,7 @@ contexts:
       push:
         - match: '(?=[^\\a-zA-Z_\x{7f}-\x{ff}])'
           pop: true
-        - match: (?i)\b(NULL|ON|OFF|YES|NO|NL|BR|TAB)\b
+        - match: (?i)\bNULL\b
           scope: constant.language.php
         - match: (?i)\b(TRUE|FALSE)\b
           scope: constant.language.boolean.php
