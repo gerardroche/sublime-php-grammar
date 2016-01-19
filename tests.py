@@ -211,9 +211,7 @@ class TestFile():
 class TestIndentation(ViewTestCase):
 
     def test_indentation_file_tests(self):
-
         test_files = glob.glob(os.path.join(configuration.tests_root_path, 'indentation') + '/*_test.php')
-
         for test_file_name in test_files:
 
             test_file = TestFile.from_file(test_file_name)
@@ -224,12 +222,11 @@ class TestIndentation(ViewTestCase):
 class TestSyntax(ViewTestCase):
 
     def test_syntax_file_tests(self):
-
         if int(sublime.version()) >= 3092:
-            test_files = glob.glob(os.path.join(configuration.tests_root_path, 'syntax') + '/gt_or_eq_3092/*_test.php')
-        else:
-            test_files = glob.glob(os.path.join(configuration.tests_root_path, 'syntax') + '/lt_3092/*_test.php')
+            # newer versions use the new syntax test system provided by the ST core
+            return
 
+        test_files = glob.glob(os.path.join(configuration.tests_root_path, 'syntax') + '/lt_3092/*_test.php')
         for test_file_name in test_files:
 
             test_file = TestFile.from_file(test_file_name)
@@ -275,10 +272,8 @@ class TestSyntax(ViewTestCase):
 class OutputPanel(object):
 
     def __init__(self, window, name):
-
         self.name = name
         self.window = window
-
         self.view = self.window.create_output_panel(self.name)
         self.view.settings().set('word_wrap', True)
         self.view.settings().set('line_numbers', False)
@@ -304,40 +299,32 @@ class TextTestRunner():
         self.window = window
         self.test_loader = unittest.TestLoader()
         self.suite = unittest.TestSuite()
-        self.syntax_tests_added = False
+        self.syntax_tests_loaded = False
 
-    def run_all_tests(self):
-        self._add_all_indentation_tests()
-        self._add_all_syntax_tests()
-        self._run()
+    def run(self, syntax_tests = False, indentation_tests = False):
+        if not syntax_tests and not indentation_tests:
+            return
 
-    def run_syntax_tests(self):
-        self._add_all_syntax_tests()
-        self._run()
+        if indentation_tests:
+            self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestIndentation))
+            self.indentation_tests_loaded = True
 
-    def _add_all_syntax_tests(self):
-        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
-        self.syntax_tests_added = True
-
-    def run_indentation_tests(self):
-        self._add_all_indentation_tests()
-        self._run()
-
-    def _add_all_indentation_tests(self):
-        self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestIndentation))
-
-    def _run(self):
+        if syntax_tests:
+            self.syntax_tests_loaded = True
+            if int(sublime.version()) < 3092:
+                # newer versions use the new syntax test system provided by the ST core
+                self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
 
         display = OutputPanel(self.window, 'php-grammar.tests')
         display.show()
 
-        runner = unittest.TextTestRunner(stream=display, verbosity=1)
+        runner = unittest.TextTestRunner(stream=display, verbosity=2)
 
         def run_and_display():
 
-            if self.syntax_tests_added:
+            if self.syntax_tests_loaded:
                 import sublime_api
-                output = "Running **/syntax_test_* tests...\n"
+                output = "Running syntax tests...\n"
                 tests = sublime.find_resources("syntax_test*")
                 num_failed = 0
                 for t in tests:
@@ -353,7 +340,8 @@ class TextTestRunner():
                 else:
                     self.append_string_to_display(display, "Success: %d tests passed\n\n" % len(tests))
 
-            runner.run(self.suite)
+            if self.indentation_tests_loaded:
+                runner.run(self.suite)
 
         Thread(target=run_and_display).start()
 
@@ -366,18 +354,27 @@ class TextTestRunner():
 
 class RunPhpGrammarIndentationTests(sublime_plugin.WindowCommand):
 
+    """
+    Runs the indetation tests
+    """
+
     def run(self):
-        test_runner = TextTestRunner(self.window)
-        test_runner.run_indentation_tests()
+        TextTestRunner(self.window).run(indentation_tests = True)
 
 class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
 
+    """
+    Runs the syntax tests
+    """
+
     def run(self):
-        test_runner = TextTestRunner(self.window)
-        test_runner.run_syntax_tests()
+        TextTestRunner(self.window).run(syntax_tests = True)
 
 class RunPhpGrammarTests(sublime_plugin.WindowCommand):
 
+    """
+    Runs all the tests
+    """
+
     def run(self):
-        test_runner = TextTestRunner(self.window)
-        test_runner.run_all_tests()
+        TextTestRunner(self.window).run(syntax_tests = True, indentation_tests = True)
