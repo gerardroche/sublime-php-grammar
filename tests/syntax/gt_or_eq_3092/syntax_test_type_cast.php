@@ -66,3 +66,25 @@ call(
     (string) $id
 //    ^ storage.type
 );
+
+// Parens scope
+
+(bool);
+// <- punctuation.definition.begin
+// ^ storage.type
+//   ^ punctuation.definition.end
+
+$x = (string) $y;
+//   ^ punctuation.definition.begin
+//      ^ storage.type
+//          ^ punctuation.definition.end
+
+call((int) $id);
+//   ^ punctuation.definition.begin
+//     ^ storage.type
+//       ^ punctuation.definition.end
+
+   (     bool    )   ;
+// ^ punctuation.definition.begin
+//        ^ storage.type
+//               ^ punctuation.definition.end

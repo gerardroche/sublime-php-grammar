@@ -616,9 +616,11 @@ contexts:
             0: punctuation.definition.array.end.php
           pop: true
         - include: language
-    - match: (?i)\s*\(\s*(array|real|double|float|int(eger)?|bool(ean)?|string|object|binary|unset)\s*\)
+    - match: (?i)\s*(\()\s*(array|real|double|float|int(?:eger)?|bool(?:ean)?|string|object|binary|unset)\s*(\))\s*
       captures:
-        1: storage.type.php
+        1: punctuation.definition.begin.php
+        2: storage.type.php
+        3: punctuation.definition.end.php
     - match: (?i)\b(array|real|double|float|int(eger)?|bool(ean)?|string|class|clone|var|function|interface|parent|self|object)\b
       scope: storage.type.php
     - match: (?i)\b(global|abstract|const|extends|implements|final|p(r(ivate|otected)|ublic)|static)\b
