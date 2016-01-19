@@ -689,6 +689,10 @@ contexts:
           pop: true
         - include: language
     - include: constants
+    - match: '\('
+      scope: 'punctuation.definition.begin.php'
+    - match: '\)'
+      scope: 'punctuation.definition.end.php'
   namespace:
     - match: '(?i)(?:(namespace)|[a-z0-9_]+)?(\\)(?=.*?[^a-z_0-9\\])'
       captures:
