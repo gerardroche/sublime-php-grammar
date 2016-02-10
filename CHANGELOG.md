@@ -9,6 +9,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: punctuation.definition.(end|begin).php scope to parens
 * Added: constant.character.format-argument scope for sprintf %s arguments in strings
 * Added: macro to finish completion by pressing backspace, ), or ;
+* Changed: Symbol list prefixes now use colons rather than parents e.g. f:, c: vs (f), (c). This makes it easier to refine symbol searches.
 * Removed: ambiguous filetypes like install, profile, etc
 
 ## 0.17.0

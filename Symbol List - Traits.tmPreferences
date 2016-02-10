@@ -10,7 +10,7 @@
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^/\(T\) /</string>
+		<string>s/^/T: /</string>
 	</dict>
 </dict>
 </plist>
