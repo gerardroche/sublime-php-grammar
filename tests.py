@@ -275,7 +275,7 @@ class OutputPanel(object):
         self.name = name
         self.window = window
         self.view = self.window.create_output_panel(self.name)
-        self.view.settings().set('word_wrap', True)
+        self.view.settings().set('word_wrap', False)
         self.view.settings().set('line_numbers', False)
         self.view.settings().set('gutter', False)
         self.view.settings().set('scroll_past_end', False)
@@ -315,38 +315,62 @@ class TextTestRunner():
                 # newer versions use the new syntax test system provided by the ST core
                 self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
 
-        display = OutputPanel(self.window, 'php-grammar.tests')
-        display.show()
+        self.display = OutputPanel(self.window, 'php-grammar.tests')
+        self.display.show()
 
-        runner = unittest.TextTestRunner(stream=display, verbosity=2)
+        runner = unittest.TextTestRunner(stream=self.display, verbosity=2)
 
         def run_and_display():
 
             if self.syntax_tests_loaded:
+
                 import sublime_api
-                output = "Running syntax tests...\n"
-                tests = sublime.find_resources("syntax_test*")
-                num_failed = 0
-                for t in tests:
-                    test_output = sublime_api.run_syntax_test(t)
-                    if len(test_output) > 0:
-                        num_failed += 1
-                        output += test_output + "\n"
 
-                self.append_string_to_display(display, output)
+                syntax_tests = sublime.find_resources("syntax_test*")
 
-                if num_failed > 0:
-                    self.append_string_to_display(display, "FAILED: %d of %d tests failed\n\n" % (num_failed, len(tests)))
+                tests = []
+                for syntax_test in syntax_tests:
+                    if "php-grammar" in syntax_test:
+                        tests.append(syntax_test)
+
+                self.append_string("Run syntax tests...\n")
+
+                output = ""
+                total_assertions = 0
+                failed_assertions = 0
+                for test in tests:
+                    # self.append_string('syntax test: ' + test + "... ok\n")
+
+                    assertions, test_output_lines = sublime_api.run_syntax_test(test)
+                    total_assertions += assertions
+                    if len(test_output_lines) > 0:
+                        failed_assertions += len(test_output_lines)
+                        for line in test_output_lines:
+                            output += line + "\n"
+
+                self.append_string(output)
+
+                if failed_assertions > 0:
+                    self.append_string(
+                        "FAILED: %d of %d assertions in %d files failed\n" %
+                        (failed_assertions, total_assertions, len(tests))
+                    )
                 else:
-                    self.append_string_to_display(display, "Success: %d tests passed\n\n" % len(tests))
+                    self.append_string(
+                        "Syntax test success: %d assertions in %s files passed\n" %
+                        (total_assertions, len(tests))
+                    )
+
+                    self.append_string("OK\n")
 
             if self.indentation_tests_loaded:
+                self.append_string("Run indentation tests...\n")
                 runner.run(self.suite)
 
         Thread(target=run_and_display).start()
 
-    def append_string_to_display(self, display, string):
-        display.view.run_command('append', {
+    def append_string(self, string):
+        self.display.view.run_command('append', {
             'characters': string,
             'force': True,
             'scroll_to_end': True
