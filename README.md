@@ -4,21 +4,14 @@ A plugin for Sublime Text.
 
 Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
-## Sublime Text 3 only
-
-**All fixes and improvements since version 0.9.0 and all future fixes and improvements apply only to ST >= 3095** because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntax formats.
-
-I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
-
-### Known issues
-
-* Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
+**Sublime Text 3 only**: All fixes and improvements since version 0.9.0 and all future fixes and improvements apply only to ST >= 3095 because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntax formats. I know that many can't update to the latest build so the package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
 ## Overview
 
 * [Features](#features)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Known Issues](#known-issues)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
 * [Credits](#credits)
@@ -33,7 +26,7 @@ I know that many can't update to the latest build. The package will continue wor
 
 ## Installation
 
-Completions and snippets are provided by individual packages.
+Completions and snippets are provided in their own packages.
 
 * [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
 * [PHP Snippets](https://packagecontrol.io/packages/php-snippets)
@@ -185,6 +178,10 @@ array(                       |                     array(
 )                            |     )
 );                           | );
 ```
+
+## Known issues
+
+* Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
 
 ## Contributing
 
