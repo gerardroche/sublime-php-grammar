@@ -4,7 +4,7 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
-## 0.17.0-dev
+## 0.17.0
 
 * Added: #57 punctuation scope for braces
 * Added: #59 extended echo and print scope: support.function.construct.output
