@@ -380,13 +380,13 @@ contexts:
             - include: namespace
             - match: "(?i)[a-z_][a-z_0-9]*"
               scope: entity.other.inherited-class.php
-    - match: '(?i)^\s*(namespace)\b\s+(?=([a-z0-9_\\]+\s*($|[;{]|(\/[\/*])))|$)'
+    - match: '(?i)^\s*(namespace)\b\s+(?=([a-z0-9\x{7f}-\x{ff}_\\]+\s*($|[;{]|(\/[\/*])))|$)'
       captures:
         1: keyword.other.namespace.php
       push:
         - meta_scope: meta.namespace.php
         - meta_content_scope: entity.name.type.namespace.php
-        - match: '(?i)(?=\s*$|[^a-z0-9_\\])'
+        - match: '(?i)(?=\s*$|[^a-z0-9\x{7f}-\x{ff}_\\])'
           pop: true
         - match: \\
           scope: punctuation.separator.inheritance.php
