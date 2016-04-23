@@ -9,6 +9,8 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: punctuation.definition.(end|begin).php scope to parens
 * Added: constant.character.format-argument scope for sprintf %s arguments in strings
 * Added: macro to finish completion by pressing backspace, ), or ;
+* Added: highlight sql CTE queries (starting with `WITH`) @mathroc [#88](https://github.com/gerardroche/sublime-php-grammar/pull/88)
+* Added: support for characters between x7F-xFF in namespace identifiers. @borela [#89](https://github.com/gerardroche/sublime-php-grammar/pull/89)
 * Changed: Symbol list prefixes now use colons rather than parents e.g. f:, c: vs (f), (c). This makes it easier to refine symbol searches.
 * Removed: ambiguous filetypes like install, profile, etc
 
