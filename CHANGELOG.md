@@ -4,7 +4,7 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
-## 0.18.0-dev
+## 0.18.0
 
 * Added: punctuation.definition.(end|begin).php scope to parens
 * Added: constant.character.format-argument scope for sprintf %s arguments in strings
