@@ -43,6 +43,7 @@ Update support functions ...
   Updated fileinfo functions (6)
   Updated filter functions (7)
   Updated php_ftp functions (34)
+  Updated image functions (92)
   Updated gettext functions (10)
   Updated hash functions (18)
   Updated iconv functions (10)

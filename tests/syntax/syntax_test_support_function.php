@@ -159,6 +159,192 @@ shm_get_var();
 shm_remove_var();
 // ^ support.function.sem
 
+// GD/Image
+gd_info();
+// ^ support.function.image
+imagearc();
+// ^ support.function.image
+imageellipse();
+// ^ support.function.image
+imagechar();
+// ^ support.function.image
+imagecharup();
+// ^ support.function.image
+imagecolorat();
+// ^ support.function.image
+imagecolorallocate();
+// ^ support.function.image
+imagepalettecopy();
+// ^ support.function.image
+imagecreatefromstring();
+// ^ support.function.image
+imagecolorclosest();
+// ^ support.function.image
+imagecolorclosesthwb();
+// ^ support.function.image
+imagecolordeallocate();
+// ^ support.function.image
+imagecolorresolve();
+// ^ support.function.image
+imagecolorexact();
+// ^ support.function.image
+imagecolorset();
+// ^ support.function.image
+imagecolortransparent();
+// ^ support.function.image
+imagecolorstotal();
+// ^ support.function.image
+imagecolorsforindex();
+// ^ support.function.image
+imagecopy();
+// ^ support.function.image
+imagecopymerge();
+// ^ support.function.image
+imagecopymergegray();
+// ^ support.function.image
+imagecopyresized();
+// ^ support.function.image
+imagecreate();
+// ^ support.function.image
+imagecreatetruecolor();
+// ^ support.function.image
+imageistruecolor();
+// ^ support.function.image
+imagetruecolortopalette();
+// ^ support.function.image
+imagepalettetotruecolor();
+// ^ support.function.image
+imagesetthickness();
+// ^ support.function.image
+imagefilledarc();
+// ^ support.function.image
+imagefilledellipse();
+// ^ support.function.image
+imagealphablending();
+// ^ support.function.image
+imagesavealpha();
+// ^ support.function.image
+imagecolorallocatealpha();
+// ^ support.function.image
+imagecolorresolvealpha();
+// ^ support.function.image
+imagecolorclosestalpha();
+// ^ support.function.image
+imagecolorexactalpha();
+// ^ support.function.image
+imagecopyresampled();
+// ^ support.function.image
+imagerotate();
+// ^ support.function.image
+imageflip();
+// ^ support.function.image
+imageantialias();
+// ^ support.function.image
+imagecrop();
+// ^ support.function.image
+imagecropauto();
+// ^ support.function.image
+imagescale();
+// ^ support.function.image
+imageaffine();
+// ^ support.function.image
+imageaffinematrixconcat();
+// ^ support.function.image
+imageaffinematrixget();
+// ^ support.function.image
+imagesetinterpolation();
+// ^ support.function.image
+imagesettile();
+// ^ support.function.image
+imagesetbrush();
+// ^ support.function.image
+imagesetstyle();
+// ^ support.function.image
+imagecreatefrompng();
+// ^ support.function.image
+imagecreatefromgif();
+// ^ support.function.image
+imagecreatefromjpeg();
+// ^ support.function.image
+imagecreatefromwbmp();
+// ^ support.function.image
+imagecreatefromxbm();
+// ^ support.function.image
+imagecreatefromgd();
+// ^ support.function.image
+imagecreatefromgd2();
+// ^ support.function.image
+imagecreatefromgd2part();
+// ^ support.function.image
+imagepng();
+// ^ support.function.image
+imagegif();
+// ^ support.function.image
+imagejpeg();
+// ^ support.function.image
+imagewbmp();
+// ^ support.function.image
+imagegd();
+// ^ support.function.image
+imagegd2();
+// ^ support.function.image
+imagedestroy();
+// ^ support.function.image
+imagegammacorrect();
+// ^ support.function.image
+imagefill();
+// ^ support.function.image
+imagefilledpolygon();
+// ^ support.function.image
+imagefilledrectangle();
+// ^ support.function.image
+imagefilltoborder();
+// ^ support.function.image
+imagefontwidth();
+// ^ support.function.image
+imagefontheight();
+// ^ support.function.image
+imageinterlace();
+// ^ support.function.image
+imageline();
+// ^ support.function.image
+imageloadfont();
+// ^ support.function.image
+imagepolygon();
+// ^ support.function.image
+imagerectangle();
+// ^ support.function.image
+imagesetpixel();
+// ^ support.function.image
+imagestring();
+// ^ support.function.image
+imagestringup();
+// ^ support.function.image
+imagesx();
+// ^ support.function.image
+imagesy();
+// ^ support.function.image
+imagedashedline();
+// ^ support.function.image
+imagetypes();
+// ^ support.function.image
+jpeg2wbmp();
+// ^ support.function.image
+png2wbmp();
+// ^ support.function.image
+image2wbmp();
+// ^ support.function.image
+imagelayereffect();
+// ^ support.function.image
+imagexbm();
+// ^ support.function.image
+imagecolormatch();
+// ^ support.function.image
+imagefilter();
+// ^ support.function.image
+imageconvolution();
+// ^ support.function.image
+
 /**
  * Removed Extensions and SAPIs in PHP 7.0.0
  */
