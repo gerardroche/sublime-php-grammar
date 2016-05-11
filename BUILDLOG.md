@@ -64,6 +64,7 @@ Update support functions ...
   Updated tidy functions (24)
   Updated tokenizer functions (2)
   Updated wddx functions (6)
+  Updated xdebug functions (38)
   Updated xml functions (24)
   Updated xmlwriter functions (42)
   Updated php_zip functions (10)

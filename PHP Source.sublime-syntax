@@ -1176,6 +1176,8 @@ contexts:
       scope: support.function.zlib.php
     - match: (?i)\bpdo_drivers\b
       scope: support.function.pdo.php
+    - match: (?i)\bxdebug_(?>break|c(?>all_(?>class|f(?>ile|unction)|line)|lear_aggr_profiling_data|ode_coverage_started)|d(?>ebug_zval(?>_stdout)?|isable|ump_(?>aggr_profiling_data|superglobals))|enable|get_(?>co(?>de_coverage|llected_errors)|declared_vars|f(?>ormatted_function_stack|unction_(?>count|stack))|headers|monitored_functions|profiler_filename|stack_depth|tracefile_name)|is_enabled|memory_usage|p(?>eak_memory_usage|rint_function_stack)|st(?>art_(?>code_coverage|error_collection|function_monitor|trace)|op_(?>code_coverage|error_collection|function_monitor|trace))|time_index|var_dump)\b
+      scope: support.function.xdebug.php
     - match: (?i)\bis_int(eger)?\b
       scope: support.function.alias.php
   user-function-call:

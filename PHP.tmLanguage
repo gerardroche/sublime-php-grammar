@@ -3582,6 +3582,12 @@
 				</dict>
 				<dict>
 					<key>match</key>
+					<string>(?i)\bxdebug_(?&gt;break|c(?&gt;all_(?&gt;class|f(?&gt;ile|unction)|line)|lear_aggr_profiling_data|ode_coverage_started)|d(?&gt;ebug_zval(?&gt;_stdout)?|isable|ump_(?&gt;aggr_profiling_data|superglobals))|enable|get_(?&gt;co(?&gt;de_coverage|llected_errors)|declared_vars|f(?&gt;ormatted_function_stack|unction_(?&gt;count|stack))|headers|monitored_functions|profiler_filename|stack_depth|tracefile_name)|is_enabled|memory_usage|p(?&gt;eak_memory_usage|rint_function_stack)|st(?&gt;art_(?&gt;code_coverage|error_collection|function_monitor|trace)|op_(?&gt;code_coverage|error_collection|function_monitor|trace))|time_index|var_dump)\b</string>
+					<key>name</key>
+					<string>support.function.xdebug.php</string>
+				</dict>
+				<dict>
+					<key>match</key>
 					<string>(?i)\bis_int(eger)?\b</string>
 					<key>name</key>
 					<string>support.function.alias.php</string>
