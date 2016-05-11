@@ -75,6 +75,10 @@ APACHE_MAP
 \APACHE_MAP
 // <- punctuation.separator.inheritance
 // ^ support.constant.ext
+MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT // added 5.6.16
+// ^ support.constant.ext
+CURLM_ADDED_ALREADY // added 5.6.20
+// ^ support.constant.ext
 
 T_IMPLEMENTS
 // ^ support.constant.parser-token
