@@ -19,7 +19,7 @@ Provides a PHP syntax definition, decent indentation rules, macros, and other us
 
 ## Features
 
-* Support for PHP [~5.6](http://semver.org)
+* Support for PHP [~7.0](http://semver.org)
 * Improved support for syntax highlighters
 * Decent macros and smart completions
 * Decent indentation rules
@@ -30,6 +30,8 @@ For best results use the following completions and snippets packages:
 
 * [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
 * [PHP Snippets](https://packagecontrol.io/packages/php-snippets)
+
+*To use PHP 5.6 grammar only, then manually install via Git and checkout the 5.x branch.*
 
 ### Package Control installation
 
