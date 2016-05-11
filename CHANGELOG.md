@@ -4,6 +4,15 @@
 
 I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
 
+## next
+
+* Added: #82 Support for new PHP 7 constants
+* Added: #82 Support for new PHP 7 functions
+* Added: #82, #78 Support for new PHP 7 classes
+* Added: Support for XDebug functions
+* Added: Support for other missing constants, functions, and classes
+* Removed: #82 Support for Extensions and SAPIs removed in PHP 7
+
 ## 0.18.0
 
 * Added: punctuation.definition.(end|begin).php scope to parens
