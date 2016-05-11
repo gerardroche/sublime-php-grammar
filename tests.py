@@ -300,6 +300,8 @@ class TextTestRunner():
         self.test_loader = unittest.TestLoader()
         self.suite = unittest.TestSuite()
         self.syntax_tests_loaded = False
+        self.indentation_tests_loaded = False
+        self.syntax_tests_loaded = False
 
     def run(self, syntax_tests = False, indentation_tests = False):
         if not syntax_tests and not indentation_tests:
@@ -310,10 +312,10 @@ class TextTestRunner():
             self.indentation_tests_loaded = True
 
         if syntax_tests:
-            self.syntax_tests_loaded = True
             if int(sublime.version()) < 3092:
                 # newer versions use the new syntax test system provided by the ST core
                 self.suite.addTest(self.test_loader.loadTestsFromTestCase(TestSyntax))
+            self.syntax_tests_loaded = True
 
         self.display = OutputPanel(self.window, 'php-grammar.tests')
         self.display.show()
