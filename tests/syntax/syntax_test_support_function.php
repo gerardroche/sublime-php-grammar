@@ -376,3 +376,17 @@ inflate_init() // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
 deflate_init() // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
+
+intdiv() // Math
+// ^ support.function
+random_bytes(); // CSPRNG
+// ^ support.function
+random_int(); // CSPRNG
+// ^ support.function
+error_clear_last() // Error Handling and Logging
+// ^ support.function
+
+gc_mem_caches() // PHP Options/Info
+// ^ support.function
+get_resources() // PHP Options/Info
+// ^ support.function

@@ -28,6 +28,7 @@ Update support constants ...
   Updated std constants (361)
   Updated parser-token constants (135)
 Update support functions ...
+  Updated Core functions (55)
   Updated PDO functions (1)
   Updated php_spl functions (14)
   Updated SimpleXML functions (3)
@@ -62,6 +63,7 @@ Update support functions ...
   Updated shmop functions (6)
   Updated soap functions (2)
   Updated sockets functions (31)
+  Updated standard functions (529)
   Updated sem functions (18)
   Updated tidy functions (24)
   Updated tokenizer functions (2)
