@@ -32,6 +32,14 @@ iterator_to_array(new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', '
 // ^ support.function.php_spl
 
 /**
+ * Various extensions
+ */
+
+// Zend Opcache
+opcache_get_status();
+// ^ support.function.opcache
+
+/**
  * Removed Extensions and SAPIs in PHP 7.0.0
  */
 

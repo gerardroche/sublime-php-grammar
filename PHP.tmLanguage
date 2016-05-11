@@ -3306,7 +3306,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bopcache_(compile_file|invalidate|reset|get_(status|configuration))\b</string>
+					<string>(?i)\bopcache_(?&gt;compile_file|get_(?&gt;configuration|status)|i(?&gt;nvalidate|s_script_cached)|reset)\b</string>
 					<key>name</key>
 					<string>support.function.opcache.php</string>
 				</dict>

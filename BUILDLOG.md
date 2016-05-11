@@ -30,6 +30,7 @@ Update support constants ...
 Update support functions ...
   Updated php_spl functions (14)
   Updated SimpleXML functions (3)
+  Updated opcache functions (6)
   Updated bcmath functions (10)
   Updated bz2 functions (10)
   Updated calendar functions (18)
