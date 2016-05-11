@@ -1174,6 +1174,8 @@ contexts:
       scope: support.function.xmlwriter.php
     - match: (?i)\b(?>deflate_(?>add|init)|gz(?>c(?>lose|ompress)|de(?>code|flate)|e(?>ncode|of)|file|get(?>c|s(?>s)?)|inflate|open|p(?>assthru|uts)|re(?>ad|wind)|seek|tell|uncompress|write)|inflate_(?>add|init)|ob_gzhandler|readgzfile|zlib_(?>decode|encode|get_coding_type))\b
       scope: support.function.zlib.php
+    - match: (?i)\bpdo_drivers\b
+      scope: support.function.pdo.php
     - match: (?i)\bis_int(eger)?\b
       scope: support.function.alias.php
   user-function-call:

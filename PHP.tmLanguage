@@ -3576,6 +3576,12 @@
 				</dict>
 				<dict>
 					<key>match</key>
+					<string>(?i)\bpdo_drivers\b</string>
+					<key>name</key>
+					<string>support.function.pdo.php</string>
+				</dict>
+				<dict>
+					<key>match</key>
 					<string>(?i)\bis_int(eger)?\b</string>
 					<key>name</key>
 					<string>support.function.alias.php</string>

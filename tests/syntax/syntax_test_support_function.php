@@ -39,6 +39,10 @@ iterator_to_array(new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', '
 opcache_get_status();
 // ^ support.function.opcache
 
+// PDO
+pdo_drivers();
+// ^ support.function.pdo
+
 /**
  * Removed Extensions and SAPIs in PHP 7.0.0
  */
