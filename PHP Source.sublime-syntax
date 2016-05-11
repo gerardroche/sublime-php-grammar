@@ -1010,8 +1010,6 @@ contexts:
       scope: support.function.eio.php
     - match: (?i)\benchant_(dict_(s(tore_replacement|uggest)|check|is_in_session|describe|quick_check|add_to_(session|personal)|get_error)|broker_(set_ordering|init|d(ict_exists|escribe)|free(_dict)?|list_dicts|request_(dict|pwl_dict)|get_error))\b
       scope: support.function.enchant.php
-    - match: (?i)\b(?>ereg(?>_replace|i(?>_replace)?)?|s(?>plit(?>i)?|ql_regcase))\b
-      scope: support.function.ereg.php
     - match: (?i)\b(set_e(rror_handler|xception_handler)|trigger_error|debug_(print_backtrace|backtrace)|user_error|error_(log|reporting|get_last)|restore_e(rror_handler|xception_handler))\b
       scope: support.function.errorfunc.php
     - match: (?i)\b(s(hell_exec|ystem)|p(assthru|roc_(nice|close|terminate|open|get_status))|e(scapeshell(cmd|arg)|xec))\b
@@ -1070,8 +1068,6 @@ contexts:
       scope: support.function.mhash.php
     - match: (?i)\b(log_(cmd_(insert|delete|update)|killcursor|write_batch|reply|getmore)|bson_(decode|encode))\b
       scope: support.function.mongo.php
-    - match: (?i)\bmysql(?>_(?>affected_rows|c(?>l(?>ient_encoding|ose)|onnect)|d(?>ata_seek|b(?>_(?>name|query)|name))|e(?>rr(?>no|or)|scape_string)|f(?>etch_(?>a(?>rray|ssoc)|field|lengths|object|row)|ield(?>_(?>flags|len|name|seek|t(?>able|ype))|flags|len|name|t(?>able|ype))|ree(?>_result|result))|get_(?>client_info|host_info|proto_info|server_info)|in(?>fo|sert_id)|list(?>_(?>dbs|fields|processes|tables)|dbs|fields|tables)|num(?>_(?>fields|rows)|fields|rows)|p(?>connect|ing)|query|re(?>al_escape_string|sult)|s(?>e(?>lect(?>_db|db)|t_charset)|tat)|t(?>able(?>_name|name)|hread_id)|unbuffered_query))?\b
-      scope: support.function.mysql.php
     - match: (?i)\bmysqli_(?>a(?>ffected_rows|utocommit)|begin_transaction|c(?>ha(?>nge_user|racter_set_name)|lose|o(?>mmit|nnect(?>_err(?>no|or))?))|d(?>ata_seek|ebug|ump_debug_info)|e(?>rr(?>no|or(?>_list)?)|scape_string|xecute)|f(?>etch_(?>a(?>ll|rray|ssoc)|field(?>_direct|s)?|lengths|object|row)|ield_(?>count|seek|tell)|ree_result)|get_(?>c(?>harset|lient_(?>info|stats|version)|onnection_stats)|host_info|links_stats|proto_info|server_(?>info|version)|warnings)|in(?>fo|it|sert_id)|kill|m(?>ore_results|ulti_query)|n(?>ext_result|um_(?>fields|rows))|options|p(?>ing|oll|repare)|query|r(?>e(?>a(?>l_(?>connect|escape_string|query)|p_async_query)|fresh|lease_savepoint|port)|ollback)|s(?>avepoint|e(?>lect_db|t_(?>charset|opt))|qlstate|sl_set|t(?>at|mt_(?>a(?>ffected_rows|ttr_(?>get|set))|bind_(?>param|result)|close|data_seek|e(?>rr(?>no|or(?>_list)?)|xecute)|f(?>etch|ield_count|ree_result)|get_(?>result|warnings)|in(?>it|sert_id)|more_results|n(?>ext_result|um_rows)|p(?>aram_count|repare)|res(?>et|ult_metadata)|s(?>end_long_data|qlstate|tore_result))|ore_result))|thread_(?>id|safe)|use_result|warning_count)\b
       scope: support.function.mysqli.php
     - match: (?i)\bmysqlnd_memcache_(set|get_config)\b
@@ -1108,8 +1104,6 @@ contexts:
       scope: support.function.php_ftp.php
     - match: (?i)\bimap_(s(can(mailbox)?|tatus|ort|ubscribe|e(t(_quota|flag_full|acl)|arch)|avebody)|header(s|info)?|num_(recent|msg)|c(heck|l(ose|earflag_full)|reate(mailbox)?)|t(hread|imeout)|open|delete(mailbox)?|8bit|u(n(subscribe|delete)|tf(7_(decode|encode)|8)|id)|ping|e(rrors|xpunge)|qprint|fetch(structure|header|text|_overview|mime|body)|l(sub|ist(s(can|ubscribed)|mailbox)?|ast_error)|a(ppend|lerts)|r(e(name(mailbox)?|open)|fc822_(parse_(headers|adrlist)|write_address))|g(c|et(subscribed|_quota(root)?|acl|mailboxes))|m(sgno|ime_header_decode|ail(_(co(py|mpose)|move)|boxmsginfo)?)|b(inary|ody(struct)?|ase64))\b
       scope: support.function.php_imap.php
-    - match: (?i)\bmssql_(select_db|n(um_(fields|rows)|ext_result)|c(onnect|lose)|init|data_seek|pconnect|execute|query|f(ield_(seek|name|type|length)|etch_(object|field|a(ssoc|rray)|row|batch)|ree_(statement|result))|r(ows_affected|esult)|g(uid_string|et_last_message)|min_(error_severity|message_severity)|bind)\b
-      scope: support.function.php_mssql.php
     - match: (?i)\bodbc_(s(tatistics|pecialcolumns|etoption)|n(um_(fields|rows)|ext_result)|c(o(nnect|lumn(s|privileges)|mmit)|ursor|lose(_all)?)|table(s|privileges)|d(o|ata_source)|p(connect|r(imarykeys|ocedure(s|columns)|epare))|e(rror(msg)?|xec(ute)?)|f(ield_(scale|n(um|ame)|type|precision|len)|oreignkeys|etch_(into|object|array|row)|ree_result)|longreadlen|autocommit|r(ollback|esult(_all)?)|gettypeinfo|binmode)\b
       scope: support.function.php_odbc.php
     - match: (?i)\bpreg_(?>filter|grep|last_error|match(?>_all)?|quote|replace(?>_callback)?|split)\b
@@ -1154,8 +1148,6 @@ contexts:
       scope: support.function.streamsfuncs.php
     - match: (?i)\b(s(scanf|ha1(_file)?|tr(s(tr|pn)|n(c(asecmp|mp)|atc(asecmp|mp))|c(spn|hr|oll|asecmp|mp)|t(o(upper|k|lower)|r)|i(str|p(slashes|cslashes|os|_tags))|_(s(huffle|plit)|ireplace|pad|word_count|r(ot13|ep(eat|lace))|getcsv)|p(os|brk)|len|r(chr|ipos|pos|ev))|imilar_text|oundex|ubstr(_(co(unt|mpare)|replace))?|printf|etlocale)|h(tml(specialchars(_decode)?|_entity_decode|entities)|e(x2bin|brev(c)?))|n(umber_format|l(2br|_langinfo))|c(h(op|unk_split|r)|o(nvert_(cyr_string|uu(decode|encode))|unt_chars)|r(ypt|c32))|trim|implode|ord|uc(first|words)|join|p(arse_str|rint(f)?)|e(cho|xplode)|v(sprintf|printf|fprintf)|quote(d_printable_(decode|encode)|meta)|fprintf|wordwrap|l(cfirst|trim|ocaleconv|evenshtein)|add(slashes|cslashes)|rtrim|get_html_translation_table|m(oney_format|d5(_file)?|etaphone)|bin2hex)\b
       scope: support.function.string.php
-    - match: (?i)\bsybase_(se(t_message_handler|lect_db)|num_(fields|rows)|c(onnect|lose)|d(eadlock_retry_count|ata_seek)|unbuffered_query|pconnect|query|f(ield_seek|etch_(object|field|a(ssoc|rray)|row)|ree_result)|affected_rows|result|get_last_message|min_(server_severity|client_severity|error_severity|message_severity))\b
-      scope: support.function.sybase.php
     - match: (?i)\b(taint|is_tainted|untaint)\b
       scope: support.function.taint.php
     - match: (?i)\btidy_(?>access_count|c(?>lean_repair|onfig_count)|diagnose|error_count|get(?>_(?>body|config|error_buffer|h(?>ead|tml(?>_ver)?)|o(?>pt_doc|utput)|r(?>elease|oot)|status)|opt)|is_x(?>html|ml)|parse_(?>file|string)|repair_(?>file|string)|warning_count)\b

@@ -91,3 +91,12 @@ T_YIELD
 \T_YIELD
 // <- punctuation.separator.inheritance
 // ^ support.constant.parser-token
+
+/**
+ * Removed Extensions and SAPIs in PHP 7.0.0
+ */
+
+MYSQL_CLIENT_COMPRESS
+// ^ -support.constant
+MSSQL_ASSOC
+// ^ -support.constant

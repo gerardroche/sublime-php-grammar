@@ -30,3 +30,16 @@ iterator_to_array(new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', '
 \iterator_to_array(new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', 'flour')), true);
 // <- punctuation.separator.inheritance
 // ^ support.function.php_spl
+
+/**
+ * Removed Extensions and SAPIs in PHP 7.0.0
+ */
+
+ereg_replace(); // Removed in PHP 7.0.0
+// ^ -support.function
+mysql_connect(); // Removed in PHP 7.0.0
+// ^ -support.function
+mssql_connect(); // Removed in PHP 7.0.0
+// ^ -support.function
+sybase_connect() // Removed in PHP 7.0.0
+// ^ -support.function

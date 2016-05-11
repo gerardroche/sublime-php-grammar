@@ -3084,12 +3084,6 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(?&gt;ereg(?&gt;_replace|i(?&gt;_replace)?)?|s(?&gt;plit(?&gt;i)?|ql_regcase))\b</string>
-					<key>name</key>
-					<string>support.function.ereg.php</string>
-				</dict>
-				<dict>
-					<key>match</key>
 					<string>(?i)\b(set_e(rror_handler|xception_handler)|trigger_error|debug_(print_backtrace|backtrace)|user_error|error_(log|reporting|get_last)|restore_e(rror_handler|xception_handler))\b</string>
 					<key>name</key>
 					<string>support.function.errorfunc.php</string>
@@ -3264,12 +3258,6 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\bmysql(?&gt;_(?&gt;affected_rows|c(?&gt;l(?&gt;ient_encoding|ose)|onnect)|d(?&gt;ata_seek|b(?&gt;_(?&gt;name|query)|name))|e(?&gt;rr(?&gt;no|or)|scape_string)|f(?&gt;etch_(?&gt;a(?&gt;rray|ssoc)|field|lengths|object|row)|ield(?&gt;_(?&gt;flags|len|name|seek|t(?&gt;able|ype))|flags|len|name|t(?&gt;able|ype))|ree(?&gt;_result|result))|get_(?&gt;client_info|host_info|proto_info|server_info)|in(?&gt;fo|sert_id)|list(?&gt;_(?&gt;dbs|fields|processes|tables)|dbs|fields|tables)|num(?&gt;_(?&gt;fields|rows)|fields|rows)|p(?&gt;connect|ing)|query|re(?&gt;al_escape_string|sult)|s(?&gt;e(?&gt;lect(?&gt;_db|db)|t_charset)|tat)|t(?&gt;able(?&gt;_name|name)|hread_id)|unbuffered_query))?\b</string>
-					<key>name</key>
-					<string>support.function.mysql.php</string>
-				</dict>
-				<dict>
-					<key>match</key>
 					<string>(?i)\bmysqli_(?&gt;a(?&gt;ffected_rows|utocommit)|begin_transaction|c(?&gt;ha(?&gt;nge_user|racter_set_name)|lose|o(?&gt;mmit|nnect(?&gt;_err(?&gt;no|or))?))|d(?&gt;ata_seek|ebug|ump_debug_info)|e(?&gt;rr(?&gt;no|or(?&gt;_list)?)|scape_string|xecute)|f(?&gt;etch_(?&gt;a(?&gt;ll|rray|ssoc)|field(?&gt;_direct|s)?|lengths|object|row)|ield_(?&gt;count|seek|tell)|ree_result)|get_(?&gt;c(?&gt;harset|lient_(?&gt;info|stats|version)|onnection_stats)|host_info|links_stats|proto_info|server_(?&gt;info|version)|warnings)|in(?&gt;fo|it|sert_id)|kill|m(?&gt;ore_results|ulti_query)|n(?&gt;ext_result|um_(?&gt;fields|rows))|options|p(?&gt;ing|oll|repare)|query|r(?&gt;e(?&gt;a(?&gt;l_(?&gt;connect|escape_string|query)|p_async_query)|fresh|lease_savepoint|port)|ollback)|s(?&gt;avepoint|e(?&gt;lect_db|t_(?&gt;charset|opt))|qlstate|sl_set|t(?&gt;at|mt_(?&gt;a(?&gt;ffected_rows|ttr_(?&gt;get|set))|bind_(?&gt;param|result)|close|data_seek|e(?&gt;rr(?&gt;no|or(?&gt;_list)?)|xecute)|f(?&gt;etch|ield_count|ree_result)|get_(?&gt;result|warnings)|in(?&gt;it|sert_id)|more_results|n(?&gt;ext_result|um_rows)|p(?&gt;aram_count|repare)|res(?&gt;et|ult_metadata)|s(?&gt;end_long_data|qlstate|tore_result))|ore_result))|thread_(?&gt;id|safe)|use_result|warning_count)\b</string>
 					<key>name</key>
 					<string>support.function.mysqli.php</string>
@@ -3375,12 +3363,6 @@
 					<string>(?i)\bimap_(s(can(mailbox)?|tatus|ort|ubscribe|e(t(_quota|flag_full|acl)|arch)|avebody)|header(s|info)?|num_(recent|msg)|c(heck|l(ose|earflag_full)|reate(mailbox)?)|t(hread|imeout)|open|delete(mailbox)?|8bit|u(n(subscribe|delete)|tf(7_(decode|encode)|8)|id)|ping|e(rrors|xpunge)|qprint|fetch(structure|header|text|_overview|mime|body)|l(sub|ist(s(can|ubscribed)|mailbox)?|ast_error)|a(ppend|lerts)|r(e(name(mailbox)?|open)|fc822_(parse_(headers|adrlist)|write_address))|g(c|et(subscribed|_quota(root)?|acl|mailboxes))|m(sgno|ime_header_decode|ail(_(co(py|mpose)|move)|boxmsginfo)?)|b(inary|ody(struct)?|ase64))\b</string>
 					<key>name</key>
 					<string>support.function.php_imap.php</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?i)\bmssql_(select_db|n(um_(fields|rows)|ext_result)|c(onnect|lose)|init|data_seek|pconnect|execute|query|f(ield_(seek|name|type|length)|etch_(object|field|a(ssoc|rray)|row|batch)|ree_(statement|result))|r(ows_affected|esult)|g(uid_string|et_last_message)|min_(error_severity|message_severity)|bind)\b</string>
-					<key>name</key>
-					<string>support.function.php_mssql.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -3513,12 +3495,6 @@
 					<string>(?i)\b(s(scanf|ha1(_file)?|tr(s(tr|pn)|n(c(asecmp|mp)|atc(asecmp|mp))|c(spn|hr|oll|asecmp|mp)|t(o(upper|k|lower)|r)|i(str|p(slashes|cslashes|os|_tags))|_(s(huffle|plit)|ireplace|pad|word_count|r(ot13|ep(eat|lace))|getcsv)|p(os|brk)|len|r(chr|ipos|pos|ev))|imilar_text|oundex|ubstr(_(co(unt|mpare)|replace))?|printf|etlocale)|h(tml(specialchars(_decode)?|_entity_decode|entities)|e(x2bin|brev(c)?))|n(umber_format|l(2br|_langinfo))|c(h(op|unk_split|r)|o(nvert_(cyr_string|uu(decode|encode))|unt_chars)|r(ypt|c32))|trim|implode|ord|uc(first|words)|join|p(arse_str|rint(f)?)|e(cho|xplode)|v(sprintf|printf|fprintf)|quote(d_printable_(decode|encode)|meta)|fprintf|wordwrap|l(cfirst|trim|ocaleconv|evenshtein)|add(slashes|cslashes)|rtrim|get_html_translation_table|m(oney_format|d5(_file)?|etaphone)|bin2hex)\b</string>
 					<key>name</key>
 					<string>support.function.string.php</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?i)\bsybase_(se(t_message_handler|lect_db)|num_(fields|rows)|c(onnect|lose)|d(eadlock_retry_count|ata_seek)|unbuffered_query|pconnect|query|f(ield_seek|etch_(object|field|a(ssoc|rray)|row)|ree_result)|affected_rows|result|get_last_message|min_(server_severity|client_severity|error_severity|message_severity))\b</string>
-					<key>name</key>
-					<string>support.function.sybase.php</string>
 				</dict>
 				<dict>
 					<key>match</key>
