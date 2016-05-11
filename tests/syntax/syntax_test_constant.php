@@ -1,14 +1,18 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-// Null
+/**
+ * Null
+ */
 
 null;
 // ^ constant.language.null
 NULL;
 // ^ constant.language.null
 
-// Boolean
+/**
+ * Boolean
+ */
 
 true;
 // ^ constant.language.boolean
@@ -19,7 +23,9 @@ false;
 FALSE;
 // ^ constant.language.boolean
 
-// Magic
+/**
+ * Magic
+ */
 
 __LINE__;
 // ^ constant.language.magic
@@ -38,7 +44,9 @@ __METHOD__;
 __NAMESPACE__;
 // ^ constant.language.magic
 
-// Core
+/**
+ * Core
+ */
 
 E_ALL
 // ^ support.constant.core
@@ -64,6 +72,10 @@ ASSERT_CALLBACK
 // <- punctuation.separator.inheritance
 // ^ support.constant.std
 
+/**
+ * Ext
+ */
+
 OPENSSL_VERSION_NUMBER
 // ^ support.constant.ext
 \OPENSSL_VERSION_NUMBER
@@ -75,10 +87,10 @@ APACHE_MAP
 \APACHE_MAP
 // <- punctuation.separator.inheritance
 // ^ support.constant.ext
-MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT // added 5.6.16
-// ^ support.constant.ext
-CURLM_ADDED_ALREADY // added 5.6.20
-// ^ support.constant.ext
+
+/**
+ * Parser Token
+ */
 
 T_IMPLEMENTS
 // ^ support.constant.parser-token
@@ -93,6 +105,16 @@ T_YIELD
 // ^ support.constant.parser-token
 
 /**
+ * Constants added in PHP 5.6.x
+ */
+
+MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT // Added 5.6.16
+// ^ support.constant.ext
+
+CURLM_ADDED_ALREADY // Added 5.6.20
+// ^ support.constant.ext
+
+/**
  * Removed Extensions and SAPIs in PHP 7.0.0
  */
 
@@ -100,3 +122,18 @@ MYSQL_CLIENT_COMPRESS
 // ^ -support.constant
 MSSQL_ASSOC
 // ^ -support.constant
+
+/**
+ * Constants added in PHP 7.0.0
+ */
+
+PHP_INT_MIN // Added PHP 7.0.0
+// ^ support.constant.core
+LIBXML_BIGLINES // Added PHP 7.0.0
+// ^ support.constant.ext
+PREG_JIT_STACKLIMIT_ERROR // Added PHP 7.0.0
+// ^ support.constant.ext
+POSIX_RLIMIT_AS // Added PHP 7.0.0
+// ^ support.constant.ext
+ZLIB_SYNC_FLUSH // Added PHP 7.0.0
+// ^ support.constant.ext

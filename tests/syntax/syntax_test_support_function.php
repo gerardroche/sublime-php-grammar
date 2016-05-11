@@ -43,3 +43,22 @@ mssql_connect(); // Removed in PHP 7.0.0
 // ^ -support.function
 sybase_connect() // Removed in PHP 7.0.0
 // ^ -support.function
+
+/**
+ * Functions added in PHP 7.0.0
+ */
+
+preg_replace_callback_array() // PCRE Added PHP 7.0.0
+// ^ support.function.php_pcre
+
+posix_setrlimit() // POSIX Added PHP 7.0.0
+// ^ support.function.posix
+
+inflate_add() // Zlib Compression Added PHP 7.0.0
+// ^ support.function.zlib
+deflate_add() // Zlib Compression Added PHP 7.0.0
+// ^ support.function.zlib
+inflate_init() // Zlib Compression Added PHP 7.0.0
+// ^ support.function.zlib
+deflate_init() // Zlib Compression Added PHP 7.0.0
+// ^ support.function.zlib
