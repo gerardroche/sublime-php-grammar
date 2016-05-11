@@ -11,6 +11,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: #82, #78 Support for new PHP 7 classes
 * Added: Support for XDebug functions
 * Added: Support for other missing constants, functions, and classes
+* Added: #74 Support for PHP 7 unicode codepoint escape syntax
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
 
 ## 0.18.0

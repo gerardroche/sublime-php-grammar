@@ -1142,6 +1142,12 @@
 				</dict>
 				<dict>
 					<key>match</key>
+					<string>\\u\{[0-9A-Fa-f]+\}</string>
+					<key>name</key>
+					<string>constant.numeric.unicodepoint.php</string>
+				</dict>
+				<dict>
+					<key>match</key>
 					<string>\\[efnrtv\\\$\"]</string>
 					<key>name</key>
 					<string>constant.character.escape.php</string>
