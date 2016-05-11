@@ -126,6 +126,10 @@ $comparison <=> 1;
 //           ^ keyword.operator.comparison
 //            ^ keyword.operator.comparison
 
+$comparison = $x['y'] ?? 'z';
+//                    ^ keyword.operator.comparison
+//                     ^ keyword.operator.comparison
+
 // Error control
 
 @error_control();

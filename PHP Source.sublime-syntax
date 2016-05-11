@@ -655,7 +655,7 @@ contexts:
     - include: function-call
     - match: '<<|>>|~|\^|&|\|'
       scope: keyword.operator.bitwise.php
-    - match: (<=|>=|<|>)
+    - match: (<=|>=|<|>|\?\?)
       scope: keyword.operator.comparison.php
     - match: '(?i)\b(instanceof)\b\s+(?=[\\$a-z_])'
       captures:
