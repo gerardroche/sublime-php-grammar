@@ -26,7 +26,7 @@ Provides a PHP syntax definition, decent indentation rules, macros, and other us
 
 ## Installation
 
-Completions and snippets are provided in their own packages.
+For best results use the following completions and snippets packages:
 
 * [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
 * [PHP Snippets](https://packagecontrol.io/packages/php-snippets)

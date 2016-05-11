@@ -48,3 +48,30 @@ function x(Iterator $i) {}
 function x(\Iterator $i) {}
 //         ^ punctuation.separator.inheritance
 //              ^ support.class.builtin
+
+/**
+ * Classes and interfaces added in PHP 7.0.0
+ */
+
+class x extends IntlChar {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends ReflectionGenerator {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends ReflectionType {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x implements SessionUpdateTimestampHandlerInterface {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x implements Throwable {} // Added PHP 7.0.0
+                    // ^ support.class.builtin
+class x extends Error {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends TypeError {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends ParseError {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends AssertionError {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends ArithmeticError {} // Added PHP 7.0.0
+                // ^ support.class.builtin
+class x extends DivisionByZeroError {} // Added PHP 7.0.0
+                // ^ support.class.builtin
