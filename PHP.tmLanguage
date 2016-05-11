@@ -3426,7 +3426,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(s(hm_(has_var|detach|put_var|attach|remove(_var)?|get_var)|em_(acquire|re(lease|move)|get))|ftok|msg_(s(tat_queue|e(nd|t_queue))|queue_exists|re(ceive|move_queue)|get_queue))\b</string>
+					<string>(?i)\b(?&gt;msg_(?&gt;get_queue|queue_exists|re(?&gt;ceive|move_queue)|s(?&gt;e(?&gt;nd|t_queue)|tat_queue))|s(?&gt;em_(?&gt;acquire|get|re(?&gt;lease|move))|hm_(?&gt;attach|detach|get_var|has_var|put_var|remove(?&gt;_var)?)))\b</string>
 					<key>name</key>
 					<string>support.function.sem.php</string>
 				</dict>

@@ -121,6 +121,44 @@ xdebug_dump_superglobals();
 xdebug_get_headers();
 // ^ support.function.xdebug
 
+// Semaphore
+msg_get_queue();
+// ^ support.function.sem
+msg_send();
+// ^ support.function.sem
+msg_receive();
+// ^ support.function.sem
+msg_remove_queue();
+// ^ support.function.sem
+msg_stat_queue();
+// ^ support.function.sem
+msg_set_queue();
+// ^ support.function.sem
+msg_queue_exists();
+// ^ support.function.sem
+sem_get();
+// ^ support.function.sem
+sem_acquire();
+// ^ support.function.sem
+sem_release();
+// ^ support.function.sem
+sem_remove();
+// ^ support.function.sem
+shm_attach();
+// ^ support.function.sem
+shm_remove();
+// ^ support.function.sem
+shm_detach();
+// ^ support.function.sem
+shm_put_var();
+// ^ support.function.sem
+shm_has_var();
+// ^ support.function.sem
+shm_get_var();
+// ^ support.function.sem
+shm_remove_var();
+// ^ support.function.sem
+
 /**
  * Removed Extensions and SAPIs in PHP 7.0.0
  */

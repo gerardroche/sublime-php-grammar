@@ -1124,7 +1124,7 @@ contexts:
       scope: support.function.recode.php
     - match: (?i)\brrd(c_disconnect|_(create|tune|info|update|error|version|f(irst|etch)|last(update)?|restore|graph|xport))\b
       scope: support.function.rrd.php
-    - match: (?i)\b(s(hm_(has_var|detach|put_var|attach|remove(_var)?|get_var)|em_(acquire|re(lease|move)|get))|ftok|msg_(s(tat_queue|e(nd|t_queue))|queue_exists|re(ceive|move_queue)|get_queue))\b
+    - match: (?i)\b(?>msg_(?>get_queue|queue_exists|re(?>ceive|move_queue)|s(?>e(?>nd|t_queue)|tat_queue))|s(?>em_(?>acquire|get|re(?>lease|move))|hm_(?>attach|detach|get_var|has_var|put_var|remove(?>_var)?)))\b
       scope: support.function.sem.php
     - match: (?i)\bsession_(?>abort|c(?>ache_(?>expire|limiter)|ommit)|de(?>code|stroy)|encode|get_cookie_params|id|module_name|name|re(?>g(?>enerate_id|ister_shutdown)|set)|s(?>ave_path|et_(?>cookie_params|save_handler)|ta(?>rt|tus))|unset|write_close)\b
       scope: support.function.session.php

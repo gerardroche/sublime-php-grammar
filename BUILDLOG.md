@@ -61,6 +61,7 @@ Update support functions ...
   Updated shmop functions (6)
   Updated soap functions (2)
   Updated sockets functions (31)
+  Updated sem functions (18)
   Updated tidy functions (24)
   Updated tokenizer functions (2)
   Updated wddx functions (6)
