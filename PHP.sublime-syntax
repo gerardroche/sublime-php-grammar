@@ -17,57 +17,17 @@ contexts:
     - match: ''
       push: 'scope:text.html.basic'
       with_prototype:
-        - match: |-
-            (?x)
-              (^\s*)?             # 1 - Leading whitespace
-                (             # 2 - meta.embedded.line.empty.php
-                  (           # 3 - Open Tag
-                    (?:
-                      ((?<=\?>)<)   # 4 - Consecutive tags
-                      | <
-                    )
-                    \?(?i:php|=)?
-                  )
-                    (\s*)       # 5 - Loneliness
-                  ((\?)>)         # 6 - Close Tag
-                              # 7 - Scope ? as scope.php
-                )
-              (
-                \1              # Match nothing if there was no
-                              #   leading whitespace...
-                | (\s*$\n)?         # or match trailing whitespace.
-              )
-          comment: Matches empty tags.
-          captures:
-            1: punctuation.whitespace.embedded.leading.php
-            2: meta.embedded.line.empty.php
-            3: punctuation.section.embedded.begin.php
-            4: meta.consecutive-tags.php
-            5: source.php
-            6: punctuation.section.embedded.end.php
-            7: source.php
-            8: punctuation.whitespace.embedded.trailing.php
-        - match: ^\s*(?=<\?)
-          comment: Catches tags with preceeding whitespace.
-          scope: punctuation.whitespace.embedded.leading.php
+        - match: '<\?(?i:php|=)?(?![^?]*\?>)'
+          scope: punctuation.section.embedded.begin.php
           push:
-            - match: (?<=\?>)(\s*$\n)?
-              scope: punctuation.whitespace.embedded.trailing.php
+            - meta_scope: meta.embedded.block.php
+            - meta_content_scope: source.php
+            - match: \?>
+              scope: punctuation.section.embedded.end.php
               pop: true
-            - match: <\?(?i:php|=)?
-              scope: punctuation.section.embedded.begin.php
-              push:
-                - meta_scope: meta.embedded.block.php
-                - meta_content_scope: source.php
-                - match: \?>
-                  scope: punctuation.section.embedded.end.php
-                  pop: true
-                - include: 'scope:source.php'
-        - match: (((?<=\?>)<)|<)\?(?i:php|=)?
-          comment: Catches the remainder.
-          captures:
-            0: punctuation.section.embedded.begin.php
-            2: meta.consecutive-tags.php
+            - include: 'scope:source.php'
+        - match: <\?(?i:php|=)?
+          scope: punctuation.section.embedded.begin.php
           push:
             - meta_scope: meta.embedded.line.php
             - meta_content_scope: source.php

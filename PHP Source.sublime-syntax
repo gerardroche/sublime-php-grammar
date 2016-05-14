@@ -212,7 +212,7 @@ contexts:
         - include: support
         - include: user-function-call
   heredoc:
-    - match: '(?=<<<\s*(''?)([a-zA-Z_]+[a-zA-Z0-9_]*)(\1)\s*$)'
+    - match: '(?=<<<\s*('')?([a-zA-Z_]+[a-zA-Z0-9_]*)''?\s*$)'
       push:
         - meta_scope: string.unquoted.heredoc.php
         - match: ^((HTML|XML|SQL|JAVASCRIPT|JSON|CSS)|\2)\b
@@ -771,7 +771,7 @@ contexts:
         1: keyword.other.phpdoc.php
         3: storage.modifier.php
         4: invalid.illegal.wrong-access-type.phpdoc.php
-    - match: "((https?|s?ftp|ftps|file|smb|afp|nfs|(x-)?man|gopher|txmt)://|mailto:)[-:@a-zA-Z0-9_.~%+/?=&#]+(?<![.?:])"
+    - match: "((https?|s?ftp|ftps|file|smb|afp|nfs|(x-)?man|gopher|txmt)://|mailto:)[-:@a-zA-Z0-9_.~%+/?=&#]*[-@a-zA-Z0-9_~%+/=&#]"
       scope: markup.underline.link.php
     - match: (@xlink)\s+(.+)\s*$
       captures:
@@ -787,7 +787,7 @@ contexts:
       captures:
         1: keyword.other.phpdoc.php
   regex-double-quoted:
-    - match: '(?x)"/ (?= (\\.|[^"/])++/[imsxeADSUXu]*" )'
+    - match: '(?x)"/ (?= (\\.|[^"/])+/[imsxeADSUXu]*" )'
       scope: punctuation.definition.string.begin.php
       push:
         - meta_scope: string.regexp.double-quoted.php
@@ -814,7 +814,7 @@ contexts:
         - match: "[$^+*]"
           scope: keyword.operator.regexp.php
   regex-single-quoted:
-    - match: '(?x)''/ (?= (\\.|[^''/])++/[imsxeADSUXu]*'' )'
+    - match: '(?x)''/ (?= (\\.|[^''/])+/[imsxeADSUXu]*'' )'
       scope: punctuation.definition.string.begin.php
       push:
         - meta_scope: string.regexp.single-quoted.php
@@ -1193,19 +1193,19 @@ contexts:
     # Handles: $foo, $foo[0], $foo[$bar], $foo->bar
     - match: |-
         (?x)
-        ((\$)(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
+        ((\$)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
         (?:
-          (->)(\g<name>)
+          (->)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
           |
           (\[)
-            (?:(\d+)|((\$)\g<name>)|(\w+))
+            (?:(\d+)|((\$)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)|(\w+))
           (\])
         )?
       captures:
-        1: variable.other.php
-        2: punctuation.definition.variable.php
-        4: keyword.operator.class.php
-        5: variable.other.property.php
+        1: variable.other.php.VARIABLE
+        2: punctuation.definition.variable.php.DEFINITION
+        4: keyword.operator.class.php,CLASS
+        5: variable.other.property.php.PROPERTY
         6: punctuation.section.array.begin.php
         7: constant.numeric.index.php
         8: variable.other.index.php
@@ -1215,7 +1215,7 @@ contexts:
     # Handles: "foo${bar}baz"
     - match: |-
         (?x)
-        ((\$\{)(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
+        ((\$\{)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
       captures:
         1: variable.other.php
         2: punctuation.definition.variable.php
