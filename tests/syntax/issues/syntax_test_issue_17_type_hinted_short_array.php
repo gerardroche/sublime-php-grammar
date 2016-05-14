@@ -1,42 +1,34 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-function valid(array $var = array()) { }
+function a____(array $var = array()) { }
 //                               ^ meta.function.argument.array.php punctuation.definition.array.begin.php
 //                                ^ meta.function.argument.array.php punctuation.definition.array.end.php
-function valid(array $var = []) { }
+function b____(array $var = []) { }
 //                          ^ meta.function.argument.array.php punctuation.definition.array.begin.php
 //                           ^ meta.function.argument.array.php punctuation.definition.array.end.php
-function valid(array &$var = array()) { }
+function c____(array &$var = array()) { }
 //                                ^ meta.function.argument.array.php punctuation.definition.array.begin.php
 //                                 ^ meta.function.argument.array.php punctuation.definition.array.end.php
-function valid(array &$var = []) { }
+function d____(array &$var = []) { }
 //                           ^ meta.function.argument.array.php punctuation.definition.array.begin.php
 //                            ^ meta.function.argument.array.php punctuation.definition.array.end.php
-function valid($var = array()) { }
+function e____($var = array()) { }
 //                         ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.begin.php
 //                          ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.end.php
-function valid($var = []) { }
+function f____($var = []) { }
 //                    ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.begin.php
 //                     ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.end.php
-function valid(&$var = array()) { }
+function g____(&$var = array()) { }
 //                          ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.begin.php
 //                           ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.end.php
-function valid(&$var = []) { }
+function h____(&$var = []) { }
 //                     ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.begin.php
 //                      ^ meta.function.argument.default.php meta.array.php punctuation.definition.array.end.php
-function invalid(array &$var = ()) { }
+function _a_____(array &$var = ()) { }
 //                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-function invalid(array &$var = array[]) { }
-//                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                               ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                                ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                                 ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                                  ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-//                                   ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-function invalid(array &$var = foobr[]) { }
+function _b_____(array &$var = array[]) { }
 //                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                               ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
@@ -44,10 +36,18 @@ function invalid(array &$var = foobr[]) { }
 //                                 ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                                  ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                                   ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-function invalid(array $var = ()) { }
+function _c_____(array &$var = foobr[]) { }
+//                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                               ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                                ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                                 ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                                  ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+//                                   ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
+function _d_____(array $var = ()) { }
 //                            ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-function invalid(array $var = array[]) { }
+function _e_____(array $var = array[]) { }
 //                            ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
@@ -55,7 +55,7 @@ function invalid(array $var = array[]) { }
 //                                ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                                 ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                                  ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
-function invalid(array $var = foobr[]) { }
+function _f_____(array $var = foobr[]) { }
 //                            ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                             ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 //                              ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
@@ -65,7 +65,7 @@ function invalid(array $var = foobr[]) { }
 //                                  ^ meta.function.arguments.php meta.function.argument.array.php invalid.illegal
 
 // @todo :bug: the following should also be invalid:
-function invalid($var = array[]) { }
-function invalid($var = foobar[]) { }
-function invalid(&$var = array[]) { }
-function invalid(&$var = foobar[]) { }
+function _g_____($var = array[]) { }
+function _h_____($var = foobar[]) { }
+function _i_____(&$var = array[]) { }
+function _j_____(&$var = foobar[]) { }

@@ -1,13 +1,13 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-function x() {}
+function a() {}
 // ^ meta.function storage.type.function
 //       ^ meta.function entity.name.function
 //        ^ meta.function punctuation.definition.parameters.begin
 //         ^ meta.function punctuation.definition.parameters.end
 
-function &x() {}
+function &b() {}
 // ^ meta.function storage.type.function
 //       ^ meta.function storage.modifier.reference
 //        ^ meta.function entity.name.function
@@ -18,7 +18,7 @@ function &x() {}
  * No default argument value
  */
 
-function x($a) {}
+function c($a) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.no-default variable punctuation
 //          ^ meta.function meta.function.arguments meta.function.argument.no-default variable
 
@@ -34,13 +34,13 @@ function name($a, $b, $c) {}
  * With default argument value equal to null
  */
 
-function x($a = null) {}
+function e($a = null) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.default variable punctuation
 //          ^ meta.function meta.function.arguments meta.function.argument.default variable
 //            ^ meta.function meta.function.arguments meta.function.argument.default keyword.operator.assignment
 //                ^ meta.function meta.function.arguments meta.function.argument.default constant
 
-function x($a = null, $b = null, $c = null) {}
+function f($a = null, $b = null, $c = null) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.default variable punctuation
 //          ^ meta.function meta.function.arguments meta.function.argument.default variable
 //            ^ meta.function meta.function.arguments meta.function.argument.default keyword.operator.assignment
@@ -58,12 +58,12 @@ function x($a = null, $b = null, $c = null) {}
  * With array type hint
  */
 
-function x(array $a) {}
+function h(array $a) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.array storage.type
 //               ^ meta.function meta.function.arguments meta.function.argument.array variable punctuation
 //                ^ meta.function meta.function.arguments meta.function.argument.array variable
 
-function x(array $a, array $b, array $c) {}
+function i(array $a, array $b, array $c) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.array storage.type
 //               ^ meta.function meta.function.arguments meta.function.argument.array variable punctuation
 //                ^ meta.function meta.function.arguments meta.function.argument.array variable
@@ -74,19 +74,19 @@ function x(array $a, array $b, array $c) {}
 //                                   ^ meta.function meta.function.arguments meta.function.argument.array variable punctuation
 //                                    ^ meta.function meta.function.arguments meta.function.argument.array variable
 
-function x(array $a = null) {}
+function j(array $a = null) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.array storage.type
 //               ^ meta.function meta.function.arguments meta.function.argument.array variable punctuation
 //                ^ meta.function meta.function.arguments meta.function.argument.array variable
 //                  ^ meta.function meta.function.arguments meta.function.argument.array keyword.operator.assignment
 //                    ^ meta.function meta.function.arguments meta.function.argument.array constant
 
-function x(array $a = array()) {}
+function k(array $a = array()) {}
 //                    ^ meta.function meta.function.arguments meta.function.argument.array support.function.construct
 //                         ^ meta.function meta.function.arguments meta.function.argument.array punctuation.definition.array.begin
 //                          ^ meta.function meta.function.arguments meta.function.argument.array punctuation.definition.array.end
 
-function x(array $a = []) {}
+function l(array $a = []) {}
 //                    ^ meta.function meta.function.arguments meta.function.argument.array punctuation.definition.array.begin
 //                     ^ meta.function meta.function.arguments meta.function.argument.array punctuation.definition.array.end
 
@@ -94,12 +94,12 @@ function x(array $a = []) {}
  * With userland class type hint
  */
 
-function x(Name $a) {}
+function m(Name $a) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //              ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //               ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
 
-function x(Name $a = null) {}
+function n(Name $a = null) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //              ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //               ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
@@ -110,7 +110,7 @@ function x(Name $a = null) {}
  * With builtin class type hint
  */
 
-function x(Countable $a) {}
+function o(Countable $a) {}
 //         ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class.builtin
 //                   ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //                    ^ meta.function meta.function.arguments meta.function.argument.typehinted variable

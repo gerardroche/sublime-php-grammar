@@ -13,15 +13,15 @@ class_exists('classname', false);
 // <- punctuation.separator.inheritance
 //  ^ support.function.classobj
 
-mysqli_info($link)
+mysqli_info($link);
 // ^ support.function.mysqli
-\mysqli_info($link)
+\mysqli_info($link);
 // <- punctuation.separator.inheritance
 // ^ support.function.mysqli
 
-password_get_info('hash')
+password_get_info('hash');
 // ^ support.function.password
-\password_get_info('hash')
+\password_get_info('hash');
 // <- punctuation.separator.inheritance
 // ^ support.function.password
 
@@ -355,38 +355,38 @@ mysql_connect(); // Removed in PHP 7.0.0
 // ^ -support.function
 mssql_connect(); // Removed in PHP 7.0.0
 // ^ -support.function
-sybase_connect() // Removed in PHP 7.0.0
+sybase_connect(); // Removed in PHP 7.0.0
 // ^ -support.function
 
 /**
  * Functions added in PHP 7.0.0
  */
 
-preg_replace_callback_array() // PCRE Added PHP 7.0.0
+preg_replace_callback_array(); // PCRE Added PHP 7.0.0
 // ^ support.function.php_pcre
 
-posix_setrlimit() // POSIX Added PHP 7.0.0
+posix_setrlimit(); // POSIX Added PHP 7.0.0
 // ^ support.function.posix
 
-inflate_add() // Zlib Compression Added PHP 7.0.0
+inflate_add(); // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
-deflate_add() // Zlib Compression Added PHP 7.0.0
+deflate_add(); // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
-inflate_init() // Zlib Compression Added PHP 7.0.0
+inflate_init(); // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
-deflate_init() // Zlib Compression Added PHP 7.0.0
+deflate_init(); // Zlib Compression Added PHP 7.0.0
 // ^ support.function.zlib
 
-intdiv() // Math
+intdiv(); // Math
 // ^ support.function
 random_bytes(); // CSPRNG
 // ^ support.function
 random_int(); // CSPRNG
 // ^ support.function
-error_clear_last() // Error Handling and Logging
+error_clear_last(); // Error Handling and Logging
 // ^ support.function
 
-gc_mem_caches() // PHP Options/Info
+gc_mem_caches(); // PHP Options/Info
 // ^ support.function
-get_resources() // PHP Options/Info
+get_resources(); // PHP Options/Info
 // ^ support.function
