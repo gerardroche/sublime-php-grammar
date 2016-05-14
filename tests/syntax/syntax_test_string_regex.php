@@ -24,5 +24,11 @@ preg_match('/reg exp/');
  * Modifiers source.regexp.double-quoted
  */
 
-preg_match('/reg exp/imsxeADSUXJu');
-//                   ^^^^^^^^^^^^ string.regexp.single-quoted
+preg_match('/reg exp/imsxADSUXJu');
+//                   ^^^^^^^^^^^ string.regexp.single-quoted
+
+preg_match('/reg exp/e');
+//                   ^ -string.regexp
+
+preg_match("/reg exp/e");
+//                   ^ -string.regexp

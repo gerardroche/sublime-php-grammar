@@ -20,6 +20,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: syntax is now compatible with new syntax regex
 * Added: support for the J regex modifier
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
+* Removed: support for the e regex modifier was REMOVED as of PHP 7
 
 ## 0.18.0
 
