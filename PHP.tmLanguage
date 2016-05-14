@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0">
 <dict>
-	<key>comment</key>
-	<string>TODO:
-• Try to improve parameters list syntax – scope numbers, ‘=’, ‘,’ and possibly be intelligent about entity ordering
-• Is meta.function-call the correct scope? I've added it to my theme but by default it's not highlighted</string>
 	<key>fileTypes</key>
 	<array>
 		<string>php</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>^#!.*(?&lt;!-)php[0-9]{0,1}\b</string>
+	<string>^(#!.*(?&lt;!-)|&lt;\?)php[0-9]{0,1}\b</string>
 	<key>foldingStartMarker</key>
 	<string>(/\*|\{\s*$|&lt;&lt;&lt;HTML)</string>
 	<key>foldingStopMarker</key>
