@@ -18,3 +18,11 @@ preg_match('/reg exp/');
 //         ^^^^^^^^^^^ string.regexp.single-quoted
 //         ^ string.regexp.single-quoted punctuation.definition.string.begin
 //                   ^ string.regexp.single-quoted punctuation.definition.string.end
+
+
+/**
+ * Modifiers source.regexp.double-quoted
+ */
+
+preg_match('/reg exp/imsxeADSUXJu');
+//                   ^^^^^^^^^^^^ string.regexp.single-quoted

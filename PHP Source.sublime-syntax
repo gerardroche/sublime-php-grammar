@@ -787,11 +787,11 @@ contexts:
       captures:
         1: keyword.other.phpdoc.php
   regex-double-quoted:
-    - match: '(?x)"/ (?= (\\.|[^"/])+/[imsxeADSUXu]*" )'
+    - match: '(?x)"/ (?= (\\.|[^"/])+/[imsxeADSUXJu]*" )'
       scope: punctuation.definition.string.begin.php
       push:
         - meta_scope: string.regexp.double-quoted.php
-        - match: '(/)([imsxeADSUXu]*)(")'
+        - match: '(/)([imsxeADSUXJu]*)(")'
           scope: punctuation.definition.string.end.php
           pop: true
         # Escaped from the regexp – there can also be 2 backslashes (since 1 will escape the first)
@@ -814,11 +814,11 @@ contexts:
         - match: "[$^+*]"
           scope: keyword.operator.regexp.php
   regex-single-quoted:
-    - match: '(?x)''/ (?= (\\.|[^''/])+/[imsxeADSUXu]*'' )'
+    - match: '(?x)''/ (?= (\\.|[^''/])+/[imsxeADSUXJu]*'' )'
       scope: punctuation.definition.string.begin.php
       push:
         - meta_scope: string.regexp.single-quoted.php
-        - match: "(/)([imsxeADSUXu]*)(')"
+        - match: "(/)([imsxeADSUXJu]*)(')"
           scope: punctuation.definition.string.end.php
           pop: true
         - match: '(\{)\d+(,\d+)?(\})'
