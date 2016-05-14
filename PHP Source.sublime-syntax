@@ -144,7 +144,7 @@ contexts:
         5: keyword.operator.assignment.php
         6: constant.language.php
         7: invalid.illegal.non-null-typehinted.php
-    - match: '(?i)(?=[a-z_0-9\\]*[a-z_][a-z_0-9]*\s*&?\s*\$)'
+    - match: '(?i)(?=[a-z_0-9\\]*[a-z_][a-z_0-9]*\s*&?\s*(?:\.\.\.)?\$)'
       push:
         - meta_scope: meta.function.argument.typehinted.php
         - match: '(?=,|\)|/[/*]|\#|$)'
@@ -154,7 +154,7 @@ contexts:
             (?xi)
                                   \s*([a-z_][a-z_0-9]*)? # Typehinted class name
                                   \s*(&)?           # Reference
-                                  \s*((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
+                                  \s*(((?:\.\.\.)?\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
                                   (?:
                                     \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
                                   )?
@@ -168,7 +168,7 @@ contexts:
             5: keyword.operator.assignment.php
             6: constant.language.php
             7: invalid.illegal.non-null-typehinted.php
-    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#|$)'
+    - match: '(\s*&)?\s*(((?:\.\.\.)?\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#|$)'
       scope: meta.function.argument.no-default.php
       captures:
         1: storage.modifier.reference.php

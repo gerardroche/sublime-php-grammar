@@ -19,6 +19,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: binary number support
 * Added: syntax is now compatible with new syntax regex
 * Added: support for the J regex modifier
+* Added: #66 Support PHP 5.6 variadic functions via ...
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
 * Removed: support for the e regex modifier was REMOVED as of PHP 7
 
