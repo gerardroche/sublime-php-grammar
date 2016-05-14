@@ -1,7 +1,7 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-function f(
+function a(
     $foo,
 //  ^ meta.function meta.function.arguments meta.function.argument.no-default variable punctuation
 //   ^ meta.function meta.function.arguments meta.function.argument.no-default variable
@@ -12,7 +12,7 @@ function f(
 
 class Example
 {
-    public function correct(Foo $var1, $var2)
+    public function aaaaaaa(Foo $var1, $var2)
 //                           ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //                              ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
 //                               ^ meta.function meta.function.arguments meta.function.argument.typehinted variable
@@ -33,7 +33,7 @@ class Example
 
     }
 
-    public function correct(
+    public function bbbbbbb(
         Foo $var1, $var2 = null
 //      ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //          ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
@@ -46,7 +46,7 @@ class Example
 
     }
 
-    public function correct(
+    public function ccccccc(
         Foo $var1, Foo $var2
 //      ^ meta.function meta.function.arguments meta.function.argument.typehinted support.class
 //          ^ meta.function meta.function.arguments meta.function.argument.typehinted variable punctuation
@@ -59,7 +59,7 @@ class Example
     }
 }
 
-function f(
+function b(
     array $a,
 //  ^ meta.function meta.function.arguments meta.function.argument.array
 //        ^ meta.function meta.function.arguments meta.function.argument.array variable punctuation

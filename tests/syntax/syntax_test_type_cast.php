@@ -1,41 +1,41 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-(bool);
+(bool)
 // ^ storage.type
-(boolean);
-// ^ storage.type
-
-(int);
-// ^ storage.type
-(integer);
+(boolean)
 // ^ storage.type
 
-(float);
+(int)
 // ^ storage.type
-(double);
-// ^ storage.type
-(real);
+(integer)
 // ^ storage.type
 
-(string);
+(float)
+// ^ storage.type
+(double)
+// ^ storage.type
+(real)
 // ^ storage.type
 
-(object);
+(string)
 // ^ storage.type
 
-(unset);
+(object)
 // ^ storage.type
 
-(binary);
+(unset)
 // ^ storage.type
 
-(array) (int) (string);
+(binary)
+// ^ storage.type
+
+(array) (int) (string)
 // ^ storage.type
 //        ^ storage.type
 //              ^ storage.type
 
-(array)(int)(string);
+(array)(int)(string)
 // ^ storage.type
 //       ^ storage.type
 //              ^ storage.type
@@ -69,7 +69,7 @@ call(
 
 // Parens scope
 
-(bool);
+(bool)
 // <- punctuation.definition.begin
 // ^ storage.type
 //   ^ punctuation.definition.end
@@ -84,7 +84,9 @@ call((int) $id);
 //     ^ storage.type
 //       ^ punctuation.definition.end
 
-   (     bool    )   ;
+   (     bool    )
 // ^ punctuation.definition.begin
 //        ^ storage.type
 //               ^ punctuation.definition.end
+
+$_;

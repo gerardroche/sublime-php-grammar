@@ -12,21 +12,21 @@
 
     ?>
 //  ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//  ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//  ^  -source.php
 //   ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//   ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//   ^  -source.php
 
     <?php echo 'string'; ?>
-//                       ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//                       ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
-//                        ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//                        ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//                       ^ embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
+//                       ^ -source.php
+//                        ^ embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
+//                        ^ -source.php
 
     <?= 'string'; ?>
-//                ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//                ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
-//                 ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//                 ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//                ^ embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
+//                ^  -source.php
+//                 ^ embedding.php text.html.basic meta.embedded.line.php punctuation.section.embedded.end.php
+//                 ^  -source.php
 
     <?=
 
@@ -34,16 +34,16 @@
 
     ?>
 //  ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//  ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//  ^  -source.php
 //   ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//   ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//   ^  -source.php
 
     <?php
 
     ?>
 //  ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//  ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//  ^  -source.php
 //   ^ embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php
-//   ^ -embedding.php text.html.basic meta.embedded.block.php punctuation.section.embedded.end.php source.php
+//   ^  -source.php
     </body>
 </html>

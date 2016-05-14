@@ -1,21 +1,21 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-function x(array $y = array()) {}
+function a(array $y = array()) {}
 //          ^ meta.function.argument.array storage.type
 //                      ^ meta.function.argument.array support.function.construct
 
-function x(Array $y = array())  {}
+function b(Array $y = array())  {}
 //          ^ meta.function.argument.array storage.type
 //                      ^ meta.function.argument.array support.function.construct
 
 class x
 {
-    public function x(array $y = array())  {}
+    public function a(array $y = array())  {}
 //                      ^ meta.function.argument.array storage.type
 //                                  ^ meta.function.argument.array support.function.construct
 
-    public function x(Array $y = array())  {}
+    public function b(Array $y = array())  {}
 //                      ^ meta.function.argument.array storage.type
 //                                  ^ meta.function.argument.array support.function.construct
 }

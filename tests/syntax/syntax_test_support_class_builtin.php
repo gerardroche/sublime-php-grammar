@@ -1,51 +1,51 @@
 // SYNTAX TEST "Packages/php-grammar/PHP.tmLanguage"
 <?php
 
-new stdClass()
+new stdClass();
 //      ^ support.class.builtin
 
-new \stdClass()
+new \stdClass();
 //  ^ punctuation.separator.inheritance
 //      ^ support.class.builtin
 
-class x implements Countable {}
+class a implements Countable {}
 //                      ^ support.class.builtin
 
-class x implements \Countable {}
+class b implements \Countable {}
 //                 ^ punctuation.separator.inheritance
 //                      ^ support.class.builtin
 
-class x extends Exception {}
+class c extends Exception {}
 //                  ^ support.class.builtin
 
-class x extends \Exception {}
+class d extends \Exception {}
 //              ^ punctuation.separator.inheritance
 //                  ^ support.class.builtin
 
-class x implements Countable, Iterator {}
+class e implements Countable, Iterator {}
 //                      ^ support.class.builtin
 //                              ^ support.class.builtin
 
-class x implements \Countable, \Iterator {}
+class f implements \Countable, \Iterator {}
 //                 ^ punctuation.separator.inheritance
 //                      ^ support.class.builtin
 //                             ^ punctuation.separator.inheritance
 //                                  ^ support.class.builtin
 
-class x implements \Countable, Iterator {}
+class g implements \Countable, Iterator {}
 //                 ^ punctuation.separator.inheritance
 //                      ^ support.class.builtin
 //                                  ^ support.class.builtin
 
-class x implements Countable, \Iterator {}
+class h implements Countable, \Iterator {}
 //                      ^ support.class.builtin
 //                            ^ punctuation.separator.inheritance
 //                                  ^ support.class.builtin
 
-function x(Iterator $i) {}
+function a(Iterator $i) {}
 //          ^ support.class.builtin
 
-function x(\Iterator $i) {}
+function b(\Iterator $i) {}
 //         ^ punctuation.separator.inheritance
 //              ^ support.class.builtin
 
@@ -53,25 +53,25 @@ function x(\Iterator $i) {}
  * Classes and interfaces added in PHP 7.0.0
  */
 
-class x extends IntlChar {} // Added PHP 7.0.0
+class i extends IntlChar {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends ReflectionGenerator {} // Added PHP 7.0.0
+class j extends ReflectionGenerator {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends ReflectionType {} // Added PHP 7.0.0
+class k extends ReflectionType {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x implements SessionUpdateTimestampHandlerInterface {} // Added PHP 7.0.0
+class l implements SessionUpdateTimestampHandlerInterface {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x implements Throwable {} // Added PHP 7.0.0
+class m implements Throwable {} // Added PHP 7.0.0
                     // ^ support.class.builtin
-class x extends Error {} // Added PHP 7.0.0
+class n extends Error {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends TypeError {} // Added PHP 7.0.0
+class o extends TypeError {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends ParseError {} // Added PHP 7.0.0
+class p extends ParseError {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends AssertionError {} // Added PHP 7.0.0
+class q extends AssertionError {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends ArithmeticError {} // Added PHP 7.0.0
+class r extends ArithmeticError {} // Added PHP 7.0.0
                 // ^ support.class.builtin
-class x extends DivisionByZeroError {} // Added PHP 7.0.0
+class s extends DivisionByZeroError {} // Added PHP 7.0.0
                 // ^ support.class.builtin

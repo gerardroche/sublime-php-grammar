@@ -15,6 +15,9 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: #64 Support for PHP 7 null coalescing operator
 * Added: #69 Support for PHP 7 spaceship operator
 * Added: #68 Support for PHP 5.6 exponentiation operator
+* Added: phps to list of suppoerted file extensions
+* Added: binary number support
+* Added: syntax is now compatible with new syntax regex
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
 
 ## 0.18.0

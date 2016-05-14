@@ -4,7 +4,9 @@ A plugin for Sublime Text.
 
 Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
-**Sublime Text 3 only**: All fixes and improvements since version 0.9.0 and all future fixes and improvements apply only to ST >= 3095 because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntax formats. I know that many can't update to the latest build so the package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
+Also try [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit), [PHP Snippets](https://packagecontrol.io/packages/php-snippets), and [PHPUnit](https://github.com/gerardroche/sublime-phpunit).
+
+*Many of the improvements and bug fixes apply only to Sublime Text >= 3095.*
 
 ## Overview
 
@@ -19,10 +21,13 @@ Provides a PHP syntax definition, decent indentation rules, macros, and other us
 
 ## Features
 
-* Support for PHP [~7.0](http://semver.org)
-* Improved support for syntax highlighters
-* Decent macros and smart completions
-* Decent indentation rules
+* Supports PHP [~7.0](http://semver.org)
+* Improved
+    - Support for syntax highlighters
+    - Indentation rules
+* Smarter
+    - macros
+    - completions
 
 ## Installation
 
@@ -52,7 +57,7 @@ If you disable or remove this package, you will need to reenable the native PHP 
     * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
     * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
     * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
-3. Restart Sublime Text to complete installation. The features listed above should now be available.
+3. The features listed above will be available the next time Sublime Text is started..
 
 If you disable or remove this package, you will need to reenable the native PHP package manually.
 
