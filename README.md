@@ -4,9 +4,11 @@ A plugin for Sublime Text.
 
 Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
-Also try [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit), [PHP Snippets](https://packagecontrol.io/packages/php-snippets), and [PHPUnit](https://github.com/gerardroche/sublime-phpunit).
+Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
-*Many of the improvements and bug fixes apply only to Sublime Text >= 3095.*
+**For completions and snippets install the packages listed above.**
+
+**Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
 ## Overview
 
@@ -207,3 +209,10 @@ Originally converted from the [PHP TextMate package](https://github.com/textmate
 ## License
 
 Released under the [BSD 3-Clause License](LICENSE).
+
+[PHP Grammar]: https://packagecontrol.io/packages/php-grammar
+[PHP Completions]: https://packagecontrol.io/packages/PHP%20Completions%20Kit
+[PHP Snippets]: https://packagecontrol.io/packages/php-snippets
+[PHPUnit]: https://github.com/gerardroche/sublime-phpunit
+[PHPUnit Completions]: https://github.com/gerardroche/sublime-phpunit
+[PHPUnit Snippets]: https://github.com/gerardroche/sublime-phpunit
