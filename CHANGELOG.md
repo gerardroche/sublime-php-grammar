@@ -15,14 +15,14 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 * Added: #64 Support for PHP 7 null coalescing operator
 * Added: #69 Support for PHP 7 spaceship operator
 * Added: #68 Support for PHP 5.6 exponentiation operator
-* Added: phps to list of suppoerted file extensions
-* Added: binary number support
-* Added: syntax is now compatible with new syntax regex
-* Added: support for the J regex modifier
+* Added: "phps" to list of suppoerted file extensions
+* Added: Binary number support
+* Added: Syntax is now compatible with new sublime text 3 syntax regex
+* Added: Support for the J regex modifier
 * Added: #66 Support PHP 5.6 variadic functions via ...
-* Fixed: several issues with sublime text build >= 3114
+* Fixed: Several issues with sublime text build 3114
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
-* Removed: support for the e regex modifier was REMOVED as of PHP 7
+* Removed: Support for the e regex modifier which was REMOVED as of PHP 7
 
 ## 0.18.0
 
