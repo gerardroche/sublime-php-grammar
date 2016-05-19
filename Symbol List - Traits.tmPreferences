@@ -11,6 +11,8 @@
 		<integer>1</integer>
 		<key>symbolTransformation</key>
 		<string>s/^/T: /</string>
+		<key>showInIndexedSymbolList</key>
+		<string>1</string>
 	</dict>
 </dict>
 </plist>
