@@ -1,10 +1,10 @@
 # gerardroche/sublime-php-grammar changelog
 
-**All fixes and improvements since version 0.9.0 and all future fixes and improvements apply only to ST >= 3095** because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntax formats.
+Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
-I know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.
+**Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
-## next
+## 0.19.0
 
 * Added: #82 Support for new PHP 7 constants
 * Added: #82 Support for new PHP 7 functions
@@ -20,6 +20,7 @@ I know that many can't update to the latest build. The package will continue wor
 * Added: syntax is now compatible with new syntax regex
 * Added: support for the J regex modifier
 * Added: #66 Support PHP 5.6 variadic functions via ...
+* Fixed: several issues with sublime text build >= 3114
 * Removed: #82 Support for Extensions and SAPIs removed in PHP 7
 * Removed: support for the e regex modifier was REMOVED as of PHP 7
 
@@ -201,3 +202,10 @@ I know that many can't update to the latest build. The package will continue wor
 ## 0.1.0
 
 * Initial import of PHP language grammar from Sublime Text 3 build 3065
+
+[PHP Grammar]: https://packagecontrol.io/packages/php-grammar
+[PHP Completions]: https://packagecontrol.io/packages/PHP%20Completions%20Kit
+[PHP Snippets]: https://packagecontrol.io/packages/php-snippets
+[PHPUnit]: https://github.com/gerardroche/sublime-phpunit
+[PHPUnit Completions]: https://github.com/gerardroche/sublime-phpunit-completions
+[PHPUnit Snippets]: https://github.com/gerardroche/sublime-phpunit-snippets
