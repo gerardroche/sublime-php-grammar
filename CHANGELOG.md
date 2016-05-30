@@ -4,6 +4,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
+## Unreleased
+
+* Fixed: Conflicts to "indent_to_bracket" option. #90
+
 ## 0.19.0
 
 * Added: #82 Support for new PHP 7 constants
@@ -21,8 +25,8 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 * Added: Support for the J regex modifier
 * Added: #66 Support PHP 5.6 variadic functions via ...
 * Fixed: Several issues with sublime text build 3114
-* Removed: #82 Support for Extensions and SAPIs removed in PHP 7
-* Removed: Support for the e regex modifier which was REMOVED as of PHP 7
+* Removed: #82 Support for Extensions and SAPIs removed as of PHP 7
+* Removed: Support for the e regex modifier which was removed as of PHP 7
 
 ## 0.18.0
 

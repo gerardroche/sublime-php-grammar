@@ -8,9 +8,6 @@
 	<key>settings</key>
 	<dict>
 
-		<key>indentParens</key>
-		<false/>
-
 		<key>increaseIndentPattern</key>
 		<string>(?x)
 			  ^.*(\{[^}"']*)$

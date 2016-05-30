@@ -3,7 +3,7 @@ Function call and class instantiation parens should increase indentation #4
 --FILE--
 <?php
 
-function _()
+function x()
 {
     // function calls
 
@@ -40,19 +40,14 @@ function _()
     function_call([]);
     echo '_';
 
-    function_call([
-
-    ]);
-    echo '_';
-
     function_call(
         $var1
-    ));
+    );
     echo '_';
 
     function_call(
         new cls()
-    ));
+    );
     echo '_';
 
     function_call(
@@ -60,21 +55,21 @@ function _()
             $var1,
             $var2
         )
-    ));
+    );
     echo '_';
 
     function_call(new cls(
         $var1,
         $var2
-    )));
+    ));
     echo '_';
 
     function_call(
         $var1,
         $var2,
         new Cls(),
-        $var3,
-    ));
+        $var3
+    );
     echo '_';
 
     // closures
@@ -87,14 +82,14 @@ function _()
     $_ = function (
     ) {
         echo '_';
-    }
+    };
     echo '_';
 
     $_ = function (
     )
     {
         echo '_';
-    }
+    };
     echo '_';
 
     // closures with arguments
@@ -135,30 +130,32 @@ function _()
 
     // closures with "use" keyword
 
-    $_ = function () use () {
+    $_ = function () use ($x) {
         echo '_';
     };
     echo '_';
 
-    $_ = function ( ) use ( ) {
+    $_ = function ( ) use ( $x ) {
         echo '_';
     };
     echo '_';
 
     $_ = function () use (
+        $x
     ) {
         echo '_';
     };
     echo '_';
 
     $_ = function (
-    ) use () {
+    ) use ($x) {
         echo '_';
     };
     echo '_';
 
     $_ = function (
     ) use (
+        $x
     ) {
         echo '_';
     };
@@ -220,7 +217,7 @@ function _()
 --EXPECT--
 <?php
 
-function _()
+function x()
 {
     // function calls
 
@@ -257,19 +254,14 @@ function _()
     function_call([]);
     echo '_';
 
-    function_call([
-
-    ]);
-    echo '_';
-
     function_call(
         $var1
-    ));
+    );
     echo '_';
 
     function_call(
         new cls()
-    ));
+    );
     echo '_';
 
     function_call(
@@ -277,21 +269,21 @@ function _()
             $var1,
             $var2
         )
-    ));
+    );
     echo '_';
 
     function_call(new cls(
         $var1,
         $var2
-    )));
+    ));
     echo '_';
 
     function_call(
         $var1,
         $var2,
         new Cls(),
-        $var3,
-    ));
+        $var3
+    );
     echo '_';
 
     // closures
@@ -304,14 +296,14 @@ function _()
     $_ = function (
     ) {
         echo '_';
-    }
+    };
     echo '_';
 
     $_ = function (
     )
     {
         echo '_';
-    }
+    };
     echo '_';
 
     // closures with arguments
@@ -352,30 +344,32 @@ function _()
 
     // closures with "use" keyword
 
-    $_ = function () use () {
+    $_ = function () use ($x) {
         echo '_';
     };
     echo '_';
 
-    $_ = function ( ) use ( ) {
+    $_ = function ( ) use ( $x ) {
         echo '_';
     };
     echo '_';
 
     $_ = function () use (
+        $x
     ) {
         echo '_';
     };
     echo '_';
 
     $_ = function (
-    ) use () {
+    ) use ($x) {
         echo '_';
     };
     echo '_';
 
     $_ = function (
     ) use (
+        $x
     ) {
         echo '_';
     };
