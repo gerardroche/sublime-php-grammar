@@ -498,16 +498,18 @@ contexts:
           pop: true
         - include: language
 
-    - match: \b(catch)\b\s*\(\s*
+    - match: \b(catch)\b\s*(\()\s*
       captures:
         1: keyword.control.exception.catch.php
+        2: punctuation.definition.parameters.begin.php
       push:
         - meta_scope: meta.catch.php
-        - match: '({{identifier}})\s*((\$+){{identifier}})\s*\)'
+        - match: '({{identifier}})\s*((\$+){{identifier}})\s*(\))'
           captures:
             1: support.class.exception.php
             2: variable.other.php
             3: punctuation.definition.variable.php
+            4: punctuation.definition.parameters.end.php
           pop: true
         - include: namespace
 

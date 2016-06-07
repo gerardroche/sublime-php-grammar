@@ -10,6 +10,7 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 * Fixed: Conflicts to "indent_to_bracket" option. #90
 * Fixed: Support for callable type hint #60
 * Fixed: Callable type hint is identified as class #50
+* Fixed: Catch exception punctuation selectors
 
 ## 0.19.0
 
