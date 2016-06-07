@@ -107,6 +107,10 @@ contexts:
           scope: constant.other.php
   function-arguments:
     - include: comments
+
+    - match: '\b(bool|callable|float|int|string)\b'
+      scope: meta.function.argument.typehinted.php storage.type.php
+
     - match: |-
         (?xi)
         \s*(array) # Typehint

@@ -6,7 +6,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 ## Unreleased
 
+* Added: Support for PHP 7 scalar type declarations #70
 * Fixed: Conflicts to "indent_to_bracket" option. #90
+* Fixed: Support for callable type hint #60
+* Fixed: Callable type hint is identified as class #50
 
 ## 0.19.0
 
