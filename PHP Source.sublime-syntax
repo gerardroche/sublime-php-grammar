@@ -3,6 +3,11 @@
 name: PHP Source
 hidden: true
 scope: source.php
+
+variables:
+  identifier_start: '[[:alpha:]_]'
+  identifier: '\b{{identifier_start}}[[:alnum:]_]*\b'
+
 contexts:
   main:
     - include: language
@@ -39,7 +44,7 @@ contexts:
         - match: \*/
           scope: punctuation.definition.comment.php
           pop: true
-        - include: php_doc
+        - include: php-doc
     - match: /\*
       scope: punctuation.definition.comment.php
       push:
@@ -98,7 +103,7 @@ contexts:
         # In PHP, any identifier which is not a variable is taken to be a constant.
         # However, if there is no constant defined with the given name then a notice
         # is generated and the constant is assumed to have the value of its name.
-        - match: '[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*'
+        - match: '{{identifier}}'
           scope: constant.other.php
   function-arguments:
     - include: comments
@@ -106,7 +111,7 @@ contexts:
         (?xi)
         \s*(array) # Typehint
         \s*(&)?           # Reference
-        \s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
+        \s*((\$+){{identifier}}) # The variable name
         \s*(=)  # A default value
         \s*(?:(array(?=[^\[])|(?=\[))\s*(\(|\[))
       captures:
@@ -130,7 +135,7 @@ contexts:
         (?xi)
         \s*(array) # Typehint
         \s*(&)?           # Reference
-        \s*((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
+        \s*((\$+){{identifier}}) # The variable name
         (?:
           \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
         )?
@@ -152,14 +157,13 @@ contexts:
         - include: class-name
         - match: |-
             (?xi)
-                                  \s*([a-z_][a-z_0-9]*)? # Typehinted class name
-                                  \s*(&)?           # Reference
-                                  \s*(((?:\.\.\.)?\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*) # The variable name
-                                  (?:
-                                    \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
-                                  )?
-                                  \s*(?=,|\)|/[/*]|\#|$) # A closing parentheses (end of argument list) or a comma
-
+            \s*([a-z_][a-z_0-9]*)? # Typehinted class name
+            \s*(&)?           # Reference
+            \s*(((?:\.\.\.)?\$+){{identifier}}) # The variable name
+            (?:
+              \s*(?:(=)\s*(?:(null)|((?:\S*?\(\))|(?:\S*?)))) # A default value
+            )?
+            \s*(?=,|\)|/[/*]|\#|$) # A closing parentheses (end of argument list) or a comma
           captures:
             1: support.class.php
             2: storage.modifier.reference.php
@@ -168,13 +172,13 @@ contexts:
             5: keyword.operator.assignment.php
             6: constant.language.php
             7: invalid.illegal.non-null-typehinted.php
-    - match: '(\s*&)?\s*(((?:\.\.\.)?\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\)|/[/*]|\#|$)'
+    - match: '(\s*&)?\s*(((?:\.\.\.)?\$+){{identifier}})\s*(?=,|\)|/[/*]|\#|$)'
       scope: meta.function.argument.no-default.php
       captures:
         1: storage.modifier.reference.php
         2: variable.other.php
         3: punctuation.definition.variable.php
-    - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(?:\s*(=)\s*)\s*'
+    - match: '(\s*&)?\s*((\$+){{identifier}})(?:\s*(=)\s*)\s*'
       captures:
         1: storage.modifier.reference.php
         2: variable.other.php
@@ -339,7 +343,7 @@ contexts:
         - include: language
     - include: variable-name
   invoke-call:
-    - match: '(?i)(\$+)([a-z_][a-z_0-9]*)(?=\s*\()'
+    - match: '(?i)(\$+)({{identifier}})(?=\s*\()'
       scope: meta.function-call.invoke.php
       captures:
         1: punctuation.definition.variable.php
@@ -350,7 +354,7 @@ contexts:
       scope: punctuation.section.scope.begin.php
     - match: '\}'
       scope: punctuation.section.scope.end.php
-    - match: '(?i)^\s*(interface)\s+([a-z0-9_]+)\s*(extends)?\s*'
+    - match: '(?i)^\s*(interface)\s+({{identifier}})\s*(extends)?\s*'
       captures:
         1: storage.type.interface.php
         2: entity.name.type.interface.php
@@ -416,7 +420,7 @@ contexts:
                 - match: \\
                   scope: punctuation.separator.inheritance.php
         - match: \s*,\s*
-    - match: '(?i)^\s*(trait)\s+([a-zA-Z0-9_]+)'
+    - match: '(?i)^\s*(trait)\s+({{identifier}})'
       captures:
         1: storage.type.trait.php
         2: entity.name.type.trait.php
@@ -424,7 +428,7 @@ contexts:
         - meta_scope: meta.trait.php
         - match: '(?=\{)'
           pop: true
-    - match: '(?i)^\s*(?:(abstract)|(final))?\s*(class)\s+([a-z0-9_]+)\s*'
+    - match: '(?i)^\s*(?:(abstract)|(final))?\s*(class)\s+({{identifier}})\s*'
       captures:
         1: storage.modifier.abstract.php
         2: storage.modifier.final.php
@@ -476,9 +480,11 @@ contexts:
                 - include: namespace
                 - match: "(?i)[a-z_][a-z_0-9]*"
                   scope: entity.other.inherited-class.php
-    - match: \s*\b((break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield))\b
+
+    - match: \s*\b(break|c(ase|ontinue)|d(e(clare|fault)|ie|o)|e(lse(if)?|nd(declare|for(each)?|if|switch|while)|xit)|for(each)?|if|return|switch|use|while|yield)\b
       captures:
         1: keyword.control.php
+
     - match: (?i)\b((?:require|include)(?:_once)?)\b\s*
       captures:
         1: keyword.control.import.include.php
@@ -487,20 +493,23 @@ contexts:
         - match: (?=\s|;|$)
           pop: true
         - include: language
+
     - match: \b(catch)\b\s*\(\s*
       captures:
         1: keyword.control.exception.catch.php
       push:
         - meta_scope: meta.catch.php
-        - match: '([A-Za-z_][A-Za-z_0-9]*)\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*\)'
+        - match: '({{identifier}})\s*((\$+){{identifier}})\s*\)'
           captures:
             1: support.class.exception.php
             2: variable.other.php
             3: punctuation.definition.variable.php
           pop: true
         - include: namespace
-    - match: \b(catch|try|throw|exception|finally)\b
+
+    - match: \b(catch|try|throw|finally)\b
       scope: keyword.control.exception.php
+
     - match: (?i)\b(function)\s*(&\s*)?(?=\()
       captures:
         1: storage.type.function.php
@@ -528,7 +537,7 @@ contexts:
               captures:
                 1: punctuation.definition.parameters.end.php
               pop: true
-            - match: '(\s*&)?\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)\s*(?=,|\))'
+            - match: '(\s*&)?\s*((\$+){{identifier}})\s*(?=,|\))'
               scope: meta.function.closure.use.php
               captures:
                 1: storage.modifier.reference.php
@@ -536,15 +545,15 @@ contexts:
                 3: punctuation.definition.variable.php
     - match: |-
         (?x)\s*
-                      ((?:(?:final|abstract|public|private|protected|static)\s+)*)
-                        (function)
-                        (?:\s+|(\s*&\s*))
-                        (?:
-                            (__(?:call|construct|debugInfo|destruct|get|set|isset|unset|toString|clone|set_state|sleep|wakeup|autoload|invoke|callStatic))
-                            |([a-zA-Z0-9_]+)
-                        )
-                        \s*
-                        (\()
+          ((?:(?:final|abstract|public|private|protected|static)\s+)*)
+            (function)
+            (?:\s+|(\s*&\s*))
+            (?:
+                (__(?:call|construct|debugInfo|destruct|get|set|isset|unset|toString|clone|set_state|sleep|wakeup|autoload|invoke|callStatic))
+                |([a-zA-Z0-9_]+)
+            )
+            \s*
+            (\()
       captures:
         1: storage.modifier.php
         2: storage.type.function.php
@@ -563,25 +572,25 @@ contexts:
     - include: invoke-call
     - match: |-
         (?xi)\s*(?=
-                        [a-z_0-9$\\]+(::)
-                                (?:
-                            ([a-z_][a-z_0-9]*)\s*\(
-                            |
-                            ((\$+)[a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)
-                            |
-                            ([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)
-                        )?
-                    )
+            [a-z_0-9$\\]+(::)
+                    (?:
+                ([a-z_][a-z_0-9]*)\s*\(
+                |
+                ((\$+){{identifier}})
+                |
+                ({{identifier}})
+            )?
+        )
       push:
         - match: |-
             (?x)(::)
-                                    (?:
-                                ([A-Za-z_][A-Za-z_0-9]*)\s*\(
-                                |
-                                ((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-                                |
-                                ([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-                            )?
+                    (?:
+                ([A-Za-z_][A-Za-z_0-9]*)\s*\(
+                |
+                ((\$+){{identifier}})
+                |
+                ({{identifier}})
+            )?
           captures:
             1: keyword.operator.class.php
             2: meta.function-call.static.php
@@ -660,11 +669,11 @@ contexts:
         - include: variable-name
     - include: numbers
     - include: instantiation
-    - match: '(?i)(goto)\s+([a-z_][a-z_0-9]*)'
+    - match: '(?i)(goto)\s+({{identifier}})'
       captures:
         1: keyword.control.goto.php
         2: support.other.php
-    - match: '(?i)^\s*([a-z_][a-z_0-9]*)\s*:'
+    - match: '(?i)^\s*({{identifier}})\s*:'
       captures:
         1: entity.name.goto-label.php
     - include: string-backtick
@@ -712,13 +721,7 @@ contexts:
             1: punctuation.definition.variable.php
           pop: true
         - include: language
-    - match: |-
-        (?x)(->)
-        (?:
-            ([A-Za-z_][A-Za-z_0-9]*)\s*\(
-            |
-            ((\$+)?[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-        )?
+    - match: '(?x)(->)(?:({{identifier}})\s*\(|((\$+)?{{identifier}}))?'
       captures:
         1: keyword.operator.class.php
         2: meta.function-call.object.php
@@ -746,20 +749,16 @@ contexts:
           pop: true
         - include: parameter-default-types
     - include: instantiation
-    - match: |-
-        (?xi)\s*(?=
-                        [a-z_0-9\\]+(::)
-                        ([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)?
-                    )
+    - match: \s*(?=[a-zA-Z0-9_\\]+(::)({{identifier}})?)
       push:
-        - match: '(?i)(::)([a-z_\x{7f}-\x{ff}][a-z0-9_\x{7f}-\x{ff}]*)?'
+        - match: '(?i)(::)({{identifier}})?'
           captures:
             1: keyword.operator.class.php
             2: constant.other.class.php
           pop: true
         - include: class-name
     - include: constants
-  php_doc:
+  php-doc:
     # If the next line doesn't start with whitespace then an asterisk, the use
     # is either writing an invalid phpdoc comment, or not using phpdoc. Instead
     # of marking the comment as invalid, we just switch to a normal block-level
@@ -1169,61 +1168,54 @@ contexts:
         - match: '(?i)[a-z_][a-z_0-9]*(?=\s*\()'
           pop: true
         - include: namespace
-  var_basic:
-    - match: |-
-        (?x)
-        (\$+)[a-zA-Z_\x{7f}-\x{ff}]
-        [a-zA-Z0-9_\x{7f}-\x{ff}]*?\b
-      scope: variable.other.php
-      captures:
-        1: punctuation.definition.variable.php
-  var_global:
+  variable-global:
     - match: (\$)((_(COOKIE|FILES|GET|POST|REQUEST))|arg(v|c))\b
       scope: variable.other.global.php
       captures:
         1: punctuation.definition.variable.php
-  var_global_safer:
+  variable-global-safer:
     - match: (\$)((GLOBALS|_(ENV|SERVER|SESSION)))
       scope: variable.other.global.safer.php
       captures:
         1: punctuation.definition.variable.php
   variable-name:
-    - include: var_global
-    - include: var_global_safer
-    # Handles: $foo, $foo[0], $foo[$bar], $foo->bar
+    - include: variable-global
+    - include: variable-global-safer
+    # Handles: $var, $var[0], $var[$var], $var->property
     - match: |-
         (?x)
-        ((\$)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
+        ((\$)({{identifier}}))
         (?:
-          (->)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+          (->)({{identifier}})
           |
           (\[)
-            (?:(\d+)|((\$)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)|(\w+))
+            (?:(\d+)|((\$){{identifier}})|(\w+))
           (\])
         )?
       captures:
-        1: variable.other.php.VARIABLE
-        2: punctuation.definition.variable.php.DEFINITION
-        4: keyword.operator.class.php,CLASS
-        5: variable.other.property.php.PROPERTY
+        1: variable.other.php
+        2: punctuation.definition.variable.php
+        4: keyword.operator.class.php
+        5: variable.other.property.php
         6: punctuation.section.array.begin.php
         7: constant.numeric.index.php
         8: variable.other.index.php
         9: punctuation.definition.variable.php
         10: string.unquoted.index.php
         11: punctuation.section.array.end.php
-    # Handles: "foo${bar}baz"
-    - match: |-
-        (?x)
-        ((\$\{)([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
+    # Handles: "${var}"
+    - match: '(\$\{){{identifier}}(\})'
+      scope: variable.other.php
       captures:
-        1: variable.other.php
+        1: punctuation.definition.variable.php
         2: punctuation.definition.variable.php
-        4: punctuation.definition.variable.php
   variables:
-    - include: var_global
-    - include: var_global_safer
-    - include: var_basic
+    - include: variable-global
+    - include: variable-global-safer
+    - match: (\$+){{identifier}}
+      scope: variable.other.php
+      captures:
+        1: punctuation.definition.variable.php
     - match: '(\$\{)(?=.*?\})'
       captures:
         1: punctuation.definition.variable.php
