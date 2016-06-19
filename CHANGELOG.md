@@ -4,7 +4,7 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
-## Unreleased
+## 0.20.0
 
 * Added: Support for PHP 7 scalar type declarations #70
 * Fixed: Conflicts to "indent_to_bracket" option. #90
