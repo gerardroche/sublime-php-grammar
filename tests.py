@@ -272,8 +272,8 @@ class TestSyntax(ViewTestCase):
 class OutputPanel(object):
 
     def __init__(self, window, name):
-        self.name = name
         self.window = window
+        self.name = name
         self.view = self.window.create_output_panel(self.name)
         self.view.settings().set('word_wrap', False)
         self.view.settings().set('line_numbers', False)

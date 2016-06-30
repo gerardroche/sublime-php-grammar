@@ -109,11 +109,11 @@
         ]
     },
 
-    // ------------------------------------------------------------------------
-    // Auto complete eol semicolon
-    // ------------------------------------------------------------------------
+    // ---------------------------
+    // Smart completion: semicolon
+    // ---------------------------
+
     {
-        // Only insert a semicolon at eol
         "keys": ["ctrl+;"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon.sublime-macro"},
@@ -125,7 +125,6 @@
         ]
     },
     {
-        // Insert a semicolon at eol and move to a new line
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-newline.sublime-macro"},
@@ -134,6 +133,30 @@
             { "key": "selector", "operator": "equal", "operand": "source.php - meta.array string.quoted", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\"|\\)|\\])$", "match_all": true }
+        ]
+    },
+    {
+        "keys": ["["],
+        "command": "insert_snippet",
+        "args": {"contents": "[$0];"},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\$[a-zA-Z_][a-zA-Z0-9_]*\\s*=\\s*$", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*$", "match_all": true }
+        ]
+    },
+    {
+        "keys": ["]"],
+        "command": "insert_snippet",
+        "args": {"contents": "$0];"},
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.array.php", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\$[a-zA-Z_][a-zA-Z0-9_]*\\s*=\\s*\\[$", "match_all": true },
+            { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*$", "match_all": true }
         ]
     },
 

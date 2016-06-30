@@ -1,6 +1,6 @@
 # gerardroche/sublime-php-grammar
 
-A plugin for Sublime Text.
+A plugin for Sublime Text 3.
 
 Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
@@ -24,21 +24,15 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 ## Features
 
 * Supports PHP [~7.0](http://semver.org)
-* Improved
-    - Support for syntax highlighters
-    - Indentation rules
-* Smarter
-    - macros
-    - completions
+* Improved support for syntax highlighters
+* Good indentation rules
+* Smart completions
 
 ## Installation
 
-For best results use the following completions and snippets packages:
+Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
-* [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)
-* [PHP Snippets](https://packagecontrol.io/packages/php-snippets)
-
-*To use PHP 5.6 grammar only, then manually install via Git and checkout the 5.x branch.*
+*For the old PHP 5.6 only grammar, manually install and checkout the 5.x branch.*
 
 ### Package Control installation
 
@@ -65,25 +59,9 @@ If you disable or remove this package, you will need to reenable the native PHP 
 
 ## Usage
 
-### Macros
+### Smart completions
 
-To press any character overriden by a macro or smart completion prefix it with <kbd>Ctrl</kbd> or <kbd>Shift</kbd> e.g. to insert a newline press <kbd>Shift</kbd>+<kbd>Enter</kbd> or a tab press <kbd>Shift</kbd>+<kbd>Tab</kbd>.
-
-<kbd>Enter</kbd>
-
-```
-array(|)                    | array(
-                            |     |
-                            | )
-
-function_call(|)            | function_call(
-                            |     |
-                            | )
-
-new class_name(|)           | new class_name(
-                            |     |
-                            | )
-```
+*To insert a character overriden by a smart completion: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
@@ -92,38 +70,56 @@ array(                      | array(
     'str|'                  |     'str',
 )                           |     |
                             | )
+```
 
+```
 'str|ing'                   | 'string';
                             | |
+```
 
+```
 function_call(|)            | function_call();
                             | |
+```
 
+```
 if ($condition|)            | if ($condition) {
                             |     |
                             | }
+```
 
+```
 foreach ($x => $y|)         | foreach ($x => $y) {
                             |     |
                             | }
+```
 
+```
 while ($condition|)         | while ($condition) {
                             |     |
                             | }
+```
 
+```
 for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
                             |     |
                             | }
+```
 
+```
 switch ($condition|)        | switch ($condition|) {
                             |     |
                             | }
+```
 
+```
 function x(|)               | function x()
                             | {
                             |     |
                             | }
+```
 
+```
 class x                     | class x
 {                           | {
     public function y(|)    |     public function y()
@@ -136,9 +132,31 @@ class x                     | class x
 <kbd>Ctrl</kbd>+<kbd>;</kbd>
 
 ```
-'str|ing'                   | 'str|ing';
+'str|ing'                   | 'string';|
+```
 
+```
 function_call(|)            | function_call();|
+```
+
+<kbd>Enter</kbd>
+
+```
+array(|)                    | array(
+                            |     |
+                            | )
+```
+
+```
+function_call(|)            | function_call(
+                            |     |
+                            | )
+```
+
+```
+new class_name(|)           | new class_name(
+                            |     |
+                            | )
 ```
 
 <kbd>Tab</kbd>
@@ -147,10 +165,24 @@ function_call(|)            | function_call();|
 $arr = array(               | $arr = array(
     'str|'                  |     'str' => |
 )                           | )
+```
 
+```
 $arr = array(               | $arr = array(
     'str'|                  |     'str' => |
 )                           | )
+```
+
+<kbd>[</kbd>
+
+```
+$arr = |                    | $arr = [|];
+```
+
+<kbd>]</kbd>
+
+```
+$arr = [|                   | $arr = [|];
 ```
 
 ### Indentation rules
