@@ -4,11 +4,9 @@ A plugin for Sublime Text 3.
 
 Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
 
-Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
+Also install [PHP Snippets] and [PHP Completions] because **snippets** and **completions** are **not** included by this package.
 
-**For completions and snippets install the packages listed above.**
-
-**Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
+*Many improvements and bug fixes apply only to Sublime Text build >= 3095.*
 
 ## Overview
 
@@ -30,7 +28,7 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 ## Installation
 
-Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
+Also install [PHP Snippets] and [PHP Completions] because **snippets** and **completions** are **not** included by this package.
 
 *For the old PHP 5.6 only grammar, manually install and checkout the 5.x branch.*
 
