@@ -221,6 +221,7 @@ array(                       |                     array(
 ## Known issues
 
 * Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
+* Snippets stop working [#99](https://github.com/gerardroche/sublime-php-grammar/issues/99)
 
 ## Contributing
 
