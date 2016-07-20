@@ -1,12 +1,17 @@
 # gerardroche/sublime-php-grammar
 
-A plugin for Sublime Text 3.
+[![Author](http://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche)
+[![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar)
+[![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar/stargazers)
+[![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-php-grammar/master/LICENSE)
 
-Provides a PHP syntax definition, decent indentation rules, macros, and other useful features.
+[![Sublime version](https://img.shields.io/badge/sublime-v3-lightgrey.svg?style=flat)](http://sublimetext.com)
+[![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?maxAge=2592000?style=flat&label=release)](https://github.com/gerardroche/sublime-php-grammar/tags)
+[![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?maxAge=2592000?style=flat)](https://packagecontrol.io/packages/php-grammar)
 
-Also install [PHP Snippets] and [PHP Completions] because **snippets** and **completions** are **not** included by this package.
+An improved PHP syntax, indentation rules, smart completions, and more.
 
-*Many improvements and bug fixes apply only to Sublime Text build >= 3095.*
+Also install [PHP Snippets] and [PHP Completions] which are **not** included by this package.
 
 ## Overview
 
@@ -28,9 +33,9 @@ Also install [PHP Snippets] and [PHP Completions] because **snippets** and **com
 
 ## Installation
 
-Also install [PHP Snippets] and [PHP Completions] because **snippets** and **completions** are **not** included by this package.
+Also install [PHP Snippets] and [PHP Completions] which are **not** included by this package.
 
-*For the old PHP 5.6 only grammar, manually install and checkout the 5.x branch.*
+For a PHP 5.6 specific version, manually install and checkout the 5.x branch.
 
 ### Package Control installation
 
