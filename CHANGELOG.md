@@ -4,6 +4,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
+## 0.22.0
+
+* Added: Smart completion - "$thi|" s -> "$this->"
+
 ## 0.21.0
 
 * Added: Smart array semicolon completion e.g. press [ at $arr = | completes to $arr = [|]; [#98]

@@ -87,6 +87,20 @@
         ]
     },
 
+    // $thi| -> press s -> $this->|
+    {
+        "keys": ["s"],
+        "command": "insert",
+        "args": { "characters": "s->" },
+        "context": [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php variable", "match_all": true },
+            { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*\\$thi$", "match_all": true },
+            { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true }
+        ]
+    },
+
     // ------------------------------------------------------------------------
     // Auto complete eol comma within array declaration
     // ------------------------------------------------------------------------
