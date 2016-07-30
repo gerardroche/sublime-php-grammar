@@ -6,8 +6,8 @@
 [![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-php-grammar/master/LICENSE)
 
 [![Sublime version](https://img.shields.io/badge/sublime-v3-lightgrey.svg?style=flat)](http://sublimetext.com)
-[![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?maxAge=2592000?style=flat&label=release)](https://github.com/gerardroche/sublime-php-grammar/tags)
-[![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?maxAge=2592000?style=flat)](https://packagecontrol.io/packages/php-grammar)
+[![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?label=release&style=flat&maxAge=2592000)](https://github.com/gerardroche/sublime-php-grammar/tags)
+[![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat&maxAge=2592000)](https://packagecontrol.io/packages/php-grammar)
 
 An improved PHP syntax, indentation rules, smart completions, and more.
 
