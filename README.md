@@ -1,4 +1,4 @@
-# gerardroche/sublime-php-grammar
+# php-grammar
 
 [![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche)
 [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar)
