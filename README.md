@@ -39,15 +39,7 @@ For a PHP 5.6 specific version, manually install and checkout the 5.x branch.
 
 ### Package Control installation
 
-The preferred method of installation is via Package Control.
-
-1. Install [Package Control](https://packagecontrol.io).
-2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
-3. Type `install package` and hit Return. A list of available packages will be displayed.
-4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.
-5. Restart Sublime Text to complete ins,rtallation. The features listed above should now be available.
-
-If you disable or remove this package, you will need to reenable the native PHP package manually.
+The preferred method of installation is [Package Control].
 
 ### Manual installation
 
@@ -246,9 +238,11 @@ Originally converted from the [PHP TextMate package](https://github.com/textmate
 
 Released under the [BSD 3-Clause License](LICENSE).
 
-[PHP Grammar]: https://packagecontrol.io/packages/php-grammar
-[PHP Completions]: https://packagecontrol.io/packages/PHP%20Completions%20Kit
-[PHP Snippets]: https://packagecontrol.io/packages/php-snippets
-[PHPUnit]: https://github.com/gerardroche/sublime-phpunit
-[PHPUnit Completions]: https://github.com/gerardroche/sublime-phpunit-completions
-[PHPUnit Snippets]: https://github.com/gerardroche/sublime-phpunit-snippets
+[Package Control]: https://packagecontrol.io/browse/authors/gerardroche
+[PHP Grammar]: https://packagecontrol.io/browse/authors/gerardroche
+[PHP Completions]: https://packagecontrol.io/browse/authors/gerardroche
+[PHP Snippets]: https://packagecontrol.io/browse/authors/gerardroche
+[PHPUnit]: https://packagecontrol.io/browse/authors/gerardroche
+[PHPUnit Completions]: https://packagecontrol.io/browse/authors/gerardroche
+[PHPUnit Snippets]: https://packagecontrol.io/browse/authors/gerardroche
+[Composer]: https://getcomposer.org
