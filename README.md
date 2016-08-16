@@ -11,7 +11,13 @@
 
 An improved PHP syntax, indentation rules, smart completions, and more.
 
-Also install [PHP Snippets] and [PHP Completions] which are **not** included by this package.
+## Also be sure to install [PHP Snippets] and [PHP Completions]
+
+Completions and snippets are **not** included by this package so be sure to
+install them.
+
+* [PHP Snippets]
+* [PHP Completions]
 
 ## Overview
 
