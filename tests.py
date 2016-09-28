@@ -1,16 +1,15 @@
 from threading import Thread
-import sublime
-import sublime_plugin
 import unittest
 import os
 import glob
 import re
 
-DEBUG_MODE=bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG'))
+import sublime
+import sublime_plugin
 
-if DEBUG_MODE:
+if bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG')):
     def debug_message(message):
-        print('[php-grammar] [test] %s' % str(message))
+        print('DEBUG php-grammar test: %s' % str(message))
 else:
     def debug_message(message):
         pass
@@ -84,7 +83,7 @@ class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
             return False
         return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
 
-if DEBUG_MODE:
+if bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG')):
 
     class PhpGrammarShowCursorScopeNameInStatusLine(sublime_plugin.EventListener):
 
