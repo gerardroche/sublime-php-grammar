@@ -1,4 +1,4 @@
-Update PHP syntax (PHP 7.0.5)...
+Update PHP syntax (PHP 7.0.8)...
 Update support builtin classes ...
   Updated Core builtin classes (186)
   Updated PDO builtin classes (186)
@@ -23,7 +23,7 @@ Update support builtin classes ...
   Updated xmlwriter builtin classes (186)
   Updated zip builtin classes (186)
 Update support constants ...
-  Updated ext constants (1736)
+  Updated ext constants (1758)
   Updated core constants (77)
   Updated std constants (361)
   Updated parser-token constants (135)
@@ -62,7 +62,7 @@ Update support functions ...
   Updated session functions (21)
   Updated shmop functions (6)
   Updated soap functions (2)
-  Updated sockets functions (31)
+  Updated sockets functions (32)
   Updated standard functions (525)
   Updated password functions (4)
   Updated sem functions (18)

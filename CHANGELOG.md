@@ -4,6 +4,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
+## 0.23.0
+
+* Update to 7.0.8
+
 ## 0.22.0
 
 * Added: Smart completion - "$thi|" s -> "$this->"
