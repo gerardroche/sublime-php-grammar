@@ -4,6 +4,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
+## 0.25.0
+
+* Update to 7.1.1
+
 ## 0.24.0
 
 * Update to 7.0.15
