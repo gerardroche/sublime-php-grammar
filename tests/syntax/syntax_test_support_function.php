@@ -31,19 +31,12 @@ iterator_to_array(new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', '
 // <- punctuation.separator.inheritance
 // ^ support.function.php_spl
 
-/**
- * Various extensions
- */
-
-// Zend Opcache
 opcache_get_status();
 // ^ support.function.opcache
 
-// PDO
 pdo_drivers();
 // ^ support.function.pdo
 
-// XDebug
 xdebug_get_stack_depth();
 // ^ support.function.xdebug
 xdebug_get_function_stack();
@@ -121,7 +114,6 @@ xdebug_dump_superglobals();
 xdebug_get_headers();
 // ^ support.function.xdebug
 
-// Semaphore
 msg_get_queue();
 // ^ support.function.sem
 msg_send();
@@ -159,7 +151,6 @@ shm_get_var();
 shm_remove_var();
 // ^ support.function.sem
 
-// GD/Image
 gd_info();
 // ^ support.function.image
 imagearc();
@@ -346,47 +337,57 @@ imageconvolution();
 // ^ support.function.image
 
 /**
- * Removed Extensions and SAPIs in PHP 7.0.0
+ * Removed in PHP 7.0.x
  */
-
-ereg_replace(); // Removed in PHP 7.0.0
+ereg_replace();
 // ^ -support.function
-mysql_connect(); // Removed in PHP 7.0.0
+mysql_connect();
 // ^ -support.function
-mssql_connect(); // Removed in PHP 7.0.0
+mssql_connect();
 // ^ -support.function
-sybase_connect(); // Removed in PHP 7.0.0
+sybase_connect();
 // ^ -support.function
 
 /**
- * Functions added in PHP 7.0.0
+ * Added in PHP 7.0.x
  */
-
-preg_replace_callback_array(); // PCRE Added PHP 7.0.0
+random_bytes();
+// ^ support.function
+random_int();
+// ^ support.function
+error_clear_last();
+// ^ support.function
+gmp_random_seed();
+// ^ support.function
+intdiv();
+// ^ support.function
+preg_replace_callback_array();
 // ^ support.function.php_pcre
-
-posix_setrlimit(); // POSIX Added PHP 7.0.0
+posix_setrlimit();
 // ^ support.function.posix
-
-inflate_add(); // Zlib Compression Added PHP 7.0.0
-// ^ support.function.zlib
-deflate_add(); // Zlib Compression Added PHP 7.0.0
-// ^ support.function.zlib
-inflate_init(); // Zlib Compression Added PHP 7.0.0
-// ^ support.function.zlib
-deflate_init(); // Zlib Compression Added PHP 7.0.0
+gc_mem_caches();
+// ^ support.function
+posix_setrlimit();
+// ^ support.function
+inflate_add();
 // ^ support.function.zlib
 
-intdiv(); // Math
-// ^ support.function
-random_bytes(); // CSPRNG
-// ^ support.function
-random_int(); // CSPRNG
-// ^ support.function
-error_clear_last(); // Error Handling and Logging
-// ^ support.function
+/**
+ * Added in PHP 7.1.x
+ */
+curl_multi_errno();
+// ^ support.function.curl
+session_create_id();
+// ^ support.function.session
+is_iterable();
+// ^ support.function.standard
+pcntl_async_signals();
+// ^ support.function.pcntl
 
-gc_mem_caches(); // PHP Options/Info
-// ^ support.function
-get_resources(); // PHP Options/Info
-// ^ support.function
+/**
+ * Deprecated in PHP 7.1.x
+ */
+mcrypt_decrypt();
+// ^ support.function.mcrypt
+mcrypt_create_iv();
+// ^ support.function.mcrypt

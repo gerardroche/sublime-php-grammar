@@ -50,28 +50,27 @@ function b(\Iterator $i) {}
 //              ^ support.class.builtin
 
 /**
- * Classes and interfaces added in PHP 7.0.0
+ * Added in PHP 7.0.x
  */
-
-class i extends IntlChar {} // Added PHP 7.0.0
+class i extends IntlChar {}
                 // ^ support.class.builtin
-class j extends ReflectionGenerator {} // Added PHP 7.0.0
+class j extends ReflectionGenerator {}
                 // ^ support.class.builtin
-class k extends ReflectionType {} // Added PHP 7.0.0
+class k extends ReflectionType {}
                 // ^ support.class.builtin
-class l implements SessionUpdateTimestampHandlerInterface {} // Added PHP 7.0.0
+class l implements SessionUpdateTimestampHandlerInterface {}
                 // ^ support.class.builtin
-class m implements Throwable {} // Added PHP 7.0.0
+class m implements Throwable {}
                     // ^ support.class.builtin
-class n extends Error {} // Added PHP 7.0.0
+class n extends Error {}
                 // ^ support.class.builtin
-class o extends TypeError {} // Added PHP 7.0.0
+class o extends TypeError {}
                 // ^ support.class.builtin
-class p extends ParseError {} // Added PHP 7.0.0
+class p extends ParseError {}
                 // ^ support.class.builtin
-class q extends AssertionError {} // Added PHP 7.0.0
+class q extends AssertionError {}
                 // ^ support.class.builtin
-class r extends ArithmeticError {} // Added PHP 7.0.0
+class r extends ArithmeticError {}
                 // ^ support.class.builtin
-class s extends DivisionByZeroError {} // Added PHP 7.0.0
+class s extends DivisionByZeroError {}
                 // ^ support.class.builtin

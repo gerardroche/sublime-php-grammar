@@ -62,7 +62,7 @@ T_YIELD;
 // ^ support.constant.parser-token
 
 /**
- * Constants added in PHP 5.6.x
+ * Added in PHP 5.6.x
  */
 
 MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT; // Added 5.6.16;
@@ -72,7 +72,7 @@ CURLM_ADDED_ALREADY; // Added 5.6.20;
 // ^ support.constant.ext
 
 /**
- * Removed Extensions and SAPIs in PHP 7.0.0
+ * Removed in PHP 7.0.x
  */
 
 MYSQL_CLIENT_COMPRESS;
@@ -81,16 +81,31 @@ MSSQL_ASSOC;
 // ^ -support.constant
 
 /**
- * Constants added in PHP 7.0.0
+ * Added in PHP 7.0.0
  */
 
-PHP_INT_MIN; // Added PHP 7.0.0;
+PHP_INT_MIN;
 // ^ support.constant.core
-LIBXML_BIGLINES; // Added PHP 7.0.0;
+IMG_WEBP;
 // ^ support.constant.ext
-PREG_JIT_STACKLIMIT_ERROR; // Added PHP 7.0.0;
+JSON_ERROR_UTF16;
 // ^ support.constant.ext
-POSIX_RLIMIT_AS; // Added PHP 7.0.0;
+LIBXML_BIGLINES;
 // ^ support.constant.ext
-ZLIB_SYNC_FLUSH; // Added PHP 7.0.0;
+PREG_JIT_STACKLIMIT_ERROR;
 // ^ support.constant.ext
+POSIX_RLIMIT_AS;
+// ^ support.constant.ext
+ZLIB_SYNC_FLUSH;
+// ^ support.constant.ext
+
+/**
+ * Added in PHP 7.1.x
+ */
+
+PHP_FD_SETSIZE;
+// ^ support.constant.core
+JSON_UNESCAPED_LINE_TERMINATORS;
+// ^ support.constant.ext
+MT_RAND_PHP;
+// ^ support.constant.std
