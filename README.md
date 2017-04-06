@@ -1,23 +1,10 @@
-# php-grammar
+# WHAT PHP GRAMMAR IS
 
-[![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche)
-[![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar)
-[![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-php-grammar/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar/stargazers)
+[![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche) [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar) [![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-php-grammar/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?label=release&style=flat&maxAge=2592000)](https://github.com/gerardroche/sublime-php-grammar/tags) [![Sublime version](https://img.shields.io/badge/sublime-v3.0.0-green.svg?style=flat)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat&maxAge=2592000)](https://packagecontrol.io/packages/php-grammar)
 
-[![Sublime version](https://img.shields.io/badge/sublime-v3-lightgrey.svg?style=flat)](https://sublimetext.com)
-[![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?label=release&style=flat&maxAge=2592000)](https://github.com/gerardroche/sublime-php-grammar/tags)
-[![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat&maxAge=2592000)](https://packagecontrol.io/packages/php-grammar)
+An improved PHP syntax, indentation rules, smart completions, and more. ** Works best with [PHP Snippets] and [PHP Completions].**
 
-An improved PHP syntax, indentation rules, smart completions, and more.
-
-## Also be sure to install [PHP Snippets] and [PHP Completions]
-
-Completions and snippets are **not** included by this package so be sure to
-install them.
-
-* [PHP Snippets]
-* [PHP Completions]
+Completions and snippets are **not** included by this package so be sure to install them: [PHP Snippets] and [PHP Completions].
 
 ## Overview
 
@@ -32,7 +19,7 @@ install them.
 
 ## Features
 
-* Supports PHP [~7.0](http://semver.org)
+* Supports PHP [~7](http://semver.org)
 * Improved support for syntax highlighters
 * Good indentation rules
 * Smart completions
