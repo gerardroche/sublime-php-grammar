@@ -7,6 +7,6 @@
 	],
 	"settings":
 	{
-		"default_line_ending": "LF"
+		"default_line_ending": "unix"
 	}
 }
