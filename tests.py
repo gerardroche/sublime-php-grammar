@@ -14,6 +14,7 @@ else:
     def debug_message(message):
         pass
 
+
 class Configuration():
     def on_load(self):
         self.package_root_path = os.path.dirname(__file__)
@@ -25,10 +26,13 @@ class Configuration():
         else:
             self.syntax_file_path = os.path.join('Packages', self.package_name, 'PHP.tmLanguage')
 
+
 configuration = Configuration()
+
 
 def plugin_loaded():
     configuration.on_load()
+
 
 class SublimeViewAPI():
 
@@ -46,7 +50,7 @@ class SublimeViewAPI():
         """
         content = ''
 
-        if region == None:
+        if region is None:
             in_range = range(self.view.size())
         else:
             in_range = range(region.begin(), region.end())
@@ -55,6 +59,7 @@ class SublimeViewAPI():
             content += self.view.scope_name(point).strip() + "\n"
 
         return content.strip()
+
 
 class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
 
@@ -82,6 +87,7 @@ class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
         if not self.view.file_name():
             return False
         return bool(re.match('.*[a-z][a-z0-9_]*[a-z0-9]_test.php$', self.view.file_name()))
+
 
 if bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG')):
 
@@ -113,10 +119,12 @@ if bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG')):
                 view.set_status('scope', 'Scope: "' + scope_name + '"')
                 return
 
+
 class __php_grammar_test_view_replace(sublime_plugin.TextCommand):
 
     def run(self, edit, text):
         self.view.replace(edit, sublime.Region(0, self.view.size()), text)
+
 
 class __php_grammar_test_view_replace_cursor(sublime_plugin.TextCommand):
 
@@ -134,6 +142,7 @@ class __php_grammar_test_view_replace_cursor(sublime_plugin.TextCommand):
             self.view.sel().clear()
             self.view.sel().add(cursor_placeholder.begin())
             self.view.replace(edit, cursor_placeholder, '')
+
 
 class ViewTestCase(unittest.TestCase):
 
@@ -167,9 +176,10 @@ class ViewTestCase(unittest.TestCase):
     def view_to_scope_name_repr(self):
         return SublimeViewAPI(self.view).to_scope_name_repr()
 
+
 class TestFile():
 
-    def __init__(self, description, actual_content, expected_content, syntax = None):
+    def __init__(self, description, actual_content, expected_content, syntax=None):
         self.description = description
         self.actual_content = actual_content
         self.expected_content = expected_content
@@ -207,6 +217,7 @@ class TestFile():
 
         return TestFile(description, actual_content, expected_content, syntax)
 
+
 class TestIndentation(ViewTestCase):
 
     def test_indentation_file_tests(self):
@@ -215,8 +226,9 @@ class TestIndentation(ViewTestCase):
 
             test_file = TestFile.from_file(test_file_name)
             self.set_view_content(test_file.actual_content)
-            self.view.run_command('reindent', { 'force_indent': True, 'single_line': False })
+            self.view.run_command('reindent', {'force_indent': True, 'single_line': False})
             self.assertEqual(test_file.expected_content, self.get_view_content(), "\n\ntest:" + test_file_name)
+
 
 class TestSyntax(ViewTestCase):
 
@@ -268,6 +280,7 @@ class TestSyntax(ViewTestCase):
         actual_scope = self.view.scope_name(point).strip()
         self.assertEqual(expected_scope, actual_scope)
 
+
 class OutputPanel(object):
 
     def __init__(self, window, name):
@@ -292,6 +305,7 @@ class OutputPanel(object):
     def close(self):
         pass
 
+
 class TextTestRunner():
 
     def __init__(self, window):
@@ -302,7 +316,7 @@ class TextTestRunner():
         self.indentation_tests_loaded = False
         self.syntax_tests_loaded = False
 
-    def run(self, syntax_tests = False, indentation_tests = False):
+    def run(self, syntax_tests=False, indentation_tests=False):
         if not syntax_tests and not indentation_tests:
             return
 
@@ -377,6 +391,7 @@ class TextTestRunner():
             'scroll_to_end': True
         })
 
+
 class RunPhpGrammarIndentationTests(sublime_plugin.WindowCommand):
 
     """
@@ -384,7 +399,8 @@ class RunPhpGrammarIndentationTests(sublime_plugin.WindowCommand):
     """
 
     def run(self):
-        TextTestRunner(self.window).run(indentation_tests = True)
+        TextTestRunner(self.window).run(indentation_tests=True)
+
 
 class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
 
@@ -393,7 +409,8 @@ class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
     """
 
     def run(self):
-        TextTestRunner(self.window).run(syntax_tests = True)
+        TextTestRunner(self.window).run(syntax_tests=True)
+
 
 class RunPhpGrammarTests(sublime_plugin.WindowCommand):
 
@@ -402,4 +419,4 @@ class RunPhpGrammarTests(sublime_plugin.WindowCommand):
     """
 
     def run(self):
-        TextTestRunner(self.window).run(syntax_tests = True, indentation_tests = True)
+        TextTestRunner(self.window).run(syntax_tests=True, indentation_tests=True)

@@ -1,8 +1,10 @@
 import sublime
 import sublime_plugin
 
+
 def plugin_loaded():
     disable_native_php_package()
+
 
 def disable_native_php_package():
     settings = sublime.load_settings('Preferences.sublime-settings')
@@ -43,11 +45,13 @@ def disable_native_php_package():
         settings.set('ignored_packages', ignored_packages)
         sublime.save_settings('Preferences.sublime-settings')
 
+
 def is_finish_completion_context(view):
     for s in view.sel():
         if view.substr(s.end()) != ')':
             return False
     return True
+
 
 class FinishCompletionContext(sublime_plugin.EventListener):
     def on_query_context(self, view, key, operator, operand, match_all):
@@ -57,6 +61,7 @@ class FinishCompletionContext(sublime_plugin.EventListener):
 
         return None
 
+
 class FinishCompletionCommand(sublime_plugin.TextCommand):
 
     """
@@ -65,7 +70,7 @@ class FinishCompletionCommand(sublime_plugin.TextCommand):
     move forward.
     """
 
-    def run(self, edit, insert_characters = None):
+    def run(self, edit, insert_characters=None):
         if not is_finish_completion_context(self.view):
             return
 
@@ -77,7 +82,7 @@ class FinishCompletionCommand(sublime_plugin.TextCommand):
             'forward': True
         })
 
-        if insert_characters != None:
+        if insert_characters is not None:
             self.view.run_command('insert', {
                 'characters': insert_characters
             })
