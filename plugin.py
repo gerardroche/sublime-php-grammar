@@ -63,12 +63,7 @@ class FinishCompletionContext(sublime_plugin.EventListener):
 
 
 class FinishCompletionCommand(sublime_plugin.TextCommand):
-
-    """
-    Deletes selection, moves forward one character, and
-    optionally inserts specified characters after the
-    move forward.
-    """
+    """Delete selection, move forward one character, and insert text."""
 
     def run(self, edit, insert_characters=None):
         if not is_finish_completion_context(self.view):

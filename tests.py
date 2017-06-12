@@ -44,9 +44,10 @@ class SublimeViewAPI():
 
     def to_scope_name_repr(self, region=None):
         """
-        Returns a string scope name representation of the
-        view content.  Each point in the view is converted to
-        a scope name.  A newline is appended to each scope name.
+        Return a string scope name representation of the view content.
+
+        Each point in the view is converted to a scope name. A newline is
+        appended to each scope name.
         """
         content = ''
 
@@ -92,10 +93,7 @@ class GeneratePhpGrammarSyntaxTestExpectation(sublime_plugin.TextCommand):
 if bool(os.getenv('SUBLIME_PHP_GRAMMAR_DEBUG')):
 
     class PhpGrammarShowCursorScopeNameInStatusLine(sublime_plugin.EventListener):
-
-        """
-        Updates the status line with the scope name under the cursor.
-        """
+        """Update the status line with the scope name under the cursor."""
 
         def on_post_text_command(self, view, command_name, args):
             self.update_scope(view)
@@ -247,7 +245,11 @@ class TestSyntax(ViewTestCase):
             self.set_view_content(test_file.actual_content)
 
             if ':' not in test_file.expected_content:
-                self.assertEqual(test_file.expected_content, self.view_to_scope_name_repr(), "\n\ntest:" + test_file_name)
+                self.assertEqual(
+                    test_file.expected_content,
+                    self.view_to_scope_name_repr(),
+                    "\n\ntest:" + test_file_name
+                )
             else:
                 assertions = test_file.expected_content.splitlines()
                 for assertion in assertions:
@@ -273,7 +275,12 @@ class TestSyntax(ViewTestCase):
         point = self.view.text_point(line, offset)
         selector_score = self.view.score_selector(point, selector)
         actual_scope = self.view.scope_name(point).strip()
-        self.assertGreater(selector_score, 0, 'Expected selector score greater than 0 for (line:%s, offset:%s, point:%s, selector:%s) *** ACTUAL: "%s"' % (line, offset, point, selector, actual_scope))
+        self.assertGreater(
+            selector_score,
+            0,
+            'Expected selector score greater than 0 for (line:{}, offset:{}, point:{}, selector:{}) *** ACTUAL: "{}"'
+            .format(line, offset, point, selector, actual_scope)
+        )
 
     def assertEqualsScope(self, line, offset, expected_scope):
         point = self.view.text_point(line, offset)
@@ -293,8 +300,7 @@ class OutputPanel(object):
         self.view.settings().set('scroll_past_end', False)
 
     def write(self, s):
-        f = lambda: self.view.run_command('append', {'characters': s})
-        sublime.set_timeout(f, 0)
+        sublime.set_timeout(lambda: self.view.run_command('append', {'characters': s}), 0)
 
     def flush(self):
         pass
@@ -393,30 +399,21 @@ class TextTestRunner():
 
 
 class RunPhpGrammarIndentationTests(sublime_plugin.WindowCommand):
-
-    """
-    Runs the indetation tests
-    """
+    """Run the indetation tests."""
 
     def run(self):
         TextTestRunner(self.window).run(indentation_tests=True)
 
 
 class RunPhpGrammarSyntaxTests(sublime_plugin.WindowCommand):
-
-    """
-    Runs the syntax tests
-    """
+    """Run the syntax tests."""
 
     def run(self):
         TextTestRunner(self.window).run(syntax_tests=True)
 
 
 class RunPhpGrammarTests(sublime_plugin.WindowCommand):
-
-    """
-    Runs all the tests
-    """
+    """Run all the tests."""
 
     def run(self):
         TextTestRunner(self.window).run(syntax_tests=True, indentation_tests=True)
