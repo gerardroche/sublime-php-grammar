@@ -1,12 +1,12 @@
 # WHAT PHP GRAMMAR IS
 
-[![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche) [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar) [![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-php-grammar/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?label=release&style=flat&maxAge=2592000)](https://github.com/gerardroche/sublime-php-grammar/tags) [![Sublime version](https://img.shields.io/badge/sublime-v3.0.0-green.svg?style=flat)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat&maxAge=2592000)](https://packagecontrol.io/packages/php-grammar)
+[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-php-grammar/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat-square)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat-square)](https://packagecontrol.io/packages/php-grammar) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-An improved PHP syntax, indentation rules, smart completions, and more. ** Works best with [PHP Snippets] and [PHP Completions].**
+An improved PHP syntax, indentation rules, smart completions, and more.
 
-Completions and snippets are **not** included by this package so be sure to install them: [PHP Snippets] and [PHP Completions].
+**For completions and snippets install [PHP Snippets] and [PHP Completions].**
 
-## Overview
+## OVERVIEW
 
 * [Features](#features)
 * [Installation](#installation)
@@ -17,39 +17,39 @@ Completions and snippets are **not** included by this package so be sure to inst
 * [Credits](#credits)
 * [License](#license)
 
-## Features
+## FEATURES
 
-* Supports PHP [~7](http://semver.org)
+* Supports PHP ~7
 * Improved support for syntax highlighters
 * Good indentation rules
 * Smart completions
 
-## Installation
+## INSTALLATION
 
-Also install [PHP Snippets] and [PHP Completions] which are **not** included by this package.
+*For completions and snippets install [PHP Snippets] and [PHP Completions].*
 
-For a PHP 5.6 specific version, manually install and checkout the 5.x branch.
+*For a PHP 5.6 specific version, manually install and checkout the 5.x branch.*
 
 ### Package Control installation
 
-The preferred method of installation is [Package Control].
+The preferred method of installation is [Package Control](https://packagecontrol.io/browse/authors/gerardroche).
 
 ### Manual installation
 
 1. Close Sublime Text.
-2. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
+2. Download or clone this repository to a directory named **`php-grammar`** in the Sublime Text Packages directory for your platform:
     * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
     * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
     * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
-3. The features listed above will be available the next time Sublime Text is started..
+3. Done!
 
-If you disable or remove this package, you will need to reenable the native PHP package manually.
+*Note that if you disable or remove this package, you will need to re-enable the native PHP package manually.*
 
-## Usage
+## USAGE
 
 ### Smart completions
 
-*To insert a character overriden by a smart completion: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
+*To insert a character overridden by a smart completion: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
@@ -208,34 +208,26 @@ array(                       |                     array(
 );                           | );
 ```
 
-## Known issues
+## KNOWN ISSUES
 
 * Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
 * Snippets stop working [#99](https://github.com/gerardroche/sublime-php-grammar/issues/99)
 
-## Contributing
-
-Your issue reports and pull requests are always welcome.
+## CONTRIBUTING
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Changelog
+## CHANGELOG
 
 See [CHANGELOG.md](CHANGELOG.md).
 
-## Credits
+## CREDITS
 
 Originally converted from the [PHP TextMate package](https://github.com/textmate/php.tmbundle) bundled with Sublime Text.
 
-## License
+## LICENSE
 
 Released under the [BSD 3-Clause License](LICENSE).
 
-[Package Control]: https://packagecontrol.io/browse/authors/gerardroche
-[PHP Grammar]: https://packagecontrol.io/browse/authors/gerardroche
 [PHP Completions]: https://packagecontrol.io/browse/authors/gerardroche
 [PHP Snippets]: https://packagecontrol.io/browse/authors/gerardroche
-[PHPUnit]: https://packagecontrol.io/browse/authors/gerardroche
-[PHPUnit Completions]: https://packagecontrol.io/browse/authors/gerardroche
-[PHPUnit Snippets]: https://packagecontrol.io/browse/authors/gerardroche
-[Composer]: https://getcomposer.org
