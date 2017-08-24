@@ -1,32 +1,26 @@
 # WHAT PHP GRAMMAR IS
 
+An improved PHP syntax, good indentation rules, smart macros, and more.
+
 [![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-php-grammar/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat-square)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat-square)](https://packagecontrol.io/packages/php-grammar) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-An improved PHP syntax, indentation rules, smart completions, and more.
+* Supports PHP ~7
+* Improved support for syntax highlighters
+* Good indentation rules
+* Smart macros
 
-**For completions and snippets install [PHP Snippets] and [PHP Completions].**
+Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [php-snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
 ## OVERVIEW
 
-* [Features](#features)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Known Issues](#known-issues)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
 * [Credits](#credits)
 * [License](#license)
 
-## FEATURES
-
-* Supports PHP ~7
-* Improved support for syntax highlighters
-* Good indentation rules
-* Smart completions
-
 ## INSTALLATION
-
-*For completions and snippets install [PHP Snippets] and [PHP Completions].*
 
 *For a PHP 5.6 specific version, manually install and checkout the 5.x branch.*
 
@@ -47,9 +41,9 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ## USAGE
 
-### Smart completions
+### Smart macros
 
-*To insert a character overridden by a smart completion: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
+*To insert a character overridden by a smart macro: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
 
 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 
@@ -208,11 +202,6 @@ array(                       |                     array(
 );                           | );
 ```
 
-## KNOWN ISSUES
-
-* Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)
-* Snippets stop working [#99](https://github.com/gerardroche/sublime-php-grammar/issues/99)
-
 ## CONTRIBUTING
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -228,6 +217,3 @@ Originally converted from the [PHP TextMate package](https://github.com/textmate
 ## LICENSE
 
 Released under the [BSD 3-Clause License](LICENSE).
-
-[PHP Completions]: https://packagecontrol.io/browse/authors/gerardroche
-[PHP Snippets]: https://packagecontrol.io/browse/authors/gerardroche

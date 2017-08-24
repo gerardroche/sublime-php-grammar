@@ -4,6 +4,10 @@ Works best with [PHP Completions], [PHP Snippets], and [PHPUnit].
 
 **Many improvements and bug fixes apply only to Sublime Text build >= 3095.**
 
+## 1.0.0
+
+* Fix: Enable `ctrl+;` keymap in all modes (not just vim emulation normal mode)
+
 ## 0.25.1
 
 * Fix: forgot to update new syntax with 7.1 updates when the old syntax updated
