@@ -2,18 +2,11 @@
 
 An improved PHP syntax, good indentation rules, smart macros, and more.
 
-[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-php-grammar/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat-square)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat-square)](https://packagecontrol.io/packages/php-grammar) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
+[![Build Status](https://img.shields.io/travis/gerardroche/sublime-php-grammar/master.svg?style=flat-square)](https://travis-ci.org/gerardroche/sublime-php-grammar) [![Build status](https://img.shields.io/appveyor/ci/gerardroche/sublime-php-grammar/master.svg?style=flat-square)](https://ci.appveyor.com/project/gerardroche/sublime-php-grammar/branch/master) [![Coverage Status](https://img.shields.io/coveralls/gerardroche/sublime-php-grammar/master.svg?style=flat-square)](https://coveralls.io/github/gerardroche/sublime-php-grammar?branch=master) [![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-php-grammar.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-php-grammar/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-php-grammar.svg?style=flat-square)](https://github.com/gerardroche/sublime-php-grammar/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/php-grammar.svg?style=flat-square)](https://packagecontrol.io/packages/php-grammar) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-* Supports PHP ~7
-* Improved support for syntax highlighters
-* Good indentation rules
-* Smart macros
-
-Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [php-snippets](https://packagecontrol.io/browse/authors/gerardroche).
+Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [PHP Snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
 ## INSTALLATION
-
-*For a PHP 5.6 specific version, manually install and checkout the 5.x branch.*
 
 ### Package Control installation
 
@@ -27,169 +20,160 @@ Close Sublime Text, then download or clone this repository to a directory named 
 * OSX: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
 * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
 
-*Note that if you disable or remove this package, you will need to re-enable the native PHP package manually.*
-
 ## USAGE
 
 ### Smart macros
 
-*To insert a character overridden by a smart macro: prefix with <kbd>Ctrl</kbd> or <kbd>Shift</kbd>.*
+To insert any literal character add `Shift` e.g. in a case where `Enter` runs a macro, to insert a newline on `Enter` (instead of running the macro) press `Shift+Enter`.
 
-<kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+#### On `Ctrl+Enter`
 
-```
-array(                      | array(
-    'str|'                  |     'str',
-)                           |     |
-                            | )
-```
+```php
+<?php
 
-```
-'str|ing'                   | 'string';
-                            | |
+array(                      //    array(
+    'str|'                  //        'str',
+)                           //        |
+                            //    )
 ```
 
-```
-function_call(|)            | function_call();
-                            | |
+```php
+<?php
+
+'str|ing'                   //    'string';
+                            //    |
 ```
 
-```
-if ($condition|)            | if ($condition) {
-                            |     |
-                            | }
+```php
+<?php
+
+function_call(|)            //    function_call();
+                            //    |
 ```
 
-```
-foreach ($x => $y|)         | foreach ($x => $y) {
-                            |     |
-                            | }
+```php
+<?php
+
+if ($condition|)            //    if ($condition) {
+                            //        |
+                            //    }
 ```
 
-```
-while ($condition|)         | while ($condition) {
-                            |     |
-                            | }
+```php
+<?php
+
+foreach ($x => $y|)         //    foreach ($x => $y) {
+                            //        |
+                            //    }
 ```
 
-```
-for ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {
-                            |     |
-                            | }
+```php
+<?php
+
+while ($condition|)         //    while ($condition) {
+                            //        |
+                            //    }
 ```
 
-```
-switch ($condition|)        | switch ($condition|) {
-                            |     |
-                            | }
+```php
+<?php
+
+for ($i = 0; $i < ; $i++|)  //    for ($i = 0; $i < ; $i++) {
+                            //        |
+                            //    }
 ```
 
-```
-function x(|)               | function x()
-                            | {
-                            |     |
-                            | }
+```php
+<?php
+
+switch ($condition|)        //    switch ($condition|) {
+                            //        |
+                            //    }
 ```
 
-```
-class x                     | class x
-{                           | {
-    public function y(|)    |     public function y()
-}                           |     {
-                            |         |
-                            |     }
-                            | }
+```php
+<?php
+
+function x(|)               //    function x()
+                            //    {
+                            //        |
+                            //    }
 ```
 
-<kbd>Ctrl</kbd>+<kbd>;</kbd>
+```php
+<?php
 
-```
-'str|ing'                   | 'string';|
-```
-
-```
-function_call(|)            | function_call();|
-```
-
-<kbd>Enter</kbd>
-
-```
-array(|)                    | array(
-                            |     |
-                            | )
+class x                     //    class x
+{                           //    {
+    public function y(|)    //        public function y()
+}                           //        {
+                            //            |
+                            //        }
+                            //    }
 ```
 
-```
-function_call(|)            | function_call(
-                            |     |
-                            | )
-```
+#### On `Ctrl+;`
 
 ```
-new class_name(|)           | new class_name(
-                            |     |
-                            | )
+'str|ing'                   //    'string';|
 ```
 
-<kbd>Tab</kbd>
+```php
+<?php
 
-```
-$arr = array(               | $arr = array(
-    'str|'                  |     'str' => |
-)                           | )
+function_call(|)            //    function_call();|
 ```
 
-```
-$arr = array(               | $arr = array(
-    'str'|                  |     'str' => |
-)                           | )
-```
-
-<kbd>[</kbd>
+#### On `Enter`
 
 ```
-$arr = |                    | $arr = [|];
+array(|)                    //    array(
+                            //        |
+                            //    )
 ```
 
-<kbd>]</kbd>
+```php
+<?php
+
+function_call(|)            //    function_call(
+                            //        |
+                            //    )
+```
+
+```php
+<?php
+
+new class_name(|)           //    new class_name(
+                            //        |
+                            //    )
+```
+
+#### On `Tab`
 
 ```
-$arr = [|                   | $arr = [|];
+$arr = array(               //    $arr = array(
+    'str|'                  //        'str' => |
+)                           //    )
 ```
 
-### Indentation rules
+```php
+<?php
 
-To reindent:
+$arr = array(               //    $arr = array(
+    'str'|                  //        'str' => |
+)                           //    )
+```
 
-1. select the code to reindent
-2. select `Menu > Edit > Line > Reindent`
-
-Example
+#### On `[`
 
 ```
-Original                   ->  Reindented
+$arr = |                    //    $arr = [|];
+```
 
-$val = array(                | $val = array(
-array(                       |     array(
-array(                       |         array(
-array(                       |             array(
-array(                       |                 array(
-array(                       |                     array(
-)                            |                     )
-)                            |                 )
-)                            |             )
-)                            |         )
-),                           |     ),
-'x' => 'y',                  |     'x' => 'y',
-"multi" => array(            |         "multi" => array(
-"dimensional" => array(      |             "dimensional" => array(
-"array" => "x"               |                 "array" => "x"
-'x' => array(                |                 'x' => array(
-'y' => 'z'                   |                     'y' => 'z'
-)                            |                 )
-)                            |             )
-)                            |     )
-);                           | );
+#### On `]`
+
+```
+$arr = [|                   //    $arr = [|];
 ```
 
 ## CONTRIBUTING
@@ -199,10 +183,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## CHANGELOG
 
 See [CHANGELOG.md](CHANGELOG.md).
-
-## CREDITS
-
-Originally converted from the [PHP TextMate package](https://github.com/textmate/php.tmbundle) bundled with Sublime Text.
 
 ## LICENSE
 

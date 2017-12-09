@@ -78,7 +78,9 @@ class ViewTestCase(TestCase):
         self.view.settings().set('tab_size', 4)
         self.view.settings().set('translate_tabs_to_spaces', True)
 
-        if int(sublime.version()) >= 3092:
+        if int(sublime.version()) >= 3154:
+            syntax_file_path = os.path.join('Packages', 'PHP', 'PHP.sublime-syntax')
+        elif int(sublime.version()) >= 3092:
             syntax_file_path = os.path.join('Packages', 'php-grammar', 'PHP.sublime-syntax')
         else:
             syntax_file_path = os.path.join('Packages', 'php-grammar', 'PHP.tmLanguage')
