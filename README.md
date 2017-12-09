@@ -11,15 +11,6 @@ An improved PHP syntax, good indentation rules, smart macros, and more.
 
 Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [php-snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
-## OVERVIEW
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contributing](#contributing)
-* [Changelog](#changelog)
-* [Credits](#credits)
-* [License](#license)
-
 ## INSTALLATION
 
 *For a PHP 5.6 specific version, manually install and checkout the 5.x branch.*
@@ -30,12 +21,11 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ### Manual installation
 
-1. Close Sublime Text.
-2. Download or clone this repository to a directory named **`php-grammar`** in the Sublime Text Packages directory for your platform:
-    * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
-    * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
-    * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
-3. Done!
+Close Sublime Text, then download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
+
+* Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
+* OSX: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`
+* Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/php-grammar`
 
 *Note that if you disable or remove this package, you will need to re-enable the native PHP package manually.*
 

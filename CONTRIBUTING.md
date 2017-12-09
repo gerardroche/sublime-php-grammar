@@ -2,13 +2,6 @@
 
 **Sublime Text <= 3095 is no longer supported.**
 
-## Overview
-
-* [Resources](#resources)
-* [Running Tests](#running-tests)
-* [Syntax Tests](#syntax-tests)
-* [Indentation Tests](#indentation-tests)
-
 ## Resources
 
 * [PHP Language Specifications](https://github.com/php/php-langspec)
@@ -16,15 +9,7 @@
 
 ## Running Tests
 
-Tests can be run from the command palette.
-
-* `PHP Grammar: Run All Tests`
-* `PHP Grammar: Run Syntax Tests`
-* `PHP Grammar: Run Indentation Tests`
-
-## Syntax Tests
-
-All syntax tests should be placed in the `tests/syntax/` folder. Please refer to the Sublime Text [documentation](http://www.sublimetext.com/docs/3/syntax.html) on how to write syntax tests.
+The [UnitTesting](https://github.com/randy3k/UnitTesting) package is used to run the tests. Install it, open the Command Palette, type "UnitTesting", press Enter and input "php-grammar" as the package to test.
 
 ## Indentation Tests
 

@@ -21,16 +21,5 @@ Session.vim
 # Sublime Text
 *.sublime-workspace
 
-# Netbeans IDE
-nbproject/
-
-# Eclipse IDE
-.buildpath
-.project
-.settings/
-
-# Notepad++
-nppBackup
-
 # ctags
 tags
