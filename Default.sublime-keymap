@@ -68,31 +68,36 @@
         ]
     },
 
+
     // $arr = array(               //    $arr = array(
-    //     'str|'                  //        'str' => |
+    //     'str'|                  //        'str' => |
+    // )                           //    )
+    //
+    // $arr = array(               //    $arr = array(
+    //     'str'|(int|float|bool)  //        'str' => |(int|float|bool)
     // )                           //    )
     {
         "keys": ["tab"],
-        "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/auto-array-equals-gt.sublime-macro"},
+        "command": "php_grammar_complete",
+        "args": {"action": "array-operator"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*('|\")[^'\"]*('|\")\\s*$", "match_all": true },
-            { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*$", "match_all": true }
+            { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*(true|false|\\d+(?:\\.\\d+)?)?$", "match_all": true }
         ]
     },
 
     // $arr = array(               //    $arr = array(
-    //     'str'|                  //        'str' => |
+    //     'str|'                  //        'str' => |
     // )                           //    )
     //
     {
         "keys": ["tab"],
-        "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/auto-array-equals-gt.sublime-macro"},
+        "command": "php_grammar_complete",
+        "args": {"action": "array-operator"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
@@ -257,9 +262,10 @@
     //                                       ^
     {
         "keys": ["backspace"],
-        "command": "finish_completion",
+        "command": "php_grammar_complete",
+        "args": {"action": "finish"},
         "context": [
-            { "key": "finish_completion", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "php_grammar_is_completion", "operator": "equal", "operand": true, "match_all": true },
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
@@ -269,9 +275,10 @@
 
     {
         "keys": [")"],
-        "command": "finish_completion",
+        "command": "php_grammar_complete",
+        "args": {"action": "finish"},
         "context": [
-            { "key": "finish_completion", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "php_grammar_is_completion", "operator": "equal", "operand": true, "match_all": true },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
             { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
@@ -281,10 +288,10 @@
 
     {
         "keys": [";"],
-        "command": "finish_completion",
-        "args": { "insert_characters": ";" },
+        "command": "php_grammar_complete",
+        "args": {"action": "finish", "insert_characters": ";"},
         "context": [
-            { "key": "finish_completion", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "php_grammar_is_completion", "operator": "equal", "operand": true, "match_all": true },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
             { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },

@@ -16,13 +16,6 @@
                                 }
                             },
                             {
-                                "caption": "CHANGELOG",
-                                "command": "open_file",
-                                "args": {
-                                    "file": "${packages}/php-grammar/CHANGELOG.md"
-                                }
-                            },
-                            {
                                 "caption": "LICENSE",
                                 "command": "open_file",
                                 "args": {

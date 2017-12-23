@@ -180,10 +180,6 @@ $arr = [|                   //    $arr = [|];
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## CHANGELOG
-
-See [CHANGELOG.md](CHANGELOG.md).
-
 ## LICENSE
 
 Released under the [BSD 3-Clause License](LICENSE).
