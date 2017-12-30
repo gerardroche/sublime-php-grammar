@@ -60,6 +60,8 @@ def view_to_scope_name_repr(view, region=None):
         in_range = range(region.begin(), region.end())
 
     for point in in_range:
+        # scope_name() needs to striped due to a bug in ST:
+        # See https://github.com/SublimeTextIssues/Core/issues/657.
         content += view.scope_name(point).strip() + "\n"
 
     return content.strip()
