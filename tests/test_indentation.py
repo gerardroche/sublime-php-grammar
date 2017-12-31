@@ -81,11 +81,11 @@ class ViewTestCase(TestCase):
         self.view.settings().set('translate_tabs_to_spaces', True)
 
         if int(sublime.version()) >= 3154:
-            syntax_file_path = os.path.join('Packages', 'PHP', 'PHP.sublime-syntax')
+            syntax_file_path = 'Packages/PHP/PHP.sublime-syntax'
         elif int(sublime.version()) >= 3092:
-            syntax_file_path = os.path.join('Packages', 'PHP', 'PHP.sublime-syntax')
+            syntax_file_path = 'Packages/PHP/PHP.sublime-syntax'
         else:
-            syntax_file_path = os.path.join('Packages', 'PHP', 'PHP.tmLanguage')
+            syntax_file_path = 'Packages/PHP/PHP.tmLanguage'
 
         self.view.set_syntax_file(syntax_file_path)
         self.maxDiff = None
