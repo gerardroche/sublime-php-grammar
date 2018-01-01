@@ -1,13 +1,13 @@
-import sublime_plugin
-import sublime
+from sublime import Region
+from sublime_plugin import TextCommand
 
 
-class _php_grammar_test_view_replace(sublime_plugin.TextCommand):
+class _php_grammar_test_view_replace(TextCommand):
     def run(self, edit, text):
-        self.view.replace(edit, sublime.Region(0, self.view.size()), text)
+        self.view.replace(edit, Region(0, self.view.size()), text)
 
 
-class _php_grammar_test_view_replace_cursor(sublime_plugin.TextCommand):
+class _php_grammar_test_view_replace_cursor(TextCommand):
     def run(self, edit, reverse=False):
         if reverse:
             cursor_position = self.view.sel()[0]

@@ -1,4 +1,4 @@
-# WHAT PHP GRAMMAR IS
+# WHAT PHPGRAMMAR IS
 
 An improved PHP syntax, good indentation rules, smart macros, and more.
 
@@ -14,7 +14,7 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ### Manual installation
 
-Close Sublime Text, then download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:
+Close Sublime Text, then download or clone this repository to a directory named `PHPGrammar` in the Sublime Text Packages directory for your platform:
 
 * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`
 * OSX: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/php-grammar`

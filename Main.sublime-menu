@@ -6,20 +6,20 @@
                 "id": "package-settings",
                 "children": [
                     {
-                        "caption": "PHP Grammar",
+                        "caption": "PHPGrammar",
                         "children": [
                             {
                                 "caption": "README",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/php-grammar/README.md"
+                                    "file": "${packages}/PHPGrammar/README.md"
                                 }
                             },
                             {
                                 "caption": "LICENSE",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/php-grammar/LICENSE"
+                                    "file": "${packages}/PHPGrammar/LICENSE"
                                 }
                             }
                         ]

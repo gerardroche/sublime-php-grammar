@@ -2,7 +2,7 @@ language: python
 
 env:
     global:
-        - PACKAGE="php-grammar"
+        - PACKAGE="PHPGrammar"
     matrix:
         - SUBLIME_TEXT_VERSION="3"
 

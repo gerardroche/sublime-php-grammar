@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>PHP Symbol List: Traits</string>
+	<string>PHPGrammar Symbol List: Traits</string>
 	<key>scope</key>
 	<string>entity.name.trait.php</string>
 	<key>settings</key>

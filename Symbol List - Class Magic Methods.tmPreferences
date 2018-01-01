@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>PHP Symbol List: Class Magic Methods</string>
+	<string>PHPGrammar Symbol List: Class Magic Methods</string>
 	<key>scope</key>
 	<string>meta.class.php support.function.magic.php</string>
 	<key>settings</key>

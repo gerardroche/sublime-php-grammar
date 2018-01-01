@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>PHP Symbol List: Class Methods</string>
+	<string>PHPGrammar Symbol List: Class Methods</string>
 	<key>scope</key>
 	<string>meta.class.php entity.name.function.php</string>
 	<key>settings</key>

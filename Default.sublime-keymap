@@ -5,7 +5,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/wrap-newlines.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
@@ -25,7 +25,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/wrap-newlines.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/wrap-newlines.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
@@ -43,7 +43,7 @@
     {
         "keys": ["enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/next-array-key.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/next-array-key.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
@@ -115,7 +115,7 @@
     {
         "keys": ["ctrl+;"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/append-semicolon.sublime-macro"},
         "context": [
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
@@ -130,7 +130,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-comma-newline.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/append-comma-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.array string.quoted", "match_all": true },
@@ -142,7 +142,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/append-semicolon-newline.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/append-semicolon-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php - meta.array string.quoted", "match_all": true },
@@ -163,7 +163,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/auto-pair-braces-current-line.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
@@ -185,7 +185,7 @@
     {
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-current-line.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/auto-pair-braces-current-line.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true },
@@ -203,7 +203,7 @@
         // functions, methods
         "keys": ["ctrl+enter"],
         "command": "run_macro_file",
-        "args": {"file": "res://Packages/php-grammar/macros/auto-pair-braces-next-line.sublime-macro"},
+        "args": {"file": "res://Packages/PHPGrammar/macros/auto-pair-braces-next-line.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.function", "match_all": true },
