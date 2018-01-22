@@ -6,6 +6,8 @@ An improved PHP syntax, good indentation rules, smart macros, and more.
 
 Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [PHP Snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
+**PHPGrammar has been renamed in v.2.0.0 (previously known as php-grammar)**
+
 ## INSTALLATION
 
 ### Package Control installation
