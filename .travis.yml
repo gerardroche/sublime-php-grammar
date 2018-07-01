@@ -28,7 +28,7 @@ install:
             pip install python-coveralls;
       elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
             brew update;
-            brew install python3;
+            brew upgrade python;
             pip3 install flake8;
             pip3 install flake8-docstrings;
             pip3 install python-coveralls;
