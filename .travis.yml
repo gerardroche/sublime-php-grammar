@@ -41,7 +41,6 @@ install:
 
 script:
     - sh travis.sh run_tests --coverage
-    - sh travis.sh run_syntax_tests
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
             flake8 --version;
             flake8;
