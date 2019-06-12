@@ -7,9 +7,12 @@ env:
         - SUBLIME_TEXT_VERSION="3"
 
 matrix:
+    fast_finish: true
     include:
         - os: linux
           python: 3.3
+        - os: linux
+          python: 3.6
         - os: osx
           language: generic
 
@@ -23,21 +26,26 @@ before_install:
 
 install:
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-            pip install flake8;
-            pip install flake8-docstrings;
-            pip install python-coveralls;
-      elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
-            brew update;
-            brew upgrade python;
-            pip3 install flake8;
-            pip3 install flake8-docstrings;
-            pip3 install python-coveralls;
+            if [ "$TRAVIS_PYTHON_VERSION" == "3.3" ]; then
+                pip install flake8==3.5;
+                pip install flake8-docstrings;
+                pip install python-coveralls;
+            else
+                pip install flake8;
+                pip install flake8-docstrings;
+                pip install python-coveralls;
+            fi
       fi
     - sh travis.sh bootstrap
+    - python --version
 
 script:
     - sh travis.sh run_tests --coverage
-    - flake8
+    - sh travis.sh run_syntax_tests
+    - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+            flake8 --version;
+            flake8;
+      fi
 
 after_success:
     - coveralls
