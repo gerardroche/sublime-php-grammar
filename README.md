@@ -6,8 +6,6 @@ An improved PHP syntax, good indentation rules, smart macros, and more.
 
 Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [PHP Snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
-**PHPGrammar has been renamed in v.2.0.0 (previously known as php-grammar)**
-
 ## INSTALLATION
 
 ### Package Control installation
@@ -16,11 +14,13 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ### Manual installation
 
-Close Sublime Text, then download or clone this repository to a directory named `PHPGrammar` in the Sublime Text Packages directory for your platform:
+Close Sublime Text, then download or clone this repository to a directory named **PHPGrammar** in the Sublime Text Packages directory for your platform:
 
-* Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/PHPGrammar`
-* OSX: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/PHPGrammar`
-* Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/PHPGrammar`
+OS | Command
+-- | -----
+Linux | `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/PHPGrammar`
+OSX | `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/PHPGrammar`
+Windows | `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\Sublime/ Text/ 3/Packages/PHPGrammar`
 
 ## USAGE
 
