@@ -88,7 +88,7 @@ for ($i = 0; $i < ; $i++|)  //    for ($i = 0; $i < ; $i++) {
 ```php
 <?php
 
-switch ($condition|)        //    switch ($condition|) {
+switch ($condition|)        //    switch ($condition) {
                             //        |
                             //    }
 ```
