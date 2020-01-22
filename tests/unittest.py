@@ -51,13 +51,13 @@ class ViewTestCase(TestCase):
             self.view.close()
 
     def write(self, content, replace_cursor_position=False):
-        self.view.run_command('_php_grammar_test_view_replace', {'text': content})
+        self.view.run_command('php_grammar_test_view_replace', {'text': content})
         if replace_cursor_position:
-            self.view.run_command('_php_grammar_test_view_replace_cursor')
+            self.view.run_command('php_grammar_test_view_replace_cursor')
 
     def content(self, replace_cursor_position=False):
         if replace_cursor_position:
-            self.view.run_command('_php_grammar_test_view_replace_cursor', {'reverse': True})
+            self.view.run_command('php_grammar_test_view_replace_cursor', {'reverse': True})
 
         return view_to_str(self.view)
 

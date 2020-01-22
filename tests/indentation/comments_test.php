@@ -17,7 +17,6 @@ indentation rules.
                     x
                 x
 */
-                ?>
 --EXPECT--
 <?php
 
@@ -35,4 +34,3 @@ indentation rules.
                     x
                 x
 */
-                ?>
