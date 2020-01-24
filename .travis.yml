@@ -33,7 +33,9 @@ install:
                 pip install flake8==3.5;
                 pip install flake8-docstrings;
                 pip install pydocstyle==3.0.0;
-                pip install python-coveralls==2.8.0;
+                pip install coverage==4.5.4;
+                pip install codecov==2.0.15;
+                pip install python-coveralls;
                 pip install mypy==0.540;
                 flake8 --version;
                 mypy --version;
@@ -41,6 +43,8 @@ install:
                 pip install flake8;
                 pip install flake8-docstrings;
                 pip install pydocstyle;
+                pip install coverage==4.5.4;
+                pip install codecov==2.0.15;
                 pip install python-coveralls;
                 pip install mypy;
                 flake8 --version;
@@ -51,6 +55,8 @@ install:
 
 script:
     - sh travis.sh run_tests --coverage
+    - sh travis.sh run_syntax_compatibility
+    - sh travis.sh run_syntax_tests
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
             flake8;
             cd "$HOME/.config/sublime-text-3/Packages/$PACKAGE/";
@@ -61,11 +67,13 @@ script:
                 mypy "../$PACKAGE" || true;
             else
                 mypy --show-error-codes "../$PACKAGE" || true;
-            fi
+            fi;
+            cd "$TRAVIS_BUILD_DIR";
       fi
 
 after_success:
     - coveralls
+    - codecov
 
 notifications:
     email: false
