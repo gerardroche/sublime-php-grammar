@@ -25,10 +25,7 @@ def is_finish_completion_context(view):
 class PhpGrammarIsCompletionContext(sublime_plugin.EventListener):
     def on_query_context(self, view, key, operator, operand, match_all):
         if key == 'php_grammar_is_completion':
-            if is_finish_completion_context(view):
-                return True
-
-        return None
+            return is_finish_completion_context(view)
 
 
 class PhpGrammarCompleteCommand(sublime_plugin.TextCommand):
