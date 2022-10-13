@@ -9,7 +9,7 @@
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
-            { "key": "selector", "operator": "equal", "operand": "source.php meta.array.empty", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array.empty, source.php meta.array.empty", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
         ]
     },
@@ -47,7 +47,7 @@
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
-            { "key": "selector", "operator": "equal", "operand": "source.php meta.array", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array - string, source.php meta.array", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "preceding_text", "operator": "regex_contains", "operand": "('|\")$", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*$", "match_all": true }
@@ -83,7 +83,7 @@
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
-            { "key": "selector", "operator": "equal", "operand": "source.php meta.array - string", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array - string, source.php meta.array - string", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*('|\")[^'\"]*('|\")\\s*$", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "^\\s*(true|false|\\d+(?:\\.\\d+)?)?$", "match_all": true }
@@ -101,7 +101,7 @@
         "context": [
             { "key": "setting.command_mode", "operand": false },
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
-            { "key": "selector", "operator": "equal", "operand": "source.php meta.array - string", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array - string, source.php meta.array - string", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "preceding_text", "operator": "regex_contains", "operand": "('|\")[^'\"]*$", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "^('|\"|\\])", "match_all": true }
@@ -133,7 +133,7 @@
         "args": {"file": "res://Packages/PHPGrammar/macros/append-comma-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
-            { "key": "selector", "operator": "equal", "operand": "source.php meta.array string.quoted", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array string.quoted, source.php meta.array string.quoted", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\")$", "match_all": true }
         ]
@@ -145,7 +145,7 @@
         "args": {"file": "res://Packages/PHPGrammar/macros/append-semicolon-newline.sublime-macro"},
         "context": [
             { "key": "setting.command_mode", "operand": false },
-            { "key": "selector", "operator": "equal", "operand": "source.php - meta.array string.quoted", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "source.php - meta.sequence.array string.quoted, source.php - meta.array string.quoted", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "('|\"|\\)|\\])$", "match_all": true }
         ]
