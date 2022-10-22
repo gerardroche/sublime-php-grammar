@@ -103,6 +103,7 @@
             { "key": "setting.auto_indent", "operator": "equal", "operand": true },
             { "key": "selector", "operator": "equal", "operand": "source.php meta.sequence.array - string, source.php meta.array - string", "match_all": true },
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "not_regex_contains", "operand": "\\=>", "match_all": true },
             { "key": "preceding_text", "operator": "regex_contains", "operand": "('|\")[^'\"]*$", "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "^('|\"|\\])", "match_all": true }
         ]
