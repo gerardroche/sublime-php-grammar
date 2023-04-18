@@ -1,20 +1,8 @@
-from sublime import load_settings
 from sublime import Region
-from sublime import save_settings
 import sublime_plugin
 
 
-def plugin_loaded():
-    # Reenable native PHP package, because it was disabled in PHPGrammar v1.0.
-    settings = load_settings('Preferences.sublime-settings')
-    ignored_packages = settings.get('ignored_packages', [])
-    if 'PHP' in ignored_packages:
-        ignored_packages.remove('PHP')
-        settings.set('ignored_packages', ignored_packages)
-        save_settings('Preferences.sublime-settings')
-
-
-def is_finish_completion_context(view):
+def is_finish_completion_context(view) -> bool:
     for s in view.sel():
         if view.substr(s.end()) != ')':
             return False
