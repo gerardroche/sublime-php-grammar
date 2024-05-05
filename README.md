@@ -2,7 +2,7 @@
 
 An improved PHP syntax, good indentation rules, smart macros, and more.
 
-[![Travis CI Build Status](https://img.shields.io/travis/gerardroche/sublime-php-grammar/master.svg?style=flat-square&label=travisci)](https://travis-ci.org/gerardroche/sublime-php-grammar) [![Codecov Coverage Status](https://img.shields.io/codecov/c/github/gerardroche/sublime-php-grammar/master?style=flat-square&label=codecov)](https://codecov.io/gh/gerardroche/sublime-php-grammar/branch/master) [![Downloads](https://img.shields.io/packagecontrol/dt/PHPGrammar.svg?style=flat-square)](https://packagecontrol.io/packages/PHPGrammar)
+[![Codecov Coverage Status](https://img.shields.io/codecov/c/github/gerardroche/sublime-php-grammar/master?style=flat-square&label=codecov)](https://codecov.io/gh/gerardroche/sublime-php-grammar/branch/master) [![Downloads](https://img.shields.io/packagecontrol/dt/PHPGrammar.svg?style=flat-square)](https://packagecontrol.io/packages/PHPGrammar)
 
 Completions and snippets are provided separately by [PHP Completions Kit](https://packagecontrol.io/browse/authors/gerardroche) and [PHP Snippets](https://packagecontrol.io/browse/authors/gerardroche).
 
